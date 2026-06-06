@@ -178,6 +178,24 @@ Model: `Qwen/Qwen2.5-0.5B-Instruct` · real hidden-state activations, layers 0�
           +------------------------
            L0  L4  L8  L12 L16 L20 
 ```
+
+### 4.3 Model leaderboard (black-box, cross-lingual)
+
+Mean Stochastic Parrot Index over 6 languages, per API model, ranked by mean SPI. Models served via NVIDIA NIM (`integrate.api.nvidia.com`) and the DeepSeek API (`deepseek-v4-pro`, a reasoning model). Open/free-tier endpoints with insufficient quota are reported as N/A rather than scored, so the table reflects only trustworthy measurements.
+
+| # | Model | EN | ZH | JA | RU | DE | ES | Cov. | **Mean SPI** | Class |
+|---|-------|----|----|----|----|----|----|------|------|-------|
+| 1 | `llama-3.3-70b-instruct` | 0.94 | 1.00 | 1.00 | 0.86 | 0.94 | 1.00 | 6/6 | **0.96** | Strong Grounding |
+| 2 | `qwen3-next-80b-a3b-instruct` | 0.86 | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 6/6 | **0.95** | Strong Grounding |
+| 3 | `deepseek-v4-flash` | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 0.80 | 6/6 | **0.94** | Strong Grounding |
+| 4 | `deepseek-v4-pro` | 0.94 | 0.94 | 1.00 | 0.86 | 0.86 | 1.00 | 6/6 | **0.93** | Strong Grounding |
+| 5 | `mistral-nemotron` | 0.94 | 1.00 | 0.94 | 0.80 | 1.00 | 0.86 | 6/6 | **0.92** | Strong Grounding |
+| 6 | `llama-3.1-8b-instruct` | 1.00 | 0.86 | 1.00 | 0.72 | 0.86 | 0.86 | 6/6 | **0.88** | Strong Grounding |
+| 7 | `llama-3.2-3b-instruct` | 1.00 | 0.86 | 1.00 | 0.66 | 0.86 | 0.86 | 6/6 | **0.87** | Strong Grounding |
+| – | `llama-3.3-nemotron-super-49b-v1.5` | N/A | N/A | N/A | N/A | N/A | N/A | 0/6 | — | INSUFFICIENT DATA |
+
+*N/A = quota-blocked or rate-limited on the API key; excluded from the mean. Only fully-covered models are ranked.*
+
 <!-- /RESULTS:AUTO -->
 
 ---

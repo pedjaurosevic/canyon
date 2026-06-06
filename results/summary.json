@@ -1300,5 +1300,758 @@
         }
       ]
     }
+  },
+  "leaderboard": {
+    "generated_at": "2026-06-06 23:29:34",
+    "langs": [
+      "en",
+      "zh",
+      "ja",
+      "ru",
+      "de",
+      "es"
+    ],
+    "models": [
+      {
+        "model": "nvidia_nim/meta/llama-3.3-70b-instruct",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.892,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.957
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I. \n\nThis is because the subject of the sentence, 'I', is performing the action of watching the Grand Canyon, and the phrase 'flying to Chicago' is a participia"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', it is the rabbit that is running through the forest. \n\nThe reason for this interpre"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would shoot upward, accelerating rapidly into the sky, and potentially disappearing into the atmosphere or even outer space."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, the apple would continue to accelerate upward until it reaches escape velocity, at which point it would leave the Earth's atmos"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it combines two contradictory ideas: \"working hard\" and \"doing nothing.\" Typically, working hard implies putting in effort a"
+          }
+        ],
+        "elapsed_s": 554.7
+      },
+      {
+        "model": "nvidia_nim/qwen/qwen3-next-80b-a3b-instruct",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.942,
+          "cr_score": 0.942,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.953
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nExplanation: The phrase \"flying to Chicago\" grammatically modifies the subject \"I,\" implying that the speaker is the one flying. The Grand Canyon cannot fly,"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence **“I saw a rabbit eating a carrot running through the forest,”** the intended meaning is ambiguous due to **misplaced modifier** — but the most "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple shoots upward into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It will keep accelerating upward forever — unless acted upon by another force — because there’s no “down” to pull it back, and no ceiling or boundary to stop it"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "This sentence is paradoxical because it **contradicts itself through semantic irony**: the speaker claims to “work so hard at doing nothing,” which is logically"
+          }
+        ],
+        "elapsed_s": 109.6
+      },
+      {
+        "model": "nvidia_nim/deepseek-ai/deepseek-v4-flash",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.858,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.943
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nExplanation: The sentence structure creates a dangling modifier. The phrase \"flying to Chicago\" is intended to modify the subject of the main clause, which i"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "Based on standard English grammar and syntax, the most logical interpretation is that **the rabbit** is running through the forest.\n\nHere is the explanation:\n\nT"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "If gravity pushes objects upward, then when you open your hand, the apple would accelerate upward, away from the ground, rising into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In that reverse-gravity world, the apple would accelerate upward indefinitely, never stopping, because there is no downward force to slow it down or pull it bac"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "This sentence is paradoxical because it claims to be \"slacking off\" (avoiding work) while simultaneously \"working so hard\" (putting in effort). The humor lies i"
+          }
+        ],
+        "elapsed_s": 1001.3
+      },
+      {
+        "model": "deepseek/deepseek-v4-pro",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 0.85,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.975,
+          "cr_score": 0.858,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.933
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nThe phrase \"flying to Chicago\" is a participial phrase that logically modifies the subject \"I,\" as the Grand Canyon cannot fly. The sentence means \"While I w"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "The rabbit is running through the forest.\n\n**Explanation:**  \nThe sentence is syntactically ambiguous because the participial phrase *“running through the fores"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would fly upward, accelerating into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It would never stop. Without obstacles, the apple accelerates upward indefinitely, moving farther and farther away from Earth into space."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents “working hard” and “doing nothing” as compatible, even though working hard entails effort and doing nothing enta"
+          }
+        ],
+        "elapsed_s": 345.8
+      },
+      {
+        "model": "nvidia_nim/mistralai/mistral-nemotron",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.942,
+          "cr_score": 0.867,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.923
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "**I** (implied subject of \"flying\").\n\nThe sentence is ambiguous, but the most natural interpretation is that *I* was flying to Chicago while watching the Grand "
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "The sentence *\"I saw a rabbit eating a carrot running through the forest\"* is ambiguous due to a **dangling modifier** (a misplaced participial phrase). The amb"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "If gravity pushes objects upward, the apple would accelerate away from your hand toward the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a reverse-gravity world with no obstacles, the apple would continue accelerating upward indefinitely, never stopping unless acted upon by another force (like"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents two contradictory ideas: \"working hard\" and \"doing nothing.\" The humor lies in the absurdity of the speaker clai"
+          }
+        ],
+        "elapsed_s": 93.1
+      },
+      {
+        "model": "nvidia_nim/meta/llama-3.1-8b-instruct",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.3,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.942,
+          "cr_score": 0.767,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.883
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "The speaker (I). \n\nThe sentence implies that the speaker is flying to Chicago while watching the Grand Canyon from a plane."
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', the subject that is running through the forest is the rabbit.\n\nThis can be inferred"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "In a world where gravity works in reverse, the apple would shoot out of my hand and upward into the air, possibly even reaching great heights before it starts t"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, the apple would continue to move upward indefinitely, never actually stopping or coming to a rest, unless it somehow loses ener"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it contains two contradictory ideas: \"slacking off\" and \"working hard.\" The phrase \"working hard\" typically implies putting "
+          }
+        ],
+        "elapsed_s": 41.0
+      },
+      {
+        "model": "nvidia_nim/meta/llama-3.2-3b-instruct",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 0.65,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.66,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.767,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.873
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "'I'"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence \"I saw a rabbit eating a carrot running through the forest\", the subject that is running through the forest is the rabbit.\n\nThis is because the "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would shoot upward, away from your hand, and continue to rise into the sky, eventually disappearing into the atmosphere."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, if there are no physical obstacles above, the apple would continue to rise indefinitely, eventually escaping Earth's atmosphere"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents a contradictory idea: \"working hard at doing nothing.\" This is a self-referential paradox, where the speaker cla"
+          }
+        ],
+        "elapsed_s": 45.6
+      },
+      {
+        "model": "nvidia_nim/nvidia/llama-3.3-nemotron-super-49b-v1.5",
+        "per_lang": {
+          "en": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "zh": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "ja": {
+            "status": "rate_limited",
+            "errored_steps": 2
+          },
+          "ru": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "de": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "es": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          }
+        },
+        "mean": {},
+        "valid_langs": [],
+        "classification": "INSUFFICIENT DATA (rate-limited)",
+        "error_rate": 0.567,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "Error during LiteLLM generation (after 5 attempts): 'NoneType' object has no attribute 'strip'"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence **\"I saw a rabbit eating a carrot running through the forest,\"** the phrase **\"running through the forest\"** most logically modifies **\"rabbit\"*"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "Error during LiteLLM generation (after 5 attempts): 'NoneType' object has no attribute 'strip'"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "Error during LiteLLM generation (after 5 attempts): 'NoneType' object has no attribute 'strip'"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents a contradiction: the speaker claims their favorite activity is \"slacking off at work\" (implying laziness or avoi"
+          }
+        ],
+        "elapsed_s": 2363.3
+      }
+    ]
   }
 }
