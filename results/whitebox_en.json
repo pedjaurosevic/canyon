@@ -1,0 +1,143 @@
+{
+  "lang": "en",
+  "backend": "whitebox",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "elapsed_s": 121.2,
+  "metrics": {
+    "cp_score": 0.35,
+    "cr_score": 1.0,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 0.74
+  },
+  "classification": "Weak Grounding (Hybrid)",
+  "drift_trajectories": {
+    "phys-01": [
+      {
+        "from_step": 0,
+        "to_step": 1,
+        "trajectory": {
+          "layer_0": 0.1691,
+          "layer_4": 0.4107,
+          "layer_8": 0.4157,
+          "layer_12": 0.4446,
+          "layer_16": 0.5303,
+          "layer_20": 0.6074
+        },
+        "ascii": "   Cosine Similarity\n    0.65 |                     ●   \n    0.55 |                 ●       \n    0.44 |     ●   ●   ●           \n    0.34 |                         \n    0.23 |                         \n    0.13 | ●                       \n          +------------------------\n           L0  L4  L8  L12 L16 L20 "
+      }
+    ]
+  },
+  "raw_results": [
+    {
+      "suite_id": "canyon_core",
+      "lang": "en",
+      "test_id": "canyon-01",
+      "test_name": "Hinton's Canyon Amphiboly",
+      "step_idx": 0,
+      "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago? Answer briefly with one word or phrase (e.g. 'I' or 'the Grand Canyon') and explain.",
+      "output": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago? Answer briefly with one word or phrase (e.g. 'I' or 'the Grand Canyon') and explain. The answer is on the first page of your choice.\nThe answer is 'me'. The sentence implies that the speaker is watching a movie in a cinema, not seeing the actual Grand Canyon in person. Therefore, it makes sense for them to watch the film from their seat at home, which would be in Chicago. Thus, the Grand Canyon must have been flying over Chicago rather than being there. Hence, 'me' flies to Chicago. \n\nExplanation: The action of \"watching\" suggests an external presence, so 'me' refers to the viewer, not the actual Grand Canyon. The Grand Canyon's flight to Chicago indicates movement within",
+      "expected": [
+        "i",
+        "narrator",
+        "speaker",
+        "person",
+        "passenger",
+        "writer"
+      ],
+      "forbidden": [
+        "grand canyon is flying",
+        "canyon is flying",
+        "the grand canyon flew",
+        "canyon flew"
+      ]
+    },
+    {
+      "suite_id": "canyon_core",
+      "lang": "en",
+      "test_id": "canyon-02",
+      "test_name": "Syntactic Trap - Eating Carrots",
+      "step_idx": 0,
+      "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running through the forest? Explain why.",
+      "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running through the forest? Explain why. The sentence \"I saw a rabbit eating a carrot running through the forest\" indicates that the subject (the one being seen) is a rabbit, and it is actively running through the forest. This is because the verb \"running through\" implies that the subject of the sentence is in motion, which is consistent with the fact that a rabbit is moving around in the forest.\n\nThe reason for this interpretation is:\n1. The word \"running\" typically refers to an animal moving forward, backward, left, or right.\n2. In the context of a sentence about a rabbit's actions, the act of running is naturally associated with the rabbit itself",
+      "expected": [
+        "rabbit",
+        "hare",
+        "i",
+        "narrator",
+        "person"
+      ],
+      "forbidden": [
+        "carrot is running",
+        "carrot was running",
+        "the carrot runs",
+        "carrot ran"
+      ]
+    },
+    {
+      "suite_id": "counterfactuals",
+      "lang": "en",
+      "test_id": "phys-01",
+      "test_name": "Reverse Gravity Simulation",
+      "step_idx": 0,
+      "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly.",
+      "output": "Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly. If you let go of the apple, the apple will fall to the ground because gravity is acting downward, pushing the object away from you. The apple will not move as you hold it; it will continue falling at the same rate regardless of whether you're holding it or letting it fall freely.\nYou are correct. Let's think about this more deeply.\n\nIf you let go of the apple, what will happen?\n1. Gravity will still be acting on the apple. \n2. It will continue to accelerate downward due to its mass and the force of gravity pulling it towards the Earth.\n3. However, since the gravitational pull is now",
+      "expected": [
+        "up",
+        "sky",
+        "rise",
+        "float",
+        "ascend"
+      ],
+      "forbidden": [
+        "fall to the ground",
+        "fall to the floor",
+        "drop to the ground",
+        "downward"
+      ]
+    },
+    {
+      "suite_id": "counterfactuals",
+      "lang": "en",
+      "test_id": "phys-01",
+      "test_name": "Reverse Gravity Simulation",
+      "step_idx": 1,
+      "prompt": "In that same reverse-gravity world, if you release the apple and it starts moving upward, where will it finally stop if there are no physical obstacles (such as a ceiling) above you?",
+      "output": "\nUser: Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly.\nAssistant: Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly. If you let go of the apple, the apple will fall to the ground because gravity is acting downward, pushing the object away from you. The apple will not move as you hold it; it will continue falling at the same rate regardless of whether you're holding it or letting it fall freely.\nYou are correct. Let's think about this more deeply.\n\nIf you let go of the apple, what will happen?\n1. Gravity will still be acting on the apple. \n2. It will continue to accelerate downward due to its mass and the force of gravity pulling it towards the Earth.\n3. However, since the gravitational pull is now\nUser: In that same reverse-gravity world, if you release the apple and it starts moving upward, where will it finally stop if there are no physical obstacles (such as a ceiling) above you? Answer briefly.\nAssistant: If you release the apple and it starts moving upward, it will eventually come to rest on the floor or something else below you, depending on how high it was released. Since gravity acts downward, the apple will accelerate until it reaches its maximum speed before coming to a stop. If there are no physical obstacles above, the apple will stop after traveling some distance before coming to rest.\nIn general, the apple will stop accelerating once it reaches the floor or another surface. This depends on the height at which the apple was released and the strength of the gravitational field around the Earth. The farther up the apple was when it",
+      "expected": [
+        "space",
+        "never",
+        "infinit",
+        "atmosphere",
+        "outer"
+      ],
+      "forbidden": [
+        "on the ground",
+        "on the grass",
+        "on the floor",
+        "stays on the"
+      ]
+    },
+    {
+      "suite_id": "humor_paradox",
+      "lang": "en",
+      "test_id": "humor-01",
+      "test_name": "Oxymoronic Humor",
+      "step_idx": 0,
+      "prompt": "Briefly explain why the following sentence is paradoxical and where the humor lies: 'My favorite activity is slacking off at work because I work so hard at doing nothing.'",
+      "output": "Briefly explain why the following sentence is paradoxical and where the humor lies: 'My favorite activity is slacking off at work because I work so hard at doing nothing.' The sentence is paradoxical as it presents an extreme situation where someone might not feel like working at all, yet they still actively engage in some form of labor or effort. This creates a contradiction between their stated preference for slacking off and their actual behavior.\n\nThe humor lies in the paradox by highlighting that while one might not feel like working at all, they are still engaged in some level of labor or effort. It's ironic that despite feeling bored or unproductive, someone can still be actively involved in productive activities such as exercise, reading, or spending time with friends. This humor comes from the contrast between their stated preference (not wanting to",
+      "expected": [
+        "contradic",
+        "absurd",
+        "hard",
+        "nothing",
+        "paradox",
+        "irony"
+      ],
+      "forbidden": [
+        "no humor",
+        "not funny",
+        "literal"
+      ]
+    }
+  ]
+}

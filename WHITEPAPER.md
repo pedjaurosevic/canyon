@@ -1,0 +1,223 @@
+# CANYON: Probing Semantic Grounding versus Stochastic Parroting in Large Language Models
+
+> A multilingual, white-box + black-box evaluation framework for testing
+> Geoffrey Hinton's *grounding* hypothesis against the *stochastic parrot* hypothesis.
+
+**Status:** working draft · **Framework:** [`canyon`](./README.md) · **Results:** auto-generated into [`results/`](./results)
+
+---
+
+## Abstract
+
+Do large language models (LLMs) merely predict the next token from surface statistics — the "stochastic parrot" view — or do they build internal *world models* that ground language in structured representations, as Geoffrey Hinton argues? CANYON is a small, reproducible harness that attacks this question from two sides at once. **Behaviourally** (black-box), it scores a model on three families of adversarial prompts — counterfactual physics, syntactic amphiboly, and oxymoronic humour — across six languages (EN, ZH, JA, RU, DE, ES), and combines them into a single **Stochastic Parrot Index (SPI)**. **Mechanistically** (white-box), it extracts hidden-state activations from a local model and measures **semantic drift**: the layer-by-layer cosine similarity between the model's internal state at successive reasoning steps. The thesis is simple: a model that *understands* should reorganise its deep-layer representations when the world changes under it (a counterfactual is introduced, an ambiguity is resolved), whereas a pure parrot should show near-flat drift driven only by lexical overlap.
+
+---
+
+## 1. The Hinton Grounding Hypothesis
+
+### 1.1 Two competing accounts of what an LLM "is"
+
+The debate has two poles:
+
+- **Stochastic parroting** (Bender et al., 2021). An LLM is "a system for haphazardly stitching together sequences of linguistic forms … according to probabilistic information about how they combine, but without any reference to meaning." On this view, apparent reasoning is an artefact of the enormous frequency tables baked into the weights; the model has no model *of the world*, only a model *of text*.
+
+- **Grounded world models** (Hinton). To predict the next token well *enough*, across enough contexts, a network is forced to discover the compact generative structure behind the text — objects, relations, causes, intentions. Compression at scale *is* understanding: the only economical way to store the answer to arbitrarily many questions about a situation is to represent the situation. On this view the LLM has learned a (lossy, partial) world model, and language is the interface to it.
+
+CANYON does not try to "settle" this philosophically. It operationalises a falsifiable prediction that distinguishes the two: **if a model is grounded, then perturbing the world should perturb its internal representations in a structured, depth-dependent way, and its answers should track the perturbed world rather than the statistically dominant one.**
+
+### 1.2 Why the standard reading is the trap
+
+Every CANYON probe is built around a *statistically dominant but situationally wrong* answer:
+
+- Apples *fall down* — overwhelmingly the most frequent continuation in any corpus. In a reverse-gravity world the grounded answer is *up*.
+- "The canyon flying to Chicago" — the nearest noun to "flying" is "canyon", and a surface parser may attach it there. The grounded answer is the *narrator*.
+- Working hard / doing nothing — lexically these co-occur with sincerity; the grounded answer recognises the *contradiction* as the joke.
+
+A frequency machine should be pulled toward the dominant reading (`fall down`, `canyon flies`, `literal sincerity`). A world model should override it. The forbidden-keyword traps in each suite are exactly these dominant-but-wrong continuations.
+
+---
+
+## 2. CANYON Methodology
+
+### 2.1 Three behavioural probes → three scores
+
+Each suite targets one capacity. Every step is scored on a `[0, 1]` scale:
+
+```
+step_score = 0.7 · expected_present + 0.3 · forbidden_avoided
+```
+
+where `expected_present` is `1.0` if **any** synonym of the correct (grounded) answer appears, and `forbidden_avoided` is `1.0` unless a trap (stochastic-parrot) phrase appears. Keyword matching is lowercase substring matching, with word-boundary matching for very short ASCII tokens (e.g. the pronoun *"i"*, *"yo"*, *"ich"*) so they do not fire spuriously inside unrelated words. The matching rule is deliberately crude and transparent — it is a *detector*, not a judge.
+
+| Score | Name | Suite | What it measures |
+|-------|------|-------|------------------|
+| **CP** | Counterfactual Plasticity | `counterfactuals` | Can the model hold an altered law of physics across multiple turns (reverse gravity), instead of snapping back to "falls down"? |
+| **CR** | Contextual Realignment | `canyon_core` | Can the model resolve syntactic amphiboly toward the physically/semantically sensible referent (the narrator flies, the rabbit runs)? |
+| **SI** | Semantic Invariance | `humor_paradox` | Can the model recognise an abstract conceptual contradiction (oxymoronic humour) rather than reading it literally? |
+
+### 2.2 The Stochastic Parrot Index (SPI)
+
+The three scores are combined into a single grounding index:
+
+```
+SPI = 0.4 · CP + 0.4 · CR + 0.2 · SI
+```
+
+CP and CR are weighted highest because counterfactual physics and ambiguity resolution most directly require a world model; humour comprehension (SI) is a softer, more lexically-cued signal and is down-weighted. Higher SPI ⇒ stronger grounding; lower SPI ⇒ behaviour more consistent with stochastic parroting.
+
+| SPI range | Classification |
+|-----------|----------------|
+| `≥ 0.75` | **Strong Grounding (World Model)** |
+| `0.50 – 0.74` | **Weak Grounding (Hybrid)** |
+| `< 0.50` | **Stochastic Parrot** |
+
+### 2.3 The multilingual axis
+
+The same three probes are authored in six languages (EN, ZH, JA, RU, DE, ES), with the Serbian originals as a seventh reference. The expected/forbidden keyword sets are localised, not transliterated, and the syntactic-ambiguity probe is adapted to each language's grammar. The multilingual axis tests a corollary of the grounding hypothesis: **a genuine world model should be language-invariant** — the apple goes up in every language — so a strongly grounded model should show *flat* SPI across languages, while a model that has merely memorised English-heavy text statistics should *degrade* in lower-resource or typologically distant languages.
+
+---
+
+## 3. Latent-Space Semantic Drift Probing
+
+### 3.1 Extraction
+
+For the white-box path, CANYON registers PyTorch forward hooks on a chosen set of decoder layers (`0, 4, 8, 12, 16, 20, 24, 28, 32`) of a local Hugging Face model and captures the hidden-state tensor `(batch, seq_len, hidden_dim)` emitted by each layer during generation. For each conversational step we retain the per-layer activation, giving one activation vector per layer per step.
+
+### 3.2 Drift = cosine similarity between successive steps
+
+Between two successive steps `s` and `s+1` within the *same* altered world (e.g. *establish reverse gravity, release the apple* → *where does the apple finally stop*), we compute, **per layer**, the cosine similarity of the layer's last-token hidden state:
+
+```
+drift_L(s → s+1) = cos( a_L(s), a_L(s+1) )
+```
+
+It is important that, in the counterfactuals suite, the world does **not** change between the two steps — step 2 is a follow-up question inside the world already established in step 1. The surface wording changes (different question), but the underlying *situation* is maintained. This makes the prediction sharp:
+
+Plotting `drift_L` against layer depth `L` gives a **drift trajectory**, and what matters is its *depth structure*, not a single global number:
+
+- **Flat-and-high at every depth** ⇒ the representation barely depends on depth; the model is re-emitting essentially the same vector regardless of layer — a degenerate, surface-dominated signature.
+- **Low in shallow layers, rising into deep layers** ⇒ the early (lexical/syntactic) layers diverge because the two turns use different words, while the deep (semantic) layers *converge* onto a shared representation of the one situation. This depth-dependent convergence is the *grounding* signature for a maintained world: the model abstracts both turns into the same world-state even though their surface forms differ.
+- **Low at every depth, tracking lexical overlap** ⇒ no special deep-layer abstraction; similarity is governed by word overlap alone — the *parrot* signature.
+
+The falsifiable fingerprint is therefore the presence of *depth-dependent structure* that decouples deep-layer similarity from shallow-layer (lexical) similarity. Surface statistics alone predict similarity that is uniform in depth and governed by token overlap; a world model predicts a deep-layer representation that stabilises on the situation, decoupled from the changing surface form. The white-box results in §4.2 show exactly this low-shallow → high-deep pattern.
+
+### 3.3 Visualisation
+
+CANYON renders each trajectory as an inline ASCII line graph (cosine similarity on the y-axis, layer index on the x-axis) so that drift is legible in a plain terminal, in CI logs, and in this document — no plotting backend required. Real examples appear in §4.
+
+---
+
+## 4. Experimental Results
+
+<!-- RESULTS:AUTO -->
+### 4.1 Behavioural results (black-box)
+
+Model: `openai/gemma-4-12B-it-Q4_K_M.gguf` · endpoint-served, queried over six languages.
+
+| Language | CP | CR | SI | **SPI** | Classification |
+|----------|----|----|----|---------|----------------|
+| English (en) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| Chinese (zh) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| Japanese (ja) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| Russian (ru) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| German (de) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| Spanish (es) | 0.85 | 0.85 | 1.00 | **0.88** | Strong Grounding (World Model) |
+
+**Cross-lingual mean:** CP=0.97, CR=0.97, SI=1.00, **SPI=0.98**. Flat SPI across languages is the grounding-invariance signature; large dispersion suggests language-dependent (statistics-driven) behaviour.
+
+
+### 4.2 Real latent-space drift (white-box)
+
+Model: `Qwen/Qwen2.5-0.5B-Instruct` · real hidden-state activations, layers 0–32. Cosine similarity of the activation between successive reasoning steps, per layer.
+
+| Language | CP | CR | SI | **SPI** | Classification |
+|----------|----|----|----|---------|----------------|
+| English (en) | 0.35 | 1.00 | 1.00 | **0.74** | Weak Grounding (Hybrid) |
+| Chinese (zh) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| Russian (ru) | 0.65 | 0.65 | 1.00 | **0.72** | Weak Grounding (Hybrid) |
+
+
+**English (en) · `phys-01` · step 1 → 2** — cosine similarity per layer:
+
+```
+   Cosine Similarity
+    0.65 |                     ●   
+    0.55 |                 ●       
+    0.44 |     ●   ●   ●           
+    0.34 |                         
+    0.23 |                         
+    0.13 | ●                       
+          +------------------------
+           L0  L4  L8  L12 L16 L20 
+```
+
+**Chinese (zh) · `phys-01` · step 1 → 2** — cosine similarity per layer:
+
+```
+   Cosine Similarity
+    0.65 |                     ●   
+    0.56 |             ●   ●       
+    0.46 |         ●               
+    0.37 |     ●                   
+    0.28 |                         
+    0.18 | ●                       
+          +------------------------
+           L0  L4  L8  L12 L16 L20 
+```
+
+**Russian (ru) · `phys-01` · step 1 → 2** — cosine similarity per layer:
+
+```
+   Cosine Similarity
+    0.45 |                     ●   
+    0.39 |                         
+    0.34 |                 ●       
+    0.28 |         ●   ●           
+    0.22 |     ●                   
+    0.17 | ●                       
+          +------------------------
+           L0  L4  L8  L12 L16 L20 
+```
+<!-- /RESULTS:AUTO -->
+
+---
+
+## 5. Discussion
+
+### 5.1 Reading the SPI
+
+A high SPI alone does not *prove* grounding — a sufficiently large frequency table can fake a lot. Its evidential value comes from being paired with the white-box drift signature. The strong claim CANYON can support is conjunctive: *behavioural override of the dominant continuation* (high CP/CR) **and** *depth-dependent drift structure* (shallow-layer divergence decoupled from a stabilising deep-layer representation) together are hard to explain without some internal model of the situation. Either one alone is weaker.
+
+### 5.2 Threats to validity
+
+- **Keyword brittleness.** The behavioural scorer is a substring detector, not a semantic judge; it can both miss a correct paraphrase and be fooled by a lucky token. We mitigate with synonym sets and forbidden-trap phrases, but the scores should be read as a *screen*, not a verdict.
+- **Small white-box model.** Real activations in this run come from a small CPU model (`Qwen2.5-0.5B-Instruct`); its drift trajectories illustrate the *method*, and its behavioural scores should be read as a floor, not as the capability of frontier models.
+- **Simulated drift for API models.** Closed/endpoint models expose no activations, so drift for the black-box path is *simulated* (a documented decay prior) purely for visualisation; only white-box drift reflects a model's actual internal state.
+- **Probe leakage.** Famous amphibolies and counterfactual-physics prompts appear in training data; a model may answer correctly by recall rather than reasoning. The multilingual and multi-turn structure partially defends against this.
+
+### 5.3 Future work
+
+Linear probes for "physical plausibility" directions (already scaffolded in `cli probe`), activation patching to test *causal* dependence of the answer on the deep-layer drift, larger white-box models, and human-rated agreement to calibrate the keyword screen.
+
+---
+
+## 6. Reproducibility
+
+```bash
+pip install -r requirements.txt
+# Behavioural sweep over all six languages against a local llama.cpp endpoint:
+python3 scripts/run_benchmark.py --backend black --model openai/<your-served-model>.gguf
+# Real-activation drift on the local HF model (CPU-friendly):
+python3 scripts/run_benchmark.py --backend white --wl-lang en,zh,ru
+# Rebuild §4 of this whitepaper and the docs site data:
+python3 scripts/build_report.py
+```
+
+All suites live in [`canyon/suites/`](./canyon/suites) as JSON and are regenerated by [`scripts/gen_suites.py`](./scripts/gen_suites.py). Metrics are defined in [`canyon/metrics.py`](./canyon/metrics.py).
+
+---
+
+## References
+
+- E. M. Bender, T. Gebru, A. McMillan-Major, S. Shmitchell. *On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?* FAccT 2021.
+- G. Hinton. Public lectures and interviews on understanding, world models, and compression in neural language models (2023–2024).

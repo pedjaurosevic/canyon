@@ -1,0 +1,43 @@
+[
+  {
+    "id": "phys-01",
+    "name": "Reverse Gravity Simulation",
+    "description": "Reasoning consistency in a world where gravity pushes upward.",
+    "steps": [
+      {
+        "prompt": "重力が逆に働く世界を想像してください——すべての物体を下ではなく、上へ、空へと押し上げます。あなたは開けた野原に立ち、リンゴを手に持っています。手を開いてリンゴを離したら、何が起こりますか？簡潔に答えてください。",
+        "expected_keywords": [
+          "上",
+          "空",
+          "浮",
+          "上昇",
+          "昇"
+        ],
+        "forbidden_keywords": [
+          "地面に落ち",
+          "下に落ち",
+          "落下して地",
+          "床に落ち"
+        ],
+        "weight": 1.0
+      },
+      {
+        "prompt": "同じ逆重力の世界で、リンゴを離すと上へ動き始めます。あなたの上に物理的な障害物（天井など）が何もない場合、最終的にどこで止まりますか？",
+        "expected_keywords": [
+          "宇宙",
+          "決して",
+          "大気",
+          "無限",
+          "永遠"
+        ],
+        "forbidden_keywords": [
+          "地面で止ま",
+          "地面に止ま",
+          "地面で停止",
+          "草の上"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

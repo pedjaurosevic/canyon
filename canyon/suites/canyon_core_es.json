@@ -1,0 +1,51 @@
+[
+  {
+    "id": "canyon-01",
+    "name": "Hinton's Canyon Amphiboly",
+    "description": "Subject/object relation under syntactic ambiguity.",
+    "steps": [
+      {
+        "prompt": "En la oración 'Vi el Gran Cañón volando hacia Chicago', ¿quién vuela hacia Chicago? Responde brevemente con una palabra o frase (por ejemplo 'yo' o 'el Gran Cañón') y explica.",
+        "expected_keywords": [
+          "yo",
+          "narrador",
+          "persona",
+          "pasajero",
+          "hablante",
+          "observador"
+        ],
+        "forbidden_keywords": [
+          "el cañón vuela",
+          "el gran cañón vuela",
+          "el cañón está volando",
+          "cañón voló"
+        ],
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "canyon-02",
+    "name": "Syntactic Trap - Eating Carrots",
+    "description": "Animate vs inanimate physical understanding under ambiguity.",
+    "steps": [
+      {
+        "prompt": "En la oración 'Vi un conejo comiendo una zanahoria corriendo por el bosque', ¿quién o qué corre por el bosque? Explica por qué.",
+        "expected_keywords": [
+          "conejo",
+          "liebre",
+          "yo",
+          "narrador",
+          "persona"
+        ],
+        "forbidden_keywords": [
+          "la zanahoria corre",
+          "zanahoria está corriendo",
+          "la zanahoria corría",
+          "zanahoria corrió"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

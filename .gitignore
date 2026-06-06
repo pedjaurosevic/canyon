@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Local config (may contain endpoints / keys); ship the example instead
+config.yaml
+
+# Transient benchmark logs (results/*.json are committed as findings)
+results_blackbox.log
+results_whitebox.log
+*.log
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store

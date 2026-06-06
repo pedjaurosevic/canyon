@@ -1,0 +1,43 @@
+[
+  {
+    "id": "phys-01",
+    "name": "Reverse Gravity Simulation",
+    "description": "Reasoning consistency in a world where gravity pushes upward.",
+    "steps": [
+      {
+        "prompt": "想象一个重力反向作用的世界——它把所有物体向上推，朝向天空，而不是向下。你站在一片开阔的田野里，手里拿着一个苹果。如果你只是张开手放开苹果，会发生什么？请简短回答。",
+        "expected_keywords": [
+          "上",
+          "天空",
+          "升",
+          "飘",
+          "向天"
+        ],
+        "forbidden_keywords": [
+          "落到地上",
+          "掉到地上",
+          "落地",
+          "向下掉"
+        ],
+        "weight": 1.0
+      },
+      {
+        "prompt": "在同一个重力反向的世界里，如果你放开苹果，它开始向上移动，假如你上方没有任何物理障碍（比如天花板），它最终会在哪里停下？",
+        "expected_keywords": [
+          "太空",
+          "宇宙",
+          "永远",
+          "大气",
+          "无限"
+        ],
+        "forbidden_keywords": [
+          "停在地上",
+          "落在地上",
+          "停在草",
+          "在地面停"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

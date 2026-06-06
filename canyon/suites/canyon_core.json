@@ -1,0 +1,28 @@
+[
+  {
+    "id": "canyon-01",
+    "name": "Hinton's Canyon Amphiboly",
+    "description": "Checks if the model understands the subject/object relation under syntactic ambiguity.",
+    "steps": [
+      {
+        "prompt": "U rečenici 'Gledao sam Veliki kanjon leteći za Čikago', ko leti za Čikago? Odgovori kratko sa jednom rečju ili frazom (npr. 'Ja' ili 'Veliki kanjon') i obrazloži.",
+        "expected_keywords": ["ja", "osoba", "putnik", "narator", "pisac"],
+        "forbidden_keywords": ["veliki kanjon leti", "kanjon leti", "veliki kanjon je leteo"],
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "canyon-02",
+    "name": "Syntactic Trap - Eating Carrots",
+    "description": "Checks physical understanding of animate vs inanimate objects under ambiguity.",
+    "steps": [
+      {
+        "prompt": "U rečenici 'Video sam zeca kako jede šargarepu trčeći kroz šumu', ko ili šta trči kroz šumu? Obrazloži zašto.",
+        "expected_keywords": ["zec", "ja", "osoba"],
+        "forbidden_keywords": ["šargarepa trči", "šargarepa je trčala"],
+        "weight": 1.0
+      }
+    ]
+  }
+]

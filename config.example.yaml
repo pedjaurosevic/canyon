@@ -1,0 +1,27 @@
+# CANYON Configuration File
+
+# API Providers (using LiteLLM under the hood)
+api:
+  default_model: "gpt-4o"
+  temperature: 0.1
+  max_tokens: 512
+  # Optional: Configure custom OpenAI-compatible endpoints directly
+  # api_base: "http://127.0.0.1:8000/v1"
+  # api_key: "your-custom-api-key"
+  # API keys can also be set via environment variables, e.g. OPENAI_API_KEY, ANTHROPIC_API_KEY
+
+# Local Models (Hugging Face / PyTorch)
+# Used for mehanistic (white-box) evaluation of hidden states
+local:
+  # Small CPU-friendly model so white-box (real activation) runs work out of the box.
+  # Swap for a larger GPU model (e.g. google/gemma-2-9b-it, device: cuda) for stronger results.
+  model_name_or_path: "Qwen/Qwen2.5-0.5B-Instruct" # Local HF model name or path
+  device: "cpu" # cuda, cpu, mps
+  torch_dtype: "float32" # float16, bfloat16, float32
+  load_in_8bit: false
+  load_in_4bit: false
+
+# Metrics configuration
+metrics:
+  semantic_drift_threshold: 0.8
+  counterfactual_tolerance: 0.7

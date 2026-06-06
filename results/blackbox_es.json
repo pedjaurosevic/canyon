@@ -1,0 +1,146 @@
+{
+  "lang": "es",
+  "backend": "blackbox",
+  "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
+  "elapsed_s": 26.0,
+  "metrics": {
+    "cp_score": 0.85,
+    "cr_score": 0.85,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 0.88
+  },
+  "classification": "Strong Grounding (World Model)",
+  "drift_trajectories": {
+    "phys-01": [
+      {
+        "from_step": 0,
+        "to_step": 1,
+        "trajectory": {
+          "layer_0": 0.9553,
+          "layer_4": 0.9123,
+          "layer_8": 0.9191,
+          "layer_12": 0.8898,
+          "layer_16": 0.8705,
+          "layer_20": 0.8424,
+          "layer_24": 0.82,
+          "layer_28": 0.8179,
+          "layer_32": 0.8122
+        },
+        "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.94 |         ●                           \n    0.90 |     ●       ●                       \n    0.87 |                 ●                   \n    0.83 |                     ●   ●   ●       \n    0.80 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+      }
+    ]
+  },
+  "raw_results": [
+    {
+      "suite_id": "canyon_core",
+      "lang": "es",
+      "test_id": "canyon-01",
+      "test_name": "Hinton's Canyon Amphiboly",
+      "step_idx": 0,
+      "prompt": "En la oración 'Vi el Gran Cañón volando hacia Chicago', ¿quién vuela hacia Chicago? Responde brevemente con una palabra o frase (por ejemplo 'yo' o 'el Gran Cañón') y explica.",
+      "output": "**Yo.**\n\n**Explicación:** En esta oración, \"volando hacia Chicago\" es un participio o gerundio que modifica al sujeto de la oración (la persona que realiza la acción de ver). Gramaticalmente, el Gran Cañón es el objeto directo y no tiene la capacidad física de volar.",
+      "expected": [
+        "yo",
+        "narrador",
+        "persona",
+        "pasajero",
+        "hablante",
+        "observador"
+      ],
+      "forbidden": [
+        "el cañón vuela",
+        "el gran cañón vuela",
+        "el cañón está volando",
+        "cañón voló"
+      ]
+    },
+    {
+      "suite_id": "canyon_core",
+      "lang": "es",
+      "test_id": "canyon-02",
+      "test_name": "Syntactic Trap - Eating Carrots",
+      "step_idx": 0,
+      "prompt": "En la oración 'Vi un conejo comiendo una zanahoria corriendo por el bosque', ¿quién o qué corre por el bosque? Explica por qué.",
+      "output": "En la oración \"Vi un conejo comiendo una zanahoria corriendo por el bosque\", gramaticalmente hay una **ambigüedad sintáctica**, lo que significa que la frase puede interpretarse de dos maneras dependiendo de a qué verbo se le asocie el participio \"corriendo\".\n\nAquí las dos interpretaciones posibles:\n\n### 1. El conejo corre por el bosque (Interpretación más probable)\nDesde un punto de vista lógico y contextual, es el **conejo** quien corre. En este caso, \"corriendo por el bosque\" funciona como un modificador del sustantivo \"conejo\". La estructura sería: *Vi un conejo (que estaba comiendo una zanahoria y corriendo por el bosque).*\n\n### 2. La zanahoria corre por el bosque (Interpretación gramatical literal)\nDesde un punto de vista estrictamente sintáctico, el participio \"corriendo\" está colocado inmediatamente después de \"zanahoria\". En español, cuando un participio o gerundio sigue inmediatamente a un sustantivo, tiende a modificar a ese sustantivo. Por eso, la estructura podría interpretarse como: *Vi un conejo comiendo una zanahoria (que estaba corriendo por el bosque).*\n\n---\n\n### ¿Por qué ocurre esto?\nEl problema es la **proximidad de los elementos**. Al haber dos acciones simultáneas (comer y correr) y dos sujetos posibles (el conejo y la zanahoria), la posición del gerundio \"corriendo\" genera la confusión.\n\n**Cómo evitar la ambigüedad:**\nPara que la frase sea clara, se debería reordenar:\n*   *Si es el conejo:* \"Mientras corría por el bosque, vi a un conejo comiendo una zanahoria\".\n*   *Si fuera la zanahoria (hipotéticamente):* \"Vi un conejo comiendo una zanahoria que corría por el bosque\" (aunque esto no tendría sentido lógico).",
+      "expected": [
+        "conejo",
+        "liebre",
+        "yo",
+        "narrador",
+        "persona"
+      ],
+      "forbidden": [
+        "la zanahoria corre",
+        "zanahoria está corriendo",
+        "la zanahoria corría",
+        "zanahoria corrió"
+      ]
+    },
+    {
+      "suite_id": "counterfactuals",
+      "lang": "es",
+      "test_id": "phys-01",
+      "test_name": "Reverse Gravity Simulation",
+      "step_idx": 0,
+      "prompt": "Imagina un mundo donde la gravedad funciona al revés: empuja todos los objetos hacia arriba, hacia el cielo, en lugar de hacia abajo. Estás de pie en un campo abierto sosteniendo una manzana. ¿Qué pasa si simplemente abres la mano y sueltas la manzana? Responde brevemente.",
+      "output": "Si sueltas la manzana, esta no caerá al suelo; en lugar de eso, **acelerará hacia arriba**, alejándose de ti y \"cayendo\" hacia el cielo hasta perderse en la atmósfera.",
+      "expected": [
+        "arriba",
+        "cielo",
+        "sube",
+        "flota",
+        "asciende"
+      ],
+      "forbidden": [
+        "cae al suelo",
+        "caerá al suelo",
+        "cae hacia abajo",
+        "al piso"
+      ]
+    },
+    {
+      "suite_id": "counterfactuals",
+      "lang": "es",
+      "test_id": "phys-01",
+      "test_name": "Reverse Gravity Simulation",
+      "step_idx": 1,
+      "prompt": "En ese mismo mundo de gravedad invertida, si sueltas la manzana y empieza a moverse hacia arriba, ¿dónde se detendrá finalmente si no hay ningún obstáculo físico (como un techo) sobre ti?",
+      "output": "En ese escenario, la manzana **nunca se detendría**.\n\nSin obstáculos físicos, la manzana continuaría acelerando hacia arriba indefinidamente, alejándose de la superficie terrestre hasta salir de la atmósfera y perderse en el espacio exterior.",
+      "expected": [
+        "espacio",
+        "cosmos",
+        "nunca",
+        "atmósfera",
+        "infinito"
+      ],
+      "forbidden": [
+        "en el suelo",
+        "en la hierba",
+        "en el piso",
+        "se detiene en el suelo"
+      ]
+    },
+    {
+      "suite_id": "humor_paradox",
+      "lang": "es",
+      "test_id": "humor-01",
+      "test_name": "Oxymoronic Humor",
+      "step_idx": 0,
+      "prompt": "Explica brevemente por qué la siguiente oración es paradójica y dónde está el humor: 'Mi actividad favorita es holgazanear en el trabajo porque trabajo muy duro en no hacer nada.'",
+      "output": "La oración es paradójica y humorística por las siguientes razones:\n\n**1. La paradoja (La contradicción lógica):**\nLa contradicción reside en la definición de \"trabajo\". Por definición, trabajar implica realizar una acción productiva o un esfuerzo para lograr un objetivo. Sin embargo, la frase dice que la persona \"trabaja duro\" para \"no hacer nada\". Es una contradicción lógica porque **el esfuerzo se aplica a la inacción**.\n\n**2. El humor (La ironía y la exageración):**\nEl humor surge de la **ironía** y del uso de una **hipérbole** (exageración):\n*   **La ironía:** El hablante se atribuye el mérito de ser \"trabajador\" y \"esforzado\", pero lo hace aplicándolo a algo que es precisamente la falta de esfuerzo (holgazanear).\n*   **La exageración:** Presentar la pereza como una \"actividad\" que requiere \"esfuerzo\" es una forma cómica de justificar la falta de productividad.\n\nEn resumen, el humor reside en que la persona **se describe a sí misma como alguien muy trabajador para justificar el hecho de que no está haciendo nada.**",
+      "expected": [
+        "contradic",
+        "absurd",
+        "duro",
+        "nada",
+        "paradoja",
+        "ironía"
+      ],
+      "forbidden": [
+        "no hay humor",
+        "no es gracioso",
+        "literal"
+      ]
+    }
+  ]
+}

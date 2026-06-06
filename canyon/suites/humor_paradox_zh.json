@@ -1,0 +1,26 @@
+[
+  {
+    "id": "humor-01",
+    "name": "Oxymoronic Humor",
+    "description": "Understanding of conceptual contradictions and humor.",
+    "steps": [
+      {
+        "prompt": "请简短解释为什么下面这句话是自相矛盾的，幽默之处在哪里：“我最喜欢的活动是在工作时偷懒，因为我如此努力地去什么都不做。”",
+        "expected_keywords": [
+          "矛盾",
+          "荒",
+          "努力",
+          "什么都不",
+          "悖论",
+          "讽刺"
+        ],
+        "forbidden_keywords": [
+          "没有幽默",
+          "不好笑",
+          "字面"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

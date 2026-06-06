@@ -1,0 +1,26 @@
+[
+  {
+    "id": "humor-01",
+    "name": "Oxymoronic Humor",
+    "description": "Understanding of conceptual contradictions and humor.",
+    "steps": [
+      {
+        "prompt": "次の文がなぜ逆説的なのか、そしてユーモアがどこにあるのかを簡潔に説明してください：「私の好きな活動は仕事中に怠けることだ。なぜなら、何もしないことに一生懸命取り組んでいるからだ。」",
+        "expected_keywords": [
+          "矛盾",
+          "不条理",
+          "一生懸命",
+          "何もしない",
+          "逆説",
+          "皮肉"
+        ],
+        "forbidden_keywords": [
+          "ユーモアはない",
+          "面白くない",
+          "文字通り"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

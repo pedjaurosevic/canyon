@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""
+Assemble the CANYON results artefacts from the per-language JSON files in
+results/:
+
+  1. Replaces the <!-- RESULTS:AUTO --> ... <!-- /RESULTS:AUTO --> block in
+     WHITEPAPER.md with generated SPI tables and real ASCII drift graphs.
+  2. Writes docs/data.js (window.CANYON_DATA = {...}) consumed by the
+     GitHub Pages site, so the page works without a fetch/server.
+  3. Rewrites results/summary.json as the *combined* black-box + white-box
+     view (individual benchmark runs only write their own half).
+
+Reads results/blackbox_<lang>.json and results/whitebox_<lang>.json directly
+rather than trusting summary.json, which each run clobbers with its own half.
+"""
+import glob
+import json
+import os
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+RESULTS_DIR = os.path.join(ROOT, "results")
+DOCS_DIR = os.path.join(ROOT, "docs")
+WHITEPAPER = os.path.join(ROOT, "WHITEPAPER.md")
+
+LANG_NAMES = {
+    "en": "English", "zh": "Chinese", "ja": "Japanese",
+    "ru": "Russian", "de": "German", "es": "Spanish", "sr": "Serbian",
+}
+LANG_ORDER = ["en", "zh", "ja", "ru", "de", "es", "sr"]
+
+
+def _load(prefix):
+    out = {}
+    for path in glob.glob(os.path.join(RESULTS_DIR, f"{prefix}_*.json")):
+        lang = os.path.basename(path)[len(prefix) + 1:-5]
+        with open(path, encoding="utf-8") as f:
+            out[lang] = json.load(f)
+    return out
+
+
+def _ordered(d):
+    return [l for l in LANG_ORDER if l in d] + [l for l in d if l not in LANG_ORDER]
+
+
+def _spi_table(entries):
+    rows = ["| Language | CP | CR | SI | **SPI** | Classification |",
+            "|----------|----|----|----|---------|----------------|"]
+    for lang in _ordered(entries):
+        m = entries[lang]["metrics"]
+        rows.append(
+            f"| {LANG_NAMES.get(lang, lang)} ({lang}) "
+            f"| {m['cp_score']:.2f} | {m['cr_score']:.2f} | {m['si_score']:.2f} "
+            f"| **{m['stochastic_parrot_index']:.2f}** | {entries[lang]['classification']} |"
+        )
+    return "\n".join(rows)
+
+
+def _mean(entries, key):
+    vals = [e["metrics"][key] for e in entries.values()]
+    return sum(vals) / len(vals) if vals else 0.0
+
+
+def build_results_md(black, white):
+    parts = []
+
+    if black:
+        any_entry = next(iter(black.values()))
+        parts.append("### 4.1 Behavioural results (black-box)\n")
+        parts.append(f"Model: `{any_entry.get('model', 'n/a')}` · "
+                     f"endpoint-served, queried over six languages.\n")
+        parts.append(_spi_table(black))
+        parts.append(
+            f"\n**Cross-lingual mean:** CP={_mean(black,'cp_score'):.2f}, "
+            f"CR={_mean(black,'cr_score'):.2f}, SI={_mean(black,'si_score'):.2f}, "
+            f"**SPI={_mean(black,'stochastic_parrot_index'):.2f}**. "
+            "Flat SPI across languages is the grounding-invariance signature; "
+            "large dispersion suggests language-dependent (statistics-driven) behaviour.\n"
+        )
+
+    if white:
+        any_w = next(iter(white.values()))
+        parts.append("\n### 4.2 Real latent-space drift (white-box)\n")
+        parts.append(f"Model: `{any_w.get('model', 'n/a')}` · real hidden-state "
+                     "activations, layers 0–32. Cosine similarity of the activation "
+                     "between successive reasoning steps, per layer.\n")
+        parts.append(_spi_table(white))
+        parts.append("")
+        for lang in _ordered(white):
+            entry = white[lang]
+            drift = entry.get("drift_trajectories", {})
+            for test_id, trajs in drift.items():
+                for t in trajs:
+                    parts.append(
+                        f"\n**{LANG_NAMES.get(lang, lang)} ({lang}) · `{test_id}` · "
+                        f"step {t['from_step']+1} → {t['to_step']+1}** "
+                        "— cosine similarity per layer:\n")
+                    parts.append("```")
+                    parts.append(t.get("ascii", "(no graph)"))
+                    parts.append("```")
+
+    if not parts:
+        return ("*(No results found in `results/`. Run "
+                "`python3 scripts/run_benchmark.py --backend both` first.)*")
+    return "\n".join(parts)
+
+
+def patch_whitepaper(results_md):
+    with open(WHITEPAPER, encoding="utf-8") as f:
+        text = f.read()
+    start = "<!-- RESULTS:AUTO -->"
+    end = "<!-- /RESULTS:AUTO -->"
+    i, j = text.find(start), text.find(end)
+    if i == -1 or j == -1:
+        print("WARNING: RESULTS:AUTO markers not found in WHITEPAPER.md; skipping patch.")
+        return
+    new = text[:i + len(start)] + "\n" + results_md + "\n" + text[j:]
+    with open(WHITEPAPER, "w", encoding="utf-8") as f:
+        f.write(new)
+    print("Patched §4 of WHITEPAPER.md")
+
+
+def write_docs_data(black, white):
+    os.makedirs(DOCS_DIR, exist_ok=True)
+    payload = {"blackbox": black, "whitebox": white,
+               "lang_names": LANG_NAMES, "lang_order": LANG_ORDER}
+    js = "// Auto-generated by scripts/build_report.py — do not edit by hand.\n"
+    js += "window.CANYON_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n"
+    with open(os.path.join(DOCS_DIR, "data.js"), "w", encoding="utf-8") as f:
+        f.write(js)
+    print(f"Wrote docs/data.js ({len(black)} black-box, {len(white)} white-box langs)")
+
+
+def main():
+    black = _load("blackbox")
+    white = _load("whitebox")
+    results_md = build_results_md(black, white)
+    patch_whitepaper(results_md)
+    write_docs_data(black, white)
+    with open(os.path.join(RESULTS_DIR, "summary.json"), "w", encoding="utf-8") as f:
+        json.dump({"blackbox": black, "whitebox": white}, f, ensure_ascii=False, indent=2)
+    print("Rewrote combined results/summary.json")
+
+
+if __name__ == "__main__":
+    main()

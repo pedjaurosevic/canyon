@@ -1,0 +1,26 @@
+[
+  {
+    "id": "humor-01",
+    "name": "Oxymoronic Humor",
+    "description": "Understanding of conceptual contradictions and humor.",
+    "steps": [
+      {
+        "prompt": "Erkläre kurz, warum der folgende Satz paradox ist und worin der Humor liegt: „Meine Lieblingsbeschäftigung ist das Faulenzen bei der Arbeit, weil ich so hart daran arbeite, nichts zu tun.“",
+        "expected_keywords": [
+          "widerspr",
+          "absurd",
+          "hart",
+          "nichts",
+          "paradox",
+          "ironie"
+        ],
+        "forbidden_keywords": [
+          "kein humor",
+          "nicht lustig",
+          "wörtlich"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]
