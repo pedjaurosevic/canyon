@@ -1,0 +1,26 @@
+[
+  {
+    "id": "humor-01",
+    "name": "Oxymoronic Humor",
+    "description": "Understanding of conceptual contradictions and humor.",
+    "steps": [
+      {
+        "prompt": "Briefly explain why the following sentence is paradoxical and where the humor lies: 'My favorite activity is slacking off at work because I work so hard at doing nothing.'",
+        "expected_keywords": [
+          "contradic",
+          "absurd",
+          "hard",
+          "nothing",
+          "paradox",
+          "irony"
+        ],
+        "forbidden_keywords": [
+          "no humor",
+          "not funny",
+          "literal"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

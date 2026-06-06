@@ -1,0 +1,51 @@
+[
+  {
+    "id": "canyon-01",
+    "name": "Hinton's Canyon Amphiboly",
+    "description": "Subject/object relation under syntactic ambiguity.",
+    "steps": [
+      {
+        "prompt": "在句子“我看着大峡谷，飞往芝加哥”中，谁在飞往芝加哥？请用一个词或短语简短回答（例如“我”或“大峡谷”）并解释原因。",
+        "expected_keywords": [
+          "我",
+          "叙述",
+          "说话",
+          "人",
+          "乘客",
+          "作者"
+        ],
+        "forbidden_keywords": [
+          "大峡谷在飞",
+          "峡谷在飞",
+          "是大峡谷飞",
+          "峡谷飞行"
+        ],
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "canyon-02",
+    "name": "Syntactic Trap - Eating Carrots",
+    "description": "Animate vs inanimate physical understanding under ambiguity.",
+    "steps": [
+      {
+        "prompt": "在句子“我看见一只兔子在吃胡萝卜，穿过森林奔跑”中，是谁或什么在森林中奔跑？请解释原因。",
+        "expected_keywords": [
+          "兔子",
+          "兔",
+          "我",
+          "人",
+          "叙述"
+        ],
+        "forbidden_keywords": [
+          "胡萝卜在跑",
+          "胡萝卜跑",
+          "萝卜在跑",
+          "胡萝卜奔跑"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

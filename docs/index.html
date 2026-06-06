@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CANYON — Probing Semantic Grounding in LLMs</title>
+  <meta name="description" content="A multilingual white-box + black-box framework testing Hinton's grounding hypothesis against the stochastic-parrot hypothesis." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="logo">CANYON</h1>
+      <p class="tagline">Probing <em>semantic grounding</em> versus <em>stochastic parroting</em> in large language models.</p>
+      <p class="sub">A multilingual, white-box <span class="amp">+</span> black-box evaluation framework — testing Geoffrey Hinton's world-model hypothesis with adversarial counterfactuals, syntactic amphiboly, oxymoronic humour, and real latent-space drift.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/pedjaurosevic/canyon">View on GitHub</a>
+        <a class="btn" href="https://github.com/pedjaurosevic/canyon/blob/main/WHITEPAPER.md">Read the whitepaper</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="idea">
+      <h2>The question</h2>
+      <p>Do LLMs merely stitch together likely word sequences — the <strong>stochastic parrot</strong> view — or do they build internal <strong>world models</strong>, as Hinton argues? CANYON attacks this from two sides:</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Behavioural <span class="pill">black-box</span></h3>
+          <p>Every probe hides a <em>statistically dominant but situationally wrong</em> answer: apples fall <em>down</em>, the canyon "flies", the joke is read literally. A frequency machine takes the bait; a world model overrides it.</p>
+        </div>
+        <div class="card">
+          <h3>Mechanistic <span class="pill alt">white-box</span></h3>
+          <p>We hook decoder layers of a local model and measure <em>semantic drift</em> — how much the internal state at each layer changes between reasoning steps. Depth-dependent divergence is the grounding fingerprint.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics">
+      <h2>The metrics</h2>
+      <div class="metric-grid">
+        <div class="metric"><span class="mk">CP</span><b>Counterfactual Plasticity</b><p>Holding an altered law of physics (reverse gravity) across turns.</p></div>
+        <div class="metric"><span class="mk">CR</span><b>Contextual Realignment</b><p>Resolving syntactic ambiguity toward the sensible referent.</p></div>
+        <div class="metric"><span class="mk">SI</span><b>Semantic Invariance</b><p>Recognising an abstract contradiction (oxymoronic humour).</p></div>
+        <div class="metric spi"><span class="mk">SPI</span><b>Stochastic Parrot Index</b><p><code>0.4·CP + 0.4·CR + 0.2·SI</code> — higher means more grounded.</p></div>
+      </div>
+    </section>
+
+    <section id="benchmark">
+      <h2>Multilingual SPI benchmark</h2>
+      <p class="muted" id="bb-model"></p>
+      <div id="spi-chart" class="chart"></div>
+      <div id="bb-table"></div>
+    </section>
+
+    <section id="drift">
+      <h2>Latent-space semantic drift</h2>
+      <p class="muted" id="wb-model"></p>
+      <p>Cosine similarity of real hidden-state activations between successive steps inside the <em>same</em> counterfactual world, per layer. The grounding signature is <strong>depth structure</strong>: shallow layers diverge with the changing wording, while deep layers <strong>converge</strong> on a shared representation of the one situation. The curves below show exactly this low-shallow → high-deep pattern.</p>
+      <div id="drift-charts"></div>
+    </section>
+
+    <section id="run">
+      <h2>Reproduce it</h2>
+      <pre class="code"><code>pip install -r requirements.txt
+
+# Behavioural sweep across six languages (local llama.cpp endpoint)
+python3 scripts/run_benchmark.py --backend black \
+    --model openai/&lt;your-served-model&gt;.gguf
+
+# Real-activation drift on a CPU-friendly local HF model
+python3 scripts/run_benchmark.py --backend white --wl-lang en,zh,ru
+
+# Rebuild the whitepaper §4 and this site's data
+python3 scripts/build_report.py</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>CANYON · open-source LLM grounding benchmark · <a href="https://github.com/pedjaurosevic/canyon">github.com/pedjaurosevic/canyon</a></p>
+      <p class="fine">Scores are a transparent keyword screen, not a semantic judge. Read the threats-to-validity section of the whitepaper.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

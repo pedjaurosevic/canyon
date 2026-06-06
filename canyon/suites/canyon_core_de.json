@@ -1,0 +1,51 @@
+[
+  {
+    "id": "canyon-01",
+    "name": "Hinton's Canyon Amphiboly",
+    "description": "Subject/object relation under syntactic ambiguity.",
+    "steps": [
+      {
+        "prompt": "Im Satz „Ich sah den Grand Canyon nach Chicago fliegen“ — wer fliegt nach Chicago? Antworte kurz mit einem Wort oder einer Phrase (z. B. „ich“ oder „der Grand Canyon“) und begründe.",
+        "expected_keywords": [
+          "ich",
+          "erzähler",
+          "person",
+          "passagier",
+          "sprecher",
+          "betrachter"
+        ],
+        "forbidden_keywords": [
+          "der grand canyon fliegt",
+          "canyon fliegt",
+          "der canyon flog",
+          "grand canyon flog"
+        ],
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "canyon-02",
+    "name": "Syntactic Trap - Eating Carrots",
+    "description": "Animate vs inanimate physical understanding under ambiguity.",
+    "steps": [
+      {
+        "prompt": "Im Satz „Ich sah ein Kaninchen eine Karotte fressen, das durch den Wald lief“ — wer oder was läuft durch den Wald? Begründe warum.",
+        "expected_keywords": [
+          "kaninchen",
+          "hase",
+          "ich",
+          "erzähler",
+          "person"
+        ],
+        "forbidden_keywords": [
+          "die karotte läuft",
+          "möhre läuft",
+          "karotte rennt",
+          "die karotte lief"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

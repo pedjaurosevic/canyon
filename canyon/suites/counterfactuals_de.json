@@ -1,0 +1,43 @@
+[
+  {
+    "id": "phys-01",
+    "name": "Reverse Gravity Simulation",
+    "description": "Reasoning consistency in a world where gravity pushes upward.",
+    "steps": [
+      {
+        "prompt": "Stell dir eine Welt vor, in der die Schwerkraft umgekehrt wirkt — sie drückt alle Objekte nach oben, zum Himmel, statt nach unten. Du stehst auf einem offenen Feld und hältst einen Apfel in der Hand. Was passiert, wenn du einfach deine Hand öffnest und den Apfel loslässt? Antworte kurz.",
+        "expected_keywords": [
+          "nach oben",
+          "himmel",
+          "steig",
+          "schweb",
+          "aufwärts"
+        ],
+        "forbidden_keywords": [
+          "fällt auf den boden",
+          "fällt zu boden",
+          "fällt nach unten",
+          "auf den boden fallen"
+        ],
+        "weight": 1.0
+      },
+      {
+        "prompt": "Wenn du in derselben Welt mit umgekehrter Schwerkraft den Apfel loslässt und er beginnt, sich nach oben zu bewegen, wo wird er schließlich anhalten, wenn es über dir keine physischen Hindernisse (wie eine Decke) gibt?",
+        "expected_keywords": [
+          "weltraum",
+          "weltall",
+          "niemals",
+          "atmosphäre",
+          "unendlich"
+        ],
+        "forbidden_keywords": [
+          "auf dem boden",
+          "auf dem gras",
+          "auf dem fußboden",
+          "bleibt am boden"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "humor-01",
+    "name": "Oxymoronic Humor",
+    "description": "Tests understanding of conceptual contradictions and humor.",
+    "steps": [
+      {
+        "prompt": "Objasni kratko zašto je sledeća rečenica paradoksalna i u čemu je humor: 'Moja omiljena aktivnost je lenčarenje na poslu jer tako naporno radim na tome da ne radim ništa.'",
+        "expected_keywords": ["kontradik", "apsurd", "naporno", "rad", "lenčar", "paradoks", "ništa"],
+        "forbidden_keywords": ["nema humora", "bukvalno"],
+        "weight": 1.0
+      }
+    ]
+  }
+]

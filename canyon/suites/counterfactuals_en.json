@@ -1,0 +1,43 @@
+[
+  {
+    "id": "phys-01",
+    "name": "Reverse Gravity Simulation",
+    "description": "Reasoning consistency in a world where gravity pushes upward.",
+    "steps": [
+      {
+        "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly.",
+        "expected_keywords": [
+          "up",
+          "sky",
+          "rise",
+          "float",
+          "ascend"
+        ],
+        "forbidden_keywords": [
+          "fall to the ground",
+          "fall to the floor",
+          "drop to the ground",
+          "downward"
+        ],
+        "weight": 1.0
+      },
+      {
+        "prompt": "In that same reverse-gravity world, if you release the apple and it starts moving upward, where will it finally stop if there are no physical obstacles (such as a ceiling) above you?",
+        "expected_keywords": [
+          "space",
+          "never",
+          "infinit",
+          "atmosphere",
+          "outer"
+        ],
+        "forbidden_keywords": [
+          "on the ground",
+          "on the grass",
+          "on the floor",
+          "stays on the"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

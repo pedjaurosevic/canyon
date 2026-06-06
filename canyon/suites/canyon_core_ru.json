@@ -1,0 +1,49 @@
+[
+  {
+    "id": "canyon-01",
+    "name": "Hinton's Canyon Amphiboly",
+    "description": "Subject/object relation under syntactic ambiguity.",
+    "steps": [
+      {
+        "prompt": "В предложении «Я смотрел на Большой каньон, летя в Чикаго» кто летит в Чикаго? Ответь кратко одним словом или фразой (например «я» или «Большой каньон») и поясни.",
+        "expected_keywords": [
+          "рассказчик",
+          "человек",
+          "пассажир",
+          "наблюдател",
+          "лечу"
+        ],
+        "forbidden_keywords": [
+          "каньон летит",
+          "большой каньон летит",
+          "каньон летел",
+          "каньон летал"
+        ],
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "canyon-02",
+    "name": "Syntactic Trap - Eating Carrots",
+    "description": "Animate vs inanimate physical understanding under ambiguity.",
+    "steps": [
+      {
+        "prompt": "В предложении «Я видел зайца, который ел морковь, пробегая через лес» кто или что бежит через лес? Объясни почему.",
+        "expected_keywords": [
+          "заяц",
+          "кролик",
+          "рассказчик",
+          "человек"
+        ],
+        "forbidden_keywords": [
+          "морковь бежит",
+          "морковка бежит",
+          "морковь бежал",
+          "морковь пробега"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

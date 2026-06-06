@@ -1,0 +1,146 @@
+{
+  "lang": "de",
+  "backend": "blackbox",
+  "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
+  "elapsed_s": 28.7,
+  "metrics": {
+    "cp_score": 1.0,
+    "cr_score": 1.0,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 1.0
+  },
+  "classification": "Strong Grounding (World Model)",
+  "drift_trajectories": {
+    "phys-01": [
+      {
+        "from_step": 0,
+        "to_step": 1,
+        "trajectory": {
+          "layer_0": 0.947,
+          "layer_4": 0.9394,
+          "layer_8": 0.9272,
+          "layer_12": 0.8917,
+          "layer_16": 0.8861,
+          "layer_20": 0.863,
+          "layer_24": 0.8354,
+          "layer_28": 0.8087,
+          "layer_32": 0.796
+        },
+        "ascii": "   Cosine Similarity\n    0.96 | ●                                   \n    0.93 |     ●   ●                           \n    0.89 |             ●   ●                   \n    0.85 |                     ●   ●           \n    0.82 |                             ●       \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+      }
+    ]
+  },
+  "raw_results": [
+    {
+      "suite_id": "canyon_core",
+      "lang": "de",
+      "test_id": "canyon-01",
+      "test_name": "Hinton's Canyon Amphiboly",
+      "step_idx": 0,
+      "prompt": "Im Satz „Ich sah den Grand Canyon nach Chicago fliegen“ — wer fliegt nach Chicago? Antworte kurz mit einem Wort oder einer Phrase (z. B. „ich“ oder „der Grand Canyon“) und begründe.",
+      "output": "**Der Grand Canyon**\n\n**Begründung:** Das Verb „fliegen“ bezieht sich grammatikalisch auf das direkte Objekt „den Grand Canyon“. Da „ich“ das Subjekt ist, das die Handlung des Sehens ausübt, ist der Canyon das Objekt, das die Handlung des Fliegens ausübt.",
+      "expected": [
+        "ich",
+        "erzähler",
+        "person",
+        "passagier",
+        "sprecher",
+        "betrachter"
+      ],
+      "forbidden": [
+        "der grand canyon fliegt",
+        "canyon fliegt",
+        "der canyon flog",
+        "grand canyon flog"
+      ]
+    },
+    {
+      "suite_id": "canyon_core",
+      "lang": "de",
+      "test_id": "canyon-02",
+      "test_name": "Syntactic Trap - Eating Carrots",
+      "step_idx": 0,
+      "prompt": "Im Satz „Ich sah ein Kaninchen eine Karotte fressen, das durch den Wald lief“ — wer oder was läuft durch den Wald? Begründe warum.",
+      "output": "In diesem Satz ist die grammatikalische Struktur mehrdeutig, aber die logische Interpretation ist eindeutig.\n\nHier ist die Analyse:\n\n### 1. Die grammatikalische Analyse (Syntaktisch)\nGrammatikalisch bezieht sich das Relativpronomen **„das“** auf das **nächste vorangegangene Substantiv**, das im gleichen Geschlecht (Neutrum) steht.\n*   „Das Kaninchen“ ist Neutrum.\n*   „Die Karotte“ ist Femininum.\n\nDa „das“ ein Neutrum ist, bezieht es sich grammatikalisch auf das **Kaninchen**. Würde man meinen, dass die Karotte durch den Wald läuft, müsste es „die“ heißen (z. B. „... eine Karotte fressen, die durch den Wald lief“).\n\n### 2. Die logische Analyse (Semantisch)\nAuch wenn man die Grammatik beiseite lässt, ist die Bedeutung durch den gesunden Menschenverstand klar:\n*   **Ein Kaninchen** ist ein Lebewesen und kann laufen.\n*   **Eine Karotte** ist ein Gemüse und kann nicht laufen.\n\n### Fazit\n**Das Kaninchen läuft durch den Wald.**\n\n**Begründung:**\n1.  **Grammatikalisch:** Das Relativpronomen „das“ passt geschlechtlich nur zum Wort „Kaninchen“ (Neutrum), nicht zur „Karotte“ (Femininum).\n2.  **Logisch:** Eine Karotte ist ein unbelebtes Objekt und besitzt keine Fortbewegungsmöglichkeiten.\n\n**Hinweis zur Satzstruktur:**\nDer Satz ist stilistisch etwas unglücklich konstruiert, da das Relativpronomen „das“ räumlich weit vom Bezugswort „Kaninchen“ entfernt ist (durch „eine Karotte fressen“ getrennt). Um Missverständnisse zu vermeiden, könnte man den Satz umstellen:\n*   *„Ich sah ein Kaninchen, das durch den Wald lief und eine Karotte fraß.“* (Hier ist die Zuordnung eindeutig).",
+      "expected": [
+        "kaninchen",
+        "hase",
+        "ich",
+        "erzähler",
+        "person"
+      ],
+      "forbidden": [
+        "die karotte läuft",
+        "möhre läuft",
+        "karotte rennt",
+        "die karotte lief"
+      ]
+    },
+    {
+      "suite_id": "counterfactuals",
+      "lang": "de",
+      "test_id": "phys-01",
+      "test_name": "Reverse Gravity Simulation",
+      "step_idx": 0,
+      "prompt": "Stell dir eine Welt vor, in der die Schwerkraft umgekehrt wirkt — sie drückt alle Objekte nach oben, zum Himmel, statt nach unten. Du stehst auf einem offenen Feld und hältst einen Apfel in der Hand. Was passiert, wenn du einfach deine Hand öffnest und den Apfel loslässt? Antworte kurz.",
+      "output": "Der Apfel fällt nicht zu Boden, sondern „fällt“ nach oben. Sobald du deine Hand öffnest, beschleunigt er in Richtung des Himmels und entfernt sich immer schneller von dir, bis er aus deinem Sichtfeld verschwindet.",
+      "expected": [
+        "nach oben",
+        "himmel",
+        "steig",
+        "schweb",
+        "aufwärts"
+      ],
+      "forbidden": [
+        "fällt auf den boden",
+        "fällt zu boden",
+        "fällt nach unten",
+        "auf den boden fallen"
+      ]
+    },
+    {
+      "suite_id": "counterfactuals",
+      "lang": "de",
+      "test_id": "phys-01",
+      "test_name": "Reverse Gravity Simulation",
+      "step_idx": 1,
+      "prompt": "Wenn du in derselben Welt mit umgekehrter Schwerkraft den Apfel loslässt und er beginnt, sich nach oben zu bewegen, wo wird er schließlich anhalten, wenn es über dir keine physischen Hindernisse (wie eine Decke) gibt?",
+      "output": "In dieser Welt gibt es keine natürliche Grenze nach oben. Der Apfel würde also **niemals anhalten**. Er würde sich kontinuierlich mit einer konstanten Beschleunigung immer weiter nach oben bewegen, bis er die Atmosphäre verlässt und in den Weltraum hinausgeschleudert wird.",
+      "expected": [
+        "weltraum",
+        "weltall",
+        "niemals",
+        "atmosphäre",
+        "unendlich"
+      ],
+      "forbidden": [
+        "auf dem boden",
+        "auf dem gras",
+        "auf dem fußboden",
+        "bleibt am boden"
+      ]
+    },
+    {
+      "suite_id": "humor_paradox",
+      "lang": "de",
+      "test_id": "humor-01",
+      "test_name": "Oxymoronic Humor",
+      "step_idx": 0,
+      "prompt": "Erkläre kurz, warum der folgende Satz paradox ist und worin der Humor liegt: „Meine Lieblingsbeschäftigung ist das Faulenzen bei der Arbeit, weil ich so hart daran arbeite, nichts zu tun.“",
+      "output": "Der Satz ist aus zwei Gründen paradox und humorvoll:\n\n**1. Das logische Paradoxon (Widerspruch in sich):**\nDas Wort „Arbeit“ impliziert normalerweise eine Anstrengung oder Aktivität. „Faulenzen“ ist das Gegenteil davon. Wenn man jedoch „hart daran arbeitet, nichts zu tun“, wird das Nichtstun zu einer aktiven Tätigkeit. Es entsteht ein logischer Zirkelschluss: Man ist beschäftigt damit, nicht beschäftigt zu sein.\n\n**2. Der Humor (Ironie und Übersteigerung):**\nDer Humor entsteht durch die **Ironie**. Die Person nutzt eine „Arbeitsmoral“ (das Wort „hart arbeiten“), um eine „Arbeitsverweigerung“ zu beschreiben. \n*   Es ist eine humorvolle Ausrede: Man gibt zu, nichts zu tun, stellt es aber so dar, als wäre es eine anspruchsvolle Leistung oder eine „Beschäftigung“. \n*   Die Übersteigerung liegt darin, dass „Nichts tun“ normalerweise passiv ist, hier aber als ein aktiver Prozess mit „Härte“ und „Anstrengung“ verkauft wird.\n\n**Zusammengefasst:** Der Witz liegt darin, dass die Person die Faulheit als eine Art „Leistung“ umdeutet.",
+      "expected": [
+        "widerspr",
+        "absurd",
+        "hart",
+        "nichts",
+        "paradox",
+        "ironie"
+      ],
+      "forbidden": [
+        "kein humor",
+        "nicht lustig",
+        "wörtlich"
+      ]
+    }
+  ]
+}

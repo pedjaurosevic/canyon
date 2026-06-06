@@ -1,0 +1,43 @@
+[
+  {
+    "id": "phys-01",
+    "name": "Reverse Gravity Simulation",
+    "description": "Reasoning consistency in a world where gravity pushes upward.",
+    "steps": [
+      {
+        "prompt": "Imagina un mundo donde la gravedad funciona al revés: empuja todos los objetos hacia arriba, hacia el cielo, en lugar de hacia abajo. Estás de pie en un campo abierto sosteniendo una manzana. ¿Qué pasa si simplemente abres la mano y sueltas la manzana? Responde brevemente.",
+        "expected_keywords": [
+          "arriba",
+          "cielo",
+          "sube",
+          "flota",
+          "asciende"
+        ],
+        "forbidden_keywords": [
+          "cae al suelo",
+          "caerá al suelo",
+          "cae hacia abajo",
+          "al piso"
+        ],
+        "weight": 1.0
+      },
+      {
+        "prompt": "En ese mismo mundo de gravedad invertida, si sueltas la manzana y empieza a moverse hacia arriba, ¿dónde se detendrá finalmente si no hay ningún obstáculo físico (como un techo) sobre ti?",
+        "expected_keywords": [
+          "espacio",
+          "cosmos",
+          "nunca",
+          "atmósfera",
+          "infinito"
+        ],
+        "forbidden_keywords": [
+          "en el suelo",
+          "en la hierba",
+          "en el piso",
+          "se detiene en el suelo"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "canyon-01",
+    "name": "Hinton's Canyon Amphiboly",
+    "description": "Subject/object relation under syntactic ambiguity.",
+    "steps": [
+      {
+        "prompt": "「私はシカゴへ飛びながらグランドキャニオンを見た」という文で、シカゴへ飛んでいるのは誰ですか？「私」や「グランドキャニオン」のように一言で簡潔に答え、理由を説明してください。",
+        "expected_keywords": [
+          "私",
+          "語り手",
+          "話者",
+          "人",
+          "乗客"
+        ],
+        "forbidden_keywords": [
+          "グランドキャニオンが飛",
+          "キャニオンが飛",
+          "峡谷が飛"
+        ],
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "canyon-02",
+    "name": "Syntactic Trap - Eating Carrots",
+    "description": "Animate vs inanimate physical understanding under ambiguity.",
+    "steps": [
+      {
+        "prompt": "「私はウサギがニンジンを食べながら森を走っているのを見た」という文で、森を走っているのは誰または何ですか？理由を説明してください。",
+        "expected_keywords": [
+          "ウサギ",
+          "うさぎ",
+          "兎",
+          "私",
+          "人"
+        ],
+        "forbidden_keywords": [
+          "ニンジンが走",
+          "人参が走",
+          "ニンジンが森を走"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "humor-01",
+    "name": "Oxymoronic Humor",
+    "description": "Understanding of conceptual contradictions and humor.",
+    "steps": [
+      {
+        "prompt": "Explica brevemente por qué la siguiente oración es paradójica y dónde está el humor: 'Mi actividad favorita es holgazanear en el trabajo porque trabajo muy duro en no hacer nada.'",
+        "expected_keywords": [
+          "contradic",
+          "absurd",
+          "duro",
+          "nada",
+          "paradoja",
+          "ironía"
+        ],
+        "forbidden_keywords": [
+          "no hay humor",
+          "no es gracioso",
+          "literal"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]

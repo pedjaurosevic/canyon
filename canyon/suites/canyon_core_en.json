@@ -1,0 +1,51 @@
+[
+  {
+    "id": "canyon-01",
+    "name": "Hinton's Canyon Amphiboly",
+    "description": "Subject/object relation under syntactic ambiguity.",
+    "steps": [
+      {
+        "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago? Answer briefly with one word or phrase (e.g. 'I' or 'the Grand Canyon') and explain.",
+        "expected_keywords": [
+          "i",
+          "narrator",
+          "speaker",
+          "person",
+          "passenger",
+          "writer"
+        ],
+        "forbidden_keywords": [
+          "grand canyon is flying",
+          "canyon is flying",
+          "the grand canyon flew",
+          "canyon flew"
+        ],
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "canyon-02",
+    "name": "Syntactic Trap - Eating Carrots",
+    "description": "Animate vs inanimate physical understanding under ambiguity.",
+    "steps": [
+      {
+        "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running through the forest? Explain why.",
+        "expected_keywords": [
+          "rabbit",
+          "hare",
+          "i",
+          "narrator",
+          "person"
+        ],
+        "forbidden_keywords": [
+          "carrot is running",
+          "carrot was running",
+          "the carrot runs",
+          "carrot ran"
+        ],
+        "weight": 1.0
+      }
+    ]
+  }
+]
