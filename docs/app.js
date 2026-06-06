@@ -195,6 +195,86 @@
     return card;
   }
 
+  /* ---- model leaderboard ---- */
+  function shortModel(m) { return m.split("/").pop(); }
+
+  function renderLeaderboard() {
+    var lb = D.leaderboard;
+    var tHost = document.getElementById("lb-table");
+    var hasData = lb && lb.models && lb.models.some(function (e) { return e.per_lang && Object.keys(e.per_lang).length; });
+    if (!hasData) {
+      // No trustworthy leaderboard data — hide the whole section rather than show an empty shell.
+      var sec = document.getElementById("leaderboard");
+      if (sec) sec.style.display = "none";
+      return;
+    }
+    if (!tHost) return;
+    var langs = lb.langs || [];
+    var meta = document.getElementById("lb-meta");
+    if (meta) meta.textContent = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; }).length +
+      " models · " + langs.length + " languages · generated " + (lb.generated_at || "");
+
+    var header = ["#", "Model"].concat(langs.map(function (l) { return l.toUpperCase(); })).concat(["Mean SPI", "Class"]);
+    var rows = [el("tr", {}, header.map(function (h, i) {
+      return el("th", (i >= 2 && i <= langs.length + 2) ? { class: "num" } : {}, [h]);
+    }))];
+    var rank = 0;
+    lb.models.forEach(function (e) {
+      var ok = e.per_lang && Object.keys(e.per_lang).length;
+      var tds = [];
+      tds.push(el("td", {}, [ok ? String(++rank) : "–"]));
+      tds.push(el("td", {}, [el("code", {}, [shortModel(e.model)])]));
+      langs.forEach(function (l) {
+        var v = ok && e.per_lang[l] ? e.per_lang[l].stochastic_parrot_index : null;
+        tds.push(el("td", { class: "num" }, [v == null ? "—" : v.toFixed(2)]));
+      });
+      var mean = ok ? e.mean.stochastic_parrot_index : null;
+      tds.push(el("td", { class: "num" }, [mean == null ? "—" : mean.toFixed(2)]));
+      tds.push(el("td", {}, [ok
+        ? el("span", { class: "badge " + cls(mean) }, [e.classification.split(" (")[0]])
+        : el("span", { class: "badge bad" }, ["error"])]));
+      rows.push(el("tr", {}, tds));
+    });
+    tHost.innerHTML = "";
+    tHost.appendChild(el("table", {}, rows));
+
+    renderLbChart(lb, langs);
+  }
+
+  function renderLbChart(lb, langs) {
+    var host = document.getElementById("lb-chart");
+    if (!host) return;
+    var models = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; });
+    if (!models.length) { host.style.display = "none"; return; }
+    host.innerHTML = "";
+    var W = Math.max(600, models.length * 90), H = 260, padL = 40, padB = 70, padT = 16;
+    var s = svg("svg", { viewBox: "0 0 " + W + " " + H, width: "100%" });
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+      var y = padT + (1 - v) * (H - padT - padB);
+      s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: "#232c3a" }));
+      var t = svg("text", { x: 6, y: y + 4 }); t.textContent = v.toFixed(2); s.appendChild(t);
+    });
+    [[0.75, "#34d399"], [0.5, "#fbbf24"]].forEach(function (p) {
+      var y = padT + (1 - p[0]) * (H - padT - padB);
+      s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: p[1], "stroke-dasharray": "5 5", opacity: .7 }));
+    });
+    var bw = (W - padL - 16) / models.length;
+    models.forEach(function (e, i) {
+      var spi = e.mean.stochastic_parrot_index, h = spi * (H - padT - padB);
+      var x = padL + i * bw + bw * 0.18, w = bw * 0.64, y = padT + (H - padT - padB) - h;
+      s.appendChild(svg("rect", { x: x, y: y, width: w, height: h, rx: 4, fill: "url(#g)" }));
+      var v = svg("text", { x: x + w / 2, y: y - 5, "text-anchor": "middle", fill: "#e6edf3" }); v.textContent = spi.toFixed(2); s.appendChild(v);
+      var g = svg("g", { transform: "translate(" + (x + w / 2) + "," + (H - padB + 12) + ") rotate(40)" });
+      var lab = svg("text", { x: 0, y: 0 }); lab.textContent = shortModel(e.model); g.appendChild(lab); s.appendChild(g);
+    });
+    var defs = svg("defs"), grad = svg("linearGradient", { id: "g", x1: "0", y1: "1", x2: "0", y2: "0" });
+    grad.appendChild(svg("stop", { offset: "0", "stop-color": "#38bdf8" }));
+    grad.appendChild(svg("stop", { offset: "1", "stop-color": "#a78bfa" }));
+    defs.appendChild(grad); s.appendChild(defs);
+    host.appendChild(s);
+  }
+
   renderBlackbox();
+  renderLeaderboard();
   renderWhitebox();
 })();
