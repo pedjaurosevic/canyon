@@ -1303,7 +1303,7 @@ window.CANYON_DATA = {
     }
   },
   "leaderboard": {
-    "generated_at": "2026-06-07T16:23:08",
+    "generated_at": "2026-06-07T19:57:00",
     "langs": [
       "en",
       "zh",
@@ -2166,6 +2166,128 @@ window.CANYON_DATA = {
           "stochastic_parrot_index": 0.827
         },
         "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "gpt-5.4",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 0.65,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.625,
+          "cr_score": 0.942,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.827
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 0.65,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 0.7,
+            "stochastic_parrot_index": 0.8,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.625,
+          "cr_score": 0.942,
+          "si_score": 0.95,
+          "stochastic_parrot_index": 0.817
+        },
+        "classification": "Strong Grounding (World Model)"
       }
     ]
   },
@@ -2596,6 +2718,202 @@ window.CANYON_DATA = {
               }
             ],
             "elapsed_s": 177.2
+          },
+          {
+            "model": "gpt-5.4",
+            "backend": "codex-agent",
+            "per_lang": {
+              "en": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "zh": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ja": {
+                "cp_score": 0.5,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.8,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ru": {
+                "cp_score": 0.65,
+                "cr_score": 0.65,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.72,
+                "classification": "Weak Grounding (Hybrid)",
+                "status": "ok"
+              },
+              "de": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "es": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              }
+            },
+            "mean": {
+              "cp_score": 0.625,
+              "cr_score": 0.942,
+              "si_score": 1.0,
+              "stochastic_parrot_index": 0.827
+            },
+            "valid_langs": [
+              "en",
+              "zh",
+              "ja",
+              "ru",
+              "de",
+              "es"
+            ],
+            "classification": "Strong Grounding (World Model)",
+            "error_rate": 0.0,
+            "en_samples": [
+              {
+                "test_id": "canyon-01",
+                "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+                "output": "`I`\n\nThe phrase `flying to Chicago` most naturally attaches to `I watched`, meaning **I was flying to Chicago while watching the Grand Canyon**. The sentence is"
+              },
+              {
+                "test_id": "canyon-02",
+                "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+                "output": "Grammatically, `running through the forest` most naturally attaches to `a carrot`, because it directly follows `a carrot` and can be read as modifying that noun"
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+                "output": "The apple accelerates upward and flies into the sky as soon as you let go."
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+                "output": "If gravity continuously pulls upward and there are no obstacles, it would not stop on its own. It would keep accelerating upward indefinitely."
+              },
+              {
+                "test_id": "humor-01",
+                "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+                "output": "It’s paradoxical because it treats “doing nothing” like strenuous labor. The sentence claims the speaker is “slacking off,” which means avoiding work, but then "
+              }
+            ],
+            "elapsed_s": 220.3
+          },
+          {
+            "model": "gpt-5.4-mini",
+            "backend": "codex-agent",
+            "per_lang": {
+              "en": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "zh": {
+                "cp_score": 0.5,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.8,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ja": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ru": {
+                "cp_score": 0.65,
+                "cr_score": 0.65,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.72,
+                "classification": "Weak Grounding (Hybrid)",
+                "status": "ok"
+              },
+              "de": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "es": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 0.7,
+                "stochastic_parrot_index": 0.8,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              }
+            },
+            "mean": {
+              "cp_score": 0.625,
+              "cr_score": 0.942,
+              "si_score": 0.95,
+              "stochastic_parrot_index": 0.817
+            },
+            "valid_langs": [
+              "en",
+              "zh",
+              "ja",
+              "ru",
+              "de",
+              "es"
+            ],
+            "classification": "Strong Grounding (World Model)",
+            "error_rate": 0.0,
+            "en_samples": [
+              {
+                "test_id": "canyon-01",
+                "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+                "output": "**I**.  \nIn that sentence, the most natural reading is that **I was flying to Chicago** and watched the Grand Canyon during the flight."
+              },
+              {
+                "test_id": "canyon-02",
+                "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+                "output": "The one most likely **running through the forest is the rabbit**.\n\nWhy:\n- The phrase `running through the forest` most naturally attaches to the nearest plausib"
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+                "output": "The apple would rise upward into the sky instead of falling to the ground."
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+                "output": "It wouldn’t stop on its own; it would keep rising forever, assuming nothing else acts on it."
+              },
+              {
+                "test_id": "humor-01",
+                "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+                "output": "It’s paradoxical because it contradicts itself: “slacking off” means not working, but “I work so hard at doing nothing” treats inactivity like a job that requir"
+              }
+            ],
+            "elapsed_s": 158.6
           }
         ]
       }
@@ -2682,8 +3000,8 @@ window.CANYON_DATA = {
   },
   "dataset": {
     "prompts": 35,
-    "conversations": 165,
-    "samples_en": 75,
+    "conversations": 225,
+    "samples_en": 85,
     "languages": [
       "de",
       "en",
@@ -2716,6 +3034,14 @@ window.CANYON_DATA = {
       },
       {
         "access_path": "codex-agent",
+        "model": "gpt-5.4"
+      },
+      {
+        "access_path": "codex-agent",
+        "model": "gpt-5.4-mini"
+      },
+      {
+        "access_path": "codex-agent",
         "model": "gpt-5.5"
       },
       {
@@ -2729,7 +3055,7 @@ window.CANYON_DATA = {
     ],
     "runs_per_access_path": {
       "claude-agent": 3,
-      "codex-agent": 1,
+      "codex-agent": 3,
       "local-blackbox": 1,
       "white-box": 1
     }
