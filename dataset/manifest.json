@@ -1,7 +1,7 @@
 {
  "prompts": 35,
- "conversations": 225,
- "samples_en": 85,
+ "conversations": 525,
+ "samples_en": 135,
  "languages": [
   "de",
   "en",
@@ -20,6 +20,46 @@
   "zh"
  ],
  "model_runs": [
+  {
+   "access_path": "chat-api",
+   "model": "deepseek/deepseek-v4-flash"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "deepseek/deepseek-v4-pro"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/deepseek/deepseek-v4-flash"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/google/gemma-4-26b-a4b-it"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/google/gemma-4-31b-it"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/meta-llama/llama-3.1-8b-instruct"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/meta-llama/llama-3.3-70b-instruct"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/qwen/qwen3-next-80b-a3b-instruct"
+  },
+  {
+   "access_path": "chat-api",
+   "model": "novita/qwen/qwen3.5-122b-a10b"
+  },
   {
    "access_path": "claude-agent",
    "model": "claude-haiku-4.5"
@@ -54,6 +94,7 @@
   }
  ],
  "runs_per_access_path": {
+  "chat-api": 10,
   "claude-agent": 3,
   "codex-agent": 3,
   "local-blackbox": 1,

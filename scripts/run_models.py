@@ -45,7 +45,8 @@ def _is_error(text):
     return text.strip().lower().startswith("error during litellm")
 
 
-def run_model(engine, model, langs, delay=0.0):
+def run_model(engine, model, langs, delay=0.0, transcripts=None, label=None):
+    model_label = label or model
     per_lang = {}
     valid = []
     err = total = 0
@@ -54,6 +55,15 @@ def run_model(engine, model, langs, delay=0.0):
         if delay and li:
             time.sleep(delay)  # pace to stay under free-tier per-minute limits
         report = engine.run_eval(model=model, use_local=False, lang=lang)
+        if transcripts is not None:
+            for r in report["raw_results"]:
+                if _is_error(r["output"]):
+                    continue  # don't save errored/rate-limited turns
+                transcripts.append({"model": model_label, "backend": "chat-api", "lang": lang,
+                                    "suite_id": r["suite_id"], "test_id": r["test_id"],
+                                    "test_name": r["test_name"], "step_idx": r["step_idx"],
+                                    "prompt": r["prompt"], "output": r["output"],
+                                    "expected": r["expected"], "forbidden": r["forbidden"]})
         n_err = sum(1 for r in report["raw_results"] if _is_error(r["output"]))
         total += len(report["raw_results"])
         err += n_err
@@ -64,12 +74,12 @@ def run_model(engine, model, langs, delay=0.0):
             # Any errored (rate-limited / quota) step makes this language untrustworthy:
             # mark N/A rather than fake a floor score that would pollute the leaderboard.
             per_lang[lang] = {"status": "rate_limited", "errored_steps": n_err}
-            print(f"    {model:38s} {lang}  N/A ({n_err} errored steps)")
+            print(f"    {model_label:38s} {lang}  N/A ({n_err} errored steps)")
         else:
             m = report["metrics"]
             per_lang[lang] = {**m, "classification": report["classification"], "status": "ok"}
             valid.append(lang)
-            print(f"    {model:38s} {lang}  SPI={m['stochastic_parrot_index']:.2f} "
+            print(f"    {model_label:38s} {lang}  SPI={m['stochastic_parrot_index']:.2f} "
                   f"(CP={m['cp_score']:.2f} CR={m['cr_score']:.2f} SI={m['si_score']:.2f})")
 
     keys = ["cp_score", "cr_score", "si_score", "stochastic_parrot_index"]
@@ -82,7 +92,7 @@ def run_model(engine, model, langs, delay=0.0):
         mean = {}
         cls = "INSUFFICIENT DATA (rate-limited)"
     return {
-        "model": model,
+        "model": model_label,
         "per_lang": per_lang,
         "mean": mean,
         "valid_langs": valid,
@@ -109,6 +119,8 @@ def main():
                     help="Merge into existing results/leaderboard.json instead of overwriting.")
     ap.add_argument("--retries", type=int, default=None,
                     help="Cap APIRouter retry attempts (low value avoids long hangs on cold/slow models).")
+    ap.add_argument("--model-label-prefix", default=None,
+                    help="Optional result label prefix for openai-compatible gateways (e.g. novita/).")
     args = ap.parse_args()
 
     if not (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")):
@@ -126,13 +138,19 @@ def main():
     langs = [l.strip() for l in args.langs.split(",") if l.strip()]
 
     entries = []
+    transcripts = []
     for mi, model in enumerate(models):
+        label = None
+        if args.model_label_prefix:
+            label_id = model.removeprefix("openai/")
+            label = f"{args.model_label_prefix}{label_id}"
         if args.model_delay and mi:
             time.sleep(args.model_delay)
-        print(f"[model] {model}", flush=True)
+        print(f"[model] {model}" + (f" as {label}" if label else ""), flush=True)
         t0 = time.time()
         try:
-            entry = run_model(engine, model, langs, delay=args.delay)
+            entry = run_model(engine, model, langs, delay=args.delay, transcripts=transcripts,
+                              label=label)
         except Exception as e:
             print(f"    !! {model} failed: {e}")
             entry = {"model": model, "per_lang": {}, "mean": {}, "classification": "ERROR",
@@ -157,6 +175,26 @@ def main():
            "langs": langs, "models": entries}
     with open(os.path.join(RESULTS_DIR, "leaderboard.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
+
+    if transcripts:
+        tpath = os.path.join(RESULTS_DIR, "transcripts_chatapi.jsonl")
+        ran = set()
+        for m in (m.strip() for m in args.models.split(",") if m.strip()):
+            if args.model_label_prefix:
+                ran.add(f"{args.model_label_prefix}{m.removeprefix('openai/')}")
+            else:
+                ran.add(m)
+        merged = []
+        if os.path.exists(tpath):
+            for line in open(tpath, encoding="utf-8"):
+                old = json.loads(line)
+                if old.get("model") not in ran:
+                    merged.append(old)
+        merged.extend(transcripts)
+        with open(tpath, "w", encoding="utf-8") as f:
+            for r in merged:
+                f.write(json.dumps(r, ensure_ascii=False) + "\n")
+        print(f"Wrote {tpath} ({len(merged)} turns, {len(transcripts)} new)")
 
     print("\n=== Leaderboard (mean SPI) ===")
     for e in entries:

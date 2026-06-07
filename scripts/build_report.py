@@ -46,6 +46,14 @@ def _load_leaderboard():
         return json.load(f)
 
 
+def _load_judged_leaderboard():
+    path = os.path.join(RESULTS_DIR, "leaderboard_judged.json")
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
 # The "access-path" experiment: the same probes asked of frontier models through
 # two different agent CLIs (Claude Code `claude -p` and OpenAI `codex exec`),
 # both run with their shell tools stripped for parity. Each file is a normal
@@ -110,12 +118,21 @@ def _agg_local(d, access):
             "mean": mean, "classification": cls}
 
 
-def build_unified(leaderboard, agent, black=None, white=None):
+def build_unified(leaderboard, agent, black=None, white=None, judged=None):
     """One ranked list across EVERY model we measured — chat-API endpoints, the
     Claude/Codex agent CLIs, the local black-box model and the white-box model —
     each tagged with how it was reached. Same per-language SPI schema, so the
     rows concatenate cleanly and sort by mean SPI."""
     import time
+    if judged and judged.get("models"):
+        models = [dict(e) for e in judged["models"]]
+        models.sort(key=lambda m: m["mean"]["stochastic_parrot_index"], reverse=True)
+        return {"generated_at": judged.get("generated_at", ""),
+                "judge": judged.get("judge", ""),
+                "score_type": "semantic_judge",
+                "langs": judged.get("langs", []),
+                "models": models}
+
     langs = ((leaderboard or {}).get("langs") or (agent or {}).get("langs")
              or ["en", "zh", "ja", "ru", "de", "es"])
     models = []
@@ -137,7 +154,8 @@ def build_unified(leaderboard, agent, black=None, white=None):
     if not models:
         return None
     models.sort(key=lambda m: m["mean"]["stochastic_parrot_index"], reverse=True)
-    return {"generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "langs": langs, "models": models}
+    return {"generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "score_type": "keyword_screen", "langs": langs, "models": models}
 
 
 ACCESS_LABEL = {"chat-api": "chat API", "claude-agent": "Claude agent",
@@ -157,6 +175,23 @@ def build_unified_md(unified):
         mean = e["mean"]["stochastic_parrot_index"]
         short_cls = (e.get("classification") or "—").split(" (")[0]
         rows.append(f"| {i} | `{_short(e['model'])}` | {ACCESS_LABEL.get(e['access_path'], e['access_path'])} | "
+                    + " | ".join(cells) + f" | **{mean:.3f}** | {short_cls} |")
+    return "\n".join(rows)
+
+
+def build_judged_md(judged):
+    langs = judged.get("langs", [])
+    head = "| # | Model | Access | " + " | ".join(l.upper() for l in langs) + " | **Semantic SPI** | Class |"
+    sep = "|---|-------|--------|" + "|".join(["----"] * len(langs)) + "|------|-------|"
+    rows = [head, sep]
+    for i, e in enumerate(judged.get("models", []), 1):
+        cells = []
+        for l in langs:
+            v = e.get("per_lang", {}).get(l, {}).get("stochastic_parrot_index")
+            cells.append(f"{v:.2f}" if v is not None else "—")
+        mean = e["mean"]["stochastic_parrot_index"]
+        short_cls = (e.get("classification") or "—").split(" (")[0]
+        rows.append(f"| {i} | `{e['model']}` | {ACCESS_LABEL.get(e['access_path'], e['access_path'])} | "
                     + " | ".join(cells) + f" | **{mean:.3f}** | {short_cls} |")
     return "\n".join(rows)
 
@@ -261,7 +296,7 @@ def build_agent_md(agent):
     return "\n".join(parts)
 
 
-def build_results_md(black, white, leaderboard=None, agent=None, unified=None):
+def build_results_md(black, white, leaderboard=None, agent=None, unified=None, judged=None):
     parts = []
 
     if black:
@@ -299,14 +334,20 @@ def build_results_md(black, white, leaderboard=None, agent=None, unified=None):
                     parts.append(t.get("ascii", "(no graph)"))
                     parts.append("```")
 
-    if leaderboard and leaderboard.get("models"):
-        parts.append("\n### 4.3 Model leaderboard (black-box, cross-lingual)\n")
+    if judged and judged.get("models"):
+        parts.append("\n### 4.3 Semantic-judge model benchmark\n")
+        parts.append(f"Mean semantic SPI over {len(judged.get('langs', []))} languages, ranked "
+                     f"after re-scoring full saved transcripts with `{judged.get('judge', 'LLM judge')}`. "
+                     "This is the primary leaderboard: it accepts correct paraphrases and avoids the "
+                     "known multilingual brittleness of the keyword screen. Every row shows the exact "
+                     "tested model identifier and access path.\n")
+        parts.append(build_judged_md(judged))
+        parts.append("")
+    elif leaderboard and leaderboard.get("models"):
+        parts.append("\n### 4.3 Model leaderboard (keyword screen, cross-lingual)\n")
         parts.append(f"Mean Stochastic Parrot Index over {len(leaderboard.get('langs', []))} "
-                     "languages, per API model, ranked by mean SPI. Models served via "
-                     "NVIDIA NIM (`integrate.api.nvidia.com`) and the DeepSeek API "
-                     "(`deepseek-v4-pro`, a reasoning model). Open/free-tier endpoints "
-                     "with insufficient quota are reported as N/A rather than scored, so "
-                     "the table reflects only trustworthy measurements.\n")
+                     "languages, per API model, ranked by mean SPI. These are keyword-screen "
+                     "scores, useful for reproducibility but not the primary semantic ranking.\n")
         parts.append(build_leaderboard_md(leaderboard))
         parts.append("")
 
@@ -315,11 +356,11 @@ def build_results_md(black, white, leaderboard=None, agent=None, unified=None):
 
     if unified and unified.get("models"):
         parts.append("\n### 4.5 Combined ranking — all access paths\n")
-        parts.append("Every model in one list, ranked by mean SPI, tagged with how it was "
-                     "reached. Chat-API and agent-CLI numbers are *not* strictly comparable "
-                     "(the agent wraps the model in its own framing), so read the **Access** "
-                     "column as essential context, not a footnote — and remember gaps below "
-                     "~0.05 are within run-to-run noise.\n")
+        parts.append("Every full-transcript model run in one list, ranked by semantic mean SPI "
+                     "when a judge leaderboard is available, tagged with how it was reached. "
+                     "Chat-API and agent-CLI numbers are *not* strictly comparable (the agent "
+                     "wraps the model in its own framing), so read the **Access** column as "
+                     "essential context — and remember gaps below ~0.05 are within noise.\n")
         parts.append(build_unified_md(unified))
         parts.append("")
 
@@ -344,11 +385,13 @@ def patch_whitepaper(results_md):
     print("Patched §4 of WHITEPAPER.md")
 
 
-def write_docs_data(black, white, leaderboard=None, agent=None, dataset=None, unified=None):
+def write_docs_data(black, white, leaderboard=None, agent=None, dataset=None, unified=None, judged=None):
     os.makedirs(DOCS_DIR, exist_ok=True)
     # The site's headline leaderboard is the unified, all-access-paths list.
     payload = {"blackbox": black, "whitebox": white,
                "leaderboard": unified or leaderboard,
+               "keyword_leaderboard": leaderboard,
+               "judged_leaderboard": judged,
                "agent_access": agent, "dataset": dataset,
                "lang_names": LANG_NAMES, "lang_order": LANG_ORDER}
     js = "// Auto-generated by scripts/build_report.py — do not edit by hand.\n"
@@ -362,15 +405,16 @@ def main():
     black = _load("blackbox")
     white = _load("whitebox")
     leaderboard = _load_leaderboard()
+    judged = _load_judged_leaderboard()
     agent = _load_agent()
     dataset = _load_dataset_manifest()
-    unified = build_unified(leaderboard, agent, black, white)
-    results_md = build_results_md(black, white, leaderboard, agent, unified)
+    unified = build_unified(leaderboard, agent, black, white, judged)
+    results_md = build_results_md(black, white, leaderboard, agent, unified, judged)
     patch_whitepaper(results_md)
-    write_docs_data(black, white, leaderboard, agent, dataset, unified)
+    write_docs_data(black, white, leaderboard, agent, dataset, unified, judged)
     with open(os.path.join(RESULTS_DIR, "summary.json"), "w", encoding="utf-8") as f:
         json.dump({"blackbox": black, "whitebox": white, "leaderboard": leaderboard,
-                   "agent_access": agent},
+                   "judged_leaderboard": judged, "agent_access": agent},
                   f, ensure_ascii=False, indent=2)
     print("Rewrote combined results/summary.json")
 

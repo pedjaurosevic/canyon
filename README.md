@@ -116,6 +116,9 @@ python3 scripts/run_benchmark.py --backend black --model openai/<served-model>.g
 # Real activations + drift on a local HF model (CPU)
 python3 scripts/run_benchmark.py --backend white --wl-lang en,zh,ru
 
+# Re-score saved transcripts with the semantic LLM judge (primary benchmark)
+python3 scripts/judge.py
+
 # Generate §4 of the whitepaper and the site data from results/
 python3 scripts/build_report.py
 ```
@@ -146,7 +149,7 @@ Finding (see [§4.4 of the whitepaper](./WHITEPAPER.md#54-the-access-path-experi
 
 CANYON is **a small experiment by an independent researcher**, not a peer-reviewed benchmark. It grew out of Hinton's idea that, to predict the next word well enough, a model is forced to learn the structure *behind* the words — and out of my own attempt to turn that idea into something anyone can run at home. The numbers are not proof of understanding; they are a small pile of behaviour that is hard to get from text statistics alone.
 
-The most valuable thing this tool offers is its **size** — it is small enough to read in an afternoon and break. Please **reproduce the experiment**: add a language, widen the suites, swap the keyword screen for an LLM judge, point it at a model we could not reach. The most useful outcome would not be agreement with our numbers, but someone finding where this simple instrument is wrong — and saying so.
+The most valuable thing this tool offers is its **size** — it is small enough to read in an afternoon and break. Please **reproduce the experiment**: add a language, widen the suites, run the semantic judge, or point it at a model we could not reach. The most useful outcome would not be agreement with our numbers, but someone finding where this simple instrument is wrong — and saying so.
 
 ---
 
