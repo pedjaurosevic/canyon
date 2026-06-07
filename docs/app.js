@@ -244,7 +244,7 @@
         tds.push(el("td", { class: "num" }, [v == null ? "—" : v.toFixed(2)]));
       });
       var mean = ok ? e.mean.stochastic_parrot_index : null;
-      tds.push(el("td", { class: "num" }, [mean == null ? "—" : mean.toFixed(2)]));
+      tds.push(el("td", { class: "num" }, [mean == null ? "—" : mean.toFixed(3)]));
       tds.push(el("td", {}, [ok
         ? el("span", { class: "badge " + cls(mean) }, [e.classification.split(" (")[0]])
         : el("span", { class: "badge bad" }, ["error"])]));
@@ -262,25 +262,33 @@
     var models = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; });
     if (!models.length) { host.style.display = "none"; return; }
     host.innerHTML = "";
-    var W = Math.max(600, models.length * 90), H = 260, padL = 40, padB = 70, padT = 16;
+    // The top models cluster tightly, so a 0–1 axis hides the ranking. Zoom the
+    // y-axis to just below the lowest bar to make the (small, noise-level) gaps
+    // legible. The axis label and caption keep it honest.
+    var spis = models.map(function (e) { return e.mean.stochastic_parrot_index; });
+    var floor = Math.max(0, Math.floor((Math.min.apply(null, spis) - 0.02) * 20) / 20);
+    var span = 1 - floor || 1;
+    var W = Math.max(600, models.length * 90), H = 260, padL = 44, padB = 70, padT = 16;
+    function Y(v) { return padT + (1 - (v - floor) / span) * (H - padT - padB); }
     var s = svg("svg", { viewBox: "0 0 " + W + " " + H, width: "100%" });
-    [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
-      var y = padT + (1 - v) * (H - padT - padB);
-      s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: "#232c3a" }));
-      var t = svg("text", { x: 6, y: y + 4 }); t.textContent = v.toFixed(2); s.appendChild(t);
+    for (var gi = 0; gi <= 4; gi++) {
+      var gv = floor + (gi / 4) * span, gy = Y(gv);
+      s.appendChild(svg("line", { x1: padL, y1: gy, x2: W, y2: gy, stroke: "#232c3a" }));
+      var gt = svg("text", { x: 6, y: gy + 4 }); gt.textContent = gv.toFixed(2); s.appendChild(gt);
+    }
+    [[0.75, "#34d399"]].forEach(function (p) {
+      if (p[0] < floor) return;
+      var y = Y(p[0]);
+      s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: p[1], "stroke-dasharray": "5 5", opacity: .6 }));
     });
-    [[0.75, "#34d399"], [0.5, "#fbbf24"]].forEach(function (p) {
-      var y = padT + (1 - p[0]) * (H - padT - padB);
-      s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: p[1], "stroke-dasharray": "5 5", opacity: .7 }));
-    });
-    var bw = (W - padL - 16) / models.length;
+    var bw = (W - padL - 16) / models.length, base = Y(floor);
     var hasAccess = models.some(function (e) { return e.access_path; });
     models.forEach(function (e, i) {
-      var spi = e.mean.stochastic_parrot_index, h = spi * (H - padT - padB);
-      var x = padL + i * bw + bw * 0.18, w = bw * 0.64, y = padT + (H - padT - padB) - h;
+      var spi = e.mean.stochastic_parrot_index, yTop = Y(spi), h = base - yTop;
+      var x = padL + i * bw + bw * 0.18, w = bw * 0.64;
       var fill = e.access_path ? accessColor(e.access_path) : "url(#g)";
-      s.appendChild(svg("rect", { x: x, y: y, width: w, height: h, rx: 4, fill: fill }));
-      var v = svg("text", { x: x + w / 2, y: y - 5, "text-anchor": "middle", fill: "#e6edf3" }); v.textContent = spi.toFixed(2); s.appendChild(v);
+      s.appendChild(svg("rect", { x: x, y: yTop, width: w, height: h, rx: 4, fill: fill }));
+      var v = svg("text", { x: x + w / 2, y: yTop - 5, "text-anchor": "middle", fill: "#e6edf3", "font-size": "11" }); v.textContent = spi.toFixed(3); s.appendChild(v);
       var g = svg("g", { transform: "translate(" + (x + w / 2) + "," + (H - padB + 12) + ") rotate(40)" });
       var lab = svg("text", { x: 0, y: 0 }); lab.textContent = shortModel(e.model); g.appendChild(lab); s.appendChild(g);
     });
@@ -295,11 +303,13 @@
       models.forEach(function (e) {
         if (!e.access_path || seen[e.access_path]) return;
         seen[e.access_path] = 1;
-        var i = el("i"); i.style.background = accessColor(e.access_path);
-        legend.appendChild(el("span", {}, [i, accessLabel(e.access_path)]));
+        var ic = el("i"); ic.style.background = accessColor(e.access_path);
+        legend.appendChild(el("span", {}, [ic, accessLabel(e.access_path)]));
       });
       host.appendChild(legend);
     }
+    host.appendChild(el("p", { class: "muted", style: "margin-top:8px;font-size:13px" },
+      ["y-axis starts at " + floor.toFixed(2) + " (zoomed) so the close ranking is visible — the bars are magnified, so read small gaps as within noise (~±0.03 on the mean)."]));
   }
 
   /* ---- access-path experiment: claude -p vs codex exec ---- */
@@ -330,28 +340,35 @@
     var host = document.getElementById("ag-chart");
     if (host) {
       host.innerHTML = "";
-      var W = Math.max(560, rows.length * 110), H = 260, padL = 40, padB = 64, padT = 16;
+      var aspis = rows.map(function (r) { return r.mean; });
+      var afloor = Math.max(0, Math.floor((Math.min.apply(null, aspis) - 0.02) * 20) / 20);
+      var aspan = 1 - afloor || 1;
+      var W = Math.max(560, rows.length * 110), H = 260, padL = 44, padB = 64, padT = 16;
+      function AY(v) { return padT + (1 - (v - afloor) / aspan) * (H - padT - padB); }
       var s = svg("svg", { viewBox: "0 0 " + W + " " + H, width: "100%" });
-      [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
-        var y = padT + (1 - v) * (H - padT - padB);
-        s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: "#232c3a" }));
-        var t = svg("text", { x: 6, y: y + 4 }); t.textContent = v.toFixed(2); s.appendChild(t);
+      for (var ai = 0; ai <= 4; ai++) {
+        var av = afloor + (ai / 4) * aspan, ay = AY(av);
+        s.appendChild(svg("line", { x1: padL, y1: ay, x2: W, y2: ay, stroke: "#232c3a" }));
+        var at = svg("text", { x: 6, y: ay + 4 }); at.textContent = av.toFixed(2); s.appendChild(at);
+      }
+      [[0.75, "#34d399"]].forEach(function (p) {
+        if (p[0] < afloor) return;
+        var y = AY(p[0]);
+        s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: p[1], "stroke-dasharray": "5 5", opacity: .6 }));
       });
-      [[0.75, "#34d399"], [0.5, "#fbbf24"]].forEach(function (p) {
-        var y = padT + (1 - p[0]) * (H - padT - padB);
-        s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: p[1], "stroke-dasharray": "5 5", opacity: .7 }));
-      });
-      var bw = (W - padL - 16) / rows.length;
+      var bw = (W - padL - 16) / rows.length, abase = AY(afloor);
       rows.forEach(function (r, i) {
-        var h = r.mean * (H - padT - padB), x = padL + i * bw + bw * 0.18, w = bw * 0.64,
-            y = padT + (H - padT - padB) - h, color = PATH_COLOR[r.backend] || "#38bdf8";
-        s.appendChild(svg("rect", { x: x, y: y, width: w, height: h, rx: 4, fill: color }));
-        var v = svg("text", { x: x + w / 2, y: y - 5, "text-anchor": "middle", fill: "#e6edf3" });
-        v.textContent = r.mean.toFixed(2); s.appendChild(v);
+        var yTop = AY(r.mean), h = abase - yTop, x = padL + i * bw + bw * 0.18, w = bw * 0.64,
+            color = PATH_COLOR[r.backend] || "#38bdf8";
+        s.appendChild(svg("rect", { x: x, y: yTop, width: w, height: h, rx: 4, fill: color }));
+        var v = svg("text", { x: x + w / 2, y: yTop - 5, "text-anchor": "middle", fill: "#e6edf3", "font-size": "11" });
+        v.textContent = r.mean.toFixed(3); s.appendChild(v);
         var lab = svg("text", { x: x + w / 2, y: H - padB + 16, "text-anchor": "middle" });
         lab.textContent = shortModel(r.model); s.appendChild(lab);
       });
       host.appendChild(s);
+      host.appendChild(el("p", { class: "muted", style: "margin-top:6px;font-size:13px" },
+        ["y-axis zoomed (starts at " + afloor.toFixed(2) + ")."]));
       // legend
       var legend = el("div", { class: "legend" });
       ag.paths.forEach(function (p) {
