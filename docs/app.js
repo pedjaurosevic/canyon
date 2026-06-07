@@ -274,7 +274,98 @@
     host.appendChild(s);
   }
 
+  /* ---- access-path experiment: claude -p vs codex exec ---- */
+  var PATH_COLOR = { "claude-agent": "#a78bfa", "codex-agent": "#34d399" };
+
+  function renderAgentAccess() {
+    var ag = D.agent_access;
+    var sec = document.getElementById("agent");
+    if (!ag || !ag.paths || !ag.paths.length) { if (sec) sec.style.display = "none"; return; }
+    var langs = ag.langs || [];
+
+    // flatten models, keep path label/backend, sort by mean SPI desc
+    var rows = [];
+    ag.paths.forEach(function (p) {
+      (p.models || []).forEach(function (e) {
+        rows.push({ label: p.label, backend: p.backend, model: e.model,
+                    mean: e.mean.stochastic_parrot_index, per_lang: e.per_lang,
+                    cls: e.classification });
+      });
+    });
+    rows.sort(function (a, b) { return b.mean - a.mean; });
+
+    var meta = document.getElementById("ag-meta");
+    if (meta) meta.textContent = rows.length + " models · " + ag.paths.length +
+      " access paths · " + langs.length + " languages";
+
+    // chart
+    var host = document.getElementById("ag-chart");
+    if (host) {
+      host.innerHTML = "";
+      var W = Math.max(560, rows.length * 110), H = 260, padL = 40, padB = 64, padT = 16;
+      var s = svg("svg", { viewBox: "0 0 " + W + " " + H, width: "100%" });
+      [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+        var y = padT + (1 - v) * (H - padT - padB);
+        s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: "#232c3a" }));
+        var t = svg("text", { x: 6, y: y + 4 }); t.textContent = v.toFixed(2); s.appendChild(t);
+      });
+      [[0.75, "#34d399"], [0.5, "#fbbf24"]].forEach(function (p) {
+        var y = padT + (1 - p[0]) * (H - padT - padB);
+        s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: p[1], "stroke-dasharray": "5 5", opacity: .7 }));
+      });
+      var bw = (W - padL - 16) / rows.length;
+      rows.forEach(function (r, i) {
+        var h = r.mean * (H - padT - padB), x = padL + i * bw + bw * 0.18, w = bw * 0.64,
+            y = padT + (H - padT - padB) - h, color = PATH_COLOR[r.backend] || "#38bdf8";
+        s.appendChild(svg("rect", { x: x, y: y, width: w, height: h, rx: 4, fill: color }));
+        var v = svg("text", { x: x + w / 2, y: y - 5, "text-anchor": "middle", fill: "#e6edf3" });
+        v.textContent = r.mean.toFixed(2); s.appendChild(v);
+        var lab = svg("text", { x: x + w / 2, y: H - padB + 16, "text-anchor": "middle" });
+        lab.textContent = shortModel(r.model); s.appendChild(lab);
+      });
+      host.appendChild(s);
+      // legend
+      var legend = el("div", { class: "legend" });
+      ag.paths.forEach(function (p) {
+        var i = el("i"); i.style.background = PATH_COLOR[p.backend] || "#38bdf8";
+        legend.appendChild(el("span", {}, [i, p.label]));
+      });
+      host.appendChild(legend);
+    }
+
+    // table
+    var tHost = document.getElementById("ag-table");
+    if (tHost) {
+      var header = ["Access path", "Model"].concat(langs.map(function (l) { return l.toUpperCase(); })).concat(["Mean", "Class"]);
+      var trows = [el("tr", {}, header.map(function (h, i) {
+        return el("th", (i >= 2 && i <= langs.length + 1) ? { class: "num" } : {}, [h]);
+      }))];
+      rows.forEach(function (r) {
+        var tds = [el("td", {}, [r.label]), el("td", {}, [el("code", {}, [shortModel(r.model)])])];
+        langs.forEach(function (l) {
+          var v = r.per_lang[l] ? r.per_lang[l].stochastic_parrot_index : null;
+          tds.push(el("td", { class: "num" }, [v == null ? "—" : v.toFixed(2)]));
+        });
+        tds.push(el("td", { class: "num" }, [r.mean.toFixed(2)]));
+        tds.push(el("td", {}, [el("span", { class: "badge " + cls(r.mean) }, [r.cls.split(" (")[0]])]));
+        trows.push(el("tr", {}, tds));
+      });
+      tHost.innerHTML = "";
+      tHost.appendChild(el("table", {}, trows));
+    }
+
+    var note = document.getElementById("ag-note");
+    if (note && ag.robustness) {
+      var rb = ag.robustness;
+      note.textContent = "Noise check: re-running one language " + rb.repeats +
+        "× per mode did not reproduce a tools-on/off difference (with-tools " +
+        rb.with_tools.mean_spi.toFixed(2) + " vs tools-off " + rb.tools_off.mean_spi.toFixed(2) +
+        "). Treat SPI gaps smaller than ~0.05 as noise, not signal.";
+    }
+  }
+
   renderBlackbox();
   renderLeaderboard();
+  renderAgentAccess();
   renderWhitebox();
 })();

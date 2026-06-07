@@ -98,6 +98,30 @@ python3 scripts/build_report.py
 
 ---
 
+## 🚪 Eksperiment: da li „vrata" menjaju sobu? (access-path)
+
+Frontier modeli se sve češće koriste *kroz agente* — CLI alat umota model u svoja uputstva i alate pre nego što tvoje pitanje uopšte stigne. Pitali smo se da li taj omotač menja utemeljenje, pa smo ista pitanja na 6 jezika postavili kroz dva koding-agenta umesto kroz goli chat endpoint, sa skinutim shell alatima radi poštenog poređenja:
+
+```bash
+# Claude Code agent (claude -p), backend=claude-agent
+python3 scripts/run_claude.py
+
+# OpenAI Codex agent (codex exec), tools-off + izolovan CODEX_HOME, backend=codex-agent
+python3 scripts/run_codex.py --tools-off --codex-home /tmp/codex_clean
+```
+
+Nalaz (vidi [§4.4 whitepaper-a](./WHITEPAPER.md#54-the-access-path-experiment-and-what-the-per-language-spread-means)): Claude familija 0.91–0.98, gpt-5.5 kroz Codex 0.85 — svi „strong grounding". Razlika između tools-on/off koju smo isprva videli **ispala je šum** (provera ponavljanjem u [`results/robustness_de.json`](./results/robustness_de.json)). Pouka: **single-run SPI su tačkaste procene; razlike manje od ~0.05 ne treba čitati kao stvarne.**
+
+---
+
+## 🙏 Iskrena napomena i poziv
+
+CANYON je **mali, hobi eksperiment**, ne recenzirani benchmark. Rodio se iz Hintonove ideje da model, da bi dovoljno dobro predviđao sledeću reč, mora da nauči strukturu *iza* reči — i iz mog pokušaja da tu ideju pretvorim u nešto što svako može da pokrene kod kuće. Brojevi nisu dokaz razumevanja; oni su mala gomilica ponašanja koje je teško dobiti čistom statistikom teksta.
+
+Najvrednije što ovaj alat nudi je **veličina** — dovoljno je mali da ga pročitaš za jedno popodne i razbiješ. Molim te, **ponovi eksperiment**: dodaj jezik, proširi suite-ove, zameni keyword-skor LLM-sudijom, uperi ga u model koji mi nismo mogli da dohvatimo. Najkorisniji ishod ne bi bio slaganje sa našim brojevima, nego da neko nađe gde je ovaj jednostavan instrument pogrešan — i to kaže.
+
+---
+
 ## 📊 Stochastic Parrot Index (SPI)
 
 Rezultat testiranja se izražava kroz tri specifične metričke ose:

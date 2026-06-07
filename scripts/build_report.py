@@ -46,6 +46,41 @@ def _load_leaderboard():
         return json.load(f)
 
 
+# The "access-path" experiment: the same probes asked of frontier models through
+# two different agent CLIs (Claude Code `claude -p` and OpenAI `codex exec`),
+# both run with their shell tools stripped for parity. Each file is a normal
+# leaderboard; here we fold them into one labelled comparison.
+AGENT_PATHS = [
+    ("leaderboard_claude.json", "Claude Code agent — claude -p (tools off)"),
+    ("leaderboard_codex_toolsoff.json", "Codex agent — codex exec (tools off)"),
+]
+
+
+def _load_agent():
+    paths = []
+    for fname, label in AGENT_PATHS:
+        path = os.path.join(RESULTS_DIR, fname)
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as f:
+            lb = json.load(f)
+        models = [m for m in lb.get("models", []) if m.get("valid_langs")]
+        if models:
+            paths.append({"label": label,
+                          "backend": lb.get("backend", ""),
+                          "langs": lb.get("langs", []),
+                          "models": models})
+    if not paths:
+        return None
+    langs = paths[0]["langs"]
+    robust = None
+    rpath = os.path.join(RESULTS_DIR, "robustness_de.json")
+    if os.path.exists(rpath):
+        with open(rpath, encoding="utf-8") as f:
+            robust = json.load(f)
+    return {"langs": langs, "paths": paths, "robustness": robust}
+
+
 def _ordered(d):
     return [l for l in LANG_ORDER if l in d] + [l for l in d if l not in LANG_ORDER]
 
@@ -105,7 +140,48 @@ def build_leaderboard_md(lb):
     return "\n".join(rows)
 
 
-def build_results_md(black, white, leaderboard=None):
+def build_agent_md(agent):
+    langs = agent["langs"]
+    parts = ["\n### 4.4 The access-path experiment (frontier models via agent CLIs)\n"]
+    parts.append(
+        "A follow-up question: does it matter *how* you reach a model? The leaderboard "
+        "above talks to plain chat-completion endpoints. Here the **same six-language "
+        "probes** are instead answered by two frontier-model command-line agents — "
+        "Anthropic's Claude Code (`claude -p`) and OpenAI's Codex (`codex exec`) — each "
+        "run with its shell tools stripped and from an isolated config, so the only thing "
+        "that changes from the chat path is the agent's own framing. Mean SPI across "
+        f"{len(langs)} languages:\n")
+    head = "| Access path | Model | " + " | ".join(l.upper() for l in langs) + " | **Mean SPI** | Class |"
+    sep = "|-------------|-------|" + "|".join(["----"] * len(langs)) + "|------|-------|"
+    rows = [head, sep]
+    for p in agent["paths"]:
+        for e in p["models"]:
+            cells = []
+            for l in langs:
+                v = e.get("per_lang", {}).get(l, {}).get("stochastic_parrot_index")
+                cells.append(f"{v:.2f}" if v is not None else "N/A")
+            mean = e.get("mean", {}).get("stochastic_parrot_index")
+            short_cls = (e.get("classification") or "—").split(" (")[0]
+            rows.append(f"| {p['label']} | `{_short(e['model'])}` | " + " | ".join(cells) +
+                        f" | **{mean:.2f}** | {short_cls} |")
+    parts.append("\n".join(rows))
+    rob = agent.get("robustness")
+    if rob:
+        wt = rob["with_tools"]["mean_spi"]
+        off = rob["tools_off"]["mean_spi"]
+        parts.append(
+            f"\n**A note on noise.** A single run once showed gpt-5.5 jumping on German "
+            f"when tools were removed. Re-running that one language {rob['repeats']}× in "
+            f"each mode did *not* reproduce it — the direction actually reversed "
+            f"(with-tools mean {wt:.2f} vs tools-off {off:.2f}). The tools-on/off gap is "
+            "within run-to-run variance (≈ ±0.07 per language at temperature 0.1), not a "
+            "real scaffolding effect. The practical lesson cuts across the whole paper: "
+            "**single-run SPI values are point estimates; differences smaller than ~0.05 "
+            "should not be read as real.** (Data: `results/robustness_de.json`.)\n")
+    return "\n".join(parts)
+
+
+def build_results_md(black, white, leaderboard=None, agent=None):
     parts = []
 
     if black:
@@ -154,6 +230,9 @@ def build_results_md(black, white, leaderboard=None):
         parts.append(build_leaderboard_md(leaderboard))
         parts.append("")
 
+    if agent and agent.get("paths"):
+        parts.append(build_agent_md(agent))
+
     if not parts:
         return ("*(No results found in `results/`. Run "
                 "`python3 scripts/run_benchmark.py --backend both` first.)*")
@@ -175,9 +254,10 @@ def patch_whitepaper(results_md):
     print("Patched §4 of WHITEPAPER.md")
 
 
-def write_docs_data(black, white, leaderboard=None):
+def write_docs_data(black, white, leaderboard=None, agent=None):
     os.makedirs(DOCS_DIR, exist_ok=True)
     payload = {"blackbox": black, "whitebox": white, "leaderboard": leaderboard,
+               "agent_access": agent,
                "lang_names": LANG_NAMES, "lang_order": LANG_ORDER}
     js = "// Auto-generated by scripts/build_report.py — do not edit by hand.\n"
     js += "window.CANYON_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n"
@@ -190,11 +270,13 @@ def main():
     black = _load("blackbox")
     white = _load("whitebox")
     leaderboard = _load_leaderboard()
-    results_md = build_results_md(black, white, leaderboard)
+    agent = _load_agent()
+    results_md = build_results_md(black, white, leaderboard, agent)
     patch_whitepaper(results_md)
-    write_docs_data(black, white, leaderboard)
+    write_docs_data(black, white, leaderboard, agent)
     with open(os.path.join(RESULTS_DIR, "summary.json"), "w", encoding="utf-8") as f:
-        json.dump({"blackbox": black, "whitebox": white, "leaderboard": leaderboard},
+        json.dump({"blackbox": black, "whitebox": white, "leaderboard": leaderboard,
+                   "agent_access": agent},
                   f, ensure_ascii=False, indent=2)
     print("Rewrote combined results/summary.json")
 
