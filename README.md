@@ -29,9 +29,13 @@ Each probe hides a *statistically dominant but situationally wrong* answer. The 
 
 A frequency machine is pulled toward the first column. A world model overrides it and lands in the second. CANYON runs these (and their counterfactual follow-ups) across **six languages** — because a real understanding of gravity shouldn't disappear when you switch from English to Russian — and rolls the result into a single **Stochastic Parrot Index (SPI)**, where higher means more grounded.
 
-> **What we found, honestly:** today's strongest models behave much more like grounded world-models than like parrots on these questions — they override the obvious-but-wrong answer and hold counterfactual worlds. But this is a *small* experiment (5 prompts per language), the top models cluster very close together, and differences below ~0.05 are within noise. Read the [live results](https://pedjaurosevic.github.io/canyon/) and the [whitepaper](./WHITEPAPER.md), and please try to break it.
+> **What we found, honestly:** Today's strongest models behave much more like grounded world-models than like parrots on these questions — they override the obvious-but-wrong answer and hold counterfactual worlds. But this is a *small* experiment (5 prompts per language), the top models cluster very close together, and differences below ~0.05 are within noise.
 >
-> **A note on the top rank (The Haiku anomaly):** While `claude-haiku-4.5` leads the board with a perfect `1.000`, the gap to the runners-up (like `claude-sonnet-4.6` and `gpt-5.4-mini` at `0.967`) is **just a single turn**. Almost all larger models fell for a single syntactic trap in German (`de/canyon-01`), choosing a strict grammatical reading (asserting that the Grand Canyon is flying) over common sense, while Haiku stuck to the pragmatically grounded answer ("I"). This minor variance is well within our noise threshold (~0.05) and should not be read as general superiority.
+> We distinguish between the **Primary Leaderboard** (which compares standard API/local models directly) and the **Experimental Leaderboard** (which includes models running inside agent CLI wrappers like Claude Code).
+> - On the **Primary Leaderboard**, frontier models like Qwen3 and DeepSeek-v4-flash lead with a mean SPI of **0.967**.
+> - On the **Experimental Leaderboard**, `claude-haiku-4.5` (running inside the Claude Code agent wrapper) occupies the top spot with a perfect **1.000** due to the "Haiku anomaly".
+>
+> **A note on the Haiku anomaly:** The gap between the perfect 1.000 and the runners-up (0.967) is **just a single question**. Almost all larger models (Sonnet 4.6, GPT-5.4, Qwen3) fell into a single grammatical trap in German (`de/canyon-01`), choosing a strict syntax-based reading (asserting that the Grand Canyon is flying) over common sense, while Haiku (wrapped in the agent CLI) favored the pragmatically sensible "I" (the narrator). This minor variation is well within the run-to-run noise threshold (~0.05) and does not represent general superiority. For a fair comparison, read the [live results](https://pedjaurosevic.github.io/canyon/) and the [whitepaper](./WHITEPAPER.md).
 
 ---
 

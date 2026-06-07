@@ -187,32 +187,24 @@ Model: `Qwen/Qwen2.5-0.5B-Instruct` · real hidden-state activations, layers 0�
            L0  L4  L8  L12 L16 L20 
 ```
 
-### 4.3 Semantic-judge model benchmark
+### 4.3 Semantic-judge model benchmark (standard API)
 
-Mean semantic SPI over 6 languages, ranked after re-scoring full saved transcripts with `gpt-5.5`. This is the primary leaderboard: it accepts correct paraphrases and avoids the known multilingual brittleness of the keyword screen. Every row shows the exact tested model identifier and access path.
-
-**On the Haiku 4.5 anomaly and the German grammar trap.** Readers might find it counter-intuitive that the lightweight `claude-haiku-4.5` outperforms the frontier `claude-opus-4.8` and matches or exceeds `claude-sonnet-4.6`. This gap of 0.033 (exactly one test item) is a clear illustration of run-to-run noise and training alignment rather than general capability. Specifically, almost all larger frontier models (Sonnet 4.6, Opus 4.8, GPT-5.4-mini, and Qwen3) failed a single syntactic ambiguity prompt in German (`de/canyon-01`). When asked who flies in *"Ich sah den Grand Canyon nach Chicago fliegen"*, they over-analyzed the German AcI (*accusativus cum infinitivo*) syntax and asserted that the Grand Canyon was the flyer. Haiku 4.5 instead applied basic pragmatic grounding (*"canyons cannot fly, so it must be 'I'"*) and succeeded.
+Mean semantic SPI over 6 languages, ranked after re-scoring full saved transcripts with `gpt-5.5`. This is the primary leaderboard: it includes only standard API endpoints and local models that were tested directly, without any agent wrapper or CLI framework.
 
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Semantic SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|
-| 1 | `claude-haiku-4.5` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | **1.000** | Strong Grounding |
-| 2 | `claude-sonnet-4.6` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 3 | `gpt-5.4-mini` | Codex agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 4 | `novita/qwen/qwen3-next-80b-a3b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 5 | `novita/qwen/qwen3.5-122b-a10b` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 6 | `deepseek/deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 7 | `gpt-5.4` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.933** | Strong Grounding |
-| 8 | `novita/deepseek/deepseek-v4-flash` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 1.00 | 1.00 | **0.933** | Strong Grounding |
-| 9 | `openai/gemma-4-12B-it-Q4_K_M.gguf` | local | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 10 | `claude-opus-4.8` | Claude agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 11 | `gpt-5.5` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 12 | `novita/meta-llama/llama-3.3-70b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 0.80 | 0.60 | 1.00 | **0.900** | Strong Grounding |
-| 13 | `novita/google/gemma-4-31b-it` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.60 | 0.80 | **0.900** | Strong Grounding |
-| 14 | `novita/meta-llama/llama-3.1-8b-instruct` | chat API | 1.00 | 1.00 | 0.80 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 15 | `novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.60 | 0.80 | 1.00 | 1.00 | 0.80 | 0.80 | **0.833** | Strong Grounding |
-| 16 | `deepseek/deepseek-v4-pro` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.80 | **0.833** | Strong Grounding |
-| 17 | `novita/google/gemma-4-26b-a4b-it` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.60 | **0.800** | Strong Grounding |
-| 18 | `Qwen/Qwen2.5-0.5B-Instruct` | white-box | 0.40 | 0.60 | — | 0.60 | — | — | **0.533** | Weak Grounding |
+| 1 | `novita/qwen/qwen3-next-80b-a3b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 2 | `novita/qwen/qwen3.5-122b-a10b` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 3 | `deepseek/deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 4 | `novita/deepseek/deepseek-v4-flash` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 1.00 | 1.00 | **0.933** | Strong Grounding |
+| 5 | `openai/gemma-4-12B-it-Q4_K_M.gguf` | local | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 6 | `novita/meta-llama/llama-3.3-70b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 0.80 | 0.60 | 1.00 | **0.900** | Strong Grounding |
+| 7 | `novita/google/gemma-4-31b-it` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.60 | 0.80 | **0.900** | Strong Grounding |
+| 8 | `novita/meta-llama/llama-3.1-8b-instruct` | chat API | 1.00 | 1.00 | 0.80 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 9 | `novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.60 | 0.80 | 1.00 | 1.00 | 0.80 | 0.80 | **0.833** | Strong Grounding |
+| 10 | `deepseek/deepseek-v4-pro` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.80 | **0.833** | Strong Grounding |
+| 11 | `novita/google/gemma-4-26b-a4b-it` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.60 | **0.800** | Strong Grounding |
+| 12 | `Qwen/Qwen2.5-0.5B-Instruct` | white-box | 0.40 | 0.60 | — | 0.60 | — | — | **0.533** | Weak Grounding |
 
 
 ### 4.4 The access-path experiment (frontier models via agent CLIs)
@@ -231,9 +223,12 @@ A follow-up question: does it matter *how* you reach a model? The leaderboard ab
 **A note on noise.** A single run once showed gpt-5.5 jumping on German when tools were removed. Re-running that one language 5× in each mode did *not* reproduce it — the direction actually reversed (with-tools mean 0.86 vs tools-off 0.76). The tools-on/off gap is within run-to-run variance (≈ ±0.07 per language at temperature 0.1), not a real scaffolding effect. The practical lesson cuts across the whole paper: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.** (Data: `results/robustness_de.json`.)
 
 
-### 4.5 Combined ranking — all access paths
+### 4.5 Combined ranking — all access paths (experimental)
 
-Every full-transcript model run in one list, ranked by semantic mean SPI when a judge leaderboard is available, tagged with how it was reached. Chat-API and agent-CLI numbers are *not* strictly comparable (the agent wraps the model in its own framing), so read the **Access** column as essential context — and remember gaps below ~0.05 are within noise.
+Every full-transcript model run in one list, ranked by semantic mean SPI when a judge leaderboard is available, tagged with how it was reached. This includes frontier models running inside developer agent command-line interfaces (such as Anthropic's Claude Code and OpenAI's Codex), which wrap the models in their own framing.
+
+
+**A note on the top rank (The Haiku anomaly):** While `claude-haiku-4.5` (running inside the Claude Code agent) occupies the top spot here with a perfect 1.000, the gap to the runners-up (0.967) is **just a single question**. Almost all larger models (Sonnet 4.6, GPT-5.4, Qwen3) fell into a single grammatical trap in German (interpreting the ambiguous *"Grand Canyon flying to Chicago"* literally as the object flying due to syntax rules), whereas Haiku favored the pragmatically sensible "I" (the narrator). Such minor variations are well within the run-to-run noise threshold (~0.05) and do not represent general superiority.
 
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Mean SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|

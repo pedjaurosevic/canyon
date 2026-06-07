@@ -212,35 +212,40 @@
     return parts.length > 2 ? parts.slice(-2).join("/") : (m || "");
   }
 
-  function renderLeaderboard() {
-    var lb = D.leaderboard;
-    var tHost = document.getElementById("lb-table");
-    var hasData = lb && lb.models && lb.models.some(function (e) { return e.per_lang && Object.keys(e.per_lang).length; });
+  function renderTableAndChart(lb, tableId, chartId, metaId, filterFn) {
+    var tHost = document.getElementById(tableId);
+    var cHost = document.getElementById(chartId);
+    if (!lb || !lb.models) return;
+    
+    // Filter the models based on the criteria
+    var filteredModels = lb.models.filter(filterFn);
+    
+    var hasData = filteredModels.some(function (e) { return e.per_lang && Object.keys(e.per_lang).length; });
     if (!hasData) {
-      // No trustworthy leaderboard data — hide the whole section rather than show an empty shell.
-      var sec = document.getElementById("leaderboard");
-      if (sec) sec.style.display = "none";
+      if (tHost) tHost.innerHTML = "<p class='muted'>No models matched the filter criteria.</p>";
+      if (cHost) cHost.style.display = "none";
       return;
     }
-    if (!tHost) return;
+    
     var langs = lb.langs || [];
-    var meta = document.getElementById("lb-meta");
+    var meta = document.getElementById(metaId);
     if (meta) {
       var judged = lb.judge ? " · judge " + lb.judge : "";
-      meta.textContent = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; }).length +
+      meta.textContent = filteredModels.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; }).length +
         " model runs · " + langs.length + " languages · " + scoreLabel(lb) + judged +
         " · generated " + (lb.generated_at || "");
     }
 
-    var hasAccess = lb.models.some(function (e) { return e.access_path; });
+    var hasAccess = filteredModels.some(function (e) { return e.access_path; });
     var header = ["#", "Tested model"].concat(hasAccess ? ["Access"] : [])
       .concat(langs.map(function (l) { return l.toUpperCase(); })).concat(["Mean SPI", "Class"]);
     var numStart = hasAccess ? 3 : 2;
     var rows = [el("tr", {}, header.map(function (h, i) {
       return el("th", (i >= numStart && i <= langs.length + numStart) ? { class: "num" } : {}, [h]);
     }))];
+    
     var rank = 0;
-    lb.models.forEach(function (e) {
+    filteredModels.forEach(function (e) {
       var ok = e.per_lang && Object.keys(e.per_lang).length;
       var tds = [];
       tds.push(el("td", { class: "rank" }, [ok ? String(++rank) : "–"]));
@@ -270,26 +275,25 @@
         : el("span", { class: "badge bad" }, ["error"])]));
       rows.push(el("tr", {}, tds));
     });
-    tHost.innerHTML = "";
-    tHost.appendChild(el("div", { class: "table-wrap" }, [el("table", {}, rows)]));
-    if (lb.score_type === "semantic_judge") {
-      tHost.appendChild(el("p", { class: "judge-note" }, [
-        "Semantic judge scores are computed from saved full transcripts. Keyword-screen scores remain in results/leaderboard.json for reproducibility."
-      ]));
+    
+    if (tHost) {
+      tHost.innerHTML = "";
+      tHost.appendChild(el("div", { class: "table-wrap" }, [el("table", {}, rows)]));
+      if (lb.score_type === "semantic_judge") {
+        tHost.appendChild(el("p", { class: "judge-note" }, [
+          "Semantic judge scores are computed from saved full transcripts. Keyword-screen scores remain in results/leaderboard.json for reproducibility."
+        ]));
+      }
     }
 
-    renderLbChart(lb, langs);
+    renderLbChartGeneric(filteredModels, cHost, lb, langs);
   }
 
-  function renderLbChart(lb, langs) {
-    var host = document.getElementById("lb-chart");
+  function renderLbChartGeneric(models, host, lb, langs) {
     if (!host) return;
-    var models = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; });
     if (!models.length) { host.style.display = "none"; return; }
+    host.style.display = "block";
     host.innerHTML = "";
-    // The top models cluster tightly, so a 0–1 axis hides the ranking. Zoom the
-    // y-axis to just below the lowest bar to make the (small, noise-level) gaps
-    // legible. The axis label and caption keep it honest.
     var spis = models.map(function (e) { return e.mean.stochastic_parrot_index; });
     var floor = Math.max(0, Math.floor((Math.min.apply(null, spis) - 0.02) * 20) / 20);
     var span = 1 - floor || 1;
@@ -475,7 +479,15 @@
   }
 
   renderBlackbox();
-  renderLeaderboard();
+  // Render Primary Leaderboard (Standard API only)
+  renderTableAndChart(D.leaderboard, "lb-table", "lb-chart", "lb-meta", function (e) {
+    return e.access_path !== "claude-agent" && e.access_path !== "codex-agent";
+  });
+  
+  // Render Experimental Leaderboard (Agent CLIs and Combined)
+  renderTableAndChart(D.leaderboard, "lb-table-exp", "lb-chart-exp", "lb-meta-exp", function (e) {
+    return true; // Show all runs
+  });
   renderAgentAccess();
   renderDataset();
   renderWhitebox();

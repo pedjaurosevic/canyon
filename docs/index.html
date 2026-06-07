@@ -26,14 +26,22 @@
   <main class="wrap">
 
     <section id="leaderboard">
-      <h2>Model benchmark <span class="pill alt">semantic judge</span></h2>
+      <h2>Primary model benchmark <span class="pill alt">standard API</span></h2>
       <p class="muted" id="lb-meta"></p>
-      <p>This is the primary result table: every row is a full saved transcript run, re-scored by a semantic judge instead of brittle keyword matching. The exact tested model identifier is shown in full, along with access path, per-language SPI, and mean score. A flat, high row across languages is the grounding-invariance signature; small gaps below about 0.05 should be treated as noise.</p>
-      <p class="note" style="background: rgba(131,165,152,0.1); border-left: 3px solid var(--blue); padding: 12px 16px; border-radius: 4px; font-size: 13.5px; line-height: 1.5; margin-top: 12px;">
-        <strong>A note on the top rank:</strong> While <code>claude-haiku-4.5</code> occupies the top spot with a perfect 1.000, the gap to the next models (0.967) is just <em>a single question</em>. Almost all larger models (Sonnet 4.6, GPT-5.4, Qwen3) fell into a single grammatical trap in German (interpreting the ambiguous <em>"Grand Canyon flying to Chicago"</em> literally as the object flying due to strict syntax rules), whereas Haiku favored the pragmatically sensible "I" (the narrator). Such minor variations are well within the run-to-run noise threshold (~0.05) and do not represent general superiority.
-      </p>
+      <p>This is the primary result table: it includes only standard API endpoints and local models that were tested directly, without any agent wrapper or CLI framework. A flat, high row across languages is the grounding-invariance signature; gaps below about 0.05 should be treated as noise.</p>
       <div id="lb-chart" class="chart"></div>
       <div id="lb-table"></div>
+    </section>
+
+    <section id="leaderboard-experimental">
+      <h2>Experimental model benchmark <span class="pill alt">agent CLIs & combined</span></h2>
+      <p class="muted" id="lb-meta-exp"></p>
+      <p>This combined leaderboard incorporates frontier models running inside developer agent command-line interfaces (such as Anthropic's Claude Code and OpenAI's Codex). These agent frameworks wrap the models in their own framing instructions, which dramatically changes their behavior and direct comparison validity.</p>
+      <p class="note" style="background: rgba(131,165,152,0.1); border-left: 3px solid var(--blue); padding: 12px 16px; border-radius: 4px; font-size: 13.5px; line-height: 1.5; margin-top: 12px;">
+        <strong>A note on the top rank (The Haiku anomaly):</strong> While <code>claude-haiku-4.5</code> (running inside the Claude Code agent) occupies the top spot here with a perfect 1.000, the gap to the runners-up (0.967) is just <em>a single question</em>. Almost all larger models (Sonnet 4.6, GPT-5.4, Qwen3) fell into a single grammatical trap in German (interpreting the ambiguous <em>"Grand Canyon flying to Chicago"</em> literally as the object flying due to syntax rules), whereas Haiku favored the pragmatically sensible "I" (the narrator). Such minor variations are well within the run-to-run noise threshold (~0.05) and do not represent general superiority.
+      </p>
+      <div id="lb-chart-exp" class="chart"></div>
+      <div id="lb-table-exp"></div>
     </section>
 
     <section id="metrics">
