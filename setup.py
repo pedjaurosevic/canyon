@@ -4,10 +4,10 @@ setup(
     name="canyon-bench",
     version="0.1.0",
     author="Canyon Team",
-    description="Framework za mehanističku i bihevioralnu evaluaciju semantičkog utemeljenja LLM-ova",
+    description="A framework for mechanistic and behavioural evaluation of semantic grounding in LLMs",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/korisnik/canyon",
+    url="https://github.com/pedjaurosevic/canyon",
     packages=find_packages(),
     install_requires=[
         "litellm>=1.0.0",

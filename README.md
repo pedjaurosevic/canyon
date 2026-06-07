@@ -1,42 +1,42 @@
 # CANYON 🏜️
-### Framework za mehanističku i bihevioralnu evaluaciju semantičkog utemeljenja LLM-ova
+### A framework for mechanistic and behavioural evaluation of semantic grounding in LLMs
 
-`CANYON` je open-source istraživački harness i benchmark alat dizajniran za testiranje hipoteze Geoffreya Hintona o funkcionalnom razumevanju i unutrašnjim modelima sveta kod velikih jezičkih modela (LLM). Nazvan po poznatom Hintonovom primeru sa Velikim kanjonom, ovaj alat ima za cilj da razlikuje puko statističko nadovezivanje reči ("stohastički papagaj") od dinamičkog semantičkog utemeljenja (*semantic grounding*).
-
----
-
-## 🚀 Ključne karakteristike
-
-- **Bihevioralna evaluacija (Black-Box):** Testiranje kroz semantičke zamke, kontrafaktičku fiziku (svetovi sa obrnutim zakonima gravitacije/vremena) i prepoznavanje humora/paradoksa preko `LiteLLM` integracije.
-- **Mehanistička evaluacija (White-Box):** Direktno sondiranje skrivenih stanja (*hidden states*) i neurona lokalnih modela (npr. Gemma, Llama, Qwen) pomoću PyTorch forward hooks.
-- **Linear Probing:** Mogućnost treniranja linearnih klasifikatora (Logistic Regression) nad aktivacijama slojeva modela kako bi se otkrilo postojanje unutrašnjih koncepata o fizičkoj mogućnosti.
-- **Prelep TUI (Terminal UI):** Moderan, interaktivan ispis grafikona i tabela sa metrikama u terminalu preko `rich` biblioteke.
+`CANYON` is an open-source research harness and benchmark designed to test Geoffrey Hinton's hypothesis about functional understanding and internal world models in large language models (LLMs). Named after Hinton's well-known Grand Canyon example, the tool aims to distinguish mere statistical word-stitching ("stochastic parrot") from dynamic *semantic grounding*.
 
 ---
 
-## 🛠️ Instalacija
+## 🚀 Key features
 
-1. Klonirajte repozitorijum:
+- **Behavioural evaluation (black-box):** Probing through semantic traps, counterfactual physics (worlds with reversed laws of gravity/time), and humour/paradox recognition via the `LiteLLM` integration.
+- **Mechanistic evaluation (white-box):** Direct probing of hidden states and neurons of local models (e.g. Gemma, Llama, Qwen) using PyTorch forward hooks.
+- **Linear probing:** Training linear classifiers (logistic regression) over a model's layer activations to detect internal concepts of physical plausibility.
+- **Rich TUI (terminal UI):** A modern, interactive rendering of charts and metric tables in the terminal via the `rich` library.
+
+---
+
+## 🛠️ Installation
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/pedjaurosevic/canyon.git
    cd canyon
    ```
 
-2. Instalirajte zavisnosti:
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Instalirajte paket u razvojnom režimu:
+3. Install the package in development mode:
    ```bash
    pip install -e .
    ```
 
 ---
 
-## ⚙️ Konfiguracija
+## ⚙️ Configuration
 
-Podesite modele i parametre u `config.yaml` (napravite kopiju od `config.example.yaml`):
+Set models and parameters in `config.yaml` (make a copy of `config.example.yaml`):
 
 ```yaml
 # config.yaml
@@ -53,89 +53,89 @@ local:
 
 ---
 
-## 💻 Korišćenje (TUI / CLI)
+## 💻 Usage (TUI / CLI)
 
-### 1. Pokretanje kompletnog benchmarka (LiteLLM / API)
+### 1. Run the full benchmark (LiteLLM / API)
 ```bash
 python -m canyon.cli run --config config.example.yaml --model gpt-4o
 ```
 
-### 2. Izlistavanje dostupnih test-scenarija (Suites)
+### 2. List the available test scenarios (suites)
 ```bash
 python -m canyon.cli list-suites
 ```
 
-### 3. Pokretanje linear probing-a nad skrivenim stanjima lokalnog modela
+### 3. Run linear probing over the hidden states of a local model
 ```bash
 python -m canyon.cli probe --layer 12 --config config.example.yaml
 ```
 
-### 4. Multilingvalno pokretanje (EN, ZH, JA, RU, DE, ES)
-Suite-ovi postoje na 6 jezika (`<suite>_<lang>.json`), uz srpski original kao referencu:
+### 4. Multilingual run (EN, ZH, JA, RU, DE, ES)
+Suites exist in 6 languages (`<suite>_<lang>.json`), with the Serbian originals kept as a reference:
 ```bash
-# jedan jezik preko lokalnog llama.cpp endpointa
+# a single language via a local llama.cpp endpoint
 python -m canyon.cli run --lang en --model openai/<served-model>.gguf
 ```
 
 ---
 
-## 🌍 Multilingvalni benchmark i izveštaj
+## 🌍 Multilingual benchmark and report
 
 ```bash
-# Bihevioralni sweep kroz svih 6 jezika (black-box, llama.cpp endpoint)
+# Behavioural sweep across all 6 languages (black-box, llama.cpp endpoint)
 python3 scripts/run_benchmark.py --backend black --model openai/<served-model>.gguf
 
-# Realne aktivacije + drift na lokalnom HF modelu (CPU)
+# Real activations + drift on a local HF model (CPU)
 python3 scripts/run_benchmark.py --backend white --wl-lang en,zh,ru
 
-# Generisanje §4 whitepaper-a i podataka za sajt iz results/
+# Generate §4 of the whitepaper and the site data from results/
 python3 scripts/build_report.py
 ```
 
-- 📄 **Whitepaper:** [`WHITEPAPER.md`](./WHITEPAPER.md) — hipoteza, metodologija (CP/CR/SI/SPI), latent-space drift, rezultati po jezicima.
-- 🌐 **GitHub Pages sajt:** [`docs/`](./docs) — interaktivne tabele SPI benchmarka i SVG drift grafovi.
-- 🧪 **Suite-ovi:** [`canyon/suites/`](./canyon/suites) (regeneracija: `python3 scripts/gen_suites.py`).
+- 📄 **Whitepaper:** [`WHITEPAPER.md`](./WHITEPAPER.md) — hypothesis, methodology (CP/CR/SI/SPI), latent-space drift, per-language results.
+- 🌐 **GitHub Pages site:** [`docs/`](./docs) — interactive SPI benchmark tables and SVG drift charts.
+- 🧪 **Suites:** [`canyon/suites/`](./canyon/suites) (regenerate: `python3 scripts/gen_suites.py`).
 
 ---
 
-## 🚪 Eksperiment: da li „vrata" menjaju sobu? (access-path)
+## 🚪 Experiment: does the door change the room? (access-path)
 
-Frontier modeli se sve češće koriste *kroz agente* — CLI alat umota model u svoja uputstva i alate pre nego što tvoje pitanje uopšte stigne. Pitali smo se da li taj omotač menja utemeljenje, pa smo ista pitanja na 6 jezika postavili kroz dva koding-agenta umesto kroz goli chat endpoint, sa skinutim shell alatima radi poštenog poređenja:
+Frontier models are increasingly used *through agents* — a CLI tool wraps the model in its own instructions and tools before your question ever lands. We wondered whether that wrapper changes grounding, so we asked the same six-language probes through two coding agents instead of a bare chat endpoint, with each agent's shell tools stripped for a fair comparison:
 
 ```bash
 # Claude Code agent (claude -p), backend=claude-agent
 python3 scripts/run_claude.py
 
-# OpenAI Codex agent (codex exec), tools-off + izolovan CODEX_HOME, backend=codex-agent
+# OpenAI Codex agent (codex exec), tools-off + isolated CODEX_HOME, backend=codex-agent
 python3 scripts/run_codex.py --tools-off --codex-home /tmp/codex_clean
 ```
 
-Nalaz (vidi [§4.4 whitepaper-a](./WHITEPAPER.md#54-the-access-path-experiment-and-what-the-per-language-spread-means)): Claude familija 0.91–0.98, gpt-5.5 kroz Codex 0.85 — svi „strong grounding". Razlika između tools-on/off koju smo isprva videli **ispala je šum** (provera ponavljanjem u [`results/robustness_de.json`](./results/robustness_de.json)). Pouka: **single-run SPI su tačkaste procene; razlike manje od ~0.05 ne treba čitati kao stvarne.**
+Finding (see [§4.4 of the whitepaper](./WHITEPAPER.md#54-the-access-path-experiment-and-what-the-per-language-spread-means)): the Claude family lands at 0.91–0.98 and gpt-5.5 via Codex at 0.85 — all "strong grounding". A tools-on/off difference we first thought we saw **turned out to be noise** (repeat check in [`results/robustness_de.json`](./results/robustness_de.json)). The lesson: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.**
 
 ---
 
-## 🙏 Iskrena napomena i poziv
+## 🙏 An honest note and an invitation
 
-CANYON je **mali eksperiment nezavisnog istraživača**, ne recenzirani benchmark. Rodio se iz Hintonove ideje da model, da bi dovoljno dobro predviđao sledeću reč, mora da nauči strukturu *iza* reči — i iz mog pokušaja da tu ideju pretvorim u nešto što svako može da pokrene kod kuće. Brojevi nisu dokaz razumevanja; oni su mala gomilica ponašanja koje je teško dobiti čistom statistikom teksta.
+CANYON is **a small experiment by an independent researcher**, not a peer-reviewed benchmark. It grew out of Hinton's idea that, to predict the next word well enough, a model is forced to learn the structure *behind* the words — and out of my own attempt to turn that idea into something anyone can run at home. The numbers are not proof of understanding; they are a small pile of behaviour that is hard to get from text statistics alone.
 
-Najvrednije što ovaj alat nudi je **veličina** — dovoljno je mali da ga pročitaš za jedno popodne i razbiješ. Molim te, **ponovi eksperiment**: dodaj jezik, proširi suite-ove, zameni keyword-skor LLM-sudijom, uperi ga u model koji mi nismo mogli da dohvatimo. Najkorisniji ishod ne bi bio slaganje sa našim brojevima, nego da neko nađe gde je ovaj jednostavan instrument pogrešan — i to kaže.
+The most valuable thing this tool offers is its **size** — it is small enough to read in an afternoon and break. Please **reproduce the experiment**: add a language, widen the suites, swap the keyword screen for an LLM judge, point it at a model we could not reach. The most useful outcome would not be agreement with our numbers, but someone finding where this simple instrument is wrong — and saying so.
 
 ---
 
 ## 📊 Stochastic Parrot Index (SPI)
 
-Rezultat testiranja se izražava kroz tri specifične metričke ose:
-1. **Counterfactual Plasticity (CP-Score):** Sposobnost modela da dosledno razmišlja unutar izmenjenih zakona logike ili fizike.
-2. **Contextual Realignment (CR-Score):** Brzina i geometrijska oštrina kojom model menja svoja unutrašnja stanja kada mu se ukaže na implicitnu grešku.
-3. **Semantic Invariance (SI-Score):** Stabilnost apstraktne reprezentacije problema pri parafraziranju ili prevodu.
+A model's result is expressed along three metric axes:
+1. **Counterfactual Plasticity (CP-Score):** Can the model hold an altered law of physics across multiple turns (reverse gravity), instead of snapping back to "falls down"?
+2. **Contextual Realignment (CR-Score):** Can the model resolve syntactic amphiboly toward the physically/semantically sensible referent (the narrator flies, the rabbit runs)?
+3. **Semantic Invariance (SI-Score):** Can the model recognise an abstract conceptual contradiction (oxymoronic humour) rather than reading it literally?
 
-Zajedno, ove ose formiraju **Stochastic Parrot Index (SPI)** koji klasifikuje model kao:
-- **Strong Grounding (World Model)** (SPI >= 0.75)
-- **Weak Grounding (Hybrid)** (SPI >= 0.50)
+Together these axes form the **Stochastic Parrot Index** (`SPI = 0.4·CP + 0.4·CR + 0.2·SI`), which classifies a model as:
+- **Strong Grounding (World Model)** (SPI ≥ 0.75)
+- **Weak Grounding (Hybrid)** (SPI ≥ 0.50)
 - **Stochastic Parrot** (SPI < 0.50)
 
 ---
 
-## 🤝 Doprinos
+## 🤝 Contributing
 
-Projekat je u potpunosti otvoren za zajednicu! Slobodno dodajte nove test scenarije u `canyon/suites/` ili proširite mehanističke provajdere.
+The project is fully open to the community! Feel free to add new test scenarios in `canyon/suites/` or extend the mechanistic providers.
