@@ -107,6 +107,8 @@ def main():
                     help="Override max_tokens (reasoning models like DeepSeek V4 need a big budget).")
     ap.add_argument("--merge", action="store_true",
                     help="Merge into existing results/leaderboard.json instead of overwriting.")
+    ap.add_argument("--retries", type=int, default=None,
+                    help="Cap APIRouter retry attempts (low value avoids long hangs on cold/slow models).")
     args = ap.parse_args()
 
     if not (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")):
@@ -118,6 +120,8 @@ def main():
         engine.api_router.timeout = args.timeout
     if args.max_tokens is not None:
         engine.api_router.max_tokens = args.max_tokens
+    if args.retries is not None:
+        engine.api_router.max_retries = args.retries
     models = [m.strip() for m in args.models.split(",") if m.strip()]
     langs = [l.strip() for l in args.langs.split(",") if l.strip()]
 
