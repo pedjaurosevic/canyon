@@ -217,7 +217,7 @@ A follow-up question: does it matter *how* you reach a model? The leaderboard ab
 | Claude Code agent — claude -p (tools off) | `sonnet` | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 1.00 | **0.98** | Strong Grounding |
 | Claude Code agent — claude -p (tools off) | `opus` | 1.00 | 0.94 | 1.00 | 0.94 | 0.88 | 0.94 | **0.95** | Strong Grounding |
 | Claude Code agent — claude -p (tools off) | `haiku` | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.91** | Strong Grounding |
-| Codex agent — codex exec (tools off) | `gpt-5.5` | 0.86 | 0.86 | 0.80 | 0.72 | 1.00 | 0.86 | **0.85** | Strong Grounding |
+| Codex agent — codex exec (tools off) | `gpt-5.5` | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.83** | Strong Grounding |
 
 **A note on noise.** A single run once showed gpt-5.5 jumping on German when tools were removed. Re-running that one language 5× in each mode did *not* reproduce it — the direction actually reversed (with-tools mean 0.86 vs tools-off 0.76). The tools-on/off gap is within run-to-run variance (≈ ±0.07 per language at temperature 0.1), not a real scaffolding effect. The practical lesson cuts across the whole paper: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.** (Data: `results/robustness_de.json`.)
 

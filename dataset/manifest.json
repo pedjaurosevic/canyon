@@ -1,0 +1,50 @@
+{
+ "prompts": 35,
+ "conversations": 120,
+ "samples_en": 75,
+ "languages": [
+  "de",
+  "en",
+  "es",
+  "ja",
+  "ru",
+  "zh"
+ ],
+ "prompt_languages": [
+  "de",
+  "en",
+  "es",
+  "ja",
+  "ru",
+  "sr",
+  "zh"
+ ],
+ "model_runs": [
+  {
+   "access_path": "claude-agent",
+   "model": "haiku"
+  },
+  {
+   "access_path": "claude-agent",
+   "model": "sonnet"
+  },
+  {
+   "access_path": "codex-agent",
+   "model": "gpt-5.5"
+  },
+  {
+   "access_path": "local-blackbox",
+   "model": "openai/gemma-4-12B-it-Q4_K_M.gguf"
+  },
+  {
+   "access_path": "white-box",
+   "model": "Qwen/Qwen2.5-0.5B-Instruct"
+  }
+ ],
+ "runs_per_access_path": {
+  "claude-agent": 2,
+  "codex-agent": 1,
+  "local-blackbox": 1,
+  "white-box": 1
+ }
+}
