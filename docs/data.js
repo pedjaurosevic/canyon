@@ -1303,7 +1303,7 @@ window.CANYON_DATA = {
     }
   },
   "leaderboard": {
-    "generated_at": "2026-06-07T19:57:00",
+    "generated_at": "2026-06-07T20:11:44",
     "langs": [
       "en",
       "zh",
@@ -1313,6 +1313,67 @@ window.CANYON_DATA = {
       "es"
     ],
     "models": [
+      {
+        "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
+        "access_path": "local-blackbox",
+        "per_lang": {
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.85,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.88,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.975,
+          "cr_score": 0.975,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.98
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
       {
         "model": "claude-opus-4.8",
         "access_path": "claude-agent",
@@ -2225,6 +2286,43 @@ window.CANYON_DATA = {
           "cr_score": 0.942,
           "si_score": 1.0,
           "stochastic_parrot_index": 0.827
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "access_path": "white-box",
+        "per_lang": {
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 0.65,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "en": {
+            "cp_score": 0.35,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.74,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.667,
+          "cr_score": 0.883,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.82
         },
         "classification": "Strong Grounding (World Model)"
       },
