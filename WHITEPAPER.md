@@ -187,25 +187,30 @@ Model: `Qwen/Qwen2.5-0.5B-Instruct` · real hidden-state activations, layers 0�
            L0  L4  L8  L12 L16 L20 
 ```
 
-### 4.3 Model leaderboard (black-box, cross-lingual)
+### 4.3 Semantic-judge model benchmark
 
-Mean Stochastic Parrot Index over 6 languages, per API model, ranked by mean SPI. Models served via NVIDIA NIM (`integrate.api.nvidia.com`) and the DeepSeek API (`deepseek-v4-pro`, a reasoning model). Open/free-tier endpoints with insufficient quota are reported as N/A rather than scored, so the table reflects only trustworthy measurements.
+Mean semantic SPI over 6 languages, ranked after re-scoring full saved transcripts with `gpt-5.5`. This is the primary leaderboard: it accepts correct paraphrases and avoids the known multilingual brittleness of the keyword screen. Every row shows the exact tested model identifier and access path.
 
-| # | Model | EN | ZH | JA | RU | DE | ES | Cov. | **Mean SPI** | Class |
-|---|-------|----|----|----|----|----|----|------|------|-------|
-| 1 | `llama-4-maverick-17b-128e-instruct` | 1.00 | 0.94 | 1.00 | 0.86 | 0.94 | 1.00 | 6/6 | **0.957** | Strong Grounding |
-| 2 | `llama-3.3-70b-instruct` | 0.94 | 1.00 | 1.00 | 0.86 | 0.94 | 1.00 | 6/6 | **0.957** | Strong Grounding |
-| 3 | `qwen3-next-80b-a3b-instruct` | 0.86 | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 6/6 | **0.953** | Strong Grounding |
-| 4 | `qwen3.5-122b-a10b` | 0.94 | 1.00 | 0.94 | 0.86 | 1.00 | 0.94 | 6/6 | **0.947** | Strong Grounding |
-| 5 | `deepseek-v4-flash` | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 0.80 | 6/6 | **0.943** | Strong Grounding |
-| 6 | `mistral-small-4-119b-2603` | 1.00 | 1.00 | 0.94 | 0.86 | 1.00 | 0.80 | 6/6 | **0.933** | Strong Grounding |
-| 7 | `deepseek-v4-pro` | 0.94 | 0.94 | 1.00 | 0.86 | 0.86 | 1.00 | 6/6 | **0.933** | Strong Grounding |
-| 8 | `mistral-nemotron` | 0.94 | 1.00 | 0.94 | 0.80 | 1.00 | 0.86 | 6/6 | **0.923** | Strong Grounding |
-| 9 | `llama-3.1-8b-instruct` | 1.00 | 0.86 | 1.00 | 0.72 | 0.86 | 0.86 | 6/6 | **0.883** | Strong Grounding |
-| 10 | `llama-3.2-3b-instruct` | 1.00 | 0.86 | 1.00 | 0.66 | 0.86 | 0.86 | 6/6 | **0.873** | Strong Grounding |
-| – | `llama-3.3-nemotron-super-49b-v1.5` | N/A | N/A | N/A | N/A | N/A | N/A | 0/6 | — | INSUFFICIENT DATA |
-
-*N/A = quota-blocked or rate-limited on the API key; excluded from the mean. Only fully-covered models are ranked.*
+| # | Model | Access | EN | ZH | JA | RU | DE | ES | **Semantic SPI** | Class |
+|---|-------|--------|----|----|----|----|----|----|------|-------|
+| 1 | `claude-haiku-4.5` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | **1.000** | Strong Grounding |
+| 2 | `claude-sonnet-4.6` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 3 | `gpt-5.4-mini` | Codex agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 4 | `novita/qwen/qwen3-next-80b-a3b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 5 | `novita/qwen/qwen3.5-122b-a10b` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 6 | `deepseek/deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 7 | `gpt-5.4` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.933** | Strong Grounding |
+| 8 | `novita/deepseek/deepseek-v4-flash` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 1.00 | 1.00 | **0.933** | Strong Grounding |
+| 9 | `openai/gemma-4-12B-it-Q4_K_M.gguf` | local | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 10 | `claude-opus-4.8` | Claude agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 11 | `gpt-5.5` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 12 | `novita/meta-llama/llama-3.3-70b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 0.80 | 0.60 | 1.00 | **0.900** | Strong Grounding |
+| 13 | `novita/google/gemma-4-31b-it` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.60 | 0.80 | **0.900** | Strong Grounding |
+| 14 | `novita/meta-llama/llama-3.1-8b-instruct` | chat API | 1.00 | 1.00 | 0.80 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 15 | `novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.60 | 0.80 | 1.00 | 1.00 | 0.80 | 0.80 | **0.833** | Strong Grounding |
+| 16 | `deepseek/deepseek-v4-pro` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.80 | **0.833** | Strong Grounding |
+| 17 | `novita/google/gemma-4-26b-a4b-it` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.60 | **0.800** | Strong Grounding |
+| 18 | `Qwen/Qwen2.5-0.5B-Instruct` | white-box | 0.40 | 0.60 | — | 0.60 | — | — | **0.533** | Weak Grounding |
 
 
 ### 4.4 The access-path experiment (frontier models via agent CLIs)
@@ -226,28 +231,28 @@ A follow-up question: does it matter *how* you reach a model? The leaderboard ab
 
 ### 4.5 Combined ranking — all access paths
 
-Every model in one list, ranked by mean SPI, tagged with how it was reached. Chat-API and agent-CLI numbers are *not* strictly comparable (the agent wraps the model in its own framing), so read the **Access** column as essential context, not a footnote — and remember gaps below ~0.05 are within run-to-run noise.
+Every full-transcript model run in one list, ranked by semantic mean SPI when a judge leaderboard is available, tagged with how it was reached. Chat-API and agent-CLI numbers are *not* strictly comparable (the agent wraps the model in its own framing), so read the **Access** column as essential context — and remember gaps below ~0.05 are within noise.
 
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Mean SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|
-| 1 | `gemma-4-12B-it-Q4_K_M.gguf` | local | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.88 | **0.980** | Strong Grounding |
-| 2 | `claude-opus-4.8` | Claude agent | 0.88 | 1.00 | 0.94 | 1.00 | 1.00 | 0.94 | **0.960** | Strong Grounding |
-| 3 | `llama-4-maverick-17b-128e-instruct` | chat API | 1.00 | 0.94 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
-| 4 | `llama-3.3-70b-instruct` | chat API | 0.94 | 1.00 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
-| 5 | `qwen3-next-80b-a3b-instruct` | chat API | 0.86 | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | **0.953** | Strong Grounding |
-| 6 | `qwen3.5-122b-a10b` | chat API | 0.94 | 1.00 | 0.94 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
-| 7 | `claude-sonnet-4.6` | Claude agent | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
-| 8 | `deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 0.80 | **0.943** | Strong Grounding |
-| 9 | `mistral-small-4-119b-2603` | chat API | 1.00 | 1.00 | 0.94 | 0.86 | 1.00 | 0.80 | **0.933** | Strong Grounding |
-| 10 | `deepseek-v4-pro` | chat API | 0.94 | 0.94 | 1.00 | 0.86 | 0.86 | 1.00 | **0.933** | Strong Grounding |
-| 11 | `mistral-nemotron` | chat API | 0.94 | 1.00 | 0.94 | 0.80 | 1.00 | 0.86 | **0.923** | Strong Grounding |
-| 12 | `claude-haiku-4.5` | Claude agent | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
-| 13 | `llama-3.1-8b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.72 | 0.86 | 0.86 | **0.883** | Strong Grounding |
-| 14 | `llama-3.2-3b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.66 | 0.86 | 0.86 | **0.873** | Strong Grounding |
-| 15 | `gpt-5.5` | Codex agent | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.827** | Strong Grounding |
-| 16 | `gpt-5.4` | Codex agent | 0.86 | 0.86 | 0.80 | 0.72 | 0.86 | 0.86 | **0.827** | Strong Grounding |
-| 17 | `Qwen2.5-0.5B-Instruct` | white-box | 0.74 | 1.00 | — | 0.72 | — | — | **0.820** | Strong Grounding |
-| 18 | `gpt-5.4-mini` | Codex agent | 0.86 | 0.80 | 0.86 | 0.72 | 0.86 | 0.80 | **0.817** | Strong Grounding |
+| 1 | `claude-haiku-4.5` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | **1.000** | Strong Grounding |
+| 2 | `claude-sonnet-4.6` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 3 | `gpt-5.4-mini` | Codex agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 4 | `qwen3-next-80b-a3b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 5 | `qwen3.5-122b-a10b` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 6 | `deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
+| 7 | `gpt-5.4` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.933** | Strong Grounding |
+| 8 | `deepseek-v4-flash` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 1.00 | 1.00 | **0.933** | Strong Grounding |
+| 9 | `gemma-4-12B-it-Q4_K_M.gguf` | local | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 10 | `claude-opus-4.8` | Claude agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 11 | `gpt-5.5` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 12 | `llama-3.3-70b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 0.80 | 0.60 | 1.00 | **0.900** | Strong Grounding |
+| 13 | `gemma-4-31b-it` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.60 | 0.80 | **0.900** | Strong Grounding |
+| 14 | `llama-3.1-8b-instruct` | chat API | 1.00 | 1.00 | 0.80 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
+| 15 | `llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.60 | 0.80 | 1.00 | 1.00 | 0.80 | 0.80 | **0.833** | Strong Grounding |
+| 16 | `deepseek-v4-pro` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.80 | **0.833** | Strong Grounding |
+| 17 | `gemma-4-26b-a4b-it` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.60 | **0.800** | Strong Grounding |
+| 18 | `Qwen2.5-0.5B-Instruct` | white-box | 0.40 | 0.60 | — | 0.60 | — | — | **0.533** | Weak Grounding |
 
 <!-- /RESULTS:AUTO -->
 

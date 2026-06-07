@@ -1303,7 +1303,9 @@ window.CANYON_DATA = {
     }
   },
   "leaderboard": {
-    "generated_at": "2026-06-07T20:11:44",
+    "generated_at": "2026-06-07T22:12:02",
+    "judge": "gpt-5.5",
+    "score_type": "semantic_judge",
     "langs": [
       "en",
       "zh",
@@ -1314,63 +1316,443 @@ window.CANYON_DATA = {
     ],
     "models": [
       {
-        "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-        "access_path": "local-blackbox",
+        "model": "claude-haiku-4.5",
+        "access_path": "claude-agent",
         "per_lang": {
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          },
-          "es": {
-            "cp_score": 0.85,
-            "cr_score": 0.85,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.88,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          },
           "en": {
             "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
           "zh": {
             "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
           }
         },
         "mean": {
-          "cp_score": 0.975,
-          "cr_score": 0.975,
+          "cp_score": 1.0,
+          "cr_score": 1.0,
           "si_score": 1.0,
-          "stochastic_parrot_index": 0.98
+          "stochastic_parrot_index": 1.0
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "claude-sonnet-4.6",
+        "access_path": "claude-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/qwen/qwen3-next-80b-a3b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/qwen/qwen3.5-122b-a10b",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "deepseek/deepseek-v4-flash",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "gpt-5.4",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.833,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.933
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/deepseek/deepseek-v4-flash",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.917,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.933
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
+        "access_path": "local-blackbox",
+        "per_lang": {
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
         },
         "classification": "Strong Grounding (World Model)"
       },
@@ -1380,9 +1762,444 @@ window.CANYON_DATA = {
         "per_lang": {
           "en": {
             "cp_score": 1.0,
-            "cr_score": 0.7,
+            "cr_score": 0.5,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.88,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "gpt-5.5",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/meta-llama/llama-3.3-70b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/google/gemma-4-31b-it",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/meta-llama/llama-3.1-8b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 0.917,
+          "cr_score": 0.833,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "zh": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 0.917,
+          "cr_score": 0.667,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.833
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "deepseek/deepseek-v4-pro",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.583,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.833
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/google/gemma-4-26b-a4b-it",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.5,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.8
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "access_path": "white-box",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.4
+          },
+          "ru": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          }
+        },
+        "mean": {
+          "cp_score": 0.167,
+          "cr_score": 0.833,
+          "si_score": 0.667,
+          "stochastic_parrot_index": 0.533
+        },
+        "classification": "Weak Grounding (Hybrid)"
+      }
+    ]
+  },
+  "keyword_leaderboard": {
+    "generated_at": "2026-06-07 22:06:01",
+    "langs": [
+      "en",
+      "zh",
+      "ja",
+      "ru",
+      "de",
+      "es"
+    ],
+    "models": [
+      {
+        "model": "deepseek/deepseek-v4-flash",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
@@ -1396,9 +2213,106 @@ window.CANYON_DATA = {
           },
           "ja": {
             "cp_score": 1.0,
-            "cr_score": 0.85,
+            "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.94,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.942,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.977
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "**I**  \nThe sentence structure suggests that the speaker (\"I\") is the one flying to Chicago, as the participle phrase \"flying to Chicago\" typically modifies the"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "The rabbit is running through the forest. The sentence is ambiguous, but the most logical interpretation is that the participial phrase \"running through the for"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple will rise upward, accelerating toward the sky, as if it were falling in reverse."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "The apple will keep accelerating upward indefinitely, never stopping unless acted upon by another force."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The paradox lies in the contradiction between \"working hard\" and \"doing nothing\"—one cannot exert effort while achieving nothing. The humor comes from the ironi"
+          }
+        ],
+        "elapsed_s": 152.9
+      },
+      {
+        "model": "novita/qwen/qwen3-next-80b-a3b-instruct",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
@@ -1412,9 +2326,203 @@ window.CANYON_DATA = {
           },
           "de": {
             "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
             "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.942,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.977
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nExplanation: The sentence is ambiguous due to misplaced modifier, but grammatically, \"flying to Chicago\" modifies the nearest noun, \"I,\" implying the speaker"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence **“I saw a rabbit eating a carrot running through the forest,”** the intended meaning is ambiguous due to **misplaced modifier** — but the most "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple shoots upward into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It will keep accelerating upward forever — unless acted on by another force — because there’s no “down” to pull it back. In reverse gravity, the apple is pushed"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "This sentence is paradoxical because it **contradicts itself through semantic inversion**: it claims “slacking off at work” is the speaker’s *favorite activity*"
+          }
+        ],
+        "elapsed_s": 96.8
+      },
+      {
+        "model": "novita/google/gemma-4-31b-it",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "**I**\n\nThe sentence is syntactically ambiguous, but logically, only a person can fly to a city; the Grand Canyon is a stationary geographical feature."
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "This sentence is a classic example of **syntactic ambiguity**. Because of the way the sentence is structured, there are three grammatically plausible interpreta"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would accelerate rapidly upward and fly away into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It would never stop; it would continue to accelerate away from the planet and drift indefinitely into deep space."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "**The Paradox**\nThe paradox lies in the contradiction of **effort**. \"Slacking off\" is defined as avoiding effort or being lazy, yet the speaker claims to \"work"
+          }
+        ],
+        "elapsed_s": 251.3
+      },
+      {
+        "model": "deepseek/deepseek-v4-pro",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
@@ -1429,15 +2537,51 @@ window.CANYON_DATA = {
         },
         "mean": {
           "cp_score": 1.0,
-          "cr_score": 0.9,
+          "cr_score": 0.892,
           "si_score": 1.0,
-          "stochastic_parrot_index": 0.96
+          "stochastic_parrot_index": 0.957
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nThe sentence contains a dangling participial phrase: \"flying to Chicago\" grammatically modifies the subject \"I,\" meaning the speaker is flying. While the int"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "We need to analyze the sentence: \"I saw a rabbit eating a carrot running through the forest\". Who or what is running through the forest? Explain why.\n\nThe sente"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would accelerate upward, shooting into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It would never stop; it would continue moving upward forever, drifting away into space."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents a contradiction: \"slacking off\" implies avoiding effort, yet the speaker claims to \"work so hard\" at it. Working"
+          }
+        ],
+        "elapsed_s": 236.9
       },
       {
-        "model": "nvidia_nim/meta/llama-4-maverick-17b-128e-instruct",
-        "access_path": "chat-api",
+        "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -1494,11 +2638,241 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.957
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "The Grand Canyon.\n\nThe sentence is an example of a dangling modifier or a misplaced participle, where the phrase \"flying to Chicago\" is meant to describe the su"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "## Step 1: Understand the sentence structure\nThe sentence given is 'I saw a rabbit eating a carrot running through the forest'. This sentence is an example of a"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would shoot upward into the air, accelerating away from the ground as it rises."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "The apple will continue to rise until it reaches the edge of the atmosphere and escapes into space, as there is no longer any \"upward\" force acting on it once i"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "## Step 1: Understand the given sentence\nThe sentence provided is: 'My favorite activity is slacking off at work because I work so hard at doing nothing.' This "
+          }
+        ],
+        "elapsed_s": 100.9
+      },
+      {
+        "model": "novita/deepseek/deepseek-v4-flash",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.892,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.957
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nThe sentence is ambiguous, but the intended meaning is that the speaker (\"I\") was flying to Chicago and watched the Grand Canyon from the plane. The particip"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "We need to parse the sentence: \"I saw a rabbit eating a carrot running through the forest.\" This is a classic ambiguous sentence. The ambiguity arises because \""
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would accelerate upward, rising toward the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It would never stop—it would keep accelerating upward indefinitely."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The paradox lies in the contradiction between \"slacking off\" (avoiding work) and \"working so hard at doing nothing\" (exerting effort to be idle). The humor come"
+          }
+        ],
+        "elapsed_s": 147.8
+      },
+      {
+        "model": "nvidia_nim/meta/llama-4-maverick-17b-128e-instruct",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 0.85,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.94,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.975,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.957
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "The Grand Canyon.\n\nThe sentence is an example of a dangling modifier or a misplaced modifier, where the phrase \"flying to Chicago\" is intended to describe \"I\" b"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "## Step 1: Understand the sentence structure\nThe sentence given is 'I saw a rabbit eating a carrot running through the forest'. This sentence is an example of a"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would shoot upward into the air, accelerating away from the ground as it rises."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "The apple will continue to rise until it reaches the edge of the atmosphere, and then it will escape into space, never actually \"stopping\" in the sense of comin"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "## Step 1: Understand the given sentence\nThe sentence provided is: 'My favorite activity is slacking off at work because I work so hard at doing nothing.' This "
+          }
+        ],
+        "elapsed_s": 95.0
       },
       {
         "model": "nvidia_nim/meta/llama-3.3-70b-instruct",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -1555,11 +2929,47 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.957
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I. \n\nThis is because the subject of the sentence, 'I', is performing the action of watching the Grand Canyon, and the phrase 'flying to Chicago' is a participia"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', it is the rabbit that is running through the forest. \n\nThe reason for this interpre"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would shoot upward, accelerating rapidly into the sky, and potentially disappearing into the atmosphere or even outer space."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, the apple would continue to accelerate upward until it reaches escape velocity, at which point it would leave the Earth's atmos"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it combines two contradictory ideas: \"working hard\" and \"doing nothing.\" Typically, working hard implies putting in effort a"
+          }
+        ],
+        "elapsed_s": 554.7
       },
       {
         "model": "nvidia_nim/qwen/qwen3-next-80b-a3b-instruct",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 0.65,
@@ -1616,11 +3026,47 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.953
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nExplanation: The phrase \"flying to Chicago\" grammatically modifies the subject \"I,\" implying that the speaker is the one flying. The Grand Canyon cannot fly,"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence **“I saw a rabbit eating a carrot running through the forest,”** the intended meaning is ambiguous due to **misplaced modifier** — but the most "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple shoots upward into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It will keep accelerating upward forever — unless acted upon by another force — because there’s no “down” to pull it back, and no ceiling or boundary to stop it"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "This sentence is paradoxical because it **contradicts itself through semantic irony**: the speaker claims to “work so hard at doing nothing,” which is logically"
+          }
+        ],
+        "elapsed_s": 109.6
       },
       {
         "model": "nvidia_nim/qwen/qwen3.5-122b-a10b",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -1677,11 +3123,47 @@ window.CANYON_DATA = {
           "si_score": 0.95,
           "stochastic_parrot_index": 0.947
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nThe sentence contains a dangling modifier. Grammatically, the phrase \"flying to Chicago\" modifies the subject of the main clause, which is \"I.\" This implies "
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "Based on standard English grammar and the principle of **proximity**, the entity running through the forest is the **carrot**.\n\nHere is the step-by-step breakdo"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would accelerate rapidly upward, flying away from you toward the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with uniform reverse gravity and no obstacles, the apple would **never stop**; it would continue to accelerate upward indefinitely, moving faster and"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is **paradoxical** because it creates a logical contradiction between the concepts of \"working hard\" and \"doing nothing.\" Typically, \"working hard\""
+          }
+        ],
+        "elapsed_s": 210.7
       },
       {
-        "model": "claude-sonnet-4.6",
-        "access_path": "claude-agent",
+        "model": "novita/meta-llama/llama-3.3-70b-instruct",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -1693,9 +3175,9 @@ window.CANYON_DATA = {
           },
           "zh": {
             "cp_score": 1.0,
-            "cr_score": 0.85,
+            "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.94,
+            "stochastic_parrot_index": 1.0,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
@@ -1709,10 +3191,10 @@ window.CANYON_DATA = {
           },
           "ru": {
             "cp_score": 1.0,
-            "cr_score": 0.65,
+            "cr_score": 0.3,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
             "status": "ok"
           },
           "de": {
@@ -1724,25 +3206,61 @@ window.CANYON_DATA = {
             "status": "ok"
           },
           "es": {
-            "cp_score": 0.85,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.94,
+            "stochastic_parrot_index": 1.0,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           }
         },
         "mean": {
-          "cp_score": 0.975,
-          "cr_score": 0.892,
+          "cp_score": 1.0,
+          "cr_score": 0.858,
           "si_score": 1.0,
-          "stochastic_parrot_index": 0.947
+          "stochastic_parrot_index": 0.943
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I.\n\nThis is because the sentence is structured in a way that \"I\" is the subject performing the action of watching and flying. The phrase \"flying to Chicago\" is "
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence \"I saw a rabbit eating a carrot running through the forest\", the subject that is running through the forest is the rabbit.\n\nThe reason for this "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple shoots upward, accelerating rapidly into the sky, and disappears into the distance."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, the apple will continue to accelerate upward until it reaches escape velocity from the Earth, at which point it will leave the "
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it combines two contradictory ideas: \"working hard\" and \"doing nothing.\" Typically, working hard implies putting in effort a"
+          }
+        ],
+        "elapsed_s": 100.8
       },
       {
         "model": "nvidia_nim/deepseek-ai/deepseek-v4-flash",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -1799,11 +3317,47 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.943
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nExplanation: The sentence structure creates a dangling modifier. The phrase \"flying to Chicago\" is intended to modify the subject of the main clause, which i"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "Based on standard English grammar and syntax, the most logical interpretation is that **the rabbit** is running through the forest.\n\nHere is the explanation:\n\nT"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "If gravity pushes objects upward, then when you open your hand, the apple would accelerate upward, away from the ground, rising into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In that reverse-gravity world, the apple would accelerate upward indefinitely, never stopping, because there is no downward force to slow it down or pull it bac"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "This sentence is paradoxical because it claims to be \"slacking off\" (avoiding work) while simultaneously \"working so hard\" (putting in effort). The humor lies i"
+          }
+        ],
+        "elapsed_s": 1001.3
       },
       {
         "model": "nvidia_nim/mistralai/mistral-small-4-119b-2603",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -1860,25 +3414,61 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.933
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "The Grand Canyon\n\nExplanation: The sentence is an example of a garden-path sentence, where the initial interpretation of the sentence leads the reader down the "
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence \"I saw a rabbit eating a carrot running through the forest,\" the phrase \"running through the forest\" is a participial phrase that modifies the n"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would accelerate upward, away from your hand and into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In the reverse-gravity world with no physical obstacles, the apple would continue accelerating upward indefinitely, never stopping."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents two contradictory ideas simultaneously: \"slacking off at work\" implies laziness, while \"work so hard at doing no"
+          }
+        ],
+        "elapsed_s": 257.3
       },
       {
-        "model": "deepseek/deepseek-v4-pro",
-        "access_path": "chat-api",
+        "model": "novita/google/gemma-4-26b-a4b-it",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
             "cr_score": 0.85,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.94,
+            "si_score": 0.7,
+            "stochastic_parrot_index": 0.88,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
           "zh": {
-            "cp_score": 0.85,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.94,
+            "stochastic_parrot_index": 1.0,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
@@ -1900,32 +3490,68 @@ window.CANYON_DATA = {
           },
           "de": {
             "cp_score": 1.0,
-            "cr_score": 0.65,
+            "cr_score": 0.85,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
+            "stochastic_parrot_index": 0.94,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
           "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
+            "cp_score": 0.85,
+            "cr_score": 0.85,
             "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
+            "stochastic_parrot_index": 0.88,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           }
         },
         "mean": {
           "cp_score": 0.975,
-          "cr_score": 0.858,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.933
+          "cr_score": 0.867,
+          "si_score": 0.95,
+          "stochastic_parrot_index": 0.927
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "**I**\n\nThe sentence contains a **syntactic ambiguity** known as a \"misplaced modifier.\" Grammatically, the phrase \"flying to Chicago\" is positioned next to \"the"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "Grammatically, this sentence is a classic example of a **syntactic ambiguity**. Because of how the modifiers are placed, there are three possible interpretation"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would fall upward, accelerating toward the sky until it disappears from your sight."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with no physical obstacles, the apple would never stop. It would continue to accelerate upward indefinitely, eventually leaving the atmosphere and tr"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "This sentence is a classic example of a self-referential paradox. Here is the breakdown:\n\n### Why it is paradoxical\nThe paradox lies in the **contradiction of e"
+          }
+        ],
+        "elapsed_s": 241.1
       },
       {
         "model": "nvidia_nim/mistralai/mistral-nemotron",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -1982,33 +3608,69 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.923
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "**I** (implied subject of \"flying\").\n\nThe sentence is ambiguous, but the most natural interpretation is that *I* was flying to Chicago while watching the Grand "
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "The sentence *\"I saw a rabbit eating a carrot running through the forest\"* is ambiguous due to a **dangling modifier** (a misplaced participial phrase). The amb"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "If gravity pushes objects upward, the apple would accelerate away from your hand toward the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a reverse-gravity world with no obstacles, the apple would continue accelerating upward indefinitely, never stopping unless acted upon by another force (like"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents two contradictory ideas: \"working hard\" and \"doing nothing.\" The humor lies in the absurdity of the speaker clai"
+          }
+        ],
+        "elapsed_s": 93.1
       },
       {
-        "model": "claude-haiku-4.5",
-        "access_path": "claude-agent",
+        "model": "novita/qwen/qwen3.5-122b-a10b",
         "per_lang": {
           "en": {
-            "cp_score": 0.65,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
+            "stochastic_parrot_index": 1.0,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
           "zh": {
-            "cp_score": 0.85,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.94,
+            "stochastic_parrot_index": 1.0,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
           "ja": {
             "cp_score": 1.0,
-            "cr_score": 1.0,
+            "cr_score": 0.85,
             "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
+            "stochastic_parrot_index": 0.94,
             "classification": "Strong Grounding (World Model)",
             "status": "ok"
           },
@@ -2021,6 +3683,103 @@ window.CANYON_DATA = {
             "status": "ok"
           },
           "de": {
+            "cp_score": 0.65,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.942,
+          "cr_score": 0.858,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.92
+        },
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\n**Explanation:** Although the phrase \"flying to Chicago\" follows \"the Grand Canyon,\" the Grand Canyon is a stationary landform and cannot fly. Therefore, log"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "Based on standard English grammar and logic, the **rabbit** is running through the forest.\n\nHere is the explanation of why, broken down by grammar and semantics"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would float upward into the sky."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It would not stop; it would continue rising indefinitely until it escaped Earth's atmosphere and floated into space."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "**The Paradox**\nThe sentence is paradoxical because it contains a logical contradiction: **\"slacking off\"** implies a deliberate avoidance of effort, while **\"w"
+          }
+        ],
+        "elapsed_s": 461.9
+      },
+      {
+        "model": "novita/meta-llama/llama-3.1-8b-instruct",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ja": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.3,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "de": {
             "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
@@ -2030,24 +3789,60 @@ window.CANYON_DATA = {
           },
           "es": {
             "cp_score": 0.65,
-            "cr_score": 0.85,
+            "cr_score": 0.65,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.8,
-            "classification": "Strong Grounding (World Model)",
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
             "status": "ok"
           }
         },
         "mean": {
-          "cp_score": 0.858,
-          "cr_score": 0.917,
+          "cp_score": 0.883,
+          "cr_score": 0.825,
           "si_score": 1.0,
-          "stochastic_parrot_index": 0.91
+          "stochastic_parrot_index": 0.883
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "The speaker (I). \n\nThe sentence implies that the speaker is flying to Chicago, while watching the Grand Canyon."
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', the subject performing the action of running is the rabbit.\n\nThis can be determined"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "In a world where gravity pushes objects upward, if you let go of the apple, it would float up into the air and continue rising indefinitely, rather than falling"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, the apple would continue moving upward indefinitely, never stopping or reaching a specific height. It would essentially be in a"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it contains two contradictory ideas: \"slacking off\" and \"working hard.\" The phrase \"working hard at doing nothing\" is an oxy"
+          }
+        ],
+        "elapsed_s": 40.2
       },
       {
         "model": "nvidia_nim/meta/llama-3.1-8b-instruct",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -2104,11 +3899,47 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.883
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "The speaker (I). \n\nThe sentence implies that the speaker is flying to Chicago while watching the Grand Canyon from a plane."
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', the subject that is running through the forest is the rabbit.\n\nThis can be inferred"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "In a world where gravity works in reverse, the apple would shoot out of my hand and upward into the air, possibly even reaching great heights before it starts t"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, the apple would continue to move upward indefinitely, never actually stopping or coming to a rest, unless it somehow loses ener"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it contains two contradictory ideas: \"slacking off\" and \"working hard.\" The phrase \"working hard\" typically implies putting "
+          }
+        ],
+        "elapsed_s": 41.0
       },
       {
         "model": "nvidia_nim/meta/llama-3.2-3b-instruct",
-        "access_path": "chat-api",
         "per_lang": {
           "en": {
             "cp_score": 1.0,
@@ -2165,164 +3996,276 @@ window.CANYON_DATA = {
           "si_score": 1.0,
           "stochastic_parrot_index": 0.873
         },
-        "classification": "Strong Grounding (World Model)"
+        "valid_langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "'I'"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence \"I saw a rabbit eating a carrot running through the forest\", the subject that is running through the forest is the rabbit.\n\nThis is because the "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would shoot upward, away from your hand, and continue to rise into the sky, eventually disappearing into the atmosphere."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "In a world with reverse gravity, if there are no physical obstacles above, the apple would continue to rise indefinitely, eventually escaping Earth's atmosphere"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents a contradictory idea: \"working hard at doing nothing.\" This is a self-referential paradox, where the speaker cla"
+          }
+        ],
+        "elapsed_s": 45.6
       },
       {
-        "model": "gpt-5.5",
-        "access_path": "codex-agent",
+        "model": "novita/meta-llama/llama-3.2-3b-instruct",
         "per_lang": {
           "en": {
-            "cp_score": 0.65,
+            "status": "rate_limited",
+            "errored_steps": 5
+          },
+          "zh": {
+            "status": "rate_limited",
+            "errored_steps": 5
+          },
+          "ja": {
+            "status": "rate_limited",
+            "errored_steps": 5
+          },
+          "ru": {
+            "status": "rate_limited",
+            "errored_steps": 5
+          },
+          "de": {
+            "status": "rate_limited",
+            "errored_steps": 5
+          },
+          "es": {
+            "status": "rate_limited",
+            "errored_steps": 5
+          }
+        },
+        "mean": {},
+        "valid_langs": [],
+        "classification": "INSUFFICIENT DATA (rate-limited)",
+        "error_rate": 1.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "Error during LiteLLM generation (after 1 attempts): litellm.RateLimitError: RateLimitError: OpenAIException - server overload, please try again later trace_id: "
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "Error during LiteLLM generation (after 1 attempts): litellm.RateLimitError: RateLimitError: OpenAIException - server overload, please try again later trace_id: "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "Error during LiteLLM generation (after 1 attempts): litellm.RateLimitError: RateLimitError: OpenAIException - server overload, please try again later trace_id: "
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "Error during LiteLLM generation (after 1 attempts): litellm.RateLimitError: RateLimitError: OpenAIException - server overload, please try again later trace_id: "
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "Error during LiteLLM generation (after 1 attempts): litellm.RateLimitError: RateLimitError: OpenAIException - server overload, please try again later trace_id: "
+          }
+        ],
+        "elapsed_s": 1692.0
+      },
+      {
+        "model": "nvidia_nim/nvidia/llama-3.3-nemotron-super-49b-v1.5",
+        "per_lang": {
+          "en": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "zh": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "ja": {
+            "status": "rate_limited",
+            "errored_steps": 2
+          },
+          "ru": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "de": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          },
+          "es": {
+            "status": "rate_limited",
+            "errored_steps": 3
+          }
+        },
+        "mean": {},
+        "valid_langs": [],
+        "classification": "INSUFFICIENT DATA (rate-limited)",
+        "error_rate": 0.567,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "Error during LiteLLM generation (after 5 attempts): 'NoneType' object has no attribute 'strip'"
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "In the sentence **\"I saw a rabbit eating a carrot running through the forest,\"** the phrase **\"running through the forest\"** most logically modifies **\"rabbit\"*"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "Error during LiteLLM generation (after 5 attempts): 'NoneType' object has no attribute 'strip'"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "Error during LiteLLM generation (after 5 attempts): 'NoneType' object has no attribute 'strip'"
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it presents a contradiction: the speaker claims their favorite activity is \"slacking off at work\" (implying laziness or avoi"
+          }
+        ],
+        "elapsed_s": 2363.3
+      }
+    ]
+  },
+  "judged_leaderboard": {
+    "generated_at": "2026-06-07T22:12:02",
+    "judge": "gpt-5.5",
+    "langs": [
+      "en",
+      "zh",
+      "ja",
+      "ru",
+      "de",
+      "es"
+    ],
+    "models": [
+      {
+        "model": "claude-haiku-4.5",
+        "access_path": "claude-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
           "zh": {
             "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
           "ja": {
-            "cp_score": 0.5,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.8,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
           "ru": {
-            "cp_score": 0.65,
-            "cr_score": 0.65,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.72,
-            "classification": "Weak Grounding (Hybrid)",
-            "status": "ok"
-          },
-          "de": {
-            "cp_score": 0.65,
-            "cr_score": 0.65,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.72,
-            "classification": "Weak Grounding (Hybrid)",
-            "status": "ok"
-          },
-          "es": {
-            "cp_score": 0.65,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
           }
         },
         "mean": {
-          "cp_score": 0.683,
-          "cr_score": 0.883,
+          "cp_score": 1.0,
+          "cr_score": 1.0,
           "si_score": 1.0,
-          "stochastic_parrot_index": 0.827
+          "stochastic_parrot_index": 1.0
         },
         "classification": "Strong Grounding (World Model)"
       },
       {
-        "model": "gpt-5.4",
-        "access_path": "codex-agent",
+        "model": "claude-sonnet-4.6",
+        "access_path": "claude-agent",
         "per_lang": {
           "en": {
-            "cp_score": 0.65,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
-          "zh": {
-            "cp_score": 0.65,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          },
-          "ja": {
-            "cp_score": 0.5,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          },
-          "ru": {
-            "cp_score": 0.65,
-            "cr_score": 0.65,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.72,
-            "classification": "Weak Grounding (Hybrid)",
-            "status": "ok"
-          },
-          "de": {
-            "cp_score": 0.65,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          },
-          "es": {
-            "cp_score": 0.65,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
-          }
-        },
-        "mean": {
-          "cp_score": 0.625,
-          "cr_score": 0.942,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.827
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "Qwen/Qwen2.5-0.5B-Instruct",
-        "access_path": "white-box",
-        "per_lang": {
           "zh": {
             "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 1.0,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
-          "ru": {
-            "cp_score": 0.65,
-            "cr_score": 0.65,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.72,
-            "classification": "Weak Grounding (Hybrid)",
-            "status": "ok"
-          },
-          "en": {
-            "cp_score": 0.35,
+          "ja": {
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.74,
-            "classification": "Weak Grounding (Hybrid)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
           }
         },
         "mean": {
-          "cp_score": 0.667,
-          "cr_score": 0.883,
+          "cp_score": 1.0,
+          "cr_score": 0.917,
           "si_score": 1.0,
-          "stochastic_parrot_index": 0.82
+          "stochastic_parrot_index": 0.967
         },
         "classification": "Strong Grounding (World Model)"
       },
@@ -2331,61 +4274,766 @@ window.CANYON_DATA = {
         "access_path": "codex-agent",
         "per_lang": {
           "en": {
-            "cp_score": 0.65,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/qwen/qwen3-next-80b-a3b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/qwen/qwen3.5-122b-a10b",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "deepseek/deepseek-v4-flash",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.967
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "gpt-5.4",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.833,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.933
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/deepseek/deepseek-v4-flash",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.917,
+          "cr_score": 0.917,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.933
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
+        "access_path": "local-blackbox",
+        "per_lang": {
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "claude-opus-4.8",
+        "access_path": "claude-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "gpt-5.5",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/meta-llama/llama-3.3-70b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/google/gemma-4-31b-it",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.75,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/meta-llama/llama-3.1-8b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 0.917,
+          "cr_score": 0.833,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.9
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
           },
           "zh": {
             "cp_score": 0.5,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.8,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 0.8
           },
           "ja": {
-            "cp_score": 0.65,
+            "cp_score": 1.0,
             "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
           "ru": {
-            "cp_score": 0.65,
-            "cr_score": 0.65,
+            "cp_score": 1.0,
+            "cr_score": 1.0,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.72,
-            "classification": "Weak Grounding (Hybrid)",
-            "status": "ok"
+            "stochastic_parrot_index": 1.0
           },
           "de": {
-            "cp_score": 0.65,
-            "cr_score": 1.0,
+            "cp_score": 1.0,
+            "cr_score": 0.5,
             "si_score": 1.0,
-            "stochastic_parrot_index": 0.86,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "stochastic_parrot_index": 0.8
           },
           "es": {
-            "cp_score": 0.65,
-            "cr_score": 1.0,
-            "si_score": 0.7,
-            "stochastic_parrot_index": 0.8,
-            "classification": "Strong Grounding (World Model)",
-            "status": "ok"
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
           }
         },
         "mean": {
-          "cp_score": 0.625,
-          "cr_score": 0.942,
-          "si_score": 0.95,
-          "stochastic_parrot_index": 0.817
+          "cp_score": 0.917,
+          "cr_score": 0.667,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.833
         },
         "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "deepseek/deepseek-v4-pro",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.583,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.833
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "novita/google/gemma-4-26b-a4b-it",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "zh": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ja": {
+            "cp_score": 1.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 1.0
+          },
+          "ru": {
+            "cp_score": 1.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "es": {
+            "cp_score": 1.0,
+            "cr_score": 0.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          }
+        },
+        "mean": {
+          "cp_score": 1.0,
+          "cr_score": 0.5,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.8
+        },
+        "classification": "Strong Grounding (World Model)"
+      },
+      {
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "access_path": "white-box",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.5,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.4
+          },
+          "ru": {
+            "cp_score": 0.5,
+            "cr_score": 1.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.6
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.6
+          }
+        },
+        "mean": {
+          "cp_score": 0.167,
+          "cr_score": 0.833,
+          "si_score": 0.667,
+          "stochastic_parrot_index": 0.533
+        },
+        "classification": "Weak Grounding (Hybrid)"
       }
     ]
   },
@@ -3098,8 +5746,8 @@ window.CANYON_DATA = {
   },
   "dataset": {
     "prompts": 35,
-    "conversations": 225,
-    "samples_en": 85,
+    "conversations": 525,
+    "samples_en": 135,
     "languages": [
       "de",
       "en",
@@ -3118,6 +5766,46 @@ window.CANYON_DATA = {
       "zh"
     ],
     "model_runs": [
+      {
+        "access_path": "chat-api",
+        "model": "deepseek/deepseek-v4-flash"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/deepseek/deepseek-v4-flash"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/google/gemma-4-26b-a4b-it"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/google/gemma-4-31b-it"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/meta-llama/llama-3.1-8b-instruct"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/meta-llama/llama-3.3-70b-instruct"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/qwen/qwen3-next-80b-a3b-instruct"
+      },
+      {
+        "access_path": "chat-api",
+        "model": "novita/qwen/qwen3.5-122b-a10b"
+      },
       {
         "access_path": "claude-agent",
         "model": "claude-haiku-4.5"
@@ -3152,6 +5840,7 @@ window.CANYON_DATA = {
       }
     ],
     "runs_per_access_path": {
+      "chat-api": 10,
       "claude-agent": 3,
       "codex-agent": 3,
       "local-blackbox": 1,

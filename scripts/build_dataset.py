@@ -101,7 +101,8 @@ def build_conversations():
     # agent CLIs: full transcripts logged as JSONL
     for fname, access in [("transcripts_claude.jsonl", "claude-agent"),
                           ("transcripts_codex_toolsoff.jsonl", "codex-agent"),
-                          ("transcripts_codex.jsonl", "codex-agent")]:
+                          ("transcripts_codex.jsonl", "codex-agent"),
+                          ("transcripts_chatapi.jsonl", "chat-api")]:
         path = os.path.join(RESULTS, fname)
         if not os.path.exists(path):
             continue

@@ -13,6 +13,7 @@
   };
   function accessColor(a) { return (ACCESS[a] || {}).color || "#83a598"; }
   function accessLabel(a) { return (ACCESS[a] || {}).label || a || "—"; }
+  function scoreLabel(lb) { return lb && lb.score_type === "semantic_judge" ? "semantic judge" : "keyword screen"; }
 
   function el(tag, attrs, kids) {
     var n = document.createElement(tag);
@@ -206,6 +207,10 @@
 
   /* ---- model leaderboard ---- */
   function shortModel(m) { return m.split("/").pop(); }
+  function compactModel(m) {
+    var parts = (m || "").split("/");
+    return parts.length > 2 ? parts.slice(-2).join("/") : (m || "");
+  }
 
   function renderLeaderboard() {
     var lb = D.leaderboard;
@@ -220,11 +225,15 @@
     if (!tHost) return;
     var langs = lb.langs || [];
     var meta = document.getElementById("lb-meta");
-    if (meta) meta.textContent = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; }).length +
-      " models · " + langs.length + " languages · generated " + (lb.generated_at || "");
+    if (meta) {
+      var judged = lb.judge ? " · judge " + lb.judge : "";
+      meta.textContent = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; }).length +
+        " model runs · " + langs.length + " languages · " + scoreLabel(lb) + judged +
+        " · generated " + (lb.generated_at || "");
+    }
 
     var hasAccess = lb.models.some(function (e) { return e.access_path; });
-    var header = ["#", "Model"].concat(hasAccess ? ["Access"] : [])
+    var header = ["#", "Tested model"].concat(hasAccess ? ["Access"] : [])
       .concat(langs.map(function (l) { return l.toUpperCase(); })).concat(["Mean SPI", "Class"]);
     var numStart = hasAccess ? 3 : 2;
     var rows = [el("tr", {}, header.map(function (h, i) {
@@ -234,8 +243,17 @@
     lb.models.forEach(function (e) {
       var ok = e.per_lang && Object.keys(e.per_lang).length;
       var tds = [];
-      tds.push(el("td", {}, [ok ? String(++rank) : "–"]));
-      tds.push(el("td", {}, [el("code", {}, [shortModel(e.model)])]));
+      tds.push(el("td", { class: "rank" }, [ok ? String(++rank) : "–"]));
+      var modelCell = el("td", { class: "model-cell" }, [el("code", { class: "model-id" }, [e.model])]);
+      if (hasAccess) {
+        var line = el("span", { class: "provider-line" });
+        var dot = el("span", { class: "provider-dot" });
+        dot.style.background = accessColor(e.access_path);
+        line.appendChild(dot);
+        line.appendChild(document.createTextNode(accessLabel(e.access_path)));
+        modelCell.appendChild(line);
+      }
+      tds.push(modelCell);
       if (hasAccess) {
         var ai = el("i"); ai.style.background = accessColor(e.access_path);
         ai.style.cssText = "display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;background:" + accessColor(e.access_path);
@@ -246,14 +264,19 @@
         tds.push(el("td", { class: "num" }, [v == null ? "—" : v.toFixed(2)]));
       });
       var mean = ok ? e.mean.stochastic_parrot_index : null;
-      tds.push(el("td", { class: "num" }, [mean == null ? "—" : mean.toFixed(3)]));
+      tds.push(el("td", { class: "num score-mean" }, [mean == null ? "—" : mean.toFixed(3)]));
       tds.push(el("td", {}, [ok
         ? el("span", { class: "badge " + cls(mean) }, [e.classification.split(" (")[0]])
         : el("span", { class: "badge bad" }, ["error"])]));
       rows.push(el("tr", {}, tds));
     });
     tHost.innerHTML = "";
-    tHost.appendChild(el("table", {}, rows));
+    tHost.appendChild(el("div", { class: "table-wrap" }, [el("table", {}, rows)]));
+    if (lb.score_type === "semantic_judge") {
+      tHost.appendChild(el("p", { class: "judge-note" }, [
+        "Semantic judge scores are computed from saved full transcripts. Keyword-screen scores remain in results/leaderboard.json for reproducibility."
+      ]));
+    }
 
     renderLbChart(lb, langs);
   }
@@ -270,7 +293,7 @@
     var spis = models.map(function (e) { return e.mean.stochastic_parrot_index; });
     var floor = Math.max(0, Math.floor((Math.min.apply(null, spis) - 0.02) * 20) / 20);
     var span = 1 - floor || 1;
-    var W = Math.max(600, models.length * 90), H = 260, padL = 44, padB = 70, padT = 16;
+    var W = Math.max(720, models.length * 108), H = 288, padL = 44, padB = 88, padT = 16;
     function Y(v) { return padT + (1 - (v - floor) / span) * (H - padT - padB); }
     var s = svg("svg", { viewBox: "0 0 " + W + " " + H, width: "100%" });
     for (var gi = 0; gi <= 4; gi++) {
@@ -292,7 +315,7 @@
       s.appendChild(svg("rect", { x: x, y: yTop, width: w, height: h, rx: 4, fill: fill }));
       var v = svg("text", { x: x + w / 2, y: yTop - 5, "text-anchor": "middle", fill: "#ebdbb2", "font-size": "11" }); v.textContent = spi.toFixed(3); s.appendChild(v);
       var g = svg("g", { transform: "translate(" + (x + w / 2) + "," + (H - padB + 12) + ") rotate(40)" });
-      var lab = svg("text", { x: 0, y: 0 }); lab.textContent = shortModel(e.model); g.appendChild(lab); s.appendChild(g);
+      var lab = svg("text", { x: 0, y: 0 }); lab.textContent = compactModel(e.model); g.appendChild(lab); s.appendChild(g);
     });
     var defs = svg("defs"), grad = svg("linearGradient", { id: "g", x1: "0", y1: "1", x2: "0", y2: "0" });
     grad.appendChild(svg("stop", { offset: "0", "stop-color": "#83a598" }));
@@ -311,7 +334,7 @@
       host.appendChild(legend);
     }
     host.appendChild(el("p", { class: "muted", style: "margin-top:8px;font-size:13px" },
-      ["y-axis starts at " + floor.toFixed(2) + " (zoomed) so the close ranking is visible — the bars are magnified, so read small gaps as within noise (~±0.03 on the mean)."]));
+      ["y-axis starts at " + floor.toFixed(2) + " (zoomed) so the close ranking is visible. Bars use " + scoreLabel(lb) + " mean SPI; read small gaps as noise (~±0.03 to ±0.05)."]));
   }
 
   /* ---- access-path experiment: claude -p vs codex exec ---- */
@@ -429,10 +452,10 @@
         ["canyon_prompts.jsonl", "The probe bank", ds.prompts + " prompts across " +
           (ds.prompt_languages || []).length + " languages (incl. the Serbian reference), with grounded-answer markers and trap phrases."],
         ["canyon_conversations.jsonl", "Full transcripts", ds.conversations +
-          " scored prompt+response turns from the local, white-box and agent-CLI runs across " +
+          " scored prompt+response turns from chat APIs, local, white-box and agent-CLI runs across " +
           (ds.languages || []).length + " languages."],
         ["canyon_samples_en.jsonl", "Chat-API previews", (ds.samples_en || 0) +
-          " English answer previews for the leaderboard models (truncated, flagged partial)."]
+          " English answer previews retained for older keyword-only API runs (truncated, flagged partial)."]
       ];
       items.forEach(function (it) {
         var card = el("div", { class: "card" });
