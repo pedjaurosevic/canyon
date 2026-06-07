@@ -30,6 +30,8 @@ Each probe hides a *statistically dominant but situationally wrong* answer. The 
 A frequency machine is pulled toward the first column. A world model overrides it and lands in the second. CANYON runs these (and their counterfactual follow-ups) across **six languages** — because a real understanding of gravity shouldn't disappear when you switch from English to Russian — and rolls the result into a single **Stochastic Parrot Index (SPI)**, where higher means more grounded.
 
 > **What we found, honestly:** today's strongest models behave much more like grounded world-models than like parrots on these questions — they override the obvious-but-wrong answer and hold counterfactual worlds. But this is a *small* experiment (5 prompts per language), the top models cluster very close together, and differences below ~0.05 are within noise. Read the [live results](https://pedjaurosevic.github.io/canyon/) and the [whitepaper](./WHITEPAPER.md), and please try to break it.
+>
+> **A note on the top rank (The Haiku anomaly):** While `claude-haiku-4.5` leads the board with a perfect `1.000`, the gap to the runners-up (like `claude-sonnet-4.6` and `gpt-5.4-mini` at `0.967`) is **just a single turn**. Almost all larger models fell for a single syntactic trap in German (`de/canyon-01`), choosing a strict grammatical reading (asserting that the Grand Canyon is flying) over common sense, while Haiku stuck to the pragmatically grounded answer ("I"). This minor variance is well within our noise threshold (~0.05) and should not be read as general superiority.
 
 ---
 
