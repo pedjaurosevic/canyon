@@ -110,7 +110,7 @@ python3 scripts/run_claude.py
 python3 scripts/run_codex.py --tools-off --codex-home /tmp/codex_clean
 ```
 
-Finding (see [§4.4 of the whitepaper](./WHITEPAPER.md#54-the-access-path-experiment-and-what-the-per-language-spread-means)): the Claude family lands at 0.91–0.98 and gpt-5.5 via Codex at 0.85 — all "strong grounding". A tools-on/off difference we first thought we saw **turned out to be noise** (repeat check in [`results/robustness_de.json`](./results/robustness_de.json)). The lesson: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.**
+Finding (see [§4.4 of the whitepaper](./WHITEPAPER.md#54-the-access-path-experiment-and-what-the-per-language-spread-means)): the Claude family lands in the low-to-mid 0.9s (0.91–0.96) and gpt-5.5 via Codex at 0.85 — all "strong grounding". A tools-on/off difference we first thought we saw **turned out to be noise** (repeat check in [`results/robustness_de.json`](./results/robustness_de.json)). The lesson: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.**
 
 ---
 

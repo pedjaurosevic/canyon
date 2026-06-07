@@ -1,6 +1,6 @@
 {
  "prompts": 35,
- "conversations": 120,
+ "conversations": 165,
  "samples_en": 75,
  "languages": [
   "de",
@@ -26,6 +26,10 @@
   },
   {
    "access_path": "claude-agent",
+   "model": "opus"
+  },
+  {
+   "access_path": "claude-agent",
    "model": "sonnet"
   },
   {
@@ -42,7 +46,7 @@
   }
  ],
  "runs_per_access_path": {
-  "claude-agent": 2,
+  "claude-agent": 3,
   "codex-agent": 1,
   "local-blackbox": 1,
   "white-box": 1
