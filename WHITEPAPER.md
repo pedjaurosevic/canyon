@@ -13,6 +13,14 @@ Do large language models (LLMs) merely predict the next token from surface stati
 
 ---
 
+## Author's note — what this actually is
+
+I want to be honest about the size and the spirit of this project before anyone reads a number and over-interprets it. CANYON is a **small, hobby-scale experiment**, not a peer-reviewed benchmark. It started from listening to Geoffrey Hinton talk about large language models and being unable to let go of one of his claims: that to predict the next word *well enough*, a network is eventually forced to learn the structure behind the words — objects, causes, intentions — and that this compression is, functionally, a kind of understanding. The opposing "stochastic parrot" picture says the reverse: it is all surface statistics, and the appearance of meaning is a mirage cast by an enormous frequency table.
+
+I am not equipped to settle that argument, and I do not pretend to. What I *could* do was build a tiny, transparent instrument around my own reading of Hinton and see what falls out. The whole question that drives this paper is: **if a model really carried a little world inside it, what would it have to do that a frequency table could not fake?** Everything else here — the prompts, the scores, the languages — is just an attempt to answer that one question in a way anyone can re-run on their own machine. If you disagree with a choice I made, the entire harness is small enough to read in an afternoon and change.
+
+---
+
 ## 1. The Hinton Grounding Hypothesis
 
 ### 1.1 Two competing accounts of what an LLM "is"
@@ -199,6 +207,20 @@ Mean Stochastic Parrot Index over 6 languages, per API model, ranked by mean SPI
 
 *N/A = quota-blocked or rate-limited on the API key; excluded from the mean. Only fully-covered models are ranked.*
 
+
+### 4.4 The access-path experiment (frontier models via agent CLIs)
+
+A follow-up question: does it matter *how* you reach a model? The leaderboard above talks to plain chat-completion endpoints. Here the **same six-language probes** are instead answered by two frontier-model command-line agents — Anthropic's Claude Code (`claude -p`) and OpenAI's Codex (`codex exec`) — each run with its shell tools stripped and from an isolated config, so the only thing that changes from the chat path is the agent's own framing. Mean SPI across 6 languages:
+
+| Access path | Model | EN | ZH | JA | RU | DE | ES | **Mean SPI** | Class |
+|-------------|-------|----|----|----|----|----|----|------|-------|
+| Claude Code agent — claude -p (tools off) | `sonnet` | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 1.00 | **0.98** | Strong Grounding |
+| Claude Code agent — claude -p (tools off) | `opus` | 1.00 | 0.94 | 1.00 | 0.94 | 0.88 | 0.94 | **0.95** | Strong Grounding |
+| Claude Code agent — claude -p (tools off) | `haiku` | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.91** | Strong Grounding |
+| Codex agent — codex exec (tools off) | `gpt-5.5` | 0.86 | 0.86 | 0.80 | 0.72 | 1.00 | 0.86 | **0.85** | Strong Grounding |
+
+**A note on noise.** A single run once showed gpt-5.5 jumping on German when tools were removed. Re-running that one language 5× in each mode did *not* reproduce it — the direction actually reversed (with-tools mean 0.86 vs tools-off 0.76). The tools-on/off gap is within run-to-run variance (≈ ±0.07 per language at temperature 0.1), not a real scaffolding effect. The practical lesson cuts across the whole paper: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.** (Data: `results/robustness_de.json`.)
+
 <!-- /RESULTS:AUTO -->
 
 ---
@@ -219,6 +241,25 @@ A high SPI alone does not *prove* grounding — a sufficiently large frequency t
 ### 5.3 Future work
 
 Linear probes for "physical plausibility" directions (already scaffolded in `cli probe`), activation patching to test *causal* dependence of the answer on the deep-layer drift, larger white-box models, and human-rated agreement to calibrate the keyword screen.
+
+### 5.4 The access-path experiment, and what the per-language spread means
+
+Two smaller findings from §4.4 are worth spelling out in plain language, because they are easy to over-read.
+
+**Does it matter how you reach a model?** Modern frontier models are increasingly used *through agents* — a command-line tool wraps the model in its own instructions and tools before your question ever lands. We wondered whether that wrapper changes the model's grounding behaviour, so we asked the identical six-language probes through two coding agents (`claude -p` and `codex exec`) instead of through a bare chat endpoint, with each agent's shell tools removed so the only difference was the framing. The Claude family lands at 0.91–0.98 and gpt-5.5 through Codex at 0.85 — all comfortably in "strong grounding" territory. We were tempted, at first, to read a *tools-on vs tools-off* effect into one run where German jumped. It evaporated on repetition (§4.4's noise note): asking the same language five times per mode reversed the direction. The honest conclusion is the quieter one — **the agent doorway does not obviously break grounding, and the differences we saw at the margins were mostly the model's own run-to-run wobble**, not the scaffolding. This is itself a small, useful result: it says the behaviour we are probing is reasonably robust to how the model is invoked.
+
+**Why does one model score differently across languages?** This is the part that, to us, is the most interesting and the most honest about the method's limits. A genuine world model should be *language-invariant*: the apple falls up in German exactly as it does in English, because gravity is not a fact about English. So when a single model's SPI is flat across all six languages, that is the grounding-invariance signature we are hoping to see — the meaning is sitting *underneath* the language. When the same model wobbles — strong in English and Chinese, softer in Russian or German — there are two very different things it could mean, and we cannot always tell them apart:
+
+- It could be a **real** asymmetry in the model: the world model is partly entangled with English-heavy training text, and the grounding genuinely thins out in a typologically distant or lower-resource language.
+- It could be an **artefact of our crude scorer**: the model answered correctly, but phrased it in a way our localized keyword list did not catch, or the syntactic-ambiguity trap simply does not translate cleanly into that language's grammar.
+
+In our runs the dips cluster on Russian and German, and they show up in *different* models — which hints at something real about those probes in those languages rather than a single broken model. But we deliberately stop short of claiming "model X is less grounded in Russian." With only a handful of prompts per language and a substring-matching scorer, the per-language column is best read as **a question worth chasing, not a verdict** — exactly the kind of thread a larger replication should pull on.
+
+### 5.5 What this could mean, and an invitation
+
+If the pattern holds up under more prompts, more languages, and better scoring, the modest takeaway is that today's strongest models behave, on these adversarial-by-design questions, much more like Hinton's grounded world-models than like pure stochastic parrots: they override the statistically obvious-but-wrong answer, they hold a counterfactual world across turns, and — in the one model we could open up — their deep layers reorganise onto the *situation* rather than the surface words. That is not proof of understanding. It is a small accumulation of behaviour that is hard to get for free from text statistics alone.
+
+But the more important thing this experiment can offer is its *size*. It is meant to be re-run, doubted, and broken. If you have an API key, a local GGUF, or just one of these agent CLIs, you can reproduce every number here in minutes and watch where it bends. **Please do** — add a language, widen the suites, swap the keyword screen for an LLM judge, point it at a model we could not reach. The most valuable outcome would not be agreement with our numbers; it would be someone finding the place where this simple instrument is wrong, and saying so.
 
 ---
 

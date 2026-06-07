@@ -1,0 +1,79 @@
+{
+ "description": "Robustness / run-to-run noise check: gpt-5.5 via Codex on the German (de) suite, 5 repeats each mode, temperature 0.1.",
+ "lang": "de",
+ "model": "gpt-5.5",
+ "repeats": 5,
+ "with_tools": {
+  "runs": [
+   {
+    "spi": 0.72,
+    "cp": 0.65,
+    "cr": 0.65,
+    "si": 1.0
+   },
+   {
+    "spi": 0.86,
+    "cp": 0.65,
+    "cr": 1.0,
+    "si": 1.0
+   },
+   {
+    "spi": 0.86,
+    "cp": 0.65,
+    "cr": 1.0,
+    "si": 1.0
+   },
+   {
+    "spi": 1.0,
+    "cp": 1.0,
+    "cr": 1.0,
+    "si": 1.0
+   },
+   {
+    "spi": 0.86,
+    "cp": 0.65,
+    "cr": 1.0,
+    "si": 1.0
+   }
+  ],
+  "mean_spi": 0.86,
+  "mean_cr": 0.93
+ },
+ "tools_off": {
+  "runs": [
+   {
+    "spi": 0.72,
+    "cp": 0.65,
+    "cr": 0.65,
+    "si": 1.0
+   },
+   {
+    "spi": 0.72,
+    "cp": 0.65,
+    "cr": 0.65,
+    "si": 1.0
+   },
+   {
+    "spi": 0.72,
+    "cp": 0.65,
+    "cr": 0.65,
+    "si": 1.0
+   },
+   {
+    "spi": 0.86,
+    "cp": 0.65,
+    "cr": 1.0,
+    "si": 1.0
+   },
+   {
+    "spi": 0.8,
+    "cp": 0.65,
+    "cr": 0.85,
+    "si": 1.0
+   }
+  ],
+  "mean_spi": 0.764,
+  "mean_cr": 0.76
+ },
+ "conclusion": "The single-run de difference (tools-off 1.00 vs with-tools 0.72) did NOT replicate; under 5 repeats the direction reversed (with-tools mean 0.86 > tools-off 0.76). The tools-on/off gap is within run-to-run noise (~+/-0.07 per language), not a systematic agent-scaffolding effect."
+}

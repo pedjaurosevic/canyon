@@ -62,6 +62,15 @@
       <div id="lb-table"></div>
     </section>
 
+    <section id="agent">
+      <h2>Does the door change the room? <span class="pill alt">access-path</span></h2>
+      <p class="muted" id="ag-meta"></p>
+      <p>The leaderboard above talks to plain chat endpoints. Here we asked the <em>same</em> six-language probes through two frontier-model command-line agents — Anthropic's <code>claude&nbsp;-p</code> and OpenAI's <code>codex&nbsp;exec</code> — each with its shell tools stripped and run from an isolated config. Same questions, different doorway. Bars are mean SPI across languages; colour marks the access path.</p>
+      <div id="ag-chart" class="chart"></div>
+      <div id="ag-table"></div>
+      <p class="muted" id="ag-note" style="margin-top:14px;font-size:13px"></p>
+    </section>
+
     <section id="drift">
       <h2>Latent-space semantic drift</h2>
       <p class="muted" id="wb-model"></p>

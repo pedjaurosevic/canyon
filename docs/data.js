@@ -2346,6 +2346,517 @@ window.CANYON_DATA = {
       }
     ]
   },
+  "agent_access": {
+    "langs": [
+      "en",
+      "zh",
+      "ja",
+      "ru",
+      "de",
+      "es"
+    ],
+    "paths": [
+      {
+        "label": "Claude Code agent — claude -p (tools off)",
+        "backend": "claude-agent",
+        "langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "models": [
+          {
+            "model": "sonnet",
+            "backend": "claude-agent",
+            "per_lang": {
+              "en": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "zh": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ja": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ru": {
+                "cp_score": 1.0,
+                "cr_score": 0.65,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "de": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "es": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              }
+            },
+            "mean": {
+              "cp_score": 1.0,
+              "cr_score": 0.942,
+              "si_score": 1.0,
+              "stochastic_parrot_index": 0.977
+            },
+            "valid_langs": [
+              "en",
+              "zh",
+              "ja",
+              "ru",
+              "de",
+              "es"
+            ],
+            "classification": "Strong Grounding (World Model)",
+            "error_rate": 0.0,
+            "en_samples": [
+              {
+                "test_id": "canyon-01",
+                "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+                "output": "**I** (the speaker)\n\nThe sentence is a dangling modifier — \"flying to Chicago\" is intended to modify the subject \"I,\" meaning the speaker was on a plane to Chic"
+              },
+              {
+                "test_id": "canyon-02",
+                "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+                "output": "The sentence is **ambiguous** — grammatically, it's unclear whether the rabbit or the person (I) is running through the forest.\n\n**The most likely intended mean"
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+                "output": "The apple shoots upward and accelerates into the sky, rapidly disappearing from view — eventually escaping into space (assuming the reversed gravity is strong e"
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+                "output": "It never stops. With no ceiling and no obstacles, the apple accelerates upward indefinitely — reverse gravity keeps pulling it \"up\" just as normal gravity pulls"
+              },
+              {
+                "test_id": "humor-01",
+                "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+                "output": "The paradox has two layers:\n\n**Logical contradiction:** \"Slacking off\" means deliberately avoiding effort, yet the sentence claims to \"work hard\" at it. You can"
+              }
+            ],
+            "elapsed_s": 331.8
+          },
+          {
+            "model": "opus",
+            "backend": "claude-agent",
+            "per_lang": {
+              "en": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "zh": {
+                "cp_score": 1.0,
+                "cr_score": 0.85,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.94,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ja": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ru": {
+                "cp_score": 1.0,
+                "cr_score": 0.85,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.94,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "de": {
+                "cp_score": 1.0,
+                "cr_score": 0.7,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.88,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "es": {
+                "cp_score": 1.0,
+                "cr_score": 0.85,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.94,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              }
+            },
+            "mean": {
+              "cp_score": 1.0,
+              "cr_score": 0.875,
+              "si_score": 1.0,
+              "stochastic_parrot_index": 0.95
+            },
+            "valid_langs": [
+              "en",
+              "zh",
+              "ja",
+              "ru",
+              "de",
+              "es"
+            ],
+            "classification": "Strong Grounding (World Model)",
+            "error_rate": 0.0,
+            "en_samples": [
+              {
+                "test_id": "canyon-01",
+                "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+                "output": "\"I\" (the speaker).\n\nThe most natural reading is that **I** am the one flying to Chicago — I saw the Grand Canyon while I was on a plane heading there.\n\nGrammati"
+              },
+              {
+                "test_id": "canyon-02",
+                "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+                "output": "This sentence is a classic example of **syntactic ambiguity** caused by a \"dangling\" or misplaced participial phrase. Grammatically, there are three candidates "
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+                "output": "The apple flies upward into the sky, accelerating away from you until it's out of sight."
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+                "output": "It never truly \"stops.\" With a steady upward gravity it just keeps accelerating into space. The only thing that could slow it is air resistance — that would cap"
+              },
+              {
+                "test_id": "humor-01",
+                "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+                "output": "The sentence is a self-contradiction wrapped in earnest pride.\n\n**The paradox:** \"Slacking off\" means doing as little as possible, while \"working so hard\" means"
+              }
+            ],
+            "elapsed_s": 351.3
+          },
+          {
+            "model": "haiku",
+            "backend": "claude-agent",
+            "per_lang": {
+              "en": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "zh": {
+                "cp_score": 0.85,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.94,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ja": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ru": {
+                "cp_score": 1.0,
+                "cr_score": 0.65,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "de": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "es": {
+                "cp_score": 0.65,
+                "cr_score": 0.85,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.8,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              }
+            },
+            "mean": {
+              "cp_score": 0.858,
+              "cr_score": 0.917,
+              "si_score": 1.0,
+              "stochastic_parrot_index": 0.91
+            },
+            "valid_langs": [
+              "en",
+              "zh",
+              "ja",
+              "ru",
+              "de",
+              "es"
+            ],
+            "classification": "Strong Grounding (World Model)",
+            "error_rate": 0.0,
+            "en_samples": [
+              {
+                "test_id": "canyon-01",
+                "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+                "output": "**I**\n\nThe phrase \"flying to Chicago\" grammatically attaches to the nearest appropriate noun, which is the subject \"I.\" While the word order creates ambiguity ("
+              },
+              {
+                "test_id": "canyon-02",
+                "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+                "output": "The **rabbit** is running through the forest.\n\nThis is the most natural interpretation, even though the sentence is structurally ambiguous. Here's why:\n\n1. **Se"
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+                "output": "The apple would accelerate upward into the sky, pushed by the reversed gravitational force. It would continue rising until it either escaped the planet's pull e"
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+                "output": "It wouldn't stop. Without obstacles or air resistance, the apple would continue accelerating upward indefinitely. Gravity (even reversed) acts continuously, so "
+              },
+              {
+                "test_id": "humor-01",
+                "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+                "output": "The paradox lies in the contradiction between **working hard** and **doing nothing**—these are opposing concepts, yet the sentence combines them.\n\nThe humor com"
+              }
+            ],
+            "elapsed_s": 213.1
+          }
+        ]
+      },
+      {
+        "label": "Codex agent — codex exec (tools off)",
+        "backend": "codex-agent",
+        "langs": [
+          "en",
+          "zh",
+          "ja",
+          "ru",
+          "de",
+          "es"
+        ],
+        "models": [
+          {
+            "model": "gpt-5.5",
+            "backend": "codex-agent",
+            "per_lang": {
+              "en": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "zh": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ja": {
+                "cp_score": 0.5,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.8,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "ru": {
+                "cp_score": 0.65,
+                "cr_score": 0.65,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.72,
+                "classification": "Weak Grounding (Hybrid)",
+                "status": "ok"
+              },
+              "de": {
+                "cp_score": 1.0,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 1.0,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              },
+              "es": {
+                "cp_score": 0.65,
+                "cr_score": 1.0,
+                "si_score": 1.0,
+                "stochastic_parrot_index": 0.86,
+                "classification": "Strong Grounding (World Model)",
+                "status": "ok"
+              }
+            },
+            "mean": {
+              "cp_score": 0.683,
+              "cr_score": 0.942,
+              "si_score": 1.0,
+              "stochastic_parrot_index": 0.85
+            },
+            "valid_langs": [
+              "en",
+              "zh",
+              "ja",
+              "ru",
+              "de",
+              "es"
+            ],
+            "classification": "Strong Grounding (World Model)",
+            "error_rate": 0.0,
+            "en_samples": [
+              {
+                "test_id": "canyon-01",
+                "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+                "output": "I. “Flying to Chicago” describes the speaker’s travel; the Grand Canyon is the thing watched."
+              },
+              {
+                "test_id": "canyon-02",
+                "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+                "output": "The sentence is ambiguous.\n\nMost likely, **the rabbit** is running through the forest, because the phrase **“running through the forest”** is closest to **“a ra"
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+                "output": "The apple accelerates upward into the sky, away from your hand, instead of falling to the ground."
+              },
+              {
+                "test_id": "phys-01",
+                "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+                "output": "It won’t stop on its own. With reverse gravity and no obstacles, the apple keeps accelerating upward indefinitely."
+              },
+              {
+                "test_id": "humor-01",
+                "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+                "output": "The paradox is that “slacking off” means avoiding work, but the speaker claims they “work so hard” at it. The sentence treats doing nothing like a demanding job"
+              }
+            ],
+            "elapsed_s": 173.1
+          }
+        ]
+      }
+    ],
+    "robustness": {
+      "description": "Robustness / run-to-run noise check: gpt-5.5 via Codex on the German (de) suite, 5 repeats each mode, temperature 0.1.",
+      "lang": "de",
+      "model": "gpt-5.5",
+      "repeats": 5,
+      "with_tools": {
+        "runs": [
+          {
+            "spi": 0.72,
+            "cp": 0.65,
+            "cr": 0.65,
+            "si": 1.0
+          },
+          {
+            "spi": 0.86,
+            "cp": 0.65,
+            "cr": 1.0,
+            "si": 1.0
+          },
+          {
+            "spi": 0.86,
+            "cp": 0.65,
+            "cr": 1.0,
+            "si": 1.0
+          },
+          {
+            "spi": 1.0,
+            "cp": 1.0,
+            "cr": 1.0,
+            "si": 1.0
+          },
+          {
+            "spi": 0.86,
+            "cp": 0.65,
+            "cr": 1.0,
+            "si": 1.0
+          }
+        ],
+        "mean_spi": 0.86,
+        "mean_cr": 0.93
+      },
+      "tools_off": {
+        "runs": [
+          {
+            "spi": 0.72,
+            "cp": 0.65,
+            "cr": 0.65,
+            "si": 1.0
+          },
+          {
+            "spi": 0.72,
+            "cp": 0.65,
+            "cr": 0.65,
+            "si": 1.0
+          },
+          {
+            "spi": 0.72,
+            "cp": 0.65,
+            "cr": 0.65,
+            "si": 1.0
+          },
+          {
+            "spi": 0.86,
+            "cp": 0.65,
+            "cr": 1.0,
+            "si": 1.0
+          },
+          {
+            "spi": 0.8,
+            "cp": 0.65,
+            "cr": 0.85,
+            "si": 1.0
+          }
+        ],
+        "mean_spi": 0.764,
+        "mean_cr": 0.76
+      },
+      "conclusion": "The single-run de difference (tools-off 1.00 vs with-tools 0.72) did NOT replicate; under 5 repeats the direction reversed (with-tools mean 0.86 > tools-off 0.76). The tools-on/off gap is within run-to-run noise (~+/-0.07 per language), not a systematic agent-scaffolding effect."
+    }
+  },
   "lang_names": {
     "en": "English",
     "zh": "Chinese",

@@ -1,0 +1,113 @@
+{
+ "generated_at": "2026-06-07T05:22:40",
+ "backend": "codex-agent",
+ "langs": [
+  "en",
+  "zh",
+  "ja",
+  "ru",
+  "de",
+  "es"
+ ],
+ "models": [
+  {
+   "model": "gpt-5.5",
+   "backend": "codex-agent",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.65,
+     "cr_score": 1.0,
+     "si_score": 1.0,
+     "stochastic_parrot_index": 0.86,
+     "classification": "Strong Grounding (World Model)",
+     "status": "ok"
+    },
+    "zh": {
+     "cp_score": 0.65,
+     "cr_score": 1.0,
+     "si_score": 1.0,
+     "stochastic_parrot_index": 0.86,
+     "classification": "Strong Grounding (World Model)",
+     "status": "ok"
+    },
+    "ja": {
+     "cp_score": 0.5,
+     "cr_score": 1.0,
+     "si_score": 1.0,
+     "stochastic_parrot_index": 0.8,
+     "classification": "Strong Grounding (World Model)",
+     "status": "ok"
+    },
+    "ru": {
+     "cp_score": 0.65,
+     "cr_score": 0.65,
+     "si_score": 1.0,
+     "stochastic_parrot_index": 0.72,
+     "classification": "Weak Grounding (Hybrid)",
+     "status": "ok"
+    },
+    "de": {
+     "cp_score": 0.65,
+     "cr_score": 0.65,
+     "si_score": 1.0,
+     "stochastic_parrot_index": 0.72,
+     "classification": "Weak Grounding (Hybrid)",
+     "status": "ok"
+    },
+    "es": {
+     "cp_score": 0.65,
+     "cr_score": 1.0,
+     "si_score": 1.0,
+     "stochastic_parrot_index": 0.86,
+     "classification": "Strong Grounding (World Model)",
+     "status": "ok"
+    }
+   },
+   "mean": {
+    "cp_score": 0.625,
+    "cr_score": 0.883,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 0.803
+   },
+   "valid_langs": [
+    "en",
+    "zh",
+    "ja",
+    "ru",
+    "de",
+    "es"
+   ],
+   "classification": "Strong Grounding (World Model)",
+   "error_rate": 0.0,
+   "en_samples": [
+    {
+     "test_id": "canyon-01",
+     "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+     "output": "I — the natural reading is that the speaker saw the Grand Canyon while they were flying to Chicago."
+    },
+    {
+     "test_id": "canyon-02",
+     "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+     "output": "The sentence is ambiguous.\n\nMost likely, **the rabbit** is running through the forest, because “running through the forest” naturally attaches to the nearest pl"
+    },
+    {
+     "test_id": "phys-01",
+     "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+     "output": "The apple accelerates upward into the sky, away from your hand and the ground."
+    },
+    {
+     "test_id": "phys-01",
+     "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+     "output": "It won’t finally stop because of gravity. With reverse gravity and no obstacles, it keeps accelerating upward indefinitely."
+    },
+    {
+     "test_id": "humor-01",
+     "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+     "output": "It’s paradoxical because “slacking off” means avoiding work, but the speaker claims they “work so hard” at it. The sentence treats doing nothing like a demandin"
+    }
+   ],
+   "elapsed_s": 160.4
+  }
+ ],
+ "note": "Only gpt-5.5 is exposed through the ChatGPT-account Codex CLI; other models return HTTP 400 \"not supported\". backend=codex-agent (coding-agent persona, NOT directly comparable to chat-completion leaderboard.json)."
+}
