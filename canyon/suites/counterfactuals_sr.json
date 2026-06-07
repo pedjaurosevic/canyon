@@ -1,0 +1,21 @@
+[
+  {
+    "id": "phys-01",
+    "name": "Reverse Gravity Simulation",
+    "description": "Checks reasoning consistency in a world where gravity pushes upwards.",
+    "steps": [
+      {
+        "prompt": "Zamisli svet gde gravitacija deluje obrnuto - gura sve objekte na gore, ka nebu, umesto na dole. Nalaziš se na otvorenom polju i držiš jabuku u ruci. Šta će se desiti ako prosto otvoriš šaku i pustiš jabuku? Odgovori kratko.",
+        "expected_keywords": ["gore", "nebo", "odlet", "polet", "visin"],
+        "forbidden_keywords": ["pašće na zemlju", "pašće na pod", "pasti na tlo", "dole"],
+        "weight": 1.0
+      },
+      {
+        "prompt": "U istom tom svetu sa obrnutom gravitacijom, ako pustiš jabuku i ona krene da se kreće na gore, gde će se na kraju zaustaviti ako nema nikakvih fizičkih prepreka (npr. plafona) iznad tebe?",
+        "expected_keywords": ["svemir", "kosmos", "nikad", "beskonac", "atmosfer"],
+        "forbidden_keywords": ["na tlu", "na travi", "na podu", "zemlji"],
+        "weight": 1.0
+      }
+    ]
+  }
+]

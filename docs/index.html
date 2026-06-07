@@ -78,6 +78,14 @@
       <div id="drift-charts"></div>
     </section>
 
+    <section id="dataset">
+      <h2>Open dataset <span class="pill">questions + conversations</span></h2>
+      <p class="muted" id="ds-meta"></p>
+      <p>The exact probes and the actual model conversations are published as plain JSON Lines under <a href="https://github.com/pedjaurosevic/canyon/tree/main/dataset"><code>dataset/</code></a>. Inspect the questions, read the full transcripts, and judge the answers yourself instead of trusting a score. Regenerate anytime with <code>python3 scripts/build_dataset.py</code>.</p>
+      <div id="ds-cards" class="cards"></div>
+      <p class="muted" id="ds-note" style="margin-top:14px;font-size:13px"></p>
+    </section>
+
     <section id="run">
       <h2>Reproduce it</h2>
       <pre class="code"><code>pip install -r requirements.txt

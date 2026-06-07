@@ -28,7 +28,7 @@ def cli(ctx):
 @click.option("--config", default="config.example.yaml", help="Path to the configuration file.")
 @click.option("--model", default=None, help="Model name for API evaluation (LiteLLM).")
 @click.option("--local", is_flag=True, help="Use a local Hugging Face model (white-box).")
-@click.option("--lang", default=None, help="Suite language: en, zh, ja, ru, de, es (defaults to Serbian).")
+@click.option("--lang", default="en", help="Suite language: en, zh, ja, ru, de, es, sr (default: en).")
 def run(config, model, local, lang):
     """Run a full model evaluation."""
     rprint(Panel(

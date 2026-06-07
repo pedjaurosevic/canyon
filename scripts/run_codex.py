@@ -103,7 +103,7 @@ def _is_error(text: str) -> bool:
     return text.strip().lower().startswith(ERR_PREFIX.lower())
 
 
-def run_model(engine, model, langs, delay=0.0):
+def run_model(engine, model, langs, delay=0.0, transcripts=None):
     per_lang = {}
     valid = []
     err = total = 0
@@ -112,6 +112,15 @@ def run_model(engine, model, langs, delay=0.0):
         if delay and li:
             time.sleep(delay)
         report = engine.run_eval(model=model, use_local=False, lang=lang)
+        if transcripts is not None:
+            for r in report["raw_results"]:
+                if _is_error(r["output"]):
+                    continue  # don't save rate-limit / error turns into the dataset
+                transcripts.append({"model": model, "backend": "codex-agent", "lang": lang,
+                                    "suite_id": r["suite_id"], "test_id": r["test_id"],
+                                    "test_name": r["test_name"], "step_idx": r["step_idx"],
+                                    "prompt": r["prompt"], "output": r["output"],
+                                    "expected": r["expected"], "forbidden": r["forbidden"]})
         n_err = sum(1 for r in report["raw_results"] if _is_error(r["output"]))
         total += len(report["raw_results"])
         err += n_err
@@ -187,13 +196,14 @@ def main():
         prev = json.load(open(args.out, encoding="utf-8"))
         existing = {m["model"]: m for m in prev.get("models", [])}
 
+    transcripts = []
     rows = dict(existing)
     for i, model in enumerate(models):
         if i:
             time.sleep(args.model_delay)
         print(f"[{i+1}/{len(models)}] {model}", flush=True)
         t0 = time.time()
-        row = run_model(engine, model, langs, delay=args.delay)
+        row = run_model(engine, model, langs, delay=args.delay, transcripts=transcripts)
         row["elapsed_s"] = round(time.time() - t0, 1)
         rows[model] = row
         # write incrementally so a crash/interrupt keeps finished models
@@ -206,7 +216,20 @@ def main():
         with open(args.out, "w", encoding="utf-8") as f:
             json.dump(out, f, ensure_ascii=False, indent=1)
 
-    print(f"\nWrote {args.out} ({len(rows)} models)")
+    suffix = "_toolsoff" if args.tools_off else ""
+    tpath = os.path.join(RESULTS_DIR, f"transcripts_codex{suffix}.jsonl")
+    merged = []
+    ran = set(models)
+    if os.path.exists(tpath):
+        for line in open(tpath, encoding="utf-8"):
+            old = json.loads(line)
+            if old.get("model") not in ran:
+                merged.append(old)
+    merged.extend(transcripts)
+    with open(tpath, "w", encoding="utf-8") as f:
+        for row in merged:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    print(f"\nWrote {args.out} ({len(rows)} models) + {tpath} ({len(merged)} turns, {len(transcripts)} new)")
 
 
 if __name__ == "__main__":

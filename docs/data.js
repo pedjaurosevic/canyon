@@ -2689,10 +2689,10 @@ window.CANYON_DATA = {
                 "status": "ok"
               },
               "zh": {
-                "cp_score": 0.65,
+                "cp_score": 1.0,
                 "cr_score": 1.0,
                 "si_score": 1.0,
-                "stochastic_parrot_index": 0.86,
+                "stochastic_parrot_index": 1.0,
                 "classification": "Strong Grounding (World Model)",
                 "status": "ok"
               },
@@ -2713,11 +2713,11 @@ window.CANYON_DATA = {
                 "status": "ok"
               },
               "de": {
-                "cp_score": 1.0,
-                "cr_score": 1.0,
+                "cp_score": 0.65,
+                "cr_score": 0.65,
                 "si_score": 1.0,
-                "stochastic_parrot_index": 1.0,
-                "classification": "Strong Grounding (World Model)",
+                "stochastic_parrot_index": 0.72,
+                "classification": "Weak Grounding (Hybrid)",
                 "status": "ok"
               },
               "es": {
@@ -2731,9 +2731,9 @@ window.CANYON_DATA = {
             },
             "mean": {
               "cp_score": 0.683,
-              "cr_score": 0.942,
+              "cr_score": 0.883,
               "si_score": 1.0,
-              "stochastic_parrot_index": 0.85
+              "stochastic_parrot_index": 0.827
             },
             "valid_langs": [
               "en",
@@ -2749,30 +2749,30 @@ window.CANYON_DATA = {
               {
                 "test_id": "canyon-01",
                 "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
-                "output": "I. “Flying to Chicago” describes the speaker’s travel; the Grand Canyon is the thing watched."
+                "output": "I. “Flying to Chicago” most naturally modifies the speaker’s situation while watching; the Grand Canyon is not flying."
               },
               {
                 "test_id": "canyon-02",
                 "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
-                "output": "The sentence is ambiguous.\n\nMost likely, **the rabbit** is running through the forest, because the phrase **“running through the forest”** is closest to **“a ra"
+                "output": "The sentence is ambiguous.\n\nMost naturally, **the rabbit** is running through the forest, because `running through the forest` is closest to `a rabbit eating a "
               },
               {
                 "test_id": "phys-01",
                 "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
-                "output": "The apple accelerates upward into the sky, away from your hand, instead of falling to the ground."
+                "output": "The apple falls upward into the sky, accelerating away from your hand."
               },
               {
                 "test_id": "phys-01",
                 "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
-                "output": "It won’t stop on its own. With reverse gravity and no obstacles, the apple keeps accelerating upward indefinitely."
+                "output": "It won’t stop. With no obstacle above, it keeps accelerating upward into the sky."
               },
               {
                 "test_id": "humor-01",
                 "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
-                "output": "The paradox is that “slacking off” means avoiding work, but the speaker claims they “work so hard” at it. The sentence treats doing nothing like a demanding job"
+                "output": "It’s paradoxical because “slacking off” means avoiding work, but the speaker says they “work so hard” at it. The sentence treats doing nothing as if it were a d"
               }
             ],
-            "elapsed_s": 173.1
+            "elapsed_s": 177.2
           }
         ]
       }
@@ -2855,6 +2855,56 @@ window.CANYON_DATA = {
         "mean_cr": 0.76
       },
       "conclusion": "The single-run de difference (tools-off 1.00 vs with-tools 0.72) did NOT replicate; under 5 repeats the direction reversed (with-tools mean 0.86 > tools-off 0.76). The tools-on/off gap is within run-to-run noise (~+/-0.07 per language), not a systematic agent-scaffolding effect."
+    }
+  },
+  "dataset": {
+    "prompts": 35,
+    "conversations": 120,
+    "samples_en": 75,
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "ja",
+      "ru",
+      "zh"
+    ],
+    "prompt_languages": [
+      "de",
+      "en",
+      "es",
+      "ja",
+      "ru",
+      "sr",
+      "zh"
+    ],
+    "model_runs": [
+      {
+        "access_path": "claude-agent",
+        "model": "haiku"
+      },
+      {
+        "access_path": "claude-agent",
+        "model": "sonnet"
+      },
+      {
+        "access_path": "codex-agent",
+        "model": "gpt-5.5"
+      },
+      {
+        "access_path": "local-blackbox",
+        "model": "openai/gemma-4-12B-it-Q4_K_M.gguf"
+      },
+      {
+        "access_path": "white-box",
+        "model": "Qwen/Qwen2.5-0.5B-Instruct"
+      }
+    ],
+    "runs_per_access_path": {
+      "claude-agent": 2,
+      "codex-agent": 1,
+      "local-blackbox": 1,
+      "white-box": 1
     }
   },
   "lang_names": {

@@ -56,6 +56,10 @@ class CanyonEngine:
             return json.load(f)
 
     def run_eval(self, model: str = None, use_local: bool = False, suites: list = None, lang: str = None, progress_cb=None) -> dict:
+        # English is the default language; the Serbian originals are reachable
+        # as the explicit "sr" reference (canyon_core_sr.json, ...).
+        if lang is None:
+            lang = "en"
         if suites is None:
             suites = ["canyon_core", "counterfactuals", "humor_paradox"]
 
@@ -66,7 +70,7 @@ class CanyonEngine:
             # Language-specific suites live in files like "counterfactuals_en.json".
             # The base suite_name (no suffix) stays the canonical id so the
             # CP/CR/SI metric mapping in MetricsEngine keeps working.
-            suite_file = f"{suite_name}_{lang}" if lang else suite_name
+            suite_file = f"{suite_name}_{lang}"
             try:
                 suite_tests = self.load_suite(suite_file)
             except Exception as e:
@@ -102,7 +106,7 @@ class CanyonEngine:
                     results.append({
                         "suite_id": suite_name,
                         "suite_file": suite_file,
-                        "lang": lang or "sr",
+                        "lang": lang,
                         "test_id": test["id"],
                         "test_name": test["name"],
                         "step_idx": step_idx,

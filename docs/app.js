@@ -364,8 +364,49 @@
     }
   }
 
+  /* ---- open dataset card ---- */
+  function renderDataset() {
+    var ds = D.dataset;
+    var sec = document.getElementById("dataset");
+    if (!ds) { if (sec) sec.style.display = "none"; return; }
+    var GH = "https://github.com/pedjaurosevic/canyon/blob/main/dataset/";
+
+    var meta = document.getElementById("ds-meta");
+    if (meta) meta.textContent = ds.conversations + " full conversations · " +
+      ds.prompts + " prompts · " + (ds.languages || []).length + " languages";
+
+    var cards = document.getElementById("ds-cards");
+    if (cards) {
+      cards.innerHTML = "";
+      var items = [
+        ["canyon_prompts.jsonl", "The probe bank", ds.prompts + " prompts across " +
+          (ds.prompt_languages || []).length + " languages (incl. the Serbian reference), with grounded-answer markers and trap phrases."],
+        ["canyon_conversations.jsonl", "Full transcripts", ds.conversations +
+          " scored prompt+response turns from the local, white-box and agent-CLI runs across " +
+          (ds.languages || []).length + " languages."],
+        ["canyon_samples_en.jsonl", "Chat-API previews", (ds.samples_en || 0) +
+          " English answer previews for the leaderboard models (truncated, flagged partial)."]
+      ];
+      items.forEach(function (it) {
+        var card = el("div", { class: "card" });
+        card.appendChild(el("h3", {}, [it[1]]));
+        card.appendChild(el("p", {}, [it[2]]));
+        card.appendChild(el("p", {}, [el("a", { href: GH + it[0] }, [el("code", {}, [it[0]])])]));
+        cards.appendChild(card);
+      });
+    }
+
+    var note = document.getElementById("ds-note");
+    if (note) {
+      var runs = (ds.model_runs || []).map(function (r) { return shortModel(r.model); });
+      note.textContent = "Full-transcript model runs: " + runs.join(", ") +
+        ". See the dataset datasheet for schema, collection method and limitations.";
+    }
+  }
+
   renderBlackbox();
   renderLeaderboard();
   renderAgentAccess();
+  renderDataset();
   renderWhitebox();
 })();
