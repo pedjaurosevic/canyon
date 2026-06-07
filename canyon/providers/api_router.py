@@ -37,7 +37,7 @@ class APIRouter:
             if custom_key:
                 kwargs["api_key"] = custom_key
             
-        max_retries = 5
+        max_retries = getattr(self, "max_retries", 5)
         delay = 2.0
         backoff_factor = 2.0
         last_exception = None
