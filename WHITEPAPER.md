@@ -191,6 +191,8 @@ Model: `Qwen/Qwen2.5-0.5B-Instruct` Â· real hidden-state activations, layers 0â€
 
 Mean semantic SPI over 6 languages, ranked after re-scoring full saved transcripts with `gpt-5.5`. This is the primary leaderboard: it accepts correct paraphrases and avoids the known multilingual brittleness of the keyword screen. Every row shows the exact tested model identifier and access path.
 
+**On the Haiku 4.5 anomaly and the German grammar trap.** Readers might find it counter-intuitive that the lightweight `claude-haiku-4.5` outperforms the frontier `claude-opus-4.8` and matches or exceeds `claude-sonnet-4.6`. This gap of 0.033 (exactly one test item) is a clear illustration of run-to-run noise and training alignment rather than general capability. Specifically, almost all larger frontier models (Sonnet 4.6, Opus 4.8, GPT-5.4-mini, and Qwen3) failed a single syntactic ambiguity prompt in German (`de/canyon-01`). When asked who flies in *"Ich sah den Grand Canyon nach Chicago fliegen"*, they over-analyzed the German AcI (*accusativus cum infinitivo*) syntax and asserted that the Grand Canyon was the flyer. Haiku 4.5 instead applied basic pragmatic grounding (*"canyons cannot fly, so it must be 'I'"*) and succeeded.
+
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Semantic SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|
 | 1 | `claude-haiku-4.5` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | **1.000** | Strong Grounding |

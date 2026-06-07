@@ -29,6 +29,9 @@
       <h2>Model benchmark <span class="pill alt">semantic judge</span></h2>
       <p class="muted" id="lb-meta"></p>
       <p>This is the primary result table: every row is a full saved transcript run, re-scored by a semantic judge instead of brittle keyword matching. The exact tested model identifier is shown in full, along with access path, per-language SPI, and mean score. A flat, high row across languages is the grounding-invariance signature; small gaps below about 0.05 should be treated as noise.</p>
+      <p class="note" style="background: rgba(131,165,152,0.1); border-left: 3px solid var(--blue); padding: 12px 16px; border-radius: 4px; font-size: 13.5px; line-height: 1.5; margin-top: 12px;">
+        <strong>A note on the top rank:</strong> While <code>claude-haiku-4.5</code> occupies the top spot with a perfect 1.000, the gap to the next models (0.967) is just <em>a single question</em>. Almost all larger models (Sonnet 4.6, GPT-5.4, Qwen3) fell into a single grammatical trap in German (interpreting the ambiguous <em>"Grand Canyon flying to Chicago"</em> literally as the object flying due to strict syntax rules), whereas Haiku favored the pragmatically sensible "I" (the narrator). Such minor variations are well within the run-to-run noise threshold (~0.05) and do not represent general superiority.
+      </p>
       <div id="lb-chart" class="chart"></div>
       <div id="lb-table"></div>
     </section>
