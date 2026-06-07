@@ -130,7 +130,7 @@ def build_unified_md(unified):
         mean = e["mean"]["stochastic_parrot_index"]
         short_cls = (e.get("classification") or "—").split(" (")[0]
         rows.append(f"| {i} | `{_short(e['model'])}` | {ACCESS_LABEL.get(e['access_path'], e['access_path'])} | "
-                    + " | ".join(cells) + f" | **{mean:.2f}** | {short_cls} |")
+                    + " | ".join(cells) + f" | **{mean:.3f}** | {short_cls} |")
     return "\n".join(rows)
 
 
@@ -181,7 +181,7 @@ def build_leaderboard_md(lb):
         cov = f"{valid}/{len(langs)}"
         if mean is not None and valid:
             rank += 1
-            rank_s, mean_s = str(rank), f"**{mean:.2f}**"
+            rank_s, mean_s = str(rank), f"**{mean:.3f}**"
         else:
             rank_s, mean_s = "–", "—"
         short_cls = (e.get("classification") or "—").split(" (")[0]
@@ -216,7 +216,7 @@ def build_agent_md(agent):
             mean = e.get("mean", {}).get("stochastic_parrot_index")
             short_cls = (e.get("classification") or "—").split(" (")[0]
             rows.append(f"| {p['label']} | `{_short(e['model'])}` | " + " | ".join(cells) +
-                        f" | **{mean:.2f}** | {short_cls} |")
+                        f" | **{mean:.3f}** | {short_cls} |")
     parts.append("\n".join(rows))
     rob = agent.get("robustness")
     if rob:

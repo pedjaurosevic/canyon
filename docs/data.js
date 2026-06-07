@@ -1303,7 +1303,7 @@ window.CANYON_DATA = {
     }
   },
   "leaderboard": {
-    "generated_at": "2026-06-07T15:31:09",
+    "generated_at": "2026-06-07T15:47:28",
     "langs": [
       "en",
       "zh",
