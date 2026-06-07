@@ -218,6 +218,8 @@ A follow-up question: does it matter *how* you reach a model? The leaderboard ab
 | Claude Code agent — claude -p (tools off) | `claude-sonnet-4.6` | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
 | Claude Code agent — claude -p (tools off) | `claude-haiku-4.5` | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
 | Codex agent — codex exec (tools off) | `gpt-5.5` | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.827** | Strong Grounding |
+| Codex agent — codex exec (tools off) | `gpt-5.4` | 0.86 | 0.86 | 0.80 | 0.72 | 0.86 | 0.86 | **0.827** | Strong Grounding |
+| Codex agent — codex exec (tools off) | `gpt-5.4-mini` | 0.86 | 0.80 | 0.86 | 0.72 | 0.86 | 0.80 | **0.817** | Strong Grounding |
 
 **A note on noise.** A single run once showed gpt-5.5 jumping on German when tools were removed. Re-running that one language 5× in each mode did *not* reproduce it — the direction actually reversed (with-tools mean 0.86 vs tools-off 0.76). The tools-on/off gap is within run-to-run variance (≈ ±0.07 per language at temperature 0.1), not a real scaffolding effect. The practical lesson cuts across the whole paper: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.** (Data: `results/robustness_de.json`.)
 
@@ -242,6 +244,8 @@ Every model in one list, ranked by mean SPI, tagged with how it was reached. Cha
 | 12 | `llama-3.1-8b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.72 | 0.86 | 0.86 | **0.883** | Strong Grounding |
 | 13 | `llama-3.2-3b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.66 | 0.86 | 0.86 | **0.873** | Strong Grounding |
 | 14 | `gpt-5.5` | Codex agent | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.827** | Strong Grounding |
+| 15 | `gpt-5.4` | Codex agent | 0.86 | 0.86 | 0.80 | 0.72 | 0.86 | 0.86 | **0.827** | Strong Grounding |
+| 16 | `gpt-5.4-mini` | Codex agent | 0.86 | 0.80 | 0.86 | 0.72 | 0.86 | 0.80 | **0.817** | Strong Grounding |
 
 <!-- /RESULTS:AUTO -->
 
@@ -268,7 +272,7 @@ Linear probes for "physical plausibility" directions (already scaffolded in `cli
 
 Two smaller findings from §4.4 are worth spelling out in plain language, because they are easy to over-read.
 
-**Does it matter how you reach a model?** Modern frontier models are increasingly used *through agents* — a command-line tool wraps the model in its own instructions and tools before your question ever lands. We wondered whether that wrapper changes the model's grounding behaviour, so we asked the identical six-language probes through two coding agents (`claude -p` and `codex exec`) instead of through a bare chat endpoint, with each agent's shell tools removed so the only difference was the framing. The Claude family lands in the low-to-mid 0.9s (0.91–0.96) and gpt-5.5 through Codex at 0.83 — all comfortably in "strong grounding" territory. We were tempted, at first, to read a *tools-on vs tools-off* effect into one run where German jumped. It evaporated on repetition (§4.4's noise note): asking the same language five times per mode reversed the direction. The honest conclusion is the quieter one — **the agent doorway does not obviously break grounding, and the differences we saw at the margins were mostly the model's own run-to-run wobble**, not the scaffolding. This is itself a small, useful result: it says the behaviour we are probing is reasonably robust to how the model is invoked.
+**Does it matter how you reach a model?** Modern frontier models are increasingly used *through agents* — a command-line tool wraps the model in its own instructions and tools before your question ever lands. We wondered whether that wrapper changes the model's grounding behaviour, so we asked the identical six-language probes through two coding agents (`claude -p` and `codex exec`) instead of through a bare chat endpoint, with each agent's shell tools removed so the only difference was the framing. The Claude family lands in the low-to-mid 0.9s (0.91–0.96) and the GPT-5.x models through Codex at ~0.82–0.83 — all comfortably in "strong grounding" territory. We were tempted, at first, to read a *tools-on vs tools-off* effect into one run where German jumped. It evaporated on repetition (§4.4's noise note): asking the same language five times per mode reversed the direction. The honest conclusion is the quieter one — **the agent doorway does not obviously break grounding, and the differences we saw at the margins were mostly the model's own run-to-run wobble**, not the scaffolding. This is itself a small, useful result: it says the behaviour we are probing is reasonably robust to how the model is invoked.
 
 **Why does one model score differently across languages?** This is the part that, to us, is the most interesting and the most honest about the method's limits. A genuine world model should be *language-invariant*: the apple falls up in German exactly as it does in English, because gravity is not a fact about English. So when a single model's SPI is flat across all six languages, that is the grounding-invariance signature we are hoping to see — the meaning is sitting *underneath* the language. When the same model wobbles — strong in English and Chinese, softer in Russian or German — there are two very different things it could mean, and we cannot always tell them apart:
 
