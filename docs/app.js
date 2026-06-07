@@ -4,6 +4,13 @@
   var D = window.CANYON_DATA;
   var SVGNS = "http://www.w3.org/2000/svg";
   var SERIES = ["#38bdf8", "#a78bfa", "#34d399", "#fbbf24", "#f87171", "#f472b6", "#22d3ee"];
+  var ACCESS = {
+    "chat-api": { label: "chat API", color: "#38bdf8" },
+    "claude-agent": { label: "Claude agent", color: "#a78bfa" },
+    "codex-agent": { label: "Codex agent", color: "#34d399" }
+  };
+  function accessColor(a) { return (ACCESS[a] || {}).color || "#38bdf8"; }
+  function accessLabel(a) { return (ACCESS[a] || {}).label || a || "—"; }
 
   function el(tag, attrs, kids) {
     var n = document.createElement(tag);
@@ -214,9 +221,12 @@
     if (meta) meta.textContent = lb.models.filter(function (e) { return e.per_lang && Object.keys(e.per_lang).length; }).length +
       " models · " + langs.length + " languages · generated " + (lb.generated_at || "");
 
-    var header = ["#", "Model"].concat(langs.map(function (l) { return l.toUpperCase(); })).concat(["Mean SPI", "Class"]);
+    var hasAccess = lb.models.some(function (e) { return e.access_path; });
+    var header = ["#", "Model"].concat(hasAccess ? ["Access"] : [])
+      .concat(langs.map(function (l) { return l.toUpperCase(); })).concat(["Mean SPI", "Class"]);
+    var numStart = hasAccess ? 3 : 2;
     var rows = [el("tr", {}, header.map(function (h, i) {
-      return el("th", (i >= 2 && i <= langs.length + 2) ? { class: "num" } : {}, [h]);
+      return el("th", (i >= numStart && i <= langs.length + numStart) ? { class: "num" } : {}, [h]);
     }))];
     var rank = 0;
     lb.models.forEach(function (e) {
@@ -224,6 +234,11 @@
       var tds = [];
       tds.push(el("td", {}, [ok ? String(++rank) : "–"]));
       tds.push(el("td", {}, [el("code", {}, [shortModel(e.model)])]));
+      if (hasAccess) {
+        var ai = el("i"); ai.style.background = accessColor(e.access_path);
+        ai.style.cssText = "display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;background:" + accessColor(e.access_path);
+        tds.push(el("td", {}, [ai, accessLabel(e.access_path)]));
+      }
       langs.forEach(function (l) {
         var v = ok && e.per_lang[l] ? e.per_lang[l].stochastic_parrot_index : null;
         tds.push(el("td", { class: "num" }, [v == null ? "—" : v.toFixed(2)]));
@@ -259,10 +274,12 @@
       s.appendChild(svg("line", { x1: padL, y1: y, x2: W, y2: y, stroke: p[1], "stroke-dasharray": "5 5", opacity: .7 }));
     });
     var bw = (W - padL - 16) / models.length;
+    var hasAccess = models.some(function (e) { return e.access_path; });
     models.forEach(function (e, i) {
       var spi = e.mean.stochastic_parrot_index, h = spi * (H - padT - padB);
       var x = padL + i * bw + bw * 0.18, w = bw * 0.64, y = padT + (H - padT - padB) - h;
-      s.appendChild(svg("rect", { x: x, y: y, width: w, height: h, rx: 4, fill: "url(#g)" }));
+      var fill = e.access_path ? accessColor(e.access_path) : "url(#g)";
+      s.appendChild(svg("rect", { x: x, y: y, width: w, height: h, rx: 4, fill: fill }));
       var v = svg("text", { x: x + w / 2, y: y - 5, "text-anchor": "middle", fill: "#e6edf3" }); v.textContent = spi.toFixed(2); s.appendChild(v);
       var g = svg("g", { transform: "translate(" + (x + w / 2) + "," + (H - padB + 12) + ") rotate(40)" });
       var lab = svg("text", { x: 0, y: 0 }); lab.textContent = shortModel(e.model); g.appendChild(lab); s.appendChild(g);
@@ -272,6 +289,17 @@
     grad.appendChild(svg("stop", { offset: "1", "stop-color": "#a78bfa" }));
     defs.appendChild(grad); s.appendChild(defs);
     host.appendChild(s);
+    if (hasAccess) {
+      var legend = el("div", { class: "legend" });
+      var seen = {};
+      models.forEach(function (e) {
+        if (!e.access_path || seen[e.access_path]) return;
+        seen[e.access_path] = 1;
+        var i = el("i"); i.style.background = accessColor(e.access_path);
+        legend.appendChild(el("span", {}, [i, accessLabel(e.access_path)]));
+      });
+      host.appendChild(legend);
+    }
   }
 
   /* ---- access-path experiment: claude -p vs codex exec ---- */
