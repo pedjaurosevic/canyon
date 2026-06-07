@@ -335,13 +335,15 @@ def build_results_md(black, white, leaderboard=None, agent=None, unified=None, j
                     parts.append("```")
 
     if judged and judged.get("models"):
-        parts.append("\n### 4.3 Semantic-judge model benchmark\n")
+        parts.append("\n### 4.3 Semantic-judge model benchmark (standard API)\n")
         parts.append(f"Mean semantic SPI over {len(judged.get('langs', []))} languages, ranked "
                      f"after re-scoring full saved transcripts with `{judged.get('judge', 'LLM judge')}`. "
-                     "This is the primary leaderboard: it accepts correct paraphrases and avoids the "
-                     "known multilingual brittleness of the keyword screen. Every row shows the exact "
-                     "tested model identifier and access path.\n")
-        parts.append(build_judged_md(judged))
+                     "This is the primary leaderboard: it includes only standard API endpoints and local "
+                     "models that were tested directly, without any agent wrapper or CLI framework.\n")
+        api_judged = dict(judged)
+        api_judged["models"] = [e for e in judged["models"] if e.get("access_path") not in ("claude-agent", "codex-agent")]
+        # Re-number ranks for the filtered list
+        parts.append(build_judged_md(api_judged))
         parts.append("")
     elif leaderboard and leaderboard.get("models"):
         parts.append("\n### 4.3 Model leaderboard (keyword screen, cross-lingual)\n")
@@ -355,12 +357,20 @@ def build_results_md(black, white, leaderboard=None, agent=None, unified=None, j
         parts.append(build_agent_md(agent))
 
     if unified and unified.get("models"):
-        parts.append("\n### 4.5 Combined ranking — all access paths\n")
+        parts.append("\n### 4.5 Combined ranking — all access paths (experimental)\n")
         parts.append("Every full-transcript model run in one list, ranked by semantic mean SPI "
                      "when a judge leaderboard is available, tagged with how it was reached. "
-                     "Chat-API and agent-CLI numbers are *not* strictly comparable (the agent "
-                     "wraps the model in its own framing), so read the **Access** column as "
-                     "essential context — and remember gaps below ~0.05 are within noise.\n")
+                     "This includes frontier models running inside developer agent command-line interfaces "
+                     "(such as Anthropic's Claude Code and OpenAI's Codex), which wrap the models in their own framing.\n")
+        parts.append(
+            "\n**A note on the top rank (The Haiku anomaly):** While `claude-haiku-4.5` (running inside the "
+            "Claude Code agent) occupies the top spot here with a perfect 1.000, the gap to the runners-up (0.967) "
+            "is **just a single question**. Almost all larger models (Sonnet 4.6, GPT-5.4, Qwen3) fell into a "
+            "single grammatical trap in German (interpreting the ambiguous *\"Grand Canyon flying to Chicago\"* "
+            "literally as the object flying due to syntax rules), whereas Haiku favored the pragmatically sensible \"I\" "
+            "(the narrator). Such minor variations are well within the run-to-run noise threshold (~0.05) and do not "
+            "represent general superiority.\n"
+        )
         parts.append(build_unified_md(unified))
         parts.append("")
 
