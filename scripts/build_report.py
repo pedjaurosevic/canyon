@@ -89,12 +89,35 @@ def _load_dataset_manifest():
         return json.load(f)
 
 
-def build_unified(leaderboard, agent):
-    """One ranked list across every access path (chat API + agent CLIs), each
-    model tagged with how it was reached. Same per-language SPI schema, so the
+def _agg_local(d, access):
+    """Fold a per-language black/white-box result dict into one unified entry."""
+    if not d:
+        return None
+    model = next(iter(d.values())).get("model", "?")
+    per_lang = {}
+    for lang, e in d.items():
+        m = e.get("metrics") or {}
+        if m.get("stochastic_parrot_index") is not None:
+            per_lang[lang] = {**m, "classification": e.get("classification", ""), "status": "ok"}
+    if not per_lang:
+        return None
+    keys = ["cp_score", "cr_score", "si_score", "stochastic_parrot_index"]
+    mean = {k: round(sum(per_lang[l][k] for l in per_lang) / len(per_lang), 3) for k in keys}
+    spi = mean["stochastic_parrot_index"]
+    cls = ("Strong Grounding (World Model)" if spi >= 0.75
+           else "Weak Grounding (Hybrid)" if spi >= 0.5 else "Stochastic Parrot")
+    return {"model": model, "access_path": access, "per_lang": per_lang,
+            "mean": mean, "classification": cls}
+
+
+def build_unified(leaderboard, agent, black=None, white=None):
+    """One ranked list across EVERY model we measured — chat-API endpoints, the
+    Claude/Codex agent CLIs, the local black-box model and the white-box model —
+    each tagged with how it was reached. Same per-language SPI schema, so the
     rows concatenate cleanly and sort by mean SPI."""
     import time
-    langs = (leaderboard or {}).get("langs") or (agent or {}).get("langs") or []
+    langs = ((leaderboard or {}).get("langs") or (agent or {}).get("langs")
+             or ["en", "zh", "ja", "ru", "de", "es"])
     models = []
     for e in (leaderboard or {}).get("models", []):
         if e.get("per_lang") and e.get("mean", {}).get("stochastic_parrot_index") is not None:
@@ -108,13 +131,17 @@ def build_unified(leaderboard, agent):
                 models.append({"model": e["model"], "access_path": ap,
                                "per_lang": e["per_lang"], "mean": e["mean"],
                                "classification": e.get("classification", "")})
+    for entry in (_agg_local(black, "local-blackbox"), _agg_local(white, "white-box")):
+        if entry:
+            models.append(entry)
     if not models:
         return None
     models.sort(key=lambda m: m["mean"]["stochastic_parrot_index"], reverse=True)
     return {"generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "langs": langs, "models": models}
 
 
-ACCESS_LABEL = {"chat-api": "chat API", "claude-agent": "Claude agent", "codex-agent": "Codex agent"}
+ACCESS_LABEL = {"chat-api": "chat API", "claude-agent": "Claude agent",
+                "codex-agent": "Codex agent", "local-blackbox": "local", "white-box": "white-box"}
 
 
 def build_unified_md(unified):
@@ -337,7 +364,7 @@ def main():
     leaderboard = _load_leaderboard()
     agent = _load_agent()
     dataset = _load_dataset_manifest()
-    unified = build_unified(leaderboard, agent)
+    unified = build_unified(leaderboard, agent, black, white)
     results_md = build_results_md(black, white, leaderboard, agent, unified)
     patch_whitepaper(results_md)
     write_docs_data(black, white, leaderboard, agent, dataset, unified)

@@ -230,22 +230,24 @@ Every model in one list, ranked by mean SPI, tagged with how it was reached. Cha
 
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Mean SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|
-| 1 | `claude-opus-4.8` | Claude agent | 0.88 | 1.00 | 0.94 | 1.00 | 1.00 | 0.94 | **0.960** | Strong Grounding |
-| 2 | `llama-4-maverick-17b-128e-instruct` | chat API | 1.00 | 0.94 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
-| 3 | `llama-3.3-70b-instruct` | chat API | 0.94 | 1.00 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
-| 4 | `qwen3-next-80b-a3b-instruct` | chat API | 0.86 | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | **0.953** | Strong Grounding |
-| 5 | `qwen3.5-122b-a10b` | chat API | 0.94 | 1.00 | 0.94 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
-| 6 | `claude-sonnet-4.6` | Claude agent | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
-| 7 | `deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 0.80 | **0.943** | Strong Grounding |
-| 8 | `mistral-small-4-119b-2603` | chat API | 1.00 | 1.00 | 0.94 | 0.86 | 1.00 | 0.80 | **0.933** | Strong Grounding |
-| 9 | `deepseek-v4-pro` | chat API | 0.94 | 0.94 | 1.00 | 0.86 | 0.86 | 1.00 | **0.933** | Strong Grounding |
-| 10 | `mistral-nemotron` | chat API | 0.94 | 1.00 | 0.94 | 0.80 | 1.00 | 0.86 | **0.923** | Strong Grounding |
-| 11 | `claude-haiku-4.5` | Claude agent | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
-| 12 | `llama-3.1-8b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.72 | 0.86 | 0.86 | **0.883** | Strong Grounding |
-| 13 | `llama-3.2-3b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.66 | 0.86 | 0.86 | **0.873** | Strong Grounding |
-| 14 | `gpt-5.5` | Codex agent | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.827** | Strong Grounding |
-| 15 | `gpt-5.4` | Codex agent | 0.86 | 0.86 | 0.80 | 0.72 | 0.86 | 0.86 | **0.827** | Strong Grounding |
-| 16 | `gpt-5.4-mini` | Codex agent | 0.86 | 0.80 | 0.86 | 0.72 | 0.86 | 0.80 | **0.817** | Strong Grounding |
+| 1 | `gemma-4-12B-it-Q4_K_M.gguf` | local | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0.88 | **0.980** | Strong Grounding |
+| 2 | `claude-opus-4.8` | Claude agent | 0.88 | 1.00 | 0.94 | 1.00 | 1.00 | 0.94 | **0.960** | Strong Grounding |
+| 3 | `llama-4-maverick-17b-128e-instruct` | chat API | 1.00 | 0.94 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
+| 4 | `llama-3.3-70b-instruct` | chat API | 0.94 | 1.00 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
+| 5 | `qwen3-next-80b-a3b-instruct` | chat API | 0.86 | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | **0.953** | Strong Grounding |
+| 6 | `qwen3.5-122b-a10b` | chat API | 0.94 | 1.00 | 0.94 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
+| 7 | `claude-sonnet-4.6` | Claude agent | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
+| 8 | `deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 0.80 | **0.943** | Strong Grounding |
+| 9 | `mistral-small-4-119b-2603` | chat API | 1.00 | 1.00 | 0.94 | 0.86 | 1.00 | 0.80 | **0.933** | Strong Grounding |
+| 10 | `deepseek-v4-pro` | chat API | 0.94 | 0.94 | 1.00 | 0.86 | 0.86 | 1.00 | **0.933** | Strong Grounding |
+| 11 | `mistral-nemotron` | chat API | 0.94 | 1.00 | 0.94 | 0.80 | 1.00 | 0.86 | **0.923** | Strong Grounding |
+| 12 | `claude-haiku-4.5` | Claude agent | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
+| 13 | `llama-3.1-8b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.72 | 0.86 | 0.86 | **0.883** | Strong Grounding |
+| 14 | `llama-3.2-3b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.66 | 0.86 | 0.86 | **0.873** | Strong Grounding |
+| 15 | `gpt-5.5` | Codex agent | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.827** | Strong Grounding |
+| 16 | `gpt-5.4` | Codex agent | 0.86 | 0.86 | 0.80 | 0.72 | 0.86 | 0.86 | **0.827** | Strong Grounding |
+| 17 | `Qwen2.5-0.5B-Instruct` | white-box | 0.74 | 1.00 | — | 0.72 | — | — | **0.820** | Strong Grounding |
+| 18 | `gpt-5.4-mini` | Codex agent | 0.86 | 0.80 | 0.86 | 0.72 | 0.86 | 0.80 | **0.817** | Strong Grounding |
 
 <!-- /RESULTS:AUTO -->
 
