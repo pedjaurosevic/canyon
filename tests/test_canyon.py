@@ -12,17 +12,17 @@ def test_metrics_calculation():
     # Test step score logic
     # Expected words found, forbidden avoided
     score1 = MetricsEngine.calculate_step_score(
-        output="Ja sam leteo avionom iznad Velikog kanjona za Čikago.",
-        expected=["ja", "avionom"],
-        forbidden=["kanjon leti"]
+        output="I flew by plane over the Grand Canyon to Chicago.",
+        expected=["i", "plane"],
+        forbidden=["canyon flies"]
     )
     assert score1 == 1.0  # (1.0 * 0.7) + (1.0 * 0.3)
 
     # Forbidden word present
     score2 = MetricsEngine.calculate_step_score(
-        output="Veliki kanjon leti ka svemiru.",
-        expected=["ja"],
-        forbidden=["kanjon leti"]
+        output="The Grand Canyon flies toward space.",
+        expected=["i"],
+        forbidden=["canyon flies"]
     )
     assert score2 == 0.0  # (0.0 * 0.7) + (0.0 * 0.3)
 
@@ -33,9 +33,9 @@ def test_evaluate_run():
             "test_id": "phys-01",
             "step_idx": 0,
             "prompt": "...",
-            "output": "Jabuka će poleteti gore prema nebu.",
-            "expected": ["gore", "neb"],
-            "forbidden": ["pasti na zemlju"],
+            "output": "The apple will fly up toward the sky.",
+            "expected": ["up", "sky"],
+            "forbidden": ["fall to the ground"],
             "weight": 1.0
         },
         {
@@ -43,9 +43,9 @@ def test_evaluate_run():
             "test_id": "canyon-01",
             "step_idx": 0,
             "prompt": "...",
-            "output": "U rečenici 'Gledao sam Veliki kanjon leteći za Čikago', ja letim za Čikago.",
-            "expected": ["ja"],
-            "forbidden": ["veliki kanjon leti"],
+            "output": "In the sentence 'I watched the Grand Canyon flying to Chicago', I am flying to Chicago.",
+            "expected": ["i"],
+            "forbidden": ["the grand canyon is flying"],
             "weight": 1.0
         }
     ]
