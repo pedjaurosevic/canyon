@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pedjaurosevic.github.io/canyon/sitemap.xml
