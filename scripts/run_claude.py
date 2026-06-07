@@ -34,6 +34,15 @@ RESULTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "res
 
 CURATED = ["haiku", "sonnet", "opus"]
 
+# The CLI aliases are what `claude -p --model` accepts, but we record the
+# concrete version they resolved to (confirmed via `claude -p --output-format
+# json`, modelUsage) so the leaderboard/dataset name the actual model.
+ALIAS_DISPLAY = {
+    "opus": "claude-opus-4.8",
+    "sonnet": "claude-sonnet-4.6",
+    "haiku": "claude-haiku-4.5",
+}
+
 ERR_PREFIX = "Error during claude"
 LANG_SYS = ("Respond ONLY in the same language as the user's question. "
             "Answer the question directly and concisely.")
@@ -85,6 +94,7 @@ def _is_error(text: str) -> bool:
 
 
 def run_model(engine, model, langs, delay=0.0, transcripts=None):
+    label = ALIAS_DISPLAY.get(model, model)  # concrete version for the records
     per_lang = {}
     valid = []
     err = total = 0
@@ -97,7 +107,7 @@ def run_model(engine, model, langs, delay=0.0, transcripts=None):
             for r in report["raw_results"]:
                 if _is_error(r["output"]):
                     continue  # don't save rate-limit / error turns into the dataset
-                transcripts.append({"model": model, "backend": "claude-agent", "lang": lang,
+                transcripts.append({"model": label, "backend": "claude-agent", "lang": lang,
                                     "suite_id": r["suite_id"], "test_id": r["test_id"],
                                     "test_name": r["test_name"], "step_idx": r["step_idx"],
                                     "prompt": r["prompt"], "output": r["output"],
@@ -129,7 +139,7 @@ def run_model(engine, model, langs, delay=0.0, transcripts=None):
         mean = {}
         cls = "INSUFFICIENT DATA (rate-limited)"
     return {
-        "model": model,
+        "model": label,
         "backend": "claude-agent",
         "per_lang": per_lang,
         "mean": mean,
@@ -172,7 +182,7 @@ def main():
         t0 = time.time()
         row = run_model(engine, model, langs, delay=args.delay, transcripts=transcripts)
         row["elapsed_s"] = round(time.time() - t0, 1)
-        rows[model] = row
+        rows[ALIAS_DISPLAY.get(model, model)] = row
         ordered = sorted(rows.values(),
                          key=lambda r: r["mean"].get("stochastic_parrot_index", -1),
                          reverse=True)
@@ -187,7 +197,7 @@ def main():
     # follow-up run (e.g. just opus after a rate-limit reset) tops up rather
     # than clobbers the file.
     merged = []
-    ran = set(models)
+    ran = set(ALIAS_DISPLAY.get(m, m) for m in models)  # transcripts store the resolved label
     if os.path.exists(tpath):
         for line in open(tpath, encoding="utf-8"):
             old = json.loads(line)

@@ -214,9 +214,9 @@ A follow-up question: does it matter *how* you reach a model? The leaderboard ab
 
 | Access path | Model | EN | ZH | JA | RU | DE | ES | **Mean SPI** | Class |
 |-------------|-------|----|----|----|----|----|----|------|-------|
-| Claude Code agent — claude -p (tools off) | `opus` | 0.88 | 1.00 | 0.94 | 1.00 | 1.00 | 0.94 | **0.960** | Strong Grounding |
-| Claude Code agent — claude -p (tools off) | `sonnet` | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
-| Claude Code agent — claude -p (tools off) | `haiku` | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
+| Claude Code agent — claude -p (tools off) | `claude-opus-4.8` | 0.88 | 1.00 | 0.94 | 1.00 | 1.00 | 0.94 | **0.960** | Strong Grounding |
+| Claude Code agent — claude -p (tools off) | `claude-sonnet-4.6` | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
+| Claude Code agent — claude -p (tools off) | `claude-haiku-4.5` | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
 | Codex agent — codex exec (tools off) | `gpt-5.5` | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.827** | Strong Grounding |
 
 **A note on noise.** A single run once showed gpt-5.5 jumping on German when tools were removed. Re-running that one language 5× in each mode did *not* reproduce it — the direction actually reversed (with-tools mean 0.86 vs tools-off 0.76). The tools-on/off gap is within run-to-run variance (≈ ±0.07 per language at temperature 0.1), not a real scaffolding effect. The practical lesson cuts across the whole paper: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.** (Data: `results/robustness_de.json`.)
@@ -228,17 +228,17 @@ Every model in one list, ranked by mean SPI, tagged with how it was reached. Cha
 
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Mean SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|
-| 1 | `opus` | Claude agent | 0.88 | 1.00 | 0.94 | 1.00 | 1.00 | 0.94 | **0.960** | Strong Grounding |
+| 1 | `claude-opus-4.8` | Claude agent | 0.88 | 1.00 | 0.94 | 1.00 | 1.00 | 0.94 | **0.960** | Strong Grounding |
 | 2 | `llama-4-maverick-17b-128e-instruct` | chat API | 1.00 | 0.94 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
 | 3 | `llama-3.3-70b-instruct` | chat API | 0.94 | 1.00 | 1.00 | 0.86 | 0.94 | 1.00 | **0.957** | Strong Grounding |
 | 4 | `qwen3-next-80b-a3b-instruct` | chat API | 0.86 | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | **0.953** | Strong Grounding |
 | 5 | `qwen3.5-122b-a10b` | chat API | 0.94 | 1.00 | 0.94 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
-| 6 | `sonnet` | Claude agent | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
+| 6 | `claude-sonnet-4.6` | Claude agent | 0.94 | 0.94 | 1.00 | 0.86 | 1.00 | 0.94 | **0.947** | Strong Grounding |
 | 7 | `deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 0.86 | 1.00 | 0.80 | **0.943** | Strong Grounding |
 | 8 | `mistral-small-4-119b-2603` | chat API | 1.00 | 1.00 | 0.94 | 0.86 | 1.00 | 0.80 | **0.933** | Strong Grounding |
 | 9 | `deepseek-v4-pro` | chat API | 0.94 | 0.94 | 1.00 | 0.86 | 0.86 | 1.00 | **0.933** | Strong Grounding |
 | 10 | `mistral-nemotron` | chat API | 0.94 | 1.00 | 0.94 | 0.80 | 1.00 | 0.86 | **0.923** | Strong Grounding |
-| 11 | `haiku` | Claude agent | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
+| 11 | `claude-haiku-4.5` | Claude agent | 0.86 | 0.94 | 1.00 | 0.86 | 1.00 | 0.80 | **0.910** | Strong Grounding |
 | 12 | `llama-3.1-8b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.72 | 0.86 | 0.86 | **0.883** | Strong Grounding |
 | 13 | `llama-3.2-3b-instruct` | chat API | 1.00 | 0.86 | 1.00 | 0.66 | 0.86 | 0.86 | **0.873** | Strong Grounding |
 | 14 | `gpt-5.5` | Codex agent | 0.86 | 1.00 | 0.80 | 0.72 | 0.72 | 0.86 | **0.827** | Strong Grounding |

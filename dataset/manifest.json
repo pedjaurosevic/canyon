@@ -22,15 +22,15 @@
  "model_runs": [
   {
    "access_path": "claude-agent",
-   "model": "haiku"
+   "model": "claude-haiku-4.5"
   },
   {
    "access_path": "claude-agent",
-   "model": "opus"
+   "model": "claude-opus-4.8"
   },
   {
    "access_path": "claude-agent",
-   "model": "sonnet"
+   "model": "claude-sonnet-4.6"
   },
   {
    "access_path": "codex-agent",

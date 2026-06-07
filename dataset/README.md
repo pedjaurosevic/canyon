@@ -63,7 +63,10 @@ The three suites map to the three metric axes: `counterfactuals → CP`
 - **Agent conversations** come from asking the identical probes through
   Anthropic's Claude Code (`claude -p`) and OpenAI's Codex (`codex exec`), each
   with its shell tools stripped and run from an isolated config, so the only
-  thing that changes from a bare chat call is the agent's own framing.
+  thing that changes from a bare chat call is the agent's own framing. The CLI
+  aliases resolved (confirmed via `claude -p --output-format json`) to
+  `claude-opus-4.8` (claude-opus-4-8), `claude-sonnet-4.6` (claude-sonnet-4-6)
+  and `claude-haiku-4.5` (claude-haiku-4-5); the Codex model is `gpt-5.5`.
 
 ## Limitations (please read before using)
 
