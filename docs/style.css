@@ -17,9 +17,28 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--bg);
   color: var(--ink);
   font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  position: relative;
+  /* deep, slightly "dirtied" base — a dark negative that shows through */
+  background:
+    radial-gradient(1300px 700px at 72% -8%, rgba(56,189,248,.07), transparent 60%),
+    radial-gradient(1100px 700px at 8% 2%, rgba(167,139,250,.06), transparent 58%),
+    linear-gradient(180deg, #0a0e15 0%, #080a0f 60%, #06070a 100%);
+}
+/* grain + faint geological strata, fixed so it grimes the whole scroll */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .045;
+  mix-blend-mode: overlay;
+}
+/* vignette + barely-there horizontal canyon banding */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.014) 0 1px, transparent 1px 9px),
+    radial-gradient(130% 90% at 50% -5%, transparent 52%, rgba(0,0,0,.5) 100%);
 }
 .wrap { width: min(960px, 92vw); margin: 0 auto; }
 a { color: var(--accent); text-decoration: none; }
@@ -32,7 +51,7 @@ code { font-family: var(--mono); font-size: 0.9em; background: #0b1f2e; color: #
   background:
     radial-gradient(1200px 500px at 70% -10%, rgba(56,189,248,.18), transparent 60%),
     radial-gradient(900px 500px at 10% 0%, rgba(167,139,250,.16), transparent 55%),
-    linear-gradient(180deg, #0b1220, var(--bg));
+    linear-gradient(180deg, rgba(11,18,32,.85), transparent);
   border-bottom: 1px solid var(--line);
   padding: 88px 0 72px;
   text-align: center;

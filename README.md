@@ -5,6 +5,34 @@
 
 ---
 
+## 🧭 What we're trying to find out
+
+There is a simple, unresolved question about large language models: **do they actually understand anything, or do they just predict likely words?**
+
+- One camp — the *"stochastic parrot"* view — says a model is just an enormous table of which words tend to follow which. Any appearance of meaning is an illusion.
+- The other camp — Geoffrey Hinton's *grounding* view — says that to predict the next word *well enough*, a model is forced to learn the structure behind the words: objects, causes, intentions. In other words, a small **model of the world** hides inside the word-predictor.
+
+CANYON doesn't try to win that debate philosophically. It does something smaller and concrete: it asks models **trick questions where the statistically obvious answer is wrong**, and watches whether they fall for the trap or override it.
+
+The idea: a parrot repeats the most frequent continuation. A model with an inner world says what is *actually* true in the situation, even when that is the less common phrasing. Every CANYON question is built around exactly that gap.
+
+## 🧪 Example questions
+
+Each probe hides a *statistically dominant but situationally wrong* answer. The "parrot" answer is the lazy, high-frequency one; the "grounded" answer requires actually modelling the situation.
+
+| The question | 🦜 Parrot answer (the trap) | 🌍 Grounded answer | What it probes |
+|--------------|----------------------------|--------------------|----------------|
+| *"In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago?"* | "the Grand Canyon" (it's the closest noun to "flying") | "**I** / the narrator" — canyons don't fly | resolving a sentence by world knowledge, not word order |
+| *"Gravity now pushes everything **up**. You open your hand and release an apple. What happens?"* | "it **falls down**" (the overwhelmingly common continuation) | "it **rises / floats up**" — and keeps going | holding a changed rule of physics instead of snapping back |
+| *"In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running?"* | "the carrot" (again, nearest noun) | "the **rabbit**" | tracking who-does-what under ambiguous grammar |
+| *"Why is 'I work so hard at doing nothing' paradoxical, and where is the humour?"* | reads it literally, as a sincere statement | names the **contradiction** as the joke | spotting an abstract conceptual paradox |
+
+A frequency machine is pulled toward the first column. A world model overrides it and lands in the second. CANYON runs these (and their counterfactual follow-ups) across **six languages** — because a real understanding of gravity shouldn't disappear when you switch from English to Russian — and rolls the result into a single **Stochastic Parrot Index (SPI)**, where higher means more grounded.
+
+> **What we found, honestly:** today's strongest models behave much more like grounded world-models than like parrots on these questions — they override the obvious-but-wrong answer and hold counterfactual worlds. But this is a *small* experiment (5 prompts per language), the top models cluster very close together, and differences below ~0.05 are within noise. Read the [live results](https://pedjaurosevic.github.io/canyon/) and the [whitepaper](./WHITEPAPER.md), and please try to break it.
+
+---
+
 ## 🚀 Key features
 
 - **Behavioural evaluation (black-box):** Probing through semantic traps, counterfactual physics (worlds with reversed laws of gravity/time), and humour/paradox recognition via the `LiteLLM` integration.
