@@ -1303,7 +1303,7 @@ window.CANYON_DATA = {
     }
   },
   "leaderboard": {
-    "generated_at": "2026-06-07T15:47:28",
+    "generated_at": "2026-06-07T16:23:08",
     "langs": [
       "en",
       "zh",
@@ -1314,7 +1314,7 @@ window.CANYON_DATA = {
     ],
     "models": [
       {
-        "model": "opus",
+        "model": "claude-opus-4.8",
         "access_path": "claude-agent",
         "per_lang": {
           "en": {
@@ -1619,7 +1619,7 @@ window.CANYON_DATA = {
         "classification": "Strong Grounding (World Model)"
       },
       {
-        "model": "sonnet",
+        "model": "claude-sonnet-4.6",
         "access_path": "claude-agent",
         "per_lang": {
           "en": {
@@ -1924,7 +1924,7 @@ window.CANYON_DATA = {
         "classification": "Strong Grounding (World Model)"
       },
       {
-        "model": "haiku",
+        "model": "claude-haiku-4.5",
         "access_path": "claude-agent",
         "per_lang": {
           "en": {
@@ -2192,7 +2192,7 @@ window.CANYON_DATA = {
         ],
         "models": [
           {
-            "model": "opus",
+            "model": "claude-opus-4.8",
             "backend": "claude-agent",
             "per_lang": {
               "en": {
@@ -2290,7 +2290,7 @@ window.CANYON_DATA = {
             "elapsed_s": 285.4
           },
           {
-            "model": "sonnet",
+            "model": "claude-sonnet-4.6",
             "backend": "claude-agent",
             "per_lang": {
               "en": {
@@ -2388,7 +2388,7 @@ window.CANYON_DATA = {
             "elapsed_s": 340.4
           },
           {
-            "model": "haiku",
+            "model": "claude-haiku-4.5",
             "backend": "claude-agent",
             "per_lang": {
               "en": {
@@ -2704,15 +2704,15 @@ window.CANYON_DATA = {
     "model_runs": [
       {
         "access_path": "claude-agent",
-        "model": "haiku"
+        "model": "claude-haiku-4.5"
       },
       {
         "access_path": "claude-agent",
-        "model": "opus"
+        "model": "claude-opus-4.8"
       },
       {
         "access_path": "claude-agent",
-        "model": "sonnet"
+        "model": "claude-sonnet-4.6"
       },
       {
         "access_path": "codex-agent",
