@@ -1,0 +1,64 @@
+# CANYON — Probing Semantic Grounding in LLMs
+> A multilingual white-box + black-box framework testing Geoffrey Hinton's
+> grounding hypothesis against the stochastic-parrot hypothesis in LLMs.
+> Published at https://pedjaurosevic.github.io/canyon/ by Predrag Urosevic.
+> Repo: https://github.com/pedjaurosevic/canyon
+
+## About
+
+CANYON tests whether LLMs build internal world models (Hinton's view) or merely
+stitch together likely word sequences (the stochastic-parrot view). It asks
+adversarial trick questions across six languages (en, zh, ja, ru, de, es)
+where the statistically obvious answer is wrong, then checks whether the model
+overrides the trap. Results are expressed as a Stochastic Parrot Index (SPI):
+
+    SPI = 0.4·CP + 0.4·CR + 0.2·SI
+
+- **CP** (Counterfactual Plasticity): Holding an altered law of physics across turns
+- **CR** (Contextual Realignment): Resolving ambiguous wording toward the sensible referent
+- **SI** (Semantic Invariance): Recognising an abstract contradiction or joke
+
+## Key files
+
+- README: https://raw.githubusercontent.com/pedjaurosevic/canyon/main/README.md
+- Whitepaper: https://raw.githubusercontent.com/pedjaurosevic/canyon/main/WHITEPAPER.md
+- Full dataset: https://github.com/pedjaurosevic/canyon/tree/main/dataset
+- Results directory: https://github.com/pedjaurosevic/canyon/tree/main/results
+- Interactive leaderboard: https://pedjaurosevic.github.io/canyon/
+- All test suites: https://github.com/pedjaurosevic/canyon/tree/main/canyon/suites
+- Metric engine source: https://github.com/pedjaurosevic/canyon/blob/main/canyon/metrics.py
+- Build scripts: https://github.com/pedjaurosevic/canyon/tree/main/scripts
+
+## Core dataset
+
+The dataset contains 35 prompts across 7 languages (including Serbian reference),
+525 scored conversation turns, and 18 full-transcript model runs.
+
+- Prompts file (JSONL, full schema): https://raw.githubusercontent.com/pedjaurosevic/canyon/main/dataset/canyon_prompts.jsonl
+- Conversations file (JSONL, full transcripts): https://raw.githubusercontent.com/pedjaurosevic/canyon/main/dataset/canyon_conversations.jsonl
+- Dataset README with schema: https://raw.githubusercontent.com/pedjaurosevic/canyon/main/dataset/README.md
+
+## Models tested
+
+- deepseek/deepseek-v4-flash (chat API)
+- deepseek/deepseek-v4-pro (chat API)
+- gpt-5.4, gpt-5.4-mini, gpt-5.5 (via Codex agent)
+- claude-haiku-4.5, claude-sonnet-4.6, claude-opus-4.8 (via Claude Code agent)
+- novita/qwen/qwen3-next-80b-a3b-instruct (chat API)
+- novita/qwen/qwen3.5-122b-a10b (chat API)
+- novita/meta-llama/llama-3.3-70b-instruct (chat API)
+- novita/meta-llama/llama-3.1-8b-instruct (chat API)
+- novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8 (chat API)
+- novita/google/gemma-4-31b-it (chat API)
+- novita/google/gemma-4-26b-a4b-it (chat API)
+- openai/gemma-4-12B-it-Q4_K_M.gguf (local black-box over llama.cpp)
+- Qwen/Qwen2.5-0.5B-Instruct (local white-box with activations)
+
+## Key finding
+
+Today's strongest models behave much more like grounded world-models than like
+pure stochastic parrots on these adversarial-by-design questions: they override
+the statistically obvious-but-wrong answer, they hold a counterfactual world
+across turns, and their deep layers reorganise onto the situation rather than
+the surface words. However, this is a *small* experiment — differences below
+~0.05 SPI are within run-to-run noise.

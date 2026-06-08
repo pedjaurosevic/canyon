@@ -176,3 +176,9 @@ Together these axes form the **Stochastic Parrot Index** (`SPI = 0.4·CP + 0.4·
 ## 🤝 Contributing
 
 The project is fully open to the community! Feel free to add new test scenarios in `canyon/suites/` or extend the mechanistic providers.
+
+---
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).

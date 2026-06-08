@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use CANYON in your research, please cite this repository."
+title: "CANYON: A framework for mechanistic and behavioural evaluation of semantic grounding in LLMs"
+authors:
+  - family-names: Urosevic
+    given-names: Predrag
+    orcid: ""
+    affiliation: ""
+version: 0.1.0
+date-released: 2026-06-07
+url: "https://github.com/pedjaurosevic/canyon"
+repository-code: "https://github.com/pedjaurosevic/canyon"
+license: MIT
+type: software
+keywords:
+  - LLM semantic grounding
+  - world models
+  - stochastic parrot
+  - mechanistic interpretability
+  - multilingual benchmark
+  - counterfactual reasoning
+  - latent space drift
+abstract: >
+  CANYON is an open-source research harness and benchmark designed to test
+  Geoffrey Hinton's hypothesis about functional understanding and internal
+  world models in large language models (LLMs). It behaviourally scores models
+  on counterfactual physics, syntactic amphiboly, and oxymoronic humour across
+  six languages (EN, ZH, JA, RU, DE, ES), and mechanistically measures
+  latent-space semantic drift via hidden-state activations. Results are
+  expressed as a Stochastic Parrot Index (SPI).
