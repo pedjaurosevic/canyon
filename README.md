@@ -1,6 +1,11 @@
 # CANYON 🏜️
 ### A framework for mechanistic and behavioural evaluation of semantic grounding in LLMs
 
+[![Live demo](https://img.shields.io/badge/live-leaderboard-2ea44f?logo=githubpages)](https://pedjaurosevic.github.io/canyon/)
+[![Whitepaper](https://img.shields.io/badge/read-whitepaper-blue)](WHITEPAPER.md)
+[![Dataset](https://img.shields.io/badge/open-dataset-orange)](dataset/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 `CANYON` is an open-source research harness and benchmark designed to test Geoffrey Hinton's hypothesis about functional understanding and internal world models in large language models (LLMs). Named after Hinton's well-known Grand Canyon example, the tool aims to distinguish mere statistical word-stitching ("stochastic parrot") from dynamic *semantic grounding*.
 
 ---
