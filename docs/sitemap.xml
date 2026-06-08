@@ -37,7 +37,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://github.com/pedjaurosevic/canyon/blob/main/canyon/suites/</loc>
+    <loc>https://github.com/pedjaurosevic/canyon/tree/main/canyon/suites/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

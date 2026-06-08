@@ -40,10 +40,18 @@ The dataset contains 35 prompts across 7 languages (including Serbian reference)
 
 ## Models tested
 
-- deepseek/deepseek-v4-flash (chat API)
-- deepseek/deepseek-v4-pro (chat API)
+The 18 full-transcript runs in the dataset are the local black-box model, the
+local white-box model, and the agent-CLI runs (Claude Code, Codex). The public
+leaderboard scores additional chat-API-only models (served via Novita and
+NVIDIA NIM), for which we kept truncated answer samples rather than full
+transcripts. Some models (e.g. deepseek-v4-flash) appear under more than one
+provider for cross-provider comparison.
+
+Full-transcript runs:
+
 - gpt-5.4, gpt-5.4-mini, gpt-5.5 (via Codex agent)
 - claude-haiku-4.5, claude-sonnet-4.6, claude-opus-4.8 (via Claude Code agent)
+- deepseek/deepseek-v4-flash, deepseek/deepseek-v4-pro (chat API)
 - novita/qwen/qwen3-next-80b-a3b-instruct (chat API)
 - novita/qwen/qwen3.5-122b-a10b (chat API)
 - novita/meta-llama/llama-3.3-70b-instruct (chat API)
@@ -51,8 +59,17 @@ The dataset contains 35 prompts across 7 languages (including Serbian reference)
 - novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8 (chat API)
 - novita/google/gemma-4-31b-it (chat API)
 - novita/google/gemma-4-26b-a4b-it (chat API)
+- novita/deepseek/deepseek-v4-flash (chat API)
 - openai/gemma-4-12B-it-Q4_K_M.gguf (local black-box over llama.cpp)
 - Qwen/Qwen2.5-0.5B-Instruct (local white-box with activations)
+
+Additional chat-API models on the leaderboard (sampled, not full transcripts):
+
+- novita/meta-llama/llama-3.2-3b-instruct
+- nvidia_nim/mistralai/mistral-nemotron
+- nvidia_nim/mistralai/mistral-small-4-119b-2603
+- nvidia_nim/nvidia/llama-3.3-nemotron-super-49b-v1.5
+- nvidia_nim/{meta,qwen,deepseek-ai}/* (same model families via NVIDIA NIM)
 
 ## Key finding
 
