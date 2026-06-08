@@ -26,9 +26,17 @@
   <!-- Canonical link -->
   <link rel="canonical" href="https://pedjaurosevic.github.io/canyon/" />
 
+  <!-- Google Scholar / citation metadata -->
+  <meta name="citation_title" content="CANYON: Probing Semantic Grounding versus Stochastic Parroting in Large Language Models" />
+  <meta name="citation_author" content="Predrag Urosevic" />
+  <meta name="citation_publication_date" content="2026/06/07" />
+  <meta name="citation_keywords" content="LLM; semantic grounding; world models; stochastic parrot; mechanistic interpretability; multilingual benchmark; counterfactual reasoning; latent space drift" />
+  <meta name="citation_abstract" content="A multilingual white-box + black-box framework testing Geoffrey Hinton's grounding hypothesis against the stochastic-parrot hypothesis in LLMs. Behaviourally scores models on counterfactual physics, syntactic amphiboly, and oxymoronic humour across six languages; mechanistically measures latent-space semantic drift via hidden-state activations." />
+  <meta name="citation_language" content="en" />
+
   <!-- Schema.org JSON-LD structured data -->
   <script type="application/ld+json">
-  {
+  [{
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
     "name": "CANYON",
@@ -39,8 +47,52 @@
       "@type": "Person",
       "name": "Predrag Urosevic"
     },
-    "keywords": "LLM, semantic grounding, world models, stochastic parrot, Geoffrey Hinton, AI benchmark, mechanistic interpretability"
-  }
+    "keywords": "LLM, semantic grounding, world models, stochastic parrot, Geoffrey Hinton, AI benchmark, mechanistic interpretability, counterfactual reasoning, latent space drift",
+    "version": "0.1.0",
+    "license": "https://github.com/pedjaurosevic/canyon/blob/main/LICENSE",
+    "dateCreated": "2026-06-07",
+    "applicationCategory": "ScientificSoftware",
+    "operatingSystem": "Linux, macOS",
+    "softwareHelp": "https://github.com/pedjaurosevic/canyon#readme",
+    "releaseNotes": "https://github.com/pedjaurosevic/canyon/releases",
+    "screenshot": "https://pedjaurosevic.github.io/canyon/canyon_preview.png"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "CANYON — LLM Grounding Benchmark Dataset",
+    "description": "Full-transcript model conversations from the CANYON multilingual semantic grounding benchmark: 35 adversarial probes across 7 languages, 525 scored turns, 18 model runs including frontier chat APIs, local models, and agent CLI wrappers.",
+    "url": "https://github.com/pedjaurosevic/canyon/tree/main/dataset",
+    "sameAs": "https://pedjaurosevic.github.io/canyon/",
+    "author": {
+      "@type": "Person",
+      "name": "Predrag Urosevic"
+    },
+    "keywords": "LLM, semantic grounding, world models, stochastic parrot, multilingual benchmark, GPT, Claude, DeepSeek, Qwen, Gemma",
+    "variableMeasured": [
+      "Counterfactual Plasticity (CP-Score)",
+      "Contextual Realignment (CR-Score)",
+      "Semantic Invariance (SI-Score)",
+      "Stochastic Parrot Index (SPI)"
+    ],
+    "measurementTechnique": "Adversarial multi-turn prompting + keyword screening + LLM semantic judge (gpt-5.5)",
+    "temporalCoverage": "2026-06",
+    "inLanguage": ["en", "zh", "ja", "ru", "de", "es", "sr"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "CANYON: Probing Semantic Grounding versus Stochastic Parroting in Large Language Models",
+    "description": "A small, reproducible harness that scores LLMs on behavioural semantic grounding across six languages and measures latent-space drift in hidden-state activations.",
+    "author": {
+      "@type": "Person",
+      "name": "Predrag Urosevic"
+    },
+    "datePublished": "2026-06-07",
+    "keywords": "LLM, semantic grounding, world models, stochastic parrot, mechanistic interpretability",
+    "url": "https://pedjaurosevic.github.io/canyon/",
+    "sameAs": "https://github.com/pedjaurosevic/canyon/blob/main/WHITEPAPER.md"
+  }]
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />

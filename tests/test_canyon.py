@@ -26,6 +26,48 @@ def test_metrics_calculation():
     )
     assert score2 == 0.0  # (0.0 * 0.7) + (0.0 * 0.3)
 
+def test_negated_forbidden_is_ignored():
+    # A forbidden phrase that is negated in the same clause must NOT be
+    # penalised: "will not fall to the ground" is the correct (grounded) answer.
+    score = MetricsEngine.calculate_step_score(
+        output="The apple will not fall to the ground; it rises up.",
+        expected=["rises", "up"],
+        forbidden=["fall to the ground"],
+        lang="en",
+    )
+    assert score == 1.0  # expected hit + forbidden negated → full credit
+
+
+def test_cross_clause_negation_does_not_leak():
+    # The negation ("not") belongs to a *different* clause than the forbidden
+    # phrase, so the parrot answer must still be penalised. Expected keyword is
+    # absent here to isolate the forbidden-avoidance component (30% weight).
+    by_period = MetricsEngine.calculate_step_score(
+        output="It will not rise. Instead, it drops to the ground.",
+        expected=["levitates"],
+        forbidden=["drops to the ground"],
+        lang="en",
+    )
+    by_comma = MetricsEngine.calculate_step_score(
+        output="It will not levitate, it drops to the ground.",
+        expected=["levitates"],
+        forbidden=["drops to the ground"],
+        lang="en",
+    )
+    assert by_period == 0.0  # forbidden present and NOT negated → penalised
+    assert by_comma == 0.0
+
+
+def test_negation_multilingual():
+    # Same-clause negation across the language-specific patterns.
+    # Spanish pre-verbal negation.
+    assert MetricsEngine._is_negated("caerá al suelo", "no caerá al suelo", "es")
+    # Japanese suffix negation (落ちず) detected via the after-window.
+    assert MetricsEngine._is_negated("落ち", "地面に落ちず、上に上がる", "ja")
+    # Plain occurrence with no negation must report False.
+    assert not MetricsEngine._is_negated("falls", "the apple falls down", "en")
+
+
 def test_evaluate_run():
     run_results = [
         {

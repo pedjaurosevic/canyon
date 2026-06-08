@@ -6,6 +6,82 @@ class MetricsEngine:
     Engine to calculate semantic grounding metrics (CP, CR, SI scores)
     and the final Stochastic Parrot Index (SPI).
     """
+
+    # Negation patterns by language — words that invert the meaning of a
+    # nearby forbidden keyword.  Matched within the *same clause* as the keyword
+    # (bounded by sentence/clause delimiters), so a negation belonging to a
+    # different clause cannot leak in.
+    _NEGATION_PATTERNS = {
+        "en": r"\b(?:not|no|never|n't|without|cannot|can't)\b",
+        "zh": r"(?:不|没|没有|不会|不是|不要)",
+        "ja": r"(?:ない|ません|なく|ぬ|ず|ではない|じゃない)",
+        "ru": r"(?:не|нет|ни|никогда|нигде)",
+        "de": r"(?:nicht|kein|keine|niemals|nie|keinen|keiner)",
+        "es": r"\b(?:no|nunca|jamás|tampoco)\b",
+        "sr": r"(?:не|није|нити|никада)",
+    }
+
+    # Clause/sentence delimiters (ASCII + CJK).  A negation on the far side of
+    # one of these does not negate the keyword.
+    _CLAUSE_DELIMS = ".;,!?\n。、！？；，"
+
+    @staticmethod
+    def _clause_bounds(start: int, end: int, text: str) -> tuple:
+        """
+        Return (clause_start, clause_end) — the span of the clause containing
+        the [start, end) keyword occurrence, bounded by the nearest clause
+        delimiter on each side.
+        """
+        clause_start = 0
+        for i in range(start - 1, -1, -1):
+            if text[i] in MetricsEngine._CLAUSE_DELIMS:
+                clause_start = i + 1
+                break
+        clause_end = len(text)
+        for i in range(end, len(text)):
+            if text[i] in MetricsEngine._CLAUSE_DELIMS:
+                clause_end = i
+                break
+        return clause_start, clause_end
+
+    @staticmethod
+    def _is_negated(keyword: str, text_lower: str, lang: str = None) -> bool:
+        """
+        Check whether *every* occurrence of *keyword* in *text_lower* is
+        negated by a negation word in the *same clause*.  The search window is
+        limited to the clause containing the occurrence (so a negation from a
+        neighbouring clause cannot leak in) and further capped at 50 chars
+        before / 30 chars after the match.  When *lang* is unknown or missing,
+        falls back to trying negation patterns for all known languages.
+        """
+        kw = keyword.lower()
+
+        # Compile negation regex for this language (or all languages as fallback).
+        if lang and lang in MetricsEngine._NEGATION_PATTERNS:
+            neg_re = re.compile(MetricsEngine._NEGATION_PATTERNS[lang])
+        else:
+            neg_re = re.compile(
+                "|".join(MetricsEngine._NEGATION_PATTERNS.values())
+            )
+
+        for m in re.finditer(re.escape(kw), text_lower):
+            start = m.start()
+            end = m.end()
+            clause_start, clause_end = MetricsEngine._clause_bounds(
+                start, end, text_lower
+            )
+            # Look before (up to 50 chars) and after (up to 30 chars), but never
+            # past the clause boundary.  The before-window catches pre-verbal
+            # negation ("no caerá", "nicht fallen"); the after-window catches
+            # suffix negation in verb-final languages ("落ちず", "落ちない").
+            window_start = max(clause_start, start - 50)
+            window_end = min(clause_end, end + 30)
+            window_text = text_lower[window_start:window_end]
+            if not neg_re.search(window_text):
+                return False  # at least one occurrence is NOT negated
+
+        return True  # all occurrences are negated (or none found)
+
     @staticmethod
     def keyword_in_text(keyword: str, text_lower: str) -> bool:
         """
@@ -24,7 +100,19 @@ class MetricsEngine:
         return kw in text_lower
 
     @staticmethod
-    def calculate_step_score(output: str, expected: list, forbidden: list) -> float:
+    def calculate_step_score(output: str, expected: list, forbidden: list,
+                             lang: str = None) -> float:
+        """
+        Score a single model response step.
+
+        *expected* is a list of synonym keywords for the correct (grounded)
+        answer — a hit on ANY of them gives full credit.
+        *forbidden* is a list of phrases the wrong (parrot) answer would use.
+        A hit on a forbidden keyword is penalised **unless** every occurrence
+        of that keyword in the output is negated (e.g. "will **not** fall to
+        the ground" should not match forbidden keyword "falls to the ground").
+        *lang* selects the language-specific negation patterns.
+        """
         output_lower = output.lower()
 
         # 1. Expected keywords match (70% weight).
@@ -37,11 +125,22 @@ class MetricsEngine:
             found_any = any(MetricsEngine.keyword_in_text(kw, output_lower) for kw in expected)
             expected_score = 1.0 if found_any else 0.0
 
-        # 2. Forbidden keywords avoidance (30% weight)
+        # 2. Forbidden keywords avoidance (30% weight).
+        # A keyword hit is ignored if every occurrence of that keyword in the
+        # output is negated by a nearby negation word (e.g. "no caerá al suelo"
+        # should not trigger forbidden keyword "caerá al suelo").
         if not forbidden:
             forbidden_score = 1.0
         else:
-            found_forbidden = any(MetricsEngine.keyword_in_text(kw, output_lower) for kw in forbidden)
+            found_forbidden = False
+            for kw in forbidden:
+                if not MetricsEngine.keyword_in_text(kw, output_lower):
+                    continue
+                # Keyword matched — but is it entirely negated?
+                if MetricsEngine._is_negated(kw, output_lower, lang):
+                    continue
+                found_forbidden = True
+                break
             forbidden_score = 0.0 if found_forbidden else 1.0
 
         return round((expected_score * 0.7) + (forbidden_score * 0.3), 2)
@@ -56,9 +155,10 @@ class MetricsEngine:
         for res in run_results:
             suite_id = res["suite_id"]
             step_score = MetricsEngine.calculate_step_score(
-                res["output"], 
-                res["expected"], 
-                res["forbidden"]
+                res["output"],
+                res["expected"],
+                res["forbidden"],
+                lang=res.get("lang"),
             )
             
             if suite_id not in scores_by_suite:
