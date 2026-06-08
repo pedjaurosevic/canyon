@@ -5744,6 +5744,230 @@ window.CANYON_DATA = {
       "conclusion": "The single-run de difference (tools-off 1.00 vs with-tools 0.72) did NOT replicate; under 5 repeats the direction reversed (with-tools mean 0.86 > tools-off 0.76). The tools-on/off gap is within run-to-run noise (~+/-0.07 per language), not a systematic agent-scaffolding effect."
     }
   },
+  "targeted_rerun": {
+    "generated_at": "2026-06-08T09:50:48",
+    "backend": "codex-agent",
+    "langs": [
+      "en",
+      "de",
+      "es"
+    ],
+    "models": [
+      {
+        "model": "gpt-5.4",
+        "backend": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.65,
+          "cr_score": 1.0,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.86
+        },
+        "valid_langs": [
+          "en",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "`I`\n\nThe sentence is structurally ambiguous, but the most natural reading is that **I** was flying to Chicago and watched the Grand Canyon during the flight."
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "The sentence is **ambiguous**.\n\nMost naturally, **“running through the forest”** seems to describe **the rabbit**, so the meaning is:\n\n**You saw a rabbit that w"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would accelerate upward out of your hand and rise into the sky. If nothing stopped it, it would keep going higher."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "If gravity always pushes upward and there are no obstacles, it would not stop on its own. It would keep accelerating upward indefinitely."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "It’s paradoxical because it treats “doing nothing” like a serious job that requires effort. “Slacking off” normally means avoiding work, but the sentence says t"
+          }
+        ],
+        "elapsed_s": 100.0
+      },
+      {
+        "model": "gpt-5.5",
+        "backend": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 1.0,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.65,
+            "cr_score": 0.85,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.8,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.767,
+          "cr_score": 0.833,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.84
+        },
+        "valid_langs": [
+          "en",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I.\n\n“I watched the Grand Canyon flying to Chicago” means I was flying to Chicago while watching the Grand Canyon."
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "The sentence is ambiguous.\n\nMost likely, **the rabbit** is running through the forest, because “running through the forest” naturally attaches to the nearest pl"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple accelerates upward, away from your hand and toward the sky, as if it were “falling” up."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "If gravity keeps pushing upward and there are no obstacles, the apple won’t finally stop. It will keep accelerating upward indefinitely."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "The sentence is paradoxical because it treats “doing nothing” as something that requires hard work. Slacking off means avoiding effort, but the speaker claims t"
+          }
+        ],
+        "elapsed_s": 98.3
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "backend": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          },
+          "de": {
+            "cp_score": 0.65,
+            "cr_score": 0.65,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.72,
+            "classification": "Weak Grounding (Hybrid)",
+            "status": "ok"
+          },
+          "es": {
+            "cp_score": 0.65,
+            "cr_score": 1.0,
+            "si_score": 1.0,
+            "stochastic_parrot_index": 0.86,
+            "classification": "Strong Grounding (World Model)",
+            "status": "ok"
+          }
+        },
+        "mean": {
+          "cp_score": 0.65,
+          "cr_score": 0.883,
+          "si_score": 1.0,
+          "stochastic_parrot_index": 0.813
+        },
+        "valid_langs": [
+          "en",
+          "de",
+          "es"
+        ],
+        "classification": "Strong Grounding (World Model)",
+        "error_rate": 0.0,
+        "en_samples": [
+          {
+            "test_id": "canyon-01",
+            "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to",
+            "output": "I\n\nThe sentence most naturally means **I was flying to Chicago** and, during the flight, I watched the Grand Canyon."
+          },
+          {
+            "test_id": "canyon-02",
+            "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who",
+            "output": "It most naturally means **the rabbit** is running through the forest.\n\nWhy:\n- The phrase **“running through the forest”** is a participial clause that usually a"
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, t",
+            "output": "The apple would accelerate upward, floating away into the sky instead of falling to the ground."
+          },
+          {
+            "test_id": "phys-01",
+            "prompt": "In that same reverse-gravity world, if you release the apple and it starts movin",
+            "output": "It wouldn’t stop on its own. In idealized reverse gravity, the apple would keep accelerating upward forever, unless another force acted on it."
+          },
+          {
+            "test_id": "humor-01",
+            "prompt": "Briefly explain why the following sentence is paradoxical and where the humor li",
+            "output": "It’s paradoxical because it pairs opposites: “slacking off” means not working, but “work so hard at doing nothing” treats idleness like a job. The humor comes f"
+          }
+        ],
+        "elapsed_s": 90.8
+      }
+    ]
+  },
   "dataset": {
     "prompts": 35,
     "conversations": 525,

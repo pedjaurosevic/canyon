@@ -438,6 +438,24 @@
     }
   }
 
+  function renderTargetedRerun() {
+    var rr = D.targeted_rerun;
+    var sec = document.getElementById("targeted-rerun");
+    if (!rr || !rr.models || !rr.models.length) { if (sec) sec.style.display = "none"; return; }
+
+    rr.score_type = "keyword_screen";
+    var meta = document.getElementById("rerun-meta");
+    if (meta) {
+      meta.textContent = rr.models.length + " Codex model runs · " +
+        (rr.langs || []).map(function (l) { return l.toUpperCase(); }).join(", ") +
+        " targeted languages · generated " + (rr.generated_at || "");
+    }
+
+    renderTableAndChart(rr, "rerun-table", "rerun-chart", "rerun-meta", function () {
+      return true;
+    });
+  }
+
   /* ---- open dataset card ---- */
   function renderDataset() {
     var ds = D.dataset;
@@ -489,6 +507,7 @@
     return true; // Show all runs
   });
   renderAgentAccess();
+  renderTargetedRerun();
   renderDataset();
   renderWhitebox();
 })();

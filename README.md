@@ -149,10 +149,11 @@ Frontier models are increasingly used *through agents* — a CLI tool wraps the 
 python3 scripts/run_claude.py
 
 # OpenAI Codex agent (codex exec), tools-off + isolated CODEX_HOME, backend=codex-agent
-python3 scripts/run_codex.py --tools-off --codex-home /tmp/codex_clean
+python3 scripts/run_codex.py --tools-off --codex-home /tmp/codex_clean \
+  --models gpt-5.5,gpt-5.4,gpt-5.4-mini
 ```
 
-Finding (see [§4.4 of the whitepaper](./WHITEPAPER.md#54-the-access-path-experiment-and-what-the-per-language-spread-means)): the Claude family lands in the low-to-mid 0.9s (0.91–0.96) and the GPT-5.x models via Codex at ~0.82–0.83 — all "strong grounding". A tools-on/off difference we first thought we saw **turned out to be noise** (repeat check in [`results/robustness_de.json`](./results/robustness_de.json)). The lesson: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.**
+Finding (see [§4.4 of the whitepaper](./WHITEPAPER.md#54-the-access-path-experiment-and-what-the-per-language-spread-means)): the raw access-path table puts the Claude family in the low-to-mid 0.9s (0.91–0.96) and the GPT-5.x models via Codex at ~0.82–0.83 — all "strong grounding". The combined semantic-judge table in §4.5 re-scores the saved transcripts and ranks the same Codex runs at ~0.90–0.97. A tools-on/off difference we first thought we saw **turned out to be noise** (repeat check in [`results/robustness_de.json`](./results/robustness_de.json)). The lesson: **single-run SPI values are point estimates; differences smaller than ~0.05 should not be read as real.**
 
 ---
 
