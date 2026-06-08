@@ -13,8 +13,8 @@ Auth comes from the existing `codex login` (ChatGPT). No API keys are read or
 written here.
 
 Usage:
-  python3 scripts/run_codex.py
-  python3 scripts/run_codex.py --models gpt-5.5,o3 --langs en,ru
+  python3 scripts/run_codex.py --tools-off --codex-home /tmp/codex_clean
+  python3 scripts/run_codex.py --models gpt-5.5,gpt-5.4 --langs en,ru
 """
 import argparse
 import json
@@ -31,15 +31,11 @@ from canyon.engine import CanyonEngine
 LANGS = ["en", "zh", "ja", "ru", "de", "es"]
 RESULTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "results"))
 
-# Models confirmed available through the ChatGPT-plan Codex CLI.
+# Current Codex access-path comparison set used by the paper/site.
 CURATED = [
     "gpt-5.5",
-    "gpt-5.5-codex",
-    "gpt-5.1",
-    "gpt-5.1-codex",
-    "gpt-5",
-    "o3",
-    "o4-mini",
+    "gpt-5.4",
+    "gpt-5.4-mini",
 ]
 
 ERR_PREFIX = "Error during codex"
@@ -177,11 +173,14 @@ def main():
     ap.add_argument("--merge", action="store_true",
                     help="Merge into existing output file instead of overwriting.")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--transcripts-out", default=None,
+                    help="Transcript JSONL path. Defaults to the canonical transcript only for canonical leaderboard outputs.")
     args = ap.parse_args()
+    canonical_out = os.path.join(
+        RESULTS_DIR,
+        "leaderboard_codex_toolsoff.json" if args.tools_off else "leaderboard_codex.json")
     if args.out is None:
-        args.out = os.path.join(
-            RESULTS_DIR,
-            "leaderboard_codex_toolsoff.json" if args.tools_off else "leaderboard_codex.json")
+        args.out = canonical_out
 
     engine = CanyonEngine(args.config if os.path.exists(args.config) else None)
     engine.api_router = CodexRouter(timeout=args.timeout,
@@ -217,10 +216,21 @@ def main():
             json.dump(out, f, ensure_ascii=False, indent=1)
 
     suffix = "_toolsoff" if args.tools_off else ""
-    tpath = os.path.join(RESULTS_DIR, f"transcripts_codex{suffix}.jsonl")
+    canonical_tpath = os.path.join(RESULTS_DIR, f"transcripts_codex{suffix}.jsonl")
+    if args.transcripts_out:
+        tpath = args.transcripts_out
+        merge_transcripts = False
+    elif os.path.abspath(args.out) == os.path.abspath(canonical_out):
+        tpath = canonical_tpath
+        merge_transcripts = True
+    else:
+        stem, _ = os.path.splitext(args.out)
+        tpath = f"{stem}_transcripts.jsonl"
+        merge_transcripts = False
+
     merged = []
     ran = set(models)
-    if os.path.exists(tpath):
+    if merge_transcripts and os.path.exists(tpath):
         for line in open(tpath, encoding="utf-8"):
             old = json.loads(line)
             if old.get("model") not in ran:
