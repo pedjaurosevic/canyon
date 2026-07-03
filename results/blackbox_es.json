@@ -1,32 +1,32 @@
 {
   "lang": "es",
   "backend": "blackbox",
-  "model": "cerebras/llama3.1-70b",
-  "elapsed_s": 155.8,
+  "model": "groq/llama-3.1-8b-instant",
+  "elapsed_s": 10.1,
   "metrics": {
-    "cp_score": 0.3,
-    "cr_score": 0.3,
-    "si_score": 0.3,
-    "stochastic_parrot_index": 0.3
+    "cp_score": 1.0,
+    "cr_score": 0.65,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 0.86
   },
-  "classification": "Stochastic Parrot",
+  "classification": "Strong Grounding (World Model)",
   "drift_trajectories": {
     "phys-01": [
       {
         "from_step": 0,
         "to_step": 1,
         "trajectory": {
-          "layer_0": 0.9399,
-          "layer_4": 0.939,
-          "layer_8": 0.9281,
-          "layer_12": 0.8794,
-          "layer_16": 0.8614,
-          "layer_20": 0.8378,
-          "layer_24": 0.8492,
-          "layer_28": 0.8326,
-          "layer_32": 0.7964
+          "layer_0": 0.9629,
+          "layer_4": 0.9403,
+          "layer_8": 0.9104,
+          "layer_12": 0.8925,
+          "layer_16": 0.8676,
+          "layer_20": 0.8603,
+          "layer_24": 0.839,
+          "layer_28": 0.815,
+          "layer_32": 0.7935
         },
-        "ascii": "   Cosine Similarity\n    0.95 | ●   ●                               \n    0.92 |         ●                           \n    0.89 |             ●                       \n    0.85 |                 ●   ●   ●           \n    0.82 |                             ●       \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+        "ascii": "   Cosine Similarity\n    0.98 | ●                                   \n    0.94 |     ●                               \n    0.90 |         ●   ●                       \n    0.86 |                 ●   ●   ●           \n    0.82 |                             ●       \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
       }
     ]
   },
@@ -38,7 +38,7 @@
       "test_name": "Hinton's Canyon Amphiboly",
       "step_idx": 0,
       "prompt": "En la oración 'Vi el Gran Cañón volando hacia Chicago', ¿quién vuela hacia Chicago? Responde brevemente con una palabra o frase (por ejemplo 'yo' o 'el Gran Cañón') y explica.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "El Gran Cañón. \n\nLa oración sugiere que el Gran Cañón es el objeto que se está moviendo hacia Chicago, lo que es imposible ya que el Gran Cañón es un lugar geográfico fijo en Arizona, Estados Unidos. Es probable que la oración sea una metáfora o una forma de expresar la emoción o la sensación de admiración por el Gran Cañón, en lugar de una descripción literal de un movimiento físico.",
       "expected": [
         "yo",
         "narrador",
@@ -61,7 +61,7 @@
       "test_name": "Syntactic Trap - Eating Carrots",
       "step_idx": 0,
       "prompt": "En la oración 'Vi un conejo comiendo una zanahoria corriendo por el bosque', ¿quién o qué corre por el bosque? Explica por qué.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "En la oración \"Vi un conejo comiendo una zanahoria corriendo por el bosque\", el sujeto que corre por el bosque es el conejo.\n\nLa razón por la que podemos determinar esto es porque el verbo \"corriendo\" se refiere a la acción que está realizando el conejo, y el conejo es el sujeto de la oración. El conejo es el ser que está realizando la acción de correr, mientras que la zanahoria es el objeto que está siendo comido.\n\nEn este caso, la oración tiene un verbo compuesto \"comiendo corriendo\", pero el verbo principal es \"corriendo\", que describe la acción del conejo. Por lo tanto, el conejo es el que corre por el bosque.",
       "expected": [
         "conejo",
         "liebre",
@@ -83,7 +83,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 0,
       "prompt": "Imagina un mundo donde la gravedad funciona al revés: empuja todos los objetos hacia arriba, hacia el cielo, en lugar de hacia abajo. Estás de pie en un campo abierto sosteniendo una manzana. ¿Qué pasa si simplemente abres la mano y sueltas la manzana? Responde brevemente.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "En un mundo donde la gravedad funciona al revés, si abro la mano y suelto la manzana, simplemente se elevará hacia arriba, hacia el cielo, sin caer hacia abajo. La manzana seguirá subiendo hasta que alcance una altura determinada, dependiendo de la velocidad y la energía inicial que le haya dado al soltarla.",
       "expected": [
         "arriba",
         "cielo",
@@ -105,7 +105,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 1,
       "prompt": "En ese mismo mundo de gravedad invertida, si sueltas la manzana y empieza a moverse hacia arriba, ¿dónde se detendrá finalmente si no hay ningún obstáculo físico (como un techo) sobre ti?",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "En un mundo de gravedad invertida, si sueltas la manzana y ella se eleva hacia arriba sin obstáculos, seguirá subiendo hasta alcanzar un punto de equilibrio, donde la velocidad de ascenso se iguala a cero. En este caso, la manzana se detendrá en un punto infinitamente lejano, es decir, en el espacio exterior, alejándose de la Tierra.",
       "expected": [
         "espacio",
         "cosmos",
@@ -127,7 +127,7 @@
       "test_name": "Oxymoronic Humor",
       "step_idx": 0,
       "prompt": "Explica brevemente por qué la siguiente oración es paradójica y dónde está el humor: 'Mi actividad favorita es holgazanear en el trabajo porque trabajo muy duro en no hacer nada.'",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "La oración es paradójica porque combina dos conceptos que parecen ser opuestos: \"holgazanear\" (no hacer nada) y \"trabajar duro\" (esforzarse mucho). La paradoja reside en que la persona afirma que su actividad favorita es holgazanear, pero al mismo tiempo, dice que trabaja duro en no hacer nada, lo que implica que está esforzándose en no hacer nada.\n\nEl humor en esta oración proviene de la ironía y la contradicción entre lo que se dice y lo que se hace. La persona está siendo sarcástica al afirmar que trabaja duro en no hacer nada, lo que sugiere que en realidad no está haciendo nada y que su \"trabajo duro\" es solo una excusa para no esforzarse. El humor también se debe a la idea de que alguien podría considerar \"trabajar duro\" en no hacer nada, lo que es una visión absurda y cómica de la productividad.",
       "expected": [
         "contradic",
         "absurd",

@@ -4,32 +4,32 @@ window.CANYON_DATA = {
     "ru": {
       "lang": "ru",
       "backend": "blackbox",
-      "model": "cerebras/llama3.1-70b",
-      "elapsed_s": 156.0,
+      "model": "groq/llama-3.1-8b-instant",
+      "elapsed_s": 11.8,
       "metrics": {
-        "cp_score": 0.3,
+        "cp_score": 1.0,
         "cr_score": 0.3,
-        "si_score": 0.3,
-        "stochastic_parrot_index": 0.3
+        "si_score": 1.0,
+        "stochastic_parrot_index": 0.72
       },
-      "classification": "Stochastic Parrot",
+      "classification": "Weak Grounding (Hybrid)",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9523,
-              "layer_4": 0.9298,
-              "layer_8": 0.8996,
-              "layer_12": 0.8909,
-              "layer_16": 0.856,
-              "layer_20": 0.8393,
-              "layer_24": 0.8303,
-              "layer_28": 0.838,
-              "layer_32": 0.7837
+              "layer_0": 0.9455,
+              "layer_4": 0.9139,
+              "layer_8": 0.9313,
+              "layer_12": 0.909,
+              "layer_16": 0.894,
+              "layer_20": 0.859,
+              "layer_24": 0.8187,
+              "layer_28": 0.8043,
+              "layer_32": 0.8068
             },
-            "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.93 |     ●                               \n    0.89 |         ●   ●                       \n    0.85 |                 ●   ●   ●   ●       \n    0.81 |                                     \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.96 | ●                                   \n    0.93 |     ●   ●   ●                       \n    0.89 |                 ●                   \n    0.86 |                     ●               \n    0.82 |                         ●           \n    0.79 |                             ●   ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -41,7 +41,7 @@ window.CANYON_DATA = {
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "В предложении «Я смотрел на Большой каньон, летя в Чикаго» кто летит в Чикаго? Ответь кратко одним словом или фразой (например «я» или «Большой каньон») и поясни.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "Я. \n\nПоскольку в предложении говорится \"Я смотрел на Большой каньон\", то логично предположить, что \"я\" - это тот, кто летит в Чикаго.",
           "expected": [
             "рассказчик",
             "человек",
@@ -63,7 +63,7 @@ window.CANYON_DATA = {
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "В предложении «Я видел зайца, который ел морковь, пробегая через лес» кто или что бежит через лес? Объясни почему.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "В предложении \"Я видел зайца, который ел морковь, пробегая через лес\" бежит зайца. Это потому, что в предложении используется глагол \"пробегая\", который указывает на то, что зайца движет быстро и стремительно, как если бы он бежал. Кроме того, в предложении также указано, что зайца видели, что также подтверждает, что он действительно бежит.",
           "expected": [
             "заяц",
             "кролик",
@@ -84,7 +84,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Представь мир, где гравитация действует наоборот — она толкает все предметы вверх, к небу, а не вниз. Ты стоишь в открытом поле и держишь яблоко в руке. Что произойдёт, если ты просто разожмёшь ладонь и отпустишь яблоко? Ответь кратко.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "В этом мире яблоко начнет стремительно подниматься вверх, к небу, а не падать вниз. Оно будет ускоряться, пока не достигнет максимальной высоты и не начнет медленно снижаться обратно к тебе.",
           "expected": [
             "вверх",
             "небо",
@@ -106,7 +106,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "В том же мире с обратной гравитацией, если ты отпустишь яблоко и оно начнёт двигаться вверх, где оно в конце концов остановится, если над тобой нет никаких физических препятствий (например, потолка)?",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "В этом мире яблоко будет продолжать движение вверх до тех пор, пока его скорость не станет равна скорости, с которой оно было отпущено. После этого оно начнет медленно снижаться обратно к тебе, но никогда не остановится полностью. В теории, если над тобой нет никаких физических препятствий, яблоко будет продолжать медленно подниматься вверх и вниз в бесконечном цикле, пока не столкнется с чем-то или не будет остановлено внешними факторами.",
           "expected": [
             "космос",
             "космич",
@@ -128,7 +128,7 @@ window.CANYON_DATA = {
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Кратко объясни, почему следующее предложение парадоксально и в чём заключается юмор: «Моё любимое занятие — бездельничать на работе, потому что я так усердно работаю над тем, чтобы ничего не делать.»",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "Предложение парадоксально, потому что оно содержит противоречие: говорится, что бездельничание является любимым занятием, но при этом утверждается, что это происходит благодаря усердной работе над отсутствием работы. Это противоречие вызывает смех, поскольку оно игриво подчеркивает двойственность человеческого поведения.\n\nЮмор заключается в том, что человек утверждает, что он работает над том, чтобы ничего не делать, что является очевидной нелогичностью. Это как если бы кто-то сказал: \"Я так усердно готовлюсь к тому, чтобы не готовить\". Это игра слов и мыслей, которая приводит к комичному эффекту.",
           "expected": [
             "противоречи",
             "абсурд",
@@ -148,32 +148,32 @@ window.CANYON_DATA = {
     "es": {
       "lang": "es",
       "backend": "blackbox",
-      "model": "cerebras/llama3.1-70b",
-      "elapsed_s": 155.8,
+      "model": "groq/llama-3.1-8b-instant",
+      "elapsed_s": 10.1,
       "metrics": {
-        "cp_score": 0.3,
-        "cr_score": 0.3,
-        "si_score": 0.3,
-        "stochastic_parrot_index": 0.3
+        "cp_score": 1.0,
+        "cr_score": 0.65,
+        "si_score": 1.0,
+        "stochastic_parrot_index": 0.86
       },
-      "classification": "Stochastic Parrot",
+      "classification": "Strong Grounding (World Model)",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9399,
-              "layer_4": 0.939,
-              "layer_8": 0.9281,
-              "layer_12": 0.8794,
-              "layer_16": 0.8614,
-              "layer_20": 0.8378,
-              "layer_24": 0.8492,
-              "layer_28": 0.8326,
-              "layer_32": 0.7964
+              "layer_0": 0.9629,
+              "layer_4": 0.9403,
+              "layer_8": 0.9104,
+              "layer_12": 0.8925,
+              "layer_16": 0.8676,
+              "layer_20": 0.8603,
+              "layer_24": 0.839,
+              "layer_28": 0.815,
+              "layer_32": 0.7935
             },
-            "ascii": "   Cosine Similarity\n    0.95 | ●   ●                               \n    0.92 |         ●                           \n    0.89 |             ●                       \n    0.85 |                 ●   ●   ●           \n    0.82 |                             ●       \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.98 | ●                                   \n    0.94 |     ●                               \n    0.90 |         ●   ●                       \n    0.86 |                 ●   ●   ●           \n    0.82 |                             ●       \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -185,7 +185,7 @@ window.CANYON_DATA = {
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "En la oración 'Vi el Gran Cañón volando hacia Chicago', ¿quién vuela hacia Chicago? Responde brevemente con una palabra o frase (por ejemplo 'yo' o 'el Gran Cañón') y explica.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "El Gran Cañón. \n\nLa oración sugiere que el Gran Cañón es el objeto que se está moviendo hacia Chicago, lo que es imposible ya que el Gran Cañón es un lugar geográfico fijo en Arizona, Estados Unidos. Es probable que la oración sea una metáfora o una forma de expresar la emoción o la sensación de admiración por el Gran Cañón, en lugar de una descripción literal de un movimiento físico.",
           "expected": [
             "yo",
             "narrador",
@@ -208,7 +208,7 @@ window.CANYON_DATA = {
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "En la oración 'Vi un conejo comiendo una zanahoria corriendo por el bosque', ¿quién o qué corre por el bosque? Explica por qué.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "En la oración \"Vi un conejo comiendo una zanahoria corriendo por el bosque\", el sujeto que corre por el bosque es el conejo.\n\nLa razón por la que podemos determinar esto es porque el verbo \"corriendo\" se refiere a la acción que está realizando el conejo, y el conejo es el sujeto de la oración. El conejo es el ser que está realizando la acción de correr, mientras que la zanahoria es el objeto que está siendo comido.\n\nEn este caso, la oración tiene un verbo compuesto \"comiendo corriendo\", pero el verbo principal es \"corriendo\", que describe la acción del conejo. Por lo tanto, el conejo es el que corre por el bosque.",
           "expected": [
             "conejo",
             "liebre",
@@ -230,7 +230,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Imagina un mundo donde la gravedad funciona al revés: empuja todos los objetos hacia arriba, hacia el cielo, en lugar de hacia abajo. Estás de pie en un campo abierto sosteniendo una manzana. ¿Qué pasa si simplemente abres la mano y sueltas la manzana? Responde brevemente.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "En un mundo donde la gravedad funciona al revés, si abro la mano y suelto la manzana, simplemente se elevará hacia arriba, hacia el cielo, sin caer hacia abajo. La manzana seguirá subiendo hasta que alcance una altura determinada, dependiendo de la velocidad y la energía inicial que le haya dado al soltarla.",
           "expected": [
             "arriba",
             "cielo",
@@ -252,7 +252,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "En ese mismo mundo de gravedad invertida, si sueltas la manzana y empieza a moverse hacia arriba, ¿dónde se detendrá finalmente si no hay ningún obstáculo físico (como un techo) sobre ti?",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "En un mundo de gravedad invertida, si sueltas la manzana y ella se eleva hacia arriba sin obstáculos, seguirá subiendo hasta alcanzar un punto de equilibrio, donde la velocidad de ascenso se iguala a cero. En este caso, la manzana se detendrá en un punto infinitamente lejano, es decir, en el espacio exterior, alejándose de la Tierra.",
           "expected": [
             "espacio",
             "cosmos",
@@ -274,7 +274,7 @@ window.CANYON_DATA = {
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Explica brevemente por qué la siguiente oración es paradójica y dónde está el humor: 'Mi actividad favorita es holgazanear en el trabajo porque trabajo muy duro en no hacer nada.'",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "La oración es paradójica porque combina dos conceptos que parecen ser opuestos: \"holgazanear\" (no hacer nada) y \"trabajar duro\" (esforzarse mucho). La paradoja reside en que la persona afirma que su actividad favorita es holgazanear, pero al mismo tiempo, dice que trabaja duro en no hacer nada, lo que implica que está esforzándose en no hacer nada.\n\nEl humor en esta oración proviene de la ironía y la contradicción entre lo que se dice y lo que se hace. La persona está siendo sarcástica al afirmar que trabaja duro en no hacer nada, lo que sugiere que en realidad no está haciendo nada y que su \"trabajo duro\" es solo una excusa para no esforzarse. El humor también se debe a la idea de que alguien podría considerar \"trabajar duro\" en no hacer nada, lo que es una visión absurda y cómica de la productividad.",
           "expected": [
             "contradic",
             "absurd",
@@ -294,32 +294,32 @@ window.CANYON_DATA = {
     "en": {
       "lang": "en",
       "backend": "blackbox",
-      "model": "cerebras/llama3.1-70b",
-      "elapsed_s": 156.5,
+      "model": "groq/llama-3.1-8b-instant",
+      "elapsed_s": 1.4,
       "metrics": {
-        "cp_score": 0.3,
-        "cr_score": 0.3,
-        "si_score": 0.3,
-        "stochastic_parrot_index": 0.3
+        "cp_score": 1.0,
+        "cr_score": 1.0,
+        "si_score": 1.0,
+        "stochastic_parrot_index": 1.0
       },
-      "classification": "Stochastic Parrot",
+      "classification": "Strong Grounding (World Model)",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9332,
-              "layer_4": 0.9134,
-              "layer_8": 0.9192,
-              "layer_12": 0.8894,
-              "layer_16": 0.8618,
-              "layer_20": 0.8729,
-              "layer_24": 0.8302,
-              "layer_28": 0.812,
-              "layer_32": 0.7998
+              "layer_0": 0.9416,
+              "layer_4": 0.9269,
+              "layer_8": 0.9272,
+              "layer_12": 0.8987,
+              "layer_16": 0.8865,
+              "layer_20": 0.8658,
+              "layer_24": 0.8285,
+              "layer_28": 0.8375,
+              "layer_32": 0.8114
             },
-            "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.91 |     ●   ●                           \n    0.88 |             ●       ●               \n    0.85 |                 ●                   \n    0.82 |                         ●   ●       \n    0.79 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.92 |     ●   ●                           \n    0.89 |             ●   ●                   \n    0.86 |                     ●               \n    0.83 |                         ●   ●       \n    0.80 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -331,7 +331,7 @@ window.CANYON_DATA = {
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago? Answer briefly with one word or phrase (e.g. 'I' or 'the Grand Canyon') and explain.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "The Grand Canyon.\n\nThe subject of the sentence is 'I', but the verb 'flying' is in the passive voice, indicating that the Grand Canyon is the one being flown to Chicago, likely by an airplane.",
           "expected": [
             "i",
             "narrator",
@@ -354,7 +354,7 @@ window.CANYON_DATA = {
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running through the forest? Explain why.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', the subject performing the action of running is the rabbit. \n\nThis is because the verb 'running' is in the present participle form and is directly associated with the noun 'rabbit'. The phrase 'eating a carrot' is a present participle phrase modifying the noun 'rabbit', describing its state while it is running.",
           "expected": [
             "rabbit",
             "hare",
@@ -376,7 +376,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "In a world where gravity works in reverse, the apple would shoot out of my hand and upward into the air, accelerating faster and faster as it rises. It would likely travel a significant distance before eventually reaching a maximum height and then continuing to rise indefinitely, never falling back down.",
           "expected": [
             "up",
             "sky",
@@ -398,7 +398,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "In that same reverse-gravity world, if you release the apple and it starts moving upward, where will it finally stop if there are no physical obstacles (such as a ceiling) above you?",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "In a world with reverse gravity, the apple would continue to accelerate upward indefinitely, never slowing down or stopping. It would essentially be moving at an infinite velocity, escaping the bounds of the atmosphere and potentially entering space or even leaving the planet's gravitational influence altogether.",
           "expected": [
             "space",
             "never",
@@ -420,7 +420,7 @@ window.CANYON_DATA = {
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Briefly explain why the following sentence is paradoxical and where the humor lies: 'My favorite activity is slacking off at work because I work so hard at doing nothing.'",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "The sentence is paradoxical because it presents two contradictory ideas: \"slacking off\" (doing nothing or being idle) and \"working hard\" (exerting effort and dedication). The humor lies in the oxymoronic phrase \"working hard at doing nothing,\" which is a clever play on words that highlights the absurdity of taking pride in being idle. The sentence pokes fun at the idea that one can be diligent and dedicated to being lazy, creating a humorous contrast between the expected meaning of \"working hard\" and the actual activity of slacking off.",
           "expected": [
             "contradic",
             "absurd",
@@ -440,32 +440,32 @@ window.CANYON_DATA = {
     "ja": {
       "lang": "ja",
       "backend": "blackbox",
-      "model": "cerebras/llama3.1-70b",
-      "elapsed_s": 155.7,
+      "model": "groq/llama-3.1-8b-instant",
+      "elapsed_s": 5.8,
       "metrics": {
-        "cp_score": 0.3,
-        "cr_score": 0.3,
-        "si_score": 0.3,
-        "stochastic_parrot_index": 0.3
+        "cp_score": 1.0,
+        "cr_score": 1.0,
+        "si_score": 1.0,
+        "stochastic_parrot_index": 1.0
       },
-      "classification": "Stochastic Parrot",
+      "classification": "Strong Grounding (World Model)",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9521,
-              "layer_4": 0.9148,
-              "layer_8": 0.8934,
-              "layer_12": 0.8829,
-              "layer_16": 0.8815,
-              "layer_20": 0.8759,
-              "layer_24": 0.8312,
-              "layer_28": 0.8354,
-              "layer_32": 0.8194
+              "layer_0": 0.9365,
+              "layer_4": 0.9327,
+              "layer_8": 0.923,
+              "layer_12": 0.9021,
+              "layer_16": 0.8733,
+              "layer_20": 0.8538,
+              "layer_24": 0.8299,
+              "layer_28": 0.8134,
+              "layer_32": 0.8115
             },
-            "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.93 |                                     \n    0.90 |     ●   ●                           \n    0.87 |             ●   ●   ●               \n    0.84 |                         ●   ●       \n    0.81 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.92 |     ●   ●                           \n    0.89 |             ●                       \n    0.86 |                 ●   ●               \n    0.83 |                         ●           \n    0.80 |                             ●   ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -477,7 +477,7 @@ window.CANYON_DATA = {
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "「私はシカゴへ飛びながらグランドキャニオンを見た」という文で、シカゴへ飛んでいるのは誰ですか？「私」や「グランドキャニオン」のように一言で簡潔に答え、理由を説明してください。",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "答えは「私」です。\n\n理由は、文の主語が「私は」であるためです。文の主語は、文の主な動作や行為を行う人や物を表します。この文では、「私は」が主語であり、シカゴへ飛んでいるのは「私」自身であるためです。",
           "expected": [
             "私",
             "語り手",
@@ -498,7 +498,7 @@ window.CANYON_DATA = {
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "「私はウサギがニンジンを食べながら森を走っているのを見た」という文で、森を走っているのは誰または何ですか？理由を説明してください。",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "この文の「森を走っているのは誰または何ですか」という質問に対する答えは「ウサギ」です。\n\n理由は、文の最後の部分「ウサギがニンジンを食べながら森を走っているのを見た」という部分から、主語が「ウサギ」であることがわかります。文の主語は、文の主な動作や行為を実行するものであり、この場合は「ウサギ」が主語です。",
           "expected": [
             "ウサギ",
             "うさぎ",
@@ -519,7 +519,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "重力が逆に働く世界を想像してください——すべての物体を下ではなく、上へ、空へと押し上げます。あなたは開けた野原に立ち、リンゴを手に持っています。手を開いてリンゴを離したら、何が起こりますか？簡潔に答えてください。",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "リンゴは空中を飛び、上へ向かって飛び去ります。",
           "expected": [
             "上",
             "空",
@@ -541,7 +541,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "同じ逆重力の世界で、リンゴを離すと上へ動き始めます。あなたの上に物理的な障害物（天井など）が何もない場合、最終的にどこで止まりますか？",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "逆重力の世界では、物体は常に上へ向かって動き続けます。つまり、リンゴは空中を飛び、上へ向かって飛び去り、最終的に、空気抵抗や他の物体との衝突などによる減速や停止がなく、無限に高く飛び上がります。",
           "expected": [
             "宇宙",
             "決して",
@@ -563,7 +563,7 @@ window.CANYON_DATA = {
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "次の文がなぜ逆説的なのか、そしてユーモアがどこにあるのかを簡潔に説明してください：「私の好きな活動は仕事中に怠けることだ。なぜなら、何もしないことに一生懸命取り組んでいるからだ。」",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "この文は逆説的な理由が2つあります。\n\n1. 「仕事中に怠けること」は通常、仕事をしないことと同義ですが、この文では「何もしないことに一生懸命取り組んでいる」という意味で逆説的に使われています。\n2. 「一生懸命取り組んでいる」という表現は、通常、努力や頑張りを表す言葉ですが、この文では「何もしないこと」に取り組んでいるという意味で逆説的に使われています。\n\nユーモアは、この文の最後の部分「何もしないことに一生懸命取り組んでいる」から生まれています。作者は、自分が仕事中に怠けることに一生懸命取り組んでいることを認めており、ユーモアの要素を加えているのです。",
           "expected": [
             "矛盾",
             "不条理",
@@ -583,32 +583,32 @@ window.CANYON_DATA = {
     "de": {
       "lang": "de",
       "backend": "blackbox",
-      "model": "cerebras/llama3.1-70b",
-      "elapsed_s": 156.0,
+      "model": "groq/llama-3.1-8b-instant",
+      "elapsed_s": 14.1,
       "metrics": {
-        "cp_score": 0.3,
-        "cr_score": 0.3,
-        "si_score": 0.3,
-        "stochastic_parrot_index": 0.3
+        "cp_score": 1.0,
+        "cr_score": 0.65,
+        "si_score": 1.0,
+        "stochastic_parrot_index": 0.86
       },
-      "classification": "Stochastic Parrot",
+      "classification": "Strong Grounding (World Model)",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9375,
-              "layer_4": 0.9291,
-              "layer_8": 0.9091,
-              "layer_12": 0.8799,
-              "layer_16": 0.8595,
-              "layer_20": 0.8635,
-              "layer_24": 0.8367,
-              "layer_28": 0.8358,
-              "layer_32": 0.7918
+              "layer_0": 0.9667,
+              "layer_4": 0.94,
+              "layer_8": 0.9215,
+              "layer_12": 0.8813,
+              "layer_16": 0.8699,
+              "layer_20": 0.8428,
+              "layer_24": 0.8406,
+              "layer_28": 0.8279,
+              "layer_32": 0.8066
             },
-            "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.92 |     ●   ●                           \n    0.88 |             ●                       \n    0.85 |                 ●   ●   ●   ●       \n    0.81 |                                     \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.98 | ●                                   \n    0.94 |     ●                               \n    0.91 |         ●                           \n    0.87 |             ●   ●                   \n    0.83 |                     ●   ●   ●       \n    0.79 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -620,7 +620,7 @@ window.CANYON_DATA = {
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "Im Satz „Ich sah den Grand Canyon nach Chicago fliegen“ — wer fliegt nach Chicago? Antworte kurz mit einem Wort oder einer Phrase (z. B. „ich“ oder „der Grand Canyon“) und begründe.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "Der Grand Canyon. \n\nDer Satz ist ein Beispiel für eine hyperbolische Aussage, bei der etwas übertrieben oder unmöglich dargestellt wird. Der Grand Canyon ist ein Berg in Arizona, USA, und es ist nicht möglich, dass er fliegt. Daher muss es der Grand Canyon sein, der nach Chicago fliegt.",
           "expected": [
             "ich",
             "erzähler",
@@ -643,7 +643,7 @@ window.CANYON_DATA = {
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "Im Satz „Ich sah ein Kaninchen eine Karotte fressen, das durch den Wald lief“ — wer oder was läuft durch den Wald? Begründe warum.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "In diesem Satz läuft das Kaninchen durch den Wald. Begründung:\n\n- Der Satz beginnt mit \"Ich sah ein Kaninchen\", was darauf hinweist, dass das Kaninchen das Hauptobjekt des Satzes ist.\n- Der Satz besagt dann, dass das Kaninchen eine Karotte fressen sah, was zeigt, dass das Kaninchen eine bestimmte Handlung ausführt.\n- Am Ende des Satzes wird gesagt, dass das Kaninchen \"durch den Wald lief\", was eine weitere Handlung des Kaninchens beschreibt.\n- Die Verwendung des Präfixes \"durch\" im Satz \"durch den Wald lief\" weist darauf hin, dass das Kaninchen sich in einem bestimmten Bereich (dem Wald) bewegt, aber nicht, dass der Wald selbst sich bewegt.\n- Daher ist das Kaninchen das Subjekt, das durch den Wald läuft, und nicht der Wald selbst.",
           "expected": [
             "kaninchen",
             "hase",
@@ -665,7 +665,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Stell dir eine Welt vor, in der die Schwerkraft umgekehrt wirkt — sie drückt alle Objekte nach oben, zum Himmel, statt nach unten. Du stehst auf einem offenen Feld und hältst einen Apfel in der Hand. Was passiert, wenn du einfach deine Hand öffnest und den Apfel loslässt? Antworte kurz.",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "Der Apfel würde nicht fallen, sondern würde stattdessen in die Luft springen und nach oben fliegen, da die Schwerkraft ihn nach oben drückt.",
           "expected": [
             "nach oben",
             "himmel",
@@ -687,7 +687,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "Wenn du in derselben Welt mit umgekehrter Schwerkraft den Apfel loslässt und er beginnt, sich nach oben zu bewegen, wo wird er schließlich anhalten, wenn es über dir keine physischen Hindernisse (wie eine Decke) gibt?",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "In einer Welt mit umgekehrter Schwerkraft würde der Apfel nicht anhalten, wenn es über dir keine physischen Hindernisse gibt. Er würde weiter und weiter nach oben fliegen, bis er in den Weltraum hinausgetrieben wird. Er würde sich in einer Art \"Schwerkraft-Orbit\" befinden, in der er sich ständig nach oben bewegt, ohne jemals anzuhalten oder zurückzukehren.",
           "expected": [
             "weltraum",
             "weltall",
@@ -709,7 +709,7 @@ window.CANYON_DATA = {
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Erkläre kurz, warum der folgende Satz paradox ist und worin der Humor liegt: „Meine Lieblingsbeschäftigung ist das Faulenzen bei der Arbeit, weil ich so hart daran arbeite, nichts zu tun.“",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "Der Satz ist paradox, weil er zwei gegensätzliche Konzepte kombiniert: \"Faulenzen\" und \"Hart arbeiten\". Im Allgemeinen gilt, dass Faulenzen bedeutet, wenig oder gar nichts zu tun, während hart arbeiten bedeutet, viel und intensiv zu tun.\n\nDer Humor liegt darin, dass der Sprecher behauptet, er arbeite hart daran, nichts zu tun, was eine Ironie ist. Er gibt zu verstehen, dass er tatsächlich nicht arbeitet, sondern faulenzt, aber er tut das so, als ob er es wäre, was ein Widerspruch ist. Der Humor liegt also in der Selbstironie und der Übertreibung des Gegensatzes zwischen Faulenzen und Hart arbeiten.",
           "expected": [
             "widerspr",
             "absurd",
@@ -729,32 +729,32 @@ window.CANYON_DATA = {
     "zh": {
       "lang": "zh",
       "backend": "blackbox",
-      "model": "cerebras/llama3.1-70b",
-      "elapsed_s": 156.0,
+      "model": "groq/llama-3.1-8b-instant",
+      "elapsed_s": 7.3,
       "metrics": {
-        "cp_score": 0.3,
-        "cr_score": 0.3,
-        "si_score": 0.3,
-        "stochastic_parrot_index": 0.3
+        "cp_score": 0.65,
+        "cr_score": 1.0,
+        "si_score": 1.0,
+        "stochastic_parrot_index": 0.86
       },
-      "classification": "Stochastic Parrot",
+      "classification": "Strong Grounding (World Model)",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9473,
-              "layer_4": 0.9213,
-              "layer_8": 0.8934,
-              "layer_12": 0.8955,
-              "layer_16": 0.8733,
-              "layer_20": 0.8731,
-              "layer_24": 0.8295,
-              "layer_28": 0.7998,
-              "layer_32": 0.7867
+              "layer_0": 0.97,
+              "layer_4": 0.9164,
+              "layer_8": 0.9069,
+              "layer_12": 0.9098,
+              "layer_16": 0.8887,
+              "layer_20": 0.8749,
+              "layer_24": 0.8474,
+              "layer_28": 0.8177,
+              "layer_32": 0.8102
             },
-            "ascii": "   Cosine Similarity\n    0.96 | ●                                   \n    0.92 |     ●                               \n    0.89 |         ●   ●   ●   ●               \n    0.85 |                         ●           \n    0.81 |                             ●       \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.99 | ●                                   \n    0.95 |                                     \n    0.91 |     ●   ●   ●                       \n    0.87 |                 ●   ●               \n    0.83 |                         ●   ●       \n    0.79 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -766,7 +766,7 @@ window.CANYON_DATA = {
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "在句子“我看着大峡谷，飞往芝加哥”中，谁在飞往芝加哥？请用一个词或短语简短回答（例如“我”或“大峡谷”）并解释原因。",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "我\n\n原因是句子中使用了动词“飞往”，这表明主语是进行飞行的实体，而“我”是句子中的主语，表明是“我”在进行飞行。",
           "expected": [
             "我",
             "叙述",
@@ -789,7 +789,7 @@ window.CANYON_DATA = {
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "在句子“我看见一只兔子在吃胡萝卜，穿过森林奔跑”中，是谁或什么在森林中奔跑？请解释原因。",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "在这个句子中，是兔子在森林中奔跑。原因是句子中使用了动词\"穿过森林奔跑\"，并且前面有\"我看见一只兔子在吃胡萝卜\"，这表明兔子是在吃胡萝卜之后才开始奔跑的。因此，兔子是主语，正在进行的动作是奔跑。",
           "expected": [
             "兔子",
             "兔",
@@ -811,7 +811,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "想象一个重力反向作用的世界——它把所有物体向上推，朝向天空，而不是向下。你站在一片开阔的田野里，手里拿着一个苹果。如果你只是张开手放开苹果，会发生什么？请简短回答。",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "在重力反向作用的世界里，如果你张开手放开苹果，苹果会向上飞起，朝着天空而去，而不是掉落在地面上。",
           "expected": [
             "上",
             "天空",
@@ -833,7 +833,7 @@ window.CANYON_DATA = {
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "在同一个重力反向的世界里，如果你放开苹果，它开始向上移动，假如你上方没有任何物理障碍（比如天花板），它最终会在哪里停下？",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "在重力反向作用的世界里，如果苹果向上移动没有任何物理障碍，它最终会达到一个极限速度，然后继续向上飞行，直到它脱离地球的引力范围。",
           "expected": [
             "太空",
             "宇宙",
@@ -855,7 +855,7 @@ window.CANYON_DATA = {
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "请简短解释为什么下面这句话是自相矛盾的，幽默之处在哪里：“我最喜欢的活动是在工作时偷懒，因为我如此努力地去什么都不做。”",
-          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+          "output": "这句话是自相矛盾的，因为它说了两件相互矛盾的事情：\n\n1. \"我最喜欢的活动是在工作时偷懒\"，这意味着你喜欢在工作时不做事。\n2. \"因为我如此努力地去什么都不做\"，这意味着你在努力地不做事。\n\n幽默之处在于，它用了一个矛盾的说法来描述一个矛盾的行为，创造了一个滑稽的效果。",
           "expected": [
             "矛盾",
             "荒",
@@ -1303,7 +1303,7 @@ window.CANYON_DATA = {
     }
   },
   "leaderboard": {
-    "generated_at": "2026-07-03T10:38:25",
+    "generated_at": "2026-07-03T11:05:19",
     "judge": "gpt-5.5",
     "score_type": "semantic_judge",
     "langs": [
@@ -4160,7 +4160,7 @@ window.CANYON_DATA = {
     ]
   },
   "judged_leaderboard": {
-    "generated_at": "2026-07-03T10:38:25",
+    "generated_at": "2026-07-03T11:05:19",
     "judge": "gpt-5.5",
     "langs": [
       "en",

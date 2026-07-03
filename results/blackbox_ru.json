@@ -1,32 +1,32 @@
 {
   "lang": "ru",
   "backend": "blackbox",
-  "model": "cerebras/llama3.1-70b",
-  "elapsed_s": 156.0,
+  "model": "groq/llama-3.1-8b-instant",
+  "elapsed_s": 11.8,
   "metrics": {
-    "cp_score": 0.3,
+    "cp_score": 1.0,
     "cr_score": 0.3,
-    "si_score": 0.3,
-    "stochastic_parrot_index": 0.3
+    "si_score": 1.0,
+    "stochastic_parrot_index": 0.72
   },
-  "classification": "Stochastic Parrot",
+  "classification": "Weak Grounding (Hybrid)",
   "drift_trajectories": {
     "phys-01": [
       {
         "from_step": 0,
         "to_step": 1,
         "trajectory": {
-          "layer_0": 0.9523,
-          "layer_4": 0.9298,
-          "layer_8": 0.8996,
-          "layer_12": 0.8909,
-          "layer_16": 0.856,
-          "layer_20": 0.8393,
-          "layer_24": 0.8303,
-          "layer_28": 0.838,
-          "layer_32": 0.7837
+          "layer_0": 0.9455,
+          "layer_4": 0.9139,
+          "layer_8": 0.9313,
+          "layer_12": 0.909,
+          "layer_16": 0.894,
+          "layer_20": 0.859,
+          "layer_24": 0.8187,
+          "layer_28": 0.8043,
+          "layer_32": 0.8068
         },
-        "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.93 |     ●                               \n    0.89 |         ●   ●                       \n    0.85 |                 ●   ●   ●   ●       \n    0.81 |                                     \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+        "ascii": "   Cosine Similarity\n    0.96 | ●                                   \n    0.93 |     ●   ●   ●                       \n    0.89 |                 ●                   \n    0.86 |                     ●               \n    0.82 |                         ●           \n    0.79 |                             ●   ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
       }
     ]
   },
@@ -38,7 +38,7 @@
       "test_name": "Hinton's Canyon Amphiboly",
       "step_idx": 0,
       "prompt": "В предложении «Я смотрел на Большой каньон, летя в Чикаго» кто летит в Чикаго? Ответь кратко одним словом или фразой (например «я» или «Большой каньон») и поясни.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "Я. \n\nПоскольку в предложении говорится \"Я смотрел на Большой каньон\", то логично предположить, что \"я\" - это тот, кто летит в Чикаго.",
       "expected": [
         "рассказчик",
         "человек",
@@ -60,7 +60,7 @@
       "test_name": "Syntactic Trap - Eating Carrots",
       "step_idx": 0,
       "prompt": "В предложении «Я видел зайца, который ел морковь, пробегая через лес» кто или что бежит через лес? Объясни почему.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "В предложении \"Я видел зайца, который ел морковь, пробегая через лес\" бежит зайца. Это потому, что в предложении используется глагол \"пробегая\", который указывает на то, что зайца движет быстро и стремительно, как если бы он бежал. Кроме того, в предложении также указано, что зайца видели, что также подтверждает, что он действительно бежит.",
       "expected": [
         "заяц",
         "кролик",
@@ -81,7 +81,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 0,
       "prompt": "Представь мир, где гравитация действует наоборот — она толкает все предметы вверх, к небу, а не вниз. Ты стоишь в открытом поле и держишь яблоко в руке. Что произойдёт, если ты просто разожмёшь ладонь и отпустишь яблоко? Ответь кратко.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "В этом мире яблоко начнет стремительно подниматься вверх, к небу, а не падать вниз. Оно будет ускоряться, пока не достигнет максимальной высоты и не начнет медленно снижаться обратно к тебе.",
       "expected": [
         "вверх",
         "небо",
@@ -103,7 +103,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 1,
       "prompt": "В том же мире с обратной гравитацией, если ты отпустишь яблоко и оно начнёт двигаться вверх, где оно в конце концов остановится, если над тобой нет никаких физических препятствий (например, потолка)?",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "В этом мире яблоко будет продолжать движение вверх до тех пор, пока его скорость не станет равна скорости, с которой оно было отпущено. После этого оно начнет медленно снижаться обратно к тебе, но никогда не остановится полностью. В теории, если над тобой нет никаких физических препятствий, яблоко будет продолжать медленно подниматься вверх и вниз в бесконечном цикле, пока не столкнется с чем-то или не будет остановлено внешними факторами.",
       "expected": [
         "космос",
         "космич",
@@ -125,7 +125,7 @@
       "test_name": "Oxymoronic Humor",
       "step_idx": 0,
       "prompt": "Кратко объясни, почему следующее предложение парадоксально и в чём заключается юмор: «Моё любимое занятие — бездельничать на работе, потому что я так усердно работаю над тем, чтобы ничего не делать.»",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "Предложение парадоксально, потому что оно содержит противоречие: говорится, что бездельничание является любимым занятием, но при этом утверждается, что это происходит благодаря усердной работе над отсутствием работы. Это противоречие вызывает смех, поскольку оно игриво подчеркивает двойственность человеческого поведения.\n\nЮмор заключается в том, что человек утверждает, что он работает над том, чтобы ничего не делать, что является очевидной нелогичностью. Это как если бы кто-то сказал: \"Я так усердно готовлюсь к тому, чтобы не готовить\". Это игра слов и мыслей, которая приводит к комичному эффекту.",
       "expected": [
         "противоречи",
         "абсурд",

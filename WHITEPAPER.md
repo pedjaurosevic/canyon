@@ -120,18 +120,18 @@ CANYON renders each trajectory as an inline ASCII line graph (cosine similarity 
 <!-- RESULTS:AUTO -->
 ### 4.1 Behavioural results (black-box)
 
-Model: `cerebras/llama3.1-70b` · endpoint-served, queried over six languages.
+Model: `groq/llama-3.1-8b-instant` · endpoint-served, queried over six languages.
 
 | Language | CP | CR | SI | **SPI** | Classification |
 |----------|----|----|----|---------|----------------|
-| English (en) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
-| Chinese (zh) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
-| Japanese (ja) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
-| Russian (ru) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
-| German (de) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
-| Spanish (es) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
+| English (en) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| Chinese (zh) | 0.65 | 1.00 | 1.00 | **0.86** | Strong Grounding (World Model) |
+| Japanese (ja) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
+| Russian (ru) | 1.00 | 0.30 | 1.00 | **0.72** | Weak Grounding (Hybrid) |
+| German (de) | 1.00 | 0.65 | 1.00 | **0.86** | Strong Grounding (World Model) |
+| Spanish (es) | 1.00 | 0.65 | 1.00 | **0.86** | Strong Grounding (World Model) |
 
-**Cross-lingual mean:** CP=0.30, CR=0.30, SI=0.30, **SPI=0.30**. Flat SPI across languages is the grounding-invariance signature; large dispersion suggests language-dependent (statistics-driven) behaviour.
+**Cross-lingual mean:** CP=0.94, CR=0.77, SI=1.00, **SPI=0.88**. Flat SPI across languages is the grounding-invariance signature; large dispersion suggests language-dependent (statistics-driven) behaviour.
 
 
 ### 4.2 Real latent-space drift (white-box)

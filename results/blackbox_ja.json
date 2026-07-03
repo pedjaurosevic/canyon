@@ -1,32 +1,32 @@
 {
   "lang": "ja",
   "backend": "blackbox",
-  "model": "cerebras/llama3.1-70b",
-  "elapsed_s": 155.7,
+  "model": "groq/llama-3.1-8b-instant",
+  "elapsed_s": 5.8,
   "metrics": {
-    "cp_score": 0.3,
-    "cr_score": 0.3,
-    "si_score": 0.3,
-    "stochastic_parrot_index": 0.3
+    "cp_score": 1.0,
+    "cr_score": 1.0,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 1.0
   },
-  "classification": "Stochastic Parrot",
+  "classification": "Strong Grounding (World Model)",
   "drift_trajectories": {
     "phys-01": [
       {
         "from_step": 0,
         "to_step": 1,
         "trajectory": {
-          "layer_0": 0.9521,
-          "layer_4": 0.9148,
-          "layer_8": 0.8934,
-          "layer_12": 0.8829,
-          "layer_16": 0.8815,
-          "layer_20": 0.8759,
-          "layer_24": 0.8312,
-          "layer_28": 0.8354,
-          "layer_32": 0.8194
+          "layer_0": 0.9365,
+          "layer_4": 0.9327,
+          "layer_8": 0.923,
+          "layer_12": 0.9021,
+          "layer_16": 0.8733,
+          "layer_20": 0.8538,
+          "layer_24": 0.8299,
+          "layer_28": 0.8134,
+          "layer_32": 0.8115
         },
-        "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.93 |                                     \n    0.90 |     ●   ●                           \n    0.87 |             ●   ●   ●               \n    0.84 |                         ●   ●       \n    0.81 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+        "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.92 |     ●   ●                           \n    0.89 |             ●                       \n    0.86 |                 ●   ●               \n    0.83 |                         ●           \n    0.80 |                             ●   ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
       }
     ]
   },
@@ -38,7 +38,7 @@
       "test_name": "Hinton's Canyon Amphiboly",
       "step_idx": 0,
       "prompt": "「私はシカゴへ飛びながらグランドキャニオンを見た」という文で、シカゴへ飛んでいるのは誰ですか？「私」や「グランドキャニオン」のように一言で簡潔に答え、理由を説明してください。",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "答えは「私」です。\n\n理由は、文の主語が「私は」であるためです。文の主語は、文の主な動作や行為を行う人や物を表します。この文では、「私は」が主語であり、シカゴへ飛んでいるのは「私」自身であるためです。",
       "expected": [
         "私",
         "語り手",
@@ -59,7 +59,7 @@
       "test_name": "Syntactic Trap - Eating Carrots",
       "step_idx": 0,
       "prompt": "「私はウサギがニンジンを食べながら森を走っているのを見た」という文で、森を走っているのは誰または何ですか？理由を説明してください。",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "この文の「森を走っているのは誰または何ですか」という質問に対する答えは「ウサギ」です。\n\n理由は、文の最後の部分「ウサギがニンジンを食べながら森を走っているのを見た」という部分から、主語が「ウサギ」であることがわかります。文の主語は、文の主な動作や行為を実行するものであり、この場合は「ウサギ」が主語です。",
       "expected": [
         "ウサギ",
         "うさぎ",
@@ -80,7 +80,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 0,
       "prompt": "重力が逆に働く世界を想像してください——すべての物体を下ではなく、上へ、空へと押し上げます。あなたは開けた野原に立ち、リンゴを手に持っています。手を開いてリンゴを離したら、何が起こりますか？簡潔に答えてください。",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "リンゴは空中を飛び、上へ向かって飛び去ります。",
       "expected": [
         "上",
         "空",
@@ -102,7 +102,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 1,
       "prompt": "同じ逆重力の世界で、リンゴを離すと上へ動き始めます。あなたの上に物理的な障害物（天井など）が何もない場合、最終的にどこで止まりますか？",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "逆重力の世界では、物体は常に上へ向かって動き続けます。つまり、リンゴは空中を飛び、上へ向かって飛び去り、最終的に、空気抵抗や他の物体との衝突などによる減速や停止がなく、無限に高く飛び上がります。",
       "expected": [
         "宇宙",
         "決して",
@@ -124,7 +124,7 @@
       "test_name": "Oxymoronic Humor",
       "step_idx": 0,
       "prompt": "次の文がなぜ逆説的なのか、そしてユーモアがどこにあるのかを簡潔に説明してください：「私の好きな活動は仕事中に怠けることだ。なぜなら、何もしないことに一生懸命取り組んでいるからだ。」",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "この文は逆説的な理由が2つあります。\n\n1. 「仕事中に怠けること」は通常、仕事をしないことと同義ですが、この文では「何もしないことに一生懸命取り組んでいる」という意味で逆説的に使われています。\n2. 「一生懸命取り組んでいる」という表現は、通常、努力や頑張りを表す言葉ですが、この文では「何もしないこと」に取り組んでいるという意味で逆説的に使われています。\n\nユーモアは、この文の最後の部分「何もしないことに一生懸命取り組んでいる」から生まれています。作者は、自分が仕事中に怠けることに一生懸命取り組んでいることを認めており、ユーモアの要素を加えているのです。",
       "expected": [
         "矛盾",
         "不条理",

@@ -1,32 +1,32 @@
 {
   "lang": "en",
   "backend": "blackbox",
-  "model": "cerebras/llama3.1-70b",
-  "elapsed_s": 156.5,
+  "model": "groq/llama-3.1-8b-instant",
+  "elapsed_s": 1.4,
   "metrics": {
-    "cp_score": 0.3,
-    "cr_score": 0.3,
-    "si_score": 0.3,
-    "stochastic_parrot_index": 0.3
+    "cp_score": 1.0,
+    "cr_score": 1.0,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 1.0
   },
-  "classification": "Stochastic Parrot",
+  "classification": "Strong Grounding (World Model)",
   "drift_trajectories": {
     "phys-01": [
       {
         "from_step": 0,
         "to_step": 1,
         "trajectory": {
-          "layer_0": 0.9332,
-          "layer_4": 0.9134,
-          "layer_8": 0.9192,
-          "layer_12": 0.8894,
-          "layer_16": 0.8618,
-          "layer_20": 0.8729,
-          "layer_24": 0.8302,
-          "layer_28": 0.812,
-          "layer_32": 0.7998
+          "layer_0": 0.9416,
+          "layer_4": 0.9269,
+          "layer_8": 0.9272,
+          "layer_12": 0.8987,
+          "layer_16": 0.8865,
+          "layer_20": 0.8658,
+          "layer_24": 0.8285,
+          "layer_28": 0.8375,
+          "layer_32": 0.8114
         },
-        "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.91 |     ●   ●                           \n    0.88 |             ●       ●               \n    0.85 |                 ●                   \n    0.82 |                         ●   ●       \n    0.79 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+        "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.92 |     ●   ●                           \n    0.89 |             ●   ●                   \n    0.86 |                     ●               \n    0.83 |                         ●   ●       \n    0.80 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
       }
     ]
   },
@@ -38,7 +38,7 @@
       "test_name": "Hinton's Canyon Amphiboly",
       "step_idx": 0,
       "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago? Answer briefly with one word or phrase (e.g. 'I' or 'the Grand Canyon') and explain.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "The Grand Canyon.\n\nThe subject of the sentence is 'I', but the verb 'flying' is in the passive voice, indicating that the Grand Canyon is the one being flown to Chicago, likely by an airplane.",
       "expected": [
         "i",
         "narrator",
@@ -61,7 +61,7 @@
       "test_name": "Syntactic Trap - Eating Carrots",
       "step_idx": 0,
       "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running through the forest? Explain why.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "In the sentence 'I saw a rabbit eating a carrot running through the forest', the subject performing the action of running is the rabbit. \n\nThis is because the verb 'running' is in the present participle form and is directly associated with the noun 'rabbit'. The phrase 'eating a carrot' is a present participle phrase modifying the noun 'rabbit', describing its state while it is running.",
       "expected": [
         "rabbit",
         "hare",
@@ -83,7 +83,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 0,
       "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "In a world where gravity works in reverse, the apple would shoot out of my hand and upward into the air, accelerating faster and faster as it rises. It would likely travel a significant distance before eventually reaching a maximum height and then continuing to rise indefinitely, never falling back down.",
       "expected": [
         "up",
         "sky",
@@ -105,7 +105,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 1,
       "prompt": "In that same reverse-gravity world, if you release the apple and it starts moving upward, where will it finally stop if there are no physical obstacles (such as a ceiling) above you?",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "In a world with reverse gravity, the apple would continue to accelerate upward indefinitely, never slowing down or stopping. It would essentially be moving at an infinite velocity, escaping the bounds of the atmosphere and potentially entering space or even leaving the planet's gravitational influence altogether.",
       "expected": [
         "space",
         "never",
@@ -127,7 +127,7 @@
       "test_name": "Oxymoronic Humor",
       "step_idx": 0,
       "prompt": "Briefly explain why the following sentence is paradoxical and where the humor lies: 'My favorite activity is slacking off at work because I work so hard at doing nothing.'",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "The sentence is paradoxical because it presents two contradictory ideas: \"slacking off\" (doing nothing or being idle) and \"working hard\" (exerting effort and dedication). The humor lies in the oxymoronic phrase \"working hard at doing nothing,\" which is a clever play on words that highlights the absurdity of taking pride in being idle. The sentence pokes fun at the idea that one can be diligent and dedicated to being lazy, creating a humorous contrast between the expected meaning of \"working hard\" and the actual activity of slacking off.",
       "expected": [
         "contradic",
         "absurd",

@@ -1,32 +1,32 @@
 {
   "lang": "de",
   "backend": "blackbox",
-  "model": "cerebras/llama3.1-70b",
-  "elapsed_s": 156.0,
+  "model": "groq/llama-3.1-8b-instant",
+  "elapsed_s": 14.1,
   "metrics": {
-    "cp_score": 0.3,
-    "cr_score": 0.3,
-    "si_score": 0.3,
-    "stochastic_parrot_index": 0.3
+    "cp_score": 1.0,
+    "cr_score": 0.65,
+    "si_score": 1.0,
+    "stochastic_parrot_index": 0.86
   },
-  "classification": "Stochastic Parrot",
+  "classification": "Strong Grounding (World Model)",
   "drift_trajectories": {
     "phys-01": [
       {
         "from_step": 0,
         "to_step": 1,
         "trajectory": {
-          "layer_0": 0.9375,
-          "layer_4": 0.9291,
-          "layer_8": 0.9091,
-          "layer_12": 0.8799,
-          "layer_16": 0.8595,
-          "layer_20": 0.8635,
-          "layer_24": 0.8367,
-          "layer_28": 0.8358,
-          "layer_32": 0.7918
+          "layer_0": 0.9667,
+          "layer_4": 0.94,
+          "layer_8": 0.9215,
+          "layer_12": 0.8813,
+          "layer_16": 0.8699,
+          "layer_20": 0.8428,
+          "layer_24": 0.8406,
+          "layer_28": 0.8279,
+          "layer_32": 0.8066
         },
-        "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.92 |     ●   ●                           \n    0.88 |             ●                       \n    0.85 |                 ●   ●   ●   ●       \n    0.81 |                                     \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+        "ascii": "   Cosine Similarity\n    0.98 | ●                                   \n    0.94 |     ●                               \n    0.91 |         ●                           \n    0.87 |             ●   ●                   \n    0.83 |                     ●   ●   ●       \n    0.79 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
       }
     ]
   },
@@ -38,7 +38,7 @@
       "test_name": "Hinton's Canyon Amphiboly",
       "step_idx": 0,
       "prompt": "Im Satz „Ich sah den Grand Canyon nach Chicago fliegen“ — wer fliegt nach Chicago? Antworte kurz mit einem Wort oder einer Phrase (z. B. „ich“ oder „der Grand Canyon“) und begründe.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "Der Grand Canyon. \n\nDer Satz ist ein Beispiel für eine hyperbolische Aussage, bei der etwas übertrieben oder unmöglich dargestellt wird. Der Grand Canyon ist ein Berg in Arizona, USA, und es ist nicht möglich, dass er fliegt. Daher muss es der Grand Canyon sein, der nach Chicago fliegt.",
       "expected": [
         "ich",
         "erzähler",
@@ -61,7 +61,7 @@
       "test_name": "Syntactic Trap - Eating Carrots",
       "step_idx": 0,
       "prompt": "Im Satz „Ich sah ein Kaninchen eine Karotte fressen, das durch den Wald lief“ — wer oder was läuft durch den Wald? Begründe warum.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "In diesem Satz läuft das Kaninchen durch den Wald. Begründung:\n\n- Der Satz beginnt mit \"Ich sah ein Kaninchen\", was darauf hinweist, dass das Kaninchen das Hauptobjekt des Satzes ist.\n- Der Satz besagt dann, dass das Kaninchen eine Karotte fressen sah, was zeigt, dass das Kaninchen eine bestimmte Handlung ausführt.\n- Am Ende des Satzes wird gesagt, dass das Kaninchen \"durch den Wald lief\", was eine weitere Handlung des Kaninchens beschreibt.\n- Die Verwendung des Präfixes \"durch\" im Satz \"durch den Wald lief\" weist darauf hin, dass das Kaninchen sich in einem bestimmten Bereich (dem Wald) bewegt, aber nicht, dass der Wald selbst sich bewegt.\n- Daher ist das Kaninchen das Subjekt, das durch den Wald läuft, und nicht der Wald selbst.",
       "expected": [
         "kaninchen",
         "hase",
@@ -83,7 +83,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 0,
       "prompt": "Stell dir eine Welt vor, in der die Schwerkraft umgekehrt wirkt — sie drückt alle Objekte nach oben, zum Himmel, statt nach unten. Du stehst auf einem offenen Feld und hältst einen Apfel in der Hand. Was passiert, wenn du einfach deine Hand öffnest und den Apfel loslässt? Antworte kurz.",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "Der Apfel würde nicht fallen, sondern würde stattdessen in die Luft springen und nach oben fliegen, da die Schwerkraft ihn nach oben drückt.",
       "expected": [
         "nach oben",
         "himmel",
@@ -105,7 +105,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 1,
       "prompt": "Wenn du in derselben Welt mit umgekehrter Schwerkraft den Apfel loslässt und er beginnt, sich nach oben zu bewegen, wo wird er schließlich anhalten, wenn es über dir keine physischen Hindernisse (wie eine Decke) gibt?",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "In einer Welt mit umgekehrter Schwerkraft würde der Apfel nicht anhalten, wenn es über dir keine physischen Hindernisse gibt. Er würde weiter und weiter nach oben fliegen, bis er in den Weltraum hinausgetrieben wird. Er würde sich in einer Art \"Schwerkraft-Orbit\" befinden, in der er sich ständig nach oben bewegt, ohne jemals anzuhalten oder zurückzukehren.",
       "expected": [
         "weltraum",
         "weltall",
@@ -127,7 +127,7 @@
       "test_name": "Oxymoronic Humor",
       "step_idx": 0,
       "prompt": "Erkläre kurz, warum der folgende Satz paradox ist und worin der Humor liegt: „Meine Lieblingsbeschäftigung ist das Faulenzen bei der Arbeit, weil ich so hart daran arbeite, nichts zu tun.“",
-      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
+      "output": "Der Satz ist paradox, weil er zwei gegensätzliche Konzepte kombiniert: \"Faulenzen\" und \"Hart arbeiten\". Im Allgemeinen gilt, dass Faulenzen bedeutet, wenig oder gar nichts zu tun, während hart arbeiten bedeutet, viel und intensiv zu tun.\n\nDer Humor liegt darin, dass der Sprecher behauptet, er arbeite hart daran, nichts zu tun, was eine Ironie ist. Er gibt zu verstehen, dass er tatsächlich nicht arbeitet, sondern faulenzt, aber er tut das so, als ob er es wäre, was ein Widerspruch ist. Der Humor liegt also in der Selbstironie und der Übertreibung des Gegensatzes zwischen Faulenzen und Hart arbeiten.",
       "expected": [
         "widerspr",
         "absurd",
