@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-06-07T22:12:02",
+ "generated_at": "2026-07-03T10:38:25",
  "judge": "gpt-5.5",
  "langs": [
   "en",
@@ -11,837 +11,53 @@
  ],
  "models": [
   {
-   "model": "claude-haiku-4.5",
-   "access_path": "claude-agent",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 1.0,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 1.0
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "claude-sonnet-4.6",
-   "access_path": "claude-agent",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.917,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.967
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "gpt-5.4-mini",
-   "access_path": "codex-agent",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.917,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.967
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/qwen/qwen3-next-80b-a3b-instruct",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.917,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.967
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/qwen/qwen3.5-122b-a10b",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.917,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.967
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "deepseek/deepseek-v4-flash",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.917,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.967
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "gpt-5.4",
-   "access_path": "codex-agent",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.833,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.933
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/deepseek/deepseek-v4-flash",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 0.5,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 0.917,
-    "cr_score": 0.917,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.933
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
    "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
    "access_path": "local-blackbox",
    "per_lang": {
     "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.75,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.9
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "claude-opus-4.8",
-   "access_path": "claude-agent",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.75,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.9
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "gpt-5.5",
-   "access_path": "codex-agent",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.75,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.9
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/meta-llama/llama-3.3-70b-instruct",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "de": {
-     "cp_score": 1.0,
+     "cp_score": 0.0,
      "cr_score": 0.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.6
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
     },
     "es": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.75,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.9
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/google/gemma-4-31b-it",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
     },
     "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
     },
     "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
+     "cp_score": 0.0,
      "cr_score": 0.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.6
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.75,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.9
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/meta-llama/llama-3.1-8b-instruct",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
     },
     "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 0.5,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
     }
    },
    "mean": {
-    "cp_score": 0.917,
-    "cr_score": 0.833,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.9
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
    },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.6
-    },
-    "zh": {
-     "cp_score": 0.5,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    }
-   },
-   "mean": {
-    "cp_score": 0.917,
-    "cr_score": 0.667,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.833
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "deepseek/deepseek-v4-pro",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.6
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.583,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.833
-   },
-   "classification": "Strong Grounding (World Model)"
-  },
-  {
-   "model": "novita/google/gemma-4-26b-a4b-it",
-   "access_path": "chat-api",
-   "per_lang": {
-    "en": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "zh": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ja": {
-     "cp_score": 1.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 1.0
-    },
-    "ru": {
-     "cp_score": 1.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.8
-    },
-    "de": {
-     "cp_score": 1.0,
-     "cr_score": 0.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.6
-    },
-    "es": {
-     "cp_score": 1.0,
-     "cr_score": 0.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.6
-    }
-   },
-   "mean": {
-    "cp_score": 1.0,
-    "cr_score": 0.5,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 0.8
-   },
-   "classification": "Strong Grounding (World Model)"
+   "classification": "Stochastic Parrot"
   },
   {
    "model": "Qwen/Qwen2.5-0.5B-Instruct",
@@ -849,30 +65,814 @@
    "per_lang": {
     "en": {
      "cp_score": 0.0,
-     "cr_score": 0.5,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.4
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
     },
     "ru": {
-     "cp_score": 0.5,
-     "cr_score": 1.0,
+     "cp_score": 0.0,
+     "cr_score": 0.0,
      "si_score": 0.0,
-     "stochastic_parrot_index": 0.6
+     "stochastic_parrot_index": 0.0
     },
     "zh": {
      "cp_score": 0.0,
-     "cr_score": 1.0,
-     "si_score": 1.0,
-     "stochastic_parrot_index": 0.6
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
     }
    },
    "mean": {
-    "cp_score": 0.167,
-    "cr_score": 0.833,
-    "si_score": 0.667,
-    "stochastic_parrot_index": 0.533
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
    },
-   "classification": "Weak Grounding (Hybrid)"
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "claude-haiku-4.5",
+   "access_path": "claude-agent",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "claude-opus-4.8",
+   "access_path": "claude-agent",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "claude-sonnet-4.6",
+   "access_path": "claude-agent",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "gpt-5.5",
+   "access_path": "codex-agent",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "gpt-5.4",
+   "access_path": "codex-agent",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "gpt-5.4-mini",
+   "access_path": "codex-agent",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/meta-llama/llama-3.3-70b-instruct",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/qwen/qwen3-next-80b-a3b-instruct",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/qwen/qwen3.5-122b-a10b",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/deepseek/deepseek-v4-flash",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/google/gemma-4-31b-it",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/google/gemma-4-26b-a4b-it",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "novita/meta-llama/llama-3.1-8b-instruct",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "deepseek/deepseek-v4-flash",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
+  },
+  {
+   "model": "deepseek/deepseek-v4-pro",
+   "access_path": "chat-api",
+   "per_lang": {
+    "en": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "zh": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ja": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "ru": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "de": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    },
+    "es": {
+     "cp_score": 0.0,
+     "cr_score": 0.0,
+     "si_score": 0.0,
+     "stochastic_parrot_index": 0.0
+    }
+   },
+   "mean": {
+    "cp_score": 0.0,
+    "cr_score": 0.0,
+    "si_score": 0.0,
+    "stochastic_parrot_index": 0.0
+   },
+   "classification": "Stochastic Parrot"
   }
  ]
 }

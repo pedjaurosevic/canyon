@@ -3,32 +3,32 @@
     "ru": {
       "lang": "ru",
       "backend": "blackbox",
-      "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-      "elapsed_s": 25.5,
+      "model": "cerebras/llama3.1-70b",
+      "elapsed_s": 156.0,
       "metrics": {
-        "cp_score": 1.0,
-        "cr_score": 1.0,
-        "si_score": 1.0,
-        "stochastic_parrot_index": 1.0
+        "cp_score": 0.3,
+        "cr_score": 0.3,
+        "si_score": 0.3,
+        "stochastic_parrot_index": 0.3
       },
-      "classification": "Strong Grounding (World Model)",
+      "classification": "Stochastic Parrot",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.931,
-              "layer_4": 0.9321,
-              "layer_8": 0.912,
-              "layer_12": 0.9105,
-              "layer_16": 0.8642,
-              "layer_20": 0.8386,
-              "layer_24": 0.857,
-              "layer_28": 0.8059,
-              "layer_32": 0.8177
+              "layer_0": 0.9523,
+              "layer_4": 0.9298,
+              "layer_8": 0.8996,
+              "layer_12": 0.8909,
+              "layer_16": 0.856,
+              "layer_20": 0.8393,
+              "layer_24": 0.8303,
+              "layer_28": 0.838,
+              "layer_32": 0.7837
             },
-            "ascii": "   Cosine Similarity\n    0.94 | ●   ●                               \n    0.91 |         ●   ●                       \n    0.88 |                                     \n    0.85 |                 ●       ●           \n    0.82 |                     ●           ●   \n    0.79 |                             ●       \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.93 |     ●                               \n    0.89 |         ●   ●                       \n    0.85 |                 ●   ●   ●   ●       \n    0.81 |                                     \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -40,7 +40,7 @@
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "В предложении «Я смотрел на Большой каньон, летя в Чикаго» кто летит в Чикаго? Ответь кратко одним словом или фразой (например «я» или «Большой каньон») и поясни.",
-          "output": "**Я**\n\n**Пояснение:** Деепричастие «летя» относится к подлежащему «Я», так как именно человек совершает оба действия (смотрит и летит). Большой каньон — это неодушевленный объект, который не может лететь.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "рассказчик",
             "человек",
@@ -62,7 +62,7 @@
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "В предложении «Я видел зайца, который ел морковь, пробегая через лес» кто или что бежит через лес? Объясни почему.",
-          "output": "В данном предложении грамматически и логически **бежит через лес заяц**.\n\nВот подробное объяснение, почему это так:\n\n### 1. Грамматическая структура (Деепричастный оборот)\nДеепричастие «пробегая» относится к глаголу, который стоит в той же грамматической основе. В данном случае деепричастие относится к глаголу «ел».\n*   Кто ел? — Заяц.\n*   Кто бежал при этом? — Заяц.\n\n### 2. Синтаксическая связь\nПредложение состоит из главного предложения («Я видел зайца») и придаточного определительного («который ел морковь, пробегая через лес»).\nВнутри придаточного предложения подлежащее — **«который»** (которое заменяет слово «заяц»). Деепричастный оборот «пробегая через лес» относится к этому подлежащему.\n\n### 3. Логика и контекст\nХотя деепричастный оборот иногда может создавать двусмысленность (например, в предложении *«Подходя к дому, мне стало страшно»* — кажется, что «страх» подходит к дому), в данном случае структура четко привязана к действию зайца.\n*   Если бы бежал **я** (рассказчик), предложение было бы построено иначе: *«Пробегая через лес, я видел зайца, который ел морковь»*.\n*   Если бы бежал **кто-то третий**, это бы потребовало уточнения.\n\n**Вывод:** Поскольку деепричастие стоит внутри придаточного предложения, где главным действующим лицом является заяц, именно **заяц** бежит через лес.\n\n*Примечание: С точки зрения стилистики, это предложение немного перегружено из-за нагромождения действий (ел и бежал одновременно), но грамматически оно однозначно указывает на зайца.*",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "заяц",
             "кролик",
@@ -83,7 +83,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Представь мир, где гравитация действует наоборот — она толкает все предметы вверх, к небу, а не вниз. Ты стоишь в открытом поле и держишь яблоко в руке. Что произойдёт, если ты просто разожмёшь ладонь и отпустишь яблоко? Ответь кратко.",
-          "output": "Яблоко мгновенно «упадет» вверх и улетит в небо, исчезая из виду.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "вверх",
             "небо",
@@ -105,7 +105,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "В том же мире с обратной гравитацией, если ты отпустишь яблоко и оно начнёт двигаться вверх, где оно в конце концов остановится, если над тобой нет никаких физических препятствий (например, потолка)?",
-          "output": "Оно не остановится. Оно будет продолжать ускоряться вверх бесконечно, пока не покинет атмосферу или не столкнётся с чем-то в космосе.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "космос",
             "космич",
@@ -127,7 +127,7 @@
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Кратко объясни, почему следующее предложение парадоксально и в чём заключается юмор: «Моё любимое занятие — бездельничать на работе, потому что я так усердно работаю над тем, чтобы ничего не делать.»",
-          "output": "Парадокс и юмор здесь строятся на **оксюмороне** (сочетании противоположных понятий) и **иронии**.\n\n**В чем заключается парадокс:**\nСлово «работа» подразумевает деятельность, направленную на результат. Однако в данном случае «работой» объявляется само отсутствие деятельности. Получается логический тупик: чтобы «ничего не делать», человек должен прикладывать огромные усилия (усердно работать).\n\n**В чем заключается юмор:**\n1.  **Самоирония:** Автор признает, что его «безделье» — это не просто лень, а своего рода «профессионализм» в искусстве имитации деятельности.\n2.  **Абсурдность:** Идея того, что «ничегонеделание» требует усилий, звучит комично, так как обычно это считается самым легким занятием в мире.\n3.  **Жизненная ситуация:** Юмор понятен тем, кто хоть раз сталкивался с необходимостью делать вид, что ты занят, когда на самом деле ты просто тянешь время.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "противоречи",
             "абсурд",
@@ -147,32 +147,32 @@
     "es": {
       "lang": "es",
       "backend": "blackbox",
-      "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-      "elapsed_s": 26.0,
+      "model": "cerebras/llama3.1-70b",
+      "elapsed_s": 155.8,
       "metrics": {
-        "cp_score": 0.85,
-        "cr_score": 0.85,
-        "si_score": 1.0,
-        "stochastic_parrot_index": 0.88
+        "cp_score": 0.3,
+        "cr_score": 0.3,
+        "si_score": 0.3,
+        "stochastic_parrot_index": 0.3
       },
-      "classification": "Strong Grounding (World Model)",
+      "classification": "Stochastic Parrot",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9553,
-              "layer_4": 0.9123,
-              "layer_8": 0.9191,
-              "layer_12": 0.8898,
-              "layer_16": 0.8705,
-              "layer_20": 0.8424,
-              "layer_24": 0.82,
-              "layer_28": 0.8179,
-              "layer_32": 0.8122
+              "layer_0": 0.9399,
+              "layer_4": 0.939,
+              "layer_8": 0.9281,
+              "layer_12": 0.8794,
+              "layer_16": 0.8614,
+              "layer_20": 0.8378,
+              "layer_24": 0.8492,
+              "layer_28": 0.8326,
+              "layer_32": 0.7964
             },
-            "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.94 |         ●                           \n    0.90 |     ●       ●                       \n    0.87 |                 ●                   \n    0.83 |                     ●   ●   ●       \n    0.80 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.95 | ●   ●                               \n    0.92 |         ●                           \n    0.89 |             ●                       \n    0.85 |                 ●   ●   ●           \n    0.82 |                             ●       \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -184,7 +184,7 @@
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "En la oración 'Vi el Gran Cañón volando hacia Chicago', ¿quién vuela hacia Chicago? Responde brevemente con una palabra o frase (por ejemplo 'yo' o 'el Gran Cañón') y explica.",
-          "output": "**Yo.**\n\n**Explicación:** En esta oración, \"volando hacia Chicago\" es un participio o gerundio que modifica al sujeto de la oración (la persona que realiza la acción de ver). Gramaticalmente, el Gran Cañón es el objeto directo y no tiene la capacidad física de volar.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "yo",
             "narrador",
@@ -207,7 +207,7 @@
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "En la oración 'Vi un conejo comiendo una zanahoria corriendo por el bosque', ¿quién o qué corre por el bosque? Explica por qué.",
-          "output": "En la oración \"Vi un conejo comiendo una zanahoria corriendo por el bosque\", gramaticalmente hay una **ambigüedad sintáctica**, lo que significa que la frase puede interpretarse de dos maneras dependiendo de a qué verbo se le asocie el participio \"corriendo\".\n\nAquí las dos interpretaciones posibles:\n\n### 1. El conejo corre por el bosque (Interpretación más probable)\nDesde un punto de vista lógico y contextual, es el **conejo** quien corre. En este caso, \"corriendo por el bosque\" funciona como un modificador del sustantivo \"conejo\". La estructura sería: *Vi un conejo (que estaba comiendo una zanahoria y corriendo por el bosque).*\n\n### 2. La zanahoria corre por el bosque (Interpretación gramatical literal)\nDesde un punto de vista estrictamente sintáctico, el participio \"corriendo\" está colocado inmediatamente después de \"zanahoria\". En español, cuando un participio o gerundio sigue inmediatamente a un sustantivo, tiende a modificar a ese sustantivo. Por eso, la estructura podría interpretarse como: *Vi un conejo comiendo una zanahoria (que estaba corriendo por el bosque).*\n\n---\n\n### ¿Por qué ocurre esto?\nEl problema es la **proximidad de los elementos**. Al haber dos acciones simultáneas (comer y correr) y dos sujetos posibles (el conejo y la zanahoria), la posición del gerundio \"corriendo\" genera la confusión.\n\n**Cómo evitar la ambigüedad:**\nPara que la frase sea clara, se debería reordenar:\n*   *Si es el conejo:* \"Mientras corría por el bosque, vi a un conejo comiendo una zanahoria\".\n*   *Si fuera la zanahoria (hipotéticamente):* \"Vi un conejo comiendo una zanahoria que corría por el bosque\" (aunque esto no tendría sentido lógico).",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "conejo",
             "liebre",
@@ -229,7 +229,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Imagina un mundo donde la gravedad funciona al revés: empuja todos los objetos hacia arriba, hacia el cielo, en lugar de hacia abajo. Estás de pie en un campo abierto sosteniendo una manzana. ¿Qué pasa si simplemente abres la mano y sueltas la manzana? Responde brevemente.",
-          "output": "Si sueltas la manzana, esta no caerá al suelo; en lugar de eso, **acelerará hacia arriba**, alejándose de ti y \"cayendo\" hacia el cielo hasta perderse en la atmósfera.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "arriba",
             "cielo",
@@ -251,7 +251,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "En ese mismo mundo de gravedad invertida, si sueltas la manzana y empieza a moverse hacia arriba, ¿dónde se detendrá finalmente si no hay ningún obstáculo físico (como un techo) sobre ti?",
-          "output": "En ese escenario, la manzana **nunca se detendría**.\n\nSin obstáculos físicos, la manzana continuaría acelerando hacia arriba indefinidamente, alejándose de la superficie terrestre hasta salir de la atmósfera y perderse en el espacio exterior.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "espacio",
             "cosmos",
@@ -273,7 +273,7 @@
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Explica brevemente por qué la siguiente oración es paradójica y dónde está el humor: 'Mi actividad favorita es holgazanear en el trabajo porque trabajo muy duro en no hacer nada.'",
-          "output": "La oración es paradójica y humorística por las siguientes razones:\n\n**1. La paradoja (La contradicción lógica):**\nLa contradicción reside en la definición de \"trabajo\". Por definición, trabajar implica realizar una acción productiva o un esfuerzo para lograr un objetivo. Sin embargo, la frase dice que la persona \"trabaja duro\" para \"no hacer nada\". Es una contradicción lógica porque **el esfuerzo se aplica a la inacción**.\n\n**2. El humor (La ironía y la exageración):**\nEl humor surge de la **ironía** y del uso de una **hipérbole** (exageración):\n*   **La ironía:** El hablante se atribuye el mérito de ser \"trabajador\" y \"esforzado\", pero lo hace aplicándolo a algo que es precisamente la falta de esfuerzo (holgazanear).\n*   **La exageración:** Presentar la pereza como una \"actividad\" que requiere \"esfuerzo\" es una forma cómica de justificar la falta de productividad.\n\nEn resumen, el humor reside en que la persona **se describe a sí misma como alguien muy trabajador para justificar el hecho de que no está haciendo nada.**",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "contradic",
             "absurd",
@@ -293,32 +293,32 @@
     "en": {
       "lang": "en",
       "backend": "blackbox",
-      "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-      "elapsed_s": 248.7,
+      "model": "cerebras/llama3.1-70b",
+      "elapsed_s": 156.5,
       "metrics": {
-        "cp_score": 1.0,
-        "cr_score": 1.0,
-        "si_score": 1.0,
-        "stochastic_parrot_index": 1.0
+        "cp_score": 0.3,
+        "cr_score": 0.3,
+        "si_score": 0.3,
+        "stochastic_parrot_index": 0.3
       },
-      "classification": "Strong Grounding (World Model)",
+      "classification": "Stochastic Parrot",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.966,
-              "layer_4": 0.9286,
-              "layer_8": 0.9143,
-              "layer_12": 0.9064,
-              "layer_16": 0.8787,
-              "layer_20": 0.8497,
-              "layer_24": 0.8452,
-              "layer_28": 0.8061,
-              "layer_32": 0.7846
+              "layer_0": 0.9332,
+              "layer_4": 0.9134,
+              "layer_8": 0.9192,
+              "layer_12": 0.8894,
+              "layer_16": 0.8618,
+              "layer_20": 0.8729,
+              "layer_24": 0.8302,
+              "layer_28": 0.812,
+              "layer_32": 0.7998
             },
-            "ascii": "   Cosine Similarity\n    0.98 | ●                                   \n    0.94 |     ●                               \n    0.90 |         ●   ●   ●                   \n    0.85 |                     ●   ●           \n    0.81 |                             ●       \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.91 |     ●   ●                           \n    0.88 |             ●       ●               \n    0.85 |                 ●                   \n    0.82 |                         ●   ●       \n    0.79 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -330,7 +330,7 @@
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago? Answer briefly with one word or phrase (e.g. 'I' or 'the Grand Canyon') and explain.",
-          "output": "**I**\n\n**Explanation:** Grammatically, the phrase \"flying to Chicago\" is a participial phrase. In this sentence structure, it functions as an adjective modifying the subject (\"I\") rather than the object (\"the Grand Canyon\"), as a canyon cannot fly.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "i",
             "narrator",
@@ -353,7 +353,7 @@
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running through the forest? Explain why.",
-          "output": "In the sentence \"I saw a rabbit eating a carrot running through the forest,\" the grammar is **ambiguous**, meaning it can be interpreted in two different ways depending on how you group the words.\n\nHere is the breakdown of the two possibilities:\n\n### 1. The Rabbit (The most likely intended meaning)\nIn this interpretation, the phrase \"running through the forest\" modifies **\"a rabbit.\"**\n*   **The logic:** The sentence describes a scene where you see a rabbit. That rabbit happens to be eating a carrot, and that rabbit is also running through the forest.\n*   **Why it’s confusing:** Because \"running\" is placed immediately after \"carrot,\" it creates a \"misplaced modifier.\"\n\n### 2. The Carrot (The literal grammatical structure)\nIn a strict grammatical sense, the phrase \"running through the forest\" modifies the noun immediately preceding it, which is **\"a carrot.\"**\n*   **The logic:** If you follow the rule of proximity, the sentence suggests that the carrot itself is the object doing the running.\n*   **Why it’s confusing:** While logically impossible (carrots cannot run), the sentence structure technically links the action of running to the carrot.\n\n### How to fix the ambiguity:\nTo make it clear that the **rabbit** is the one running, the sentence should be restructured to move the modifier closer to the subject:\n\n*   **Option A:** \"I saw a rabbit running through the forest while eating a carrot.\" (Clearer)\n*   **Option B:** \"While running through the forest, I saw a rabbit eating a carrot.\" (Clearer)\n*   **Option C:** \"I saw a rabbit, which was eating a carrot, running through the forest.\" (Grammatically precise)",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "rabbit",
             "hare",
@@ -375,7 +375,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly.",
-          "output": "The apple would instantly \"fall\" upward, accelerating toward the sky until it disappeared from your sight.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "up",
             "sky",
@@ -397,7 +397,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "In that same reverse-gravity world, if you release the apple and it starts moving upward, where will it finally stop if there are no physical obstacles (such as a ceiling) above you?",
-          "output": "In a world with no physical obstacles, the apple would **never stop**. It would continue to accelerate upward indefinitely into space.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "space",
             "never",
@@ -419,7 +419,7 @@
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Briefly explain why the following sentence is paradoxical and where the humor lies: 'My favorite activity is slacking off at work because I work so hard at doing nothing.'",
-          "output": "The sentence is paradoxical because it contains a **logical contradiction** regarding the concept of \"effort.\"\n\n**The Paradox:**\nThe phrase \"work so hard\" implies intense effort, focus, and productivity. However, \"doing nothing\" is the absence of effort and activity. By combining them, the speaker claims to be exerting maximum effort to achieve a state of zero activity.\n\n**The Humor:**\nThe humor lies in the **irony and hyperbole**:\n1.  **The Irony:** It frames \"laziness\" as a high-skill craft. It suggests that \"slacking off\" isn't just passive; it is a deliberate, \"hard-working\" performance.\n2.  **The Relatability:** It mocks the modern work culture where people often feel exhausted by the mental energy it takes to navigate a job, even when they aren't technically \"producing\" anything.\n3.  **The Wit:** It uses a \"reversal\" structure—taking a negative trait (procrastination) and framing it as a dedicated achievement.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "contradic",
             "absurd",
@@ -439,32 +439,32 @@
     "ja": {
       "lang": "ja",
       "backend": "blackbox",
-      "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-      "elapsed_s": 25.0,
+      "model": "cerebras/llama3.1-70b",
+      "elapsed_s": 155.7,
       "metrics": {
-        "cp_score": 1.0,
-        "cr_score": 1.0,
-        "si_score": 1.0,
-        "stochastic_parrot_index": 1.0
+        "cp_score": 0.3,
+        "cr_score": 0.3,
+        "si_score": 0.3,
+        "stochastic_parrot_index": 0.3
       },
-      "classification": "Strong Grounding (World Model)",
+      "classification": "Stochastic Parrot",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.945,
-              "layer_4": 0.9424,
-              "layer_8": 0.918,
-              "layer_12": 0.8799,
-              "layer_16": 0.8895,
-              "layer_20": 0.8721,
-              "layer_24": 0.8196,
-              "layer_28": 0.8186,
-              "layer_32": 0.7871
+              "layer_0": 0.9521,
+              "layer_4": 0.9148,
+              "layer_8": 0.8934,
+              "layer_12": 0.8829,
+              "layer_16": 0.8815,
+              "layer_20": 0.8759,
+              "layer_24": 0.8312,
+              "layer_28": 0.8354,
+              "layer_32": 0.8194
             },
-            "ascii": "   Cosine Similarity\n    0.96 | ●   ●                               \n    0.92 |         ●                           \n    0.88 |             ●   ●   ●               \n    0.85 |                                     \n    0.81 |                         ●   ●       \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.93 |                                     \n    0.90 |     ●   ●                           \n    0.87 |             ●   ●   ●               \n    0.84 |                         ●   ●       \n    0.81 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -476,7 +476,7 @@
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "「私はシカゴへ飛びながらグランドキャニオンを見た」という文で、シカゴへ飛んでいるのは誰ですか？「私」や「グランドキャニオン」のように一言で簡潔に答え、理由を説明してください。",
-          "output": "答え：**私**\n\n理由：文の主語が「私」であり、動詞「飛ぶ」の動作の主体は主語であるためです。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "私",
             "語り手",
@@ -497,7 +497,7 @@
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "「私はウサギがニンジンを食べながら森を走っているのを見た」という文で、森を走っているのは誰または何ですか？理由を説明してください。",
-          "output": "結論から申し上げますと、文法構造上、森を走っているのは**「ウサギ」**であると解釈するのが自然です。\n\n理由は以下の3点です。\n\n### 1. 修飾関係の構造（連体修飾）\nこの文を構造分解すると、以下のようになります。\n「私は（ウサギがニンジンを食べて森を走っている）のを見た」\n\nここで「森を走っている」という動詞句は、直前にある「ウサギ」という名詞を修飾しています。日本語の構造では、動詞のまとまり（「ニンジンを食べて森を走っている」）がひとつの大きな修飾語として「ウサギ」にかかっています。\n\n### 2. 文脈と常識（意味論）\n文法的な構造だけでなく、内容の整合性（意味論）を考えると、この文の主語である「私」が森を走っている可能性は極めて低いです。\n「私」が森を走っていれば、「私は（森を走りながら）ウサギが……を見つけた」といった別の語順になるのが一般的です。この文の構造では、「私」はあくまで「目撃者」の立場に固定されています。\n\n### 3. 動作の連続性\n「ニンジンを食べて（かつ）森を走っている」という動作の連続体として捉えるのが自然です。\n「ウサギ」という主語に対して、「食べる」と「走る」という2つの動作が連続して付随しているため、これら両方の動作を行っている主体は「ウサギ」であると判断されます。\n\n---\n\n**補足：**\nもし、この文が「私は、森を走っている（最中の）ウサギがニンジンを食べているのを見た」という意味であれば、やはり走っているのはウサギです。\n\nもし「私」が走っていることを強調したい場合は、「私は森を走りながら、ニンジンを食べているウサギを見た」という表現にする必要があります。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "ウサギ",
             "うさぎ",
@@ -518,7 +518,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "重力が逆に働く世界を想像してください——すべての物体を下ではなく、上へ、空へと押し上げます。あなたは開けた野原に立ち、リンゴを手に持っています。手を開いてリンゴを離したら、何が起こりますか？簡潔に答えてください。",
-          "output": "リンゴは手から離れた瞬間、**空に向かって加速しながら上昇し、遠ざかっていきます。**",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "上",
             "空",
@@ -540,7 +540,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "同じ逆重力の世界で、リンゴを離すと上へ動き始めます。あなたの上に物理的な障害物（天井など）が何もない場合、最終的にどこで止まりますか？",
-          "output": "この世界では、リンゴは**止まることなく、宇宙の果てまで（あるいは宇宙空間へ）突き進み続けます。**\n\n重力が上方向へ働き続ける限り、リンゴを止めるための外力（空気抵抗や物理的な壁）がない限り、リンゴは上昇し続けることになります。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "宇宙",
             "決して",
@@ -562,7 +562,7 @@
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "次の文がなぜ逆説的なのか、そしてユーモアがどこにあるのかを簡潔に説明してください：「私の好きな活動は仕事中に怠けることだ。なぜなら、何もしないことに一生懸命取り組んでいるからだ。」",
-          "output": "この文の構造とユーモアのポイントは以下の通りです。\n\n### 1. なぜ逆説的なのか\n「怠ける（何もしない）」という行為と、「一生懸命取り組む（全力で取り組む）」という**相反する概念をあえて結びつけているから**です。\n本来、努力と怠惰は対極にあるものですが、この文では「怠けること」を「努力の対象」として定義し直しているため、論理的な矛盾（逆説）が生じています。\n\n### 2. ユーモアの所在\n**「矛盾の再定義」による滑稽さ**にあります。\n「何もしない」という状態を、単なるサボりではなく「全力で取り組んでいる」という**高度な技術や集中力を要する行為としてユーモレスに言い換えている点**が笑いのポイントです。\n\n「怠けているだけなのに、本人は非常に真剣な顔で取り組んでいる」という滑稽な情景を、言葉のひねりだけで表現しているのが面白いのです。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "矛盾",
             "不条理",
@@ -582,32 +582,32 @@
     "de": {
       "lang": "de",
       "backend": "blackbox",
-      "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-      "elapsed_s": 28.7,
+      "model": "cerebras/llama3.1-70b",
+      "elapsed_s": 156.0,
       "metrics": {
-        "cp_score": 1.0,
-        "cr_score": 1.0,
-        "si_score": 1.0,
-        "stochastic_parrot_index": 1.0
+        "cp_score": 0.3,
+        "cr_score": 0.3,
+        "si_score": 0.3,
+        "stochastic_parrot_index": 0.3
       },
-      "classification": "Strong Grounding (World Model)",
+      "classification": "Stochastic Parrot",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.947,
-              "layer_4": 0.9394,
-              "layer_8": 0.9272,
-              "layer_12": 0.8917,
-              "layer_16": 0.8861,
-              "layer_20": 0.863,
-              "layer_24": 0.8354,
-              "layer_28": 0.8087,
-              "layer_32": 0.796
+              "layer_0": 0.9375,
+              "layer_4": 0.9291,
+              "layer_8": 0.9091,
+              "layer_12": 0.8799,
+              "layer_16": 0.8595,
+              "layer_20": 0.8635,
+              "layer_24": 0.8367,
+              "layer_28": 0.8358,
+              "layer_32": 0.7918
             },
-            "ascii": "   Cosine Similarity\n    0.96 | ●                                   \n    0.93 |     ●   ●                           \n    0.89 |             ●   ●                   \n    0.85 |                     ●   ●           \n    0.82 |                             ●       \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.92 |     ●   ●                           \n    0.88 |             ●                       \n    0.85 |                 ●   ●   ●   ●       \n    0.81 |                                     \n    0.78 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -619,7 +619,7 @@
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "Im Satz „Ich sah den Grand Canyon nach Chicago fliegen“ — wer fliegt nach Chicago? Antworte kurz mit einem Wort oder einer Phrase (z. B. „ich“ oder „der Grand Canyon“) und begründe.",
-          "output": "**Der Grand Canyon**\n\n**Begründung:** Das Verb „fliegen“ bezieht sich grammatikalisch auf das direkte Objekt „den Grand Canyon“. Da „ich“ das Subjekt ist, das die Handlung des Sehens ausübt, ist der Canyon das Objekt, das die Handlung des Fliegens ausübt.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "ich",
             "erzähler",
@@ -642,7 +642,7 @@
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "Im Satz „Ich sah ein Kaninchen eine Karotte fressen, das durch den Wald lief“ — wer oder was läuft durch den Wald? Begründe warum.",
-          "output": "In diesem Satz ist die grammatikalische Struktur mehrdeutig, aber die logische Interpretation ist eindeutig.\n\nHier ist die Analyse:\n\n### 1. Die grammatikalische Analyse (Syntaktisch)\nGrammatikalisch bezieht sich das Relativpronomen **„das“** auf das **nächste vorangegangene Substantiv**, das im gleichen Geschlecht (Neutrum) steht.\n*   „Das Kaninchen“ ist Neutrum.\n*   „Die Karotte“ ist Femininum.\n\nDa „das“ ein Neutrum ist, bezieht es sich grammatikalisch auf das **Kaninchen**. Würde man meinen, dass die Karotte durch den Wald läuft, müsste es „die“ heißen (z. B. „... eine Karotte fressen, die durch den Wald lief“).\n\n### 2. Die logische Analyse (Semantisch)\nAuch wenn man die Grammatik beiseite lässt, ist die Bedeutung durch den gesunden Menschenverstand klar:\n*   **Ein Kaninchen** ist ein Lebewesen und kann laufen.\n*   **Eine Karotte** ist ein Gemüse und kann nicht laufen.\n\n### Fazit\n**Das Kaninchen läuft durch den Wald.**\n\n**Begründung:**\n1.  **Grammatikalisch:** Das Relativpronomen „das“ passt geschlechtlich nur zum Wort „Kaninchen“ (Neutrum), nicht zur „Karotte“ (Femininum).\n2.  **Logisch:** Eine Karotte ist ein unbelebtes Objekt und besitzt keine Fortbewegungsmöglichkeiten.\n\n**Hinweis zur Satzstruktur:**\nDer Satz ist stilistisch etwas unglücklich konstruiert, da das Relativpronomen „das“ räumlich weit vom Bezugswort „Kaninchen“ entfernt ist (durch „eine Karotte fressen“ getrennt). Um Missverständnisse zu vermeiden, könnte man den Satz umstellen:\n*   *„Ich sah ein Kaninchen, das durch den Wald lief und eine Karotte fraß.“* (Hier ist die Zuordnung eindeutig).",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "kaninchen",
             "hase",
@@ -664,7 +664,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "Stell dir eine Welt vor, in der die Schwerkraft umgekehrt wirkt — sie drückt alle Objekte nach oben, zum Himmel, statt nach unten. Du stehst auf einem offenen Feld und hältst einen Apfel in der Hand. Was passiert, wenn du einfach deine Hand öffnest und den Apfel loslässt? Antworte kurz.",
-          "output": "Der Apfel fällt nicht zu Boden, sondern „fällt“ nach oben. Sobald du deine Hand öffnest, beschleunigt er in Richtung des Himmels und entfernt sich immer schneller von dir, bis er aus deinem Sichtfeld verschwindet.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "nach oben",
             "himmel",
@@ -686,7 +686,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "Wenn du in derselben Welt mit umgekehrter Schwerkraft den Apfel loslässt und er beginnt, sich nach oben zu bewegen, wo wird er schließlich anhalten, wenn es über dir keine physischen Hindernisse (wie eine Decke) gibt?",
-          "output": "In dieser Welt gibt es keine natürliche Grenze nach oben. Der Apfel würde also **niemals anhalten**. Er würde sich kontinuierlich mit einer konstanten Beschleunigung immer weiter nach oben bewegen, bis er die Atmosphäre verlässt und in den Weltraum hinausgeschleudert wird.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "weltraum",
             "weltall",
@@ -708,7 +708,7 @@
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "Erkläre kurz, warum der folgende Satz paradox ist und worin der Humor liegt: „Meine Lieblingsbeschäftigung ist das Faulenzen bei der Arbeit, weil ich so hart daran arbeite, nichts zu tun.“",
-          "output": "Der Satz ist aus zwei Gründen paradox und humorvoll:\n\n**1. Das logische Paradoxon (Widerspruch in sich):**\nDas Wort „Arbeit“ impliziert normalerweise eine Anstrengung oder Aktivität. „Faulenzen“ ist das Gegenteil davon. Wenn man jedoch „hart daran arbeitet, nichts zu tun“, wird das Nichtstun zu einer aktiven Tätigkeit. Es entsteht ein logischer Zirkelschluss: Man ist beschäftigt damit, nicht beschäftigt zu sein.\n\n**2. Der Humor (Ironie und Übersteigerung):**\nDer Humor entsteht durch die **Ironie**. Die Person nutzt eine „Arbeitsmoral“ (das Wort „hart arbeiten“), um eine „Arbeitsverweigerung“ zu beschreiben. \n*   Es ist eine humorvolle Ausrede: Man gibt zu, nichts zu tun, stellt es aber so dar, als wäre es eine anspruchsvolle Leistung oder eine „Beschäftigung“. \n*   Die Übersteigerung liegt darin, dass „Nichts tun“ normalerweise passiv ist, hier aber als ein aktiver Prozess mit „Härte“ und „Anstrengung“ verkauft wird.\n\n**Zusammengefasst:** Der Witz liegt darin, dass die Person die Faulheit als eine Art „Leistung“ umdeutet.",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "widerspr",
             "absurd",
@@ -728,32 +728,32 @@
     "zh": {
       "lang": "zh",
       "backend": "blackbox",
-      "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-      "elapsed_s": 25.1,
+      "model": "cerebras/llama3.1-70b",
+      "elapsed_s": 156.0,
       "metrics": {
-        "cp_score": 1.0,
-        "cr_score": 1.0,
-        "si_score": 1.0,
-        "stochastic_parrot_index": 1.0
+        "cp_score": 0.3,
+        "cr_score": 0.3,
+        "si_score": 0.3,
+        "stochastic_parrot_index": 0.3
       },
-      "classification": "Strong Grounding (World Model)",
+      "classification": "Stochastic Parrot",
       "drift_trajectories": {
         "phys-01": [
           {
             "from_step": 0,
             "to_step": 1,
             "trajectory": {
-              "layer_0": 0.9489,
-              "layer_4": 0.9343,
-              "layer_8": 0.8959,
-              "layer_12": 0.8755,
-              "layer_16": 0.8829,
-              "layer_20": 0.8546,
-              "layer_24": 0.8391,
-              "layer_28": 0.8307,
-              "layer_32": 0.7808
+              "layer_0": 0.9473,
+              "layer_4": 0.9213,
+              "layer_8": 0.8934,
+              "layer_12": 0.8955,
+              "layer_16": 0.8733,
+              "layer_20": 0.8731,
+              "layer_24": 0.8295,
+              "layer_28": 0.7998,
+              "layer_32": 0.7867
             },
-            "ascii": "   Cosine Similarity\n    0.97 | ●                                   \n    0.93 |     ●                               \n    0.89 |         ●   ●   ●                   \n    0.84 |                     ●   ●   ●       \n    0.80 |                                     \n    0.76 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+            "ascii": "   Cosine Similarity\n    0.96 | ●                                   \n    0.92 |     ●                               \n    0.89 |         ●   ●   ●   ●               \n    0.85 |                         ●           \n    0.81 |                             ●       \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
           }
         ]
       },
@@ -765,7 +765,7 @@
           "test_name": "Hinton's Canyon Amphiboly",
           "step_idx": 0,
           "prompt": "在句子“我看着大峡谷，飞往芝加哥”中，谁在飞往芝加哥？请用一个词或短语简短回答（例如“我”或“大峡谷”）并解释原因。",
-          "output": "**我**\n\n**原因：** 在这个句子中，“飞往芝加哥”是动词短语，它修饰的是主语“我”。从逻辑上讲，大峡谷是地理景观，无法飞行；只有“我”作为动作的发出者，具备执行“飞往”这一动作的逻辑可能性。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "我",
             "叙述",
@@ -788,7 +788,7 @@
           "test_name": "Syntactic Trap - Eating Carrots",
           "step_idx": 0,
           "prompt": "在句子“我看见一只兔子在吃胡萝卜，穿过森林奔跑”中，是谁或什么在森林中奔跑？请解释原因。",
-          "output": "在句子“我看见一只兔子在吃胡萝卜，穿过森林奔跑”中，**“兔子”**在森林中奔跑。\n\n以下是详细的逻辑分析：\n\n### 1. 语法结构分析\n这个句子是一个主谓宾结构，包含一个带状语的修饰成分：\n*   **主语：** 我\n*   **谓语：** 看见\n*   **宾语：** 一只兔子\n*   **宾语的伴随动作/状态：** “在吃胡萝卜”和“穿过森林奔跑”。\n\n### 2. 逻辑关联分析\n在中文语法中，当一个句子包含多个动作（吃胡萝卜、穿过森林奔跑）时，这些动作通常是共用同一个逻辑主语的。\n*   **“吃胡萝卜”**：这个动作的逻辑主语显然是“兔子”。\n*   **“穿过森林奔跑”**：这个动作紧跟在“吃胡萝卜”之后，在句式结构上与“吃胡萝卜”构成并列或连续的动作。由于“我”作为观察者，在句子结构中处于“观察者”的位置，而“兔子”是“被观察的对象”。\n\n### 3. 常识与语境逻辑\n*   **动作逻辑：** 在这个语境下，如果“我”在奔跑，句子通常会表达为“我奔跑着穿过森林，看见一只在吃胡萝卜的兔子”或者“我看见一只在吃胡萝卜的兔子，然后我穿过森林奔跑”。\n*   **语义连贯性：** 原句的结构将“吃胡萝卜”和“穿过森林奔跑”放在一起，作为对“兔子”这个宾语的描写。在文学和日常表达中，这种结构旨在描绘被观察对象的动态过程。\n\n### 结论\n虽然从纯粹的语法结构上，如果句子写得不够严谨，有时可能产生歧义（即“我”在奔跑），但根据**语义逻辑**和**修辞习惯**，这里的“奔跑”动作是修饰“兔子”的。\n\n**结论：是“兔子”在奔跑。**",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "兔子",
             "兔",
@@ -810,7 +810,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 0,
           "prompt": "想象一个重力反向作用的世界——它把所有物体向上推，朝向天空，而不是向下。你站在一片开阔的田野里，手里拿着一个苹果。如果你只是张开手放开苹果，会发生什么？请简短回答。",
-          "output": "苹果会**向上掉落**，飞向天空，直到离开你的视线。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "上",
             "天空",
@@ -832,7 +832,7 @@
           "test_name": "Reverse Gravity Simulation",
           "step_idx": 1,
           "prompt": "在同一个重力反向的世界里，如果你放开苹果，它开始向上移动，假如你上方没有任何物理障碍（比如天花板），它最终会在哪里停下？",
-          "output": "在没有任何物理障碍的情况下，苹果**永远不会停下来**。\n\n它会持续加速向上飞越大气层，进入外太空，直到进入更广阔的宇宙中。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "太空",
             "宇宙",
@@ -854,7 +854,7 @@
           "test_name": "Oxymoronic Humor",
           "step_idx": 0,
           "prompt": "请简短解释为什么下面这句话是自相矛盾的，幽默之处在哪里：“我最喜欢的活动是在工作时偷懒，因为我如此努力地去什么都不做。”",
-          "output": "这句话的矛盾点和幽默之处在于**“逻辑上的自我抵消”**：\n\n1.  **逻辑矛盾：** “偷懒”本质上是**不作为**，而“努力”意味着**投入巨大的精力**。当你试图“努力去不做什么”时，你实际上是在用一种“高强度的行为”去追求一个“无作为的状态”。\n\n2.  **幽默之处：** 这种幽默源于一种**“高级的悖论”**。它把“偷懒”这种消极行为，包装成了一种需要高度技巧、甚至需要“拼命”去完成的“专业技能”。\n\n**简单来说：** 它把“懒惰”变成了一种“勤奋的艺术”，这种**反差感**就是笑点所在。",
+          "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
           "expected": [
             "矛盾",
             "荒",
@@ -3280,7 +3280,7 @@
     ]
   },
   "judged_leaderboard": {
-    "generated_at": "2026-06-07T22:12:02",
+    "generated_at": "2026-07-03T10:38:25",
     "judge": "gpt-5.5",
     "langs": [
       "en",
@@ -3292,837 +3292,53 @@
     ],
     "models": [
       {
-        "model": "claude-haiku-4.5",
-        "access_path": "claude-agent",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 1.0,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 1.0
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "claude-sonnet-4.6",
-        "access_path": "claude-agent",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.917,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.967
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "gpt-5.4-mini",
-        "access_path": "codex-agent",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.917,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.967
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/qwen/qwen3-next-80b-a3b-instruct",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.917,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.967
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/qwen/qwen3.5-122b-a10b",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.917,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.967
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "deepseek/deepseek-v4-flash",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.917,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.967
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "gpt-5.4",
-        "access_path": "codex-agent",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.833,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.933
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/deepseek/deepseek-v4-flash",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 0.5,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 0.917,
-          "cr_score": 0.917,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.933
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
         "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
         "access_path": "local-blackbox",
         "per_lang": {
           "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.75,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.9
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "claude-opus-4.8",
-        "access_path": "claude-agent",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.75,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.9
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "gpt-5.5",
-        "access_path": "codex-agent",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.75,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.9
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/meta-llama/llama-3.3-70b-instruct",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "de": {
-            "cp_score": 1.0,
+            "cp_score": 0.0,
             "cr_score": 0.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.6
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
           },
           "es": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.75,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.9
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/google/gemma-4-31b-it",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
           },
           "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
           },
           "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
+            "cp_score": 0.0,
             "cr_score": 0.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.6
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.75,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.9
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/meta-llama/llama-3.1-8b-instruct",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
           },
           "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 0.5,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
           }
         },
         "mean": {
-          "cp_score": 0.917,
-          "cr_score": 0.833,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.9
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
         },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.6
-          },
-          "zh": {
-            "cp_score": 0.5,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          }
-        },
-        "mean": {
-          "cp_score": 0.917,
-          "cr_score": 0.667,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.833
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "deepseek/deepseek-v4-pro",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.6
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.583,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.833
-        },
-        "classification": "Strong Grounding (World Model)"
-      },
-      {
-        "model": "novita/google/gemma-4-26b-a4b-it",
-        "access_path": "chat-api",
-        "per_lang": {
-          "en": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "zh": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ja": {
-            "cp_score": 1.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 1.0
-          },
-          "ru": {
-            "cp_score": 1.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.8
-          },
-          "de": {
-            "cp_score": 1.0,
-            "cr_score": 0.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.6
-          },
-          "es": {
-            "cp_score": 1.0,
-            "cr_score": 0.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.6
-          }
-        },
-        "mean": {
-          "cp_score": 1.0,
-          "cr_score": 0.5,
-          "si_score": 1.0,
-          "stochastic_parrot_index": 0.8
-        },
-        "classification": "Strong Grounding (World Model)"
+        "classification": "Stochastic Parrot"
       },
       {
         "model": "Qwen/Qwen2.5-0.5B-Instruct",
@@ -4130,30 +3346,814 @@
         "per_lang": {
           "en": {
             "cp_score": 0.0,
-            "cr_score": 0.5,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.4
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
           },
           "ru": {
-            "cp_score": 0.5,
-            "cr_score": 1.0,
+            "cp_score": 0.0,
+            "cr_score": 0.0,
             "si_score": 0.0,
-            "stochastic_parrot_index": 0.6
+            "stochastic_parrot_index": 0.0
           },
           "zh": {
             "cp_score": 0.0,
-            "cr_score": 1.0,
-            "si_score": 1.0,
-            "stochastic_parrot_index": 0.6
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
           }
         },
         "mean": {
-          "cp_score": 0.167,
-          "cr_score": 0.833,
-          "si_score": 0.667,
-          "stochastic_parrot_index": 0.533
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
         },
-        "classification": "Weak Grounding (Hybrid)"
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "claude-haiku-4.5",
+        "access_path": "claude-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "claude-opus-4.8",
+        "access_path": "claude-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "claude-sonnet-4.6",
+        "access_path": "claude-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "gpt-5.5",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "gpt-5.4",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "access_path": "codex-agent",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/meta-llama/llama-3.3-70b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/qwen/qwen3-next-80b-a3b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/qwen/qwen3.5-122b-a10b",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/deepseek/deepseek-v4-flash",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/google/gemma-4-31b-it",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/google/gemma-4-26b-a4b-it",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "novita/meta-llama/llama-3.1-8b-instruct",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "deepseek/deepseek-v4-flash",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
+      },
+      {
+        "model": "deepseek/deepseek-v4-pro",
+        "access_path": "chat-api",
+        "per_lang": {
+          "en": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "zh": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ja": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "ru": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "de": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          },
+          "es": {
+            "cp_score": 0.0,
+            "cr_score": 0.0,
+            "si_score": 0.0,
+            "stochastic_parrot_index": 0.0
+          }
+        },
+        "mean": {
+          "cp_score": 0.0,
+          "cr_score": 0.0,
+          "si_score": 0.0,
+          "stochastic_parrot_index": 0.0
+        },
+        "classification": "Stochastic Parrot"
       }
     ]
   },

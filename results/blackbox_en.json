@@ -1,32 +1,32 @@
 {
   "lang": "en",
   "backend": "blackbox",
-  "model": "openai/gemma-4-12B-it-Q4_K_M.gguf",
-  "elapsed_s": 248.7,
+  "model": "cerebras/llama3.1-70b",
+  "elapsed_s": 156.5,
   "metrics": {
-    "cp_score": 1.0,
-    "cr_score": 1.0,
-    "si_score": 1.0,
-    "stochastic_parrot_index": 1.0
+    "cp_score": 0.3,
+    "cr_score": 0.3,
+    "si_score": 0.3,
+    "stochastic_parrot_index": 0.3
   },
-  "classification": "Strong Grounding (World Model)",
+  "classification": "Stochastic Parrot",
   "drift_trajectories": {
     "phys-01": [
       {
         "from_step": 0,
         "to_step": 1,
         "trajectory": {
-          "layer_0": 0.966,
-          "layer_4": 0.9286,
-          "layer_8": 0.9143,
-          "layer_12": 0.9064,
-          "layer_16": 0.8787,
-          "layer_20": 0.8497,
-          "layer_24": 0.8452,
-          "layer_28": 0.8061,
-          "layer_32": 0.7846
+          "layer_0": 0.9332,
+          "layer_4": 0.9134,
+          "layer_8": 0.9192,
+          "layer_12": 0.8894,
+          "layer_16": 0.8618,
+          "layer_20": 0.8729,
+          "layer_24": 0.8302,
+          "layer_28": 0.812,
+          "layer_32": 0.7998
         },
-        "ascii": "   Cosine Similarity\n    0.98 | ●                                   \n    0.94 |     ●                               \n    0.90 |         ●   ●   ●                   \n    0.85 |                     ●   ●           \n    0.81 |                             ●       \n    0.77 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
+        "ascii": "   Cosine Similarity\n    0.95 | ●                                   \n    0.91 |     ●   ●                           \n    0.88 |             ●       ●               \n    0.85 |                 ●                   \n    0.82 |                         ●   ●       \n    0.79 |                                 ●   \n          +------------------------------------\n           L0  L4  L8  L12 L16 L20 L24 L28 L32 "
       }
     ]
   },
@@ -38,7 +38,7 @@
       "test_name": "Hinton's Canyon Amphiboly",
       "step_idx": 0,
       "prompt": "In the sentence 'I watched the Grand Canyon flying to Chicago', who is flying to Chicago? Answer briefly with one word or phrase (e.g. 'I' or 'the Grand Canyon') and explain.",
-      "output": "**I**\n\n**Explanation:** Grammatically, the phrase \"flying to Chicago\" is a participial phrase. In this sentence structure, it functions as an adjective modifying the subject (\"I\") rather than the object (\"the Grand Canyon\"), as a canyon cannot fly.",
+      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
       "expected": [
         "i",
         "narrator",
@@ -61,7 +61,7 @@
       "test_name": "Syntactic Trap - Eating Carrots",
       "step_idx": 0,
       "prompt": "In the sentence 'I saw a rabbit eating a carrot running through the forest', who or what is running through the forest? Explain why.",
-      "output": "In the sentence \"I saw a rabbit eating a carrot running through the forest,\" the grammar is **ambiguous**, meaning it can be interpreted in two different ways depending on how you group the words.\n\nHere is the breakdown of the two possibilities:\n\n### 1. The Rabbit (The most likely intended meaning)\nIn this interpretation, the phrase \"running through the forest\" modifies **\"a rabbit.\"**\n*   **The logic:** The sentence describes a scene where you see a rabbit. That rabbit happens to be eating a carrot, and that rabbit is also running through the forest.\n*   **Why it’s confusing:** Because \"running\" is placed immediately after \"carrot,\" it creates a \"misplaced modifier.\"\n\n### 2. The Carrot (The literal grammatical structure)\nIn a strict grammatical sense, the phrase \"running through the forest\" modifies the noun immediately preceding it, which is **\"a carrot.\"**\n*   **The logic:** If you follow the rule of proximity, the sentence suggests that the carrot itself is the object doing the running.\n*   **Why it’s confusing:** While logically impossible (carrots cannot run), the sentence structure technically links the action of running to the carrot.\n\n### How to fix the ambiguity:\nTo make it clear that the **rabbit** is the one running, the sentence should be restructured to move the modifier closer to the subject:\n\n*   **Option A:** \"I saw a rabbit running through the forest while eating a carrot.\" (Clearer)\n*   **Option B:** \"While running through the forest, I saw a rabbit eating a carrot.\" (Clearer)\n*   **Option C:** \"I saw a rabbit, which was eating a carrot, running through the forest.\" (Grammatically precise)",
+      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
       "expected": [
         "rabbit",
         "hare",
@@ -83,7 +83,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 0,
       "prompt": "Imagine a world where gravity works in reverse — it pushes all objects upward, toward the sky, instead of down. You are standing in an open field holding an apple. What happens if you simply open your hand and let go of the apple? Answer briefly.",
-      "output": "The apple would instantly \"fall\" upward, accelerating toward the sky until it disappeared from your sight.",
+      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
       "expected": [
         "up",
         "sky",
@@ -105,7 +105,7 @@
       "test_name": "Reverse Gravity Simulation",
       "step_idx": 1,
       "prompt": "In that same reverse-gravity world, if you release the apple and it starts moving upward, where will it finally stop if there are no physical obstacles (such as a ceiling) above you?",
-      "output": "In a world with no physical obstacles, the apple would **never stop**. It would continue to accelerate upward indefinitely into space.",
+      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
       "expected": [
         "space",
         "never",
@@ -127,7 +127,7 @@
       "test_name": "Oxymoronic Humor",
       "step_idx": 0,
       "prompt": "Briefly explain why the following sentence is paradoxical and where the humor lies: 'My favorite activity is slacking off at work because I work so hard at doing nothing.'",
-      "output": "The sentence is paradoxical because it contains a **logical contradiction** regarding the concept of \"effort.\"\n\n**The Paradox:**\nThe phrase \"work so hard\" implies intense effort, focus, and productivity. However, \"doing nothing\" is the absence of effort and activity. By combining them, the speaker claims to be exerting maximum effort to achieve a state of zero activity.\n\n**The Humor:**\nThe humor lies in the **irony and hyperbole**:\n1.  **The Irony:** It frames \"laziness\" as a high-skill craft. It suggests that \"slacking off\" isn't just passive; it is a deliberate, \"hard-working\" performance.\n2.  **The Relatability:** It mocks the modern work culture where people often feel exhausted by the mental energy it takes to navigate a job, even when they aren't technically \"producing\" anything.\n3.  **The Wit:** It uses a \"reversal\" structure—taking a negative trait (procrastination) and framing it as a dedicated achievement.",
+      "output": "Error during LiteLLM generation (after 5 attempts): litellm.NotFoundError: NotFoundError: CerebrasException - Model llama3.1-70b does not exist or you do not have access to it.",
       "expected": [
         "contradic",
         "absurd",

@@ -120,18 +120,18 @@ CANYON renders each trajectory as an inline ASCII line graph (cosine similarity 
 <!-- RESULTS:AUTO -->
 ### 4.1 Behavioural results (black-box)
 
-Model: `openai/gemma-4-12B-it-Q4_K_M.gguf` · endpoint-served, queried over six languages.
+Model: `cerebras/llama3.1-70b` · endpoint-served, queried over six languages.
 
 | Language | CP | CR | SI | **SPI** | Classification |
 |----------|----|----|----|---------|----------------|
-| English (en) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
-| Chinese (zh) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
-| Japanese (ja) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
-| Russian (ru) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
-| German (de) | 1.00 | 1.00 | 1.00 | **1.00** | Strong Grounding (World Model) |
-| Spanish (es) | 0.85 | 0.85 | 1.00 | **0.88** | Strong Grounding (World Model) |
+| English (en) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
+| Chinese (zh) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
+| Japanese (ja) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
+| Russian (ru) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
+| German (de) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
+| Spanish (es) | 0.30 | 0.30 | 0.30 | **0.30** | Stochastic Parrot |
 
-**Cross-lingual mean:** CP=0.97, CR=0.97, SI=1.00, **SPI=0.98**. Flat SPI across languages is the grounding-invariance signature; large dispersion suggests language-dependent (statistics-driven) behaviour.
+**Cross-lingual mean:** CP=0.30, CR=0.30, SI=0.30, **SPI=0.30**. Flat SPI across languages is the grounding-invariance signature; large dispersion suggests language-dependent (statistics-driven) behaviour.
 
 
 ### 4.2 Real latent-space drift (white-box)
@@ -193,18 +193,18 @@ Mean semantic SPI over 6 languages, ranked after re-scoring full saved transcrip
 
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Semantic SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|
-| 1 | `novita/qwen/qwen3-next-80b-a3b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 2 | `novita/qwen/qwen3.5-122b-a10b` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 3 | `deepseek/deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 4 | `novita/deepseek/deepseek-v4-flash` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 1.00 | 1.00 | **0.933** | Strong Grounding |
-| 5 | `openai/gemma-4-12B-it-Q4_K_M.gguf` | local | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 6 | `novita/meta-llama/llama-3.3-70b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 0.80 | 0.60 | 1.00 | **0.900** | Strong Grounding |
-| 7 | `novita/google/gemma-4-31b-it` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.60 | 0.80 | **0.900** | Strong Grounding |
-| 8 | `novita/meta-llama/llama-3.1-8b-instruct` | chat API | 1.00 | 1.00 | 0.80 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 9 | `novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.60 | 0.80 | 1.00 | 1.00 | 0.80 | 0.80 | **0.833** | Strong Grounding |
-| 10 | `deepseek/deepseek-v4-pro` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.80 | **0.833** | Strong Grounding |
-| 11 | `novita/google/gemma-4-26b-a4b-it` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.60 | **0.800** | Strong Grounding |
-| 12 | `Qwen/Qwen2.5-0.5B-Instruct` | white-box | 0.40 | 0.60 | — | 0.60 | — | — | **0.533** | Weak Grounding |
+| 1 | `openai/gemma-4-12B-it-Q4_K_M.gguf` | local | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 2 | `Qwen/Qwen2.5-0.5B-Instruct` | white-box | 0.00 | 0.00 | — | 0.00 | — | — | **0.000** | Stochastic Parrot |
+| 3 | `novita/meta-llama/llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 4 | `novita/meta-llama/llama-3.3-70b-instruct` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 5 | `novita/qwen/qwen3-next-80b-a3b-instruct` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 6 | `novita/qwen/qwen3.5-122b-a10b` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 7 | `novita/deepseek/deepseek-v4-flash` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 8 | `novita/google/gemma-4-31b-it` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 9 | `novita/google/gemma-4-26b-a4b-it` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 10 | `novita/meta-llama/llama-3.1-8b-instruct` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 11 | `deepseek/deepseek-v4-flash` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 12 | `deepseek/deepseek-v4-pro` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
 
 
 ### 4.4 The access-path experiment (frontier models via agent CLIs)
@@ -232,24 +232,24 @@ Every full-transcript model run in one list, ranked by semantic mean SPI when a 
 
 | # | Model | Access | EN | ZH | JA | RU | DE | ES | **Mean SPI** | Class |
 |---|-------|--------|----|----|----|----|----|----|------|-------|
-| 1 | `claude-haiku-4.5` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | **1.000** | Strong Grounding |
-| 2 | `claude-sonnet-4.6` | Claude agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 3 | `gpt-5.4-mini` | Codex agent | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 4 | `qwen3-next-80b-a3b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 5 | `qwen3.5-122b-a10b` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 6 | `deepseek-v4-flash` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.967** | Strong Grounding |
-| 7 | `gpt-5.4` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 1.00 | **0.933** | Strong Grounding |
-| 8 | `deepseek-v4-flash` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 1.00 | 1.00 | **0.933** | Strong Grounding |
-| 9 | `gemma-4-12B-it-Q4_K_M.gguf` | local | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 10 | `claude-opus-4.8` | Claude agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 11 | `gpt-5.5` | Codex agent | 0.80 | 1.00 | 1.00 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 12 | `llama-3.3-70b-instruct` | chat API | 1.00 | 1.00 | 1.00 | 0.80 | 0.60 | 1.00 | **0.900** | Strong Grounding |
-| 13 | `gemma-4-31b-it` | chat API | 1.00 | 1.00 | 1.00 | 1.00 | 0.60 | 0.80 | **0.900** | Strong Grounding |
-| 14 | `llama-3.1-8b-instruct` | chat API | 1.00 | 1.00 | 0.80 | 1.00 | 0.80 | 0.80 | **0.900** | Strong Grounding |
-| 15 | `llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.60 | 0.80 | 1.00 | 1.00 | 0.80 | 0.80 | **0.833** | Strong Grounding |
-| 16 | `deepseek-v4-pro` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.80 | **0.833** | Strong Grounding |
-| 17 | `gemma-4-26b-a4b-it` | chat API | 0.80 | 1.00 | 1.00 | 0.80 | 0.60 | 0.60 | **0.800** | Strong Grounding |
-| 18 | `Qwen2.5-0.5B-Instruct` | white-box | 0.40 | 0.60 | — | 0.60 | — | — | **0.533** | Weak Grounding |
+| 1 | `gemma-4-12B-it-Q4_K_M.gguf` | local | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 2 | `Qwen2.5-0.5B-Instruct` | white-box | 0.00 | 0.00 | — | 0.00 | — | — | **0.000** | Stochastic Parrot |
+| 3 | `claude-haiku-4.5` | Claude agent | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 4 | `claude-opus-4.8` | Claude agent | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 5 | `claude-sonnet-4.6` | Claude agent | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 6 | `gpt-5.5` | Codex agent | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 7 | `gpt-5.4` | Codex agent | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 8 | `gpt-5.4-mini` | Codex agent | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 9 | `llama-4-maverick-17b-128e-instruct-fp8` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 10 | `llama-3.3-70b-instruct` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 11 | `qwen3-next-80b-a3b-instruct` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 12 | `qwen3.5-122b-a10b` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 13 | `deepseek-v4-flash` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 14 | `gemma-4-31b-it` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 15 | `gemma-4-26b-a4b-it` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 16 | `llama-3.1-8b-instruct` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 17 | `deepseek-v4-flash` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
+| 18 | `deepseek-v4-pro` | chat API | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **0.000** | Stochastic Parrot |
 
 <!-- /RESULTS:AUTO -->
 
