@@ -8,7 +8,7 @@ comparable with the clean chat-completion leaderboard.json. They are written to
 a SEPARATE file (results/leaderboard_claude.json), tagged backend="claude-agent".
 
 The subprocess runs with cwd=/tmp and --setting-sources "" so the personal
-/home/user/CLAUDE.md (which forces Serbian) is NOT loaded, and an
+~/CLAUDE.md (which forces Serbian) is NOT loaded, and an
 appended system prompt forces same-language answers so per-language keyword
 scoring stays valid.
 
